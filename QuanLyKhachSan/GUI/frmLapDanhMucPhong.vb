@@ -1,10 +1,6 @@
 ﻿Public Class frmLapDanhMucPhong
 
-    Private Sub TextBox4_TextChanged(sender As Object, e As EventArgs) Handles txtTenPhong.TextChanged
-
-    End Sub
-
-    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboTenLoaiPhong.SelectedIndexChanged
+    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs)
 
     End Sub
 End Class
