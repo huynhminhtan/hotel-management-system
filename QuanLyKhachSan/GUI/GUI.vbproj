@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{72969CEC-1AFD-4F23-81E1-1AE77890CFE7}</ProjectGuid>
+    <ProjectGuid>{186F5F28-5072-4545-8FEC-7D032283AE9C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <StartupObject>GUI.My.MyApplication</StartupObject>
     <RootNamespace>GUI</RootNamespace>
@@ -70,11 +70,17 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.vb">
+    <Compile Include="frmLapDanhMucPhong.Designer.vb">
+      <DependentUpon>frmLapDanhMucPhong.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLapDanhMucPhong.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="frmMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.vb">
+      <DependentUpon>frmMain.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -94,6 +100,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmLapDanhMucPhong.resx">
+      <DependentUpon>frmLapDanhMucPhong.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
