@@ -1,7 +1,6 @@
 #include <stdio.h>
 okie iamfie
 
-okie iamfiedsfsaddfsadf
 int main()
 {
 	printf("mtSinichi");
@@ -9,6 +8,3 @@ int main()
 	return 0;
 }
 
-okie iamfie
-
-okie iamfie
