@@ -1,11 +1,11 @@
 #include <stdio.h>
 okie iamfie
 
-okie iamfie
+okie iamfiedsfsaddfsadf
 int main()
 {
 	printf("mtSinichi");
-	zzz
+	zzsdzx
 	return 0;
 }
 
