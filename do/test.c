@@ -2,6 +2,7 @@
 
 int main()
 {
-	printf("Hello");
-
+	printf("mtSinichi");
+	zzz
+	return 0;
 }
