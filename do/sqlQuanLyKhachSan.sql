@@ -22,26 +22,26 @@ create table PHONG
 create table TINHTRANG
 (
 	MaTinhTrang char(5) primary key,
-	LoaiTinhTrang int,
+	LoaiTinhTrang char(15),
 	MaPhong char(5),
 	Ngay date,
 
 	foreign key (MaPhong) references PHONG(MaPhong)
 )
 
-create table LoaiKhachHang
+create table LOAIKHACHHANG
 (
 	MaLoaiKhachHang char(5) primary key,
 	TenLoaiKhachHang varchar(50),
-	HoSo int,
+	HeSoKhach float
 )
 
 create table HOADON
 (
 	MaHoaDon char(5) primary key,
-	TenKhachHang varchar(50),
-	DiaChi varchar(100),
-	TriGia float
+	TenKhachHangHD varchar(50),
+	DiaChiKhachHD varchar(100),
+	TriGiaHoaDon float
 )
 
 create table PHIEUTHUE
@@ -51,19 +51,19 @@ create table PHIEUTHUE
 	foreign key (MaPhong) references PHONG(MaPhong),
 
 	NgayTraPhong date,
-	NgayBatDau date, 
-	DonGiaThue float,
-	ThanhTien float,
+	NgayBatDauThue date, 
+	DonGiaThueThucTe float,
+	ThanhTienPhong float,
 
 	MaHoaDon char(5),
 	foreign key (MaHoaDon) references HOADON(MaHoaDon),
 
-	PhuThuThucThe float,
+	PhuThuThucTe float,
 )
 
 create table CHITIETPHIEUTHUE
 (
-	 MaChiTietPhieuThe char(5) primary key,
+	 MaChiTietPhieuThue char(5) primary key,
 	 MaPhieuThue char(5),
 	 foreign key (MaPhieuThue) references PHIEUTHUE(MaPhieuThue),
 
@@ -71,9 +71,9 @@ create table CHITIETPHIEUTHUE
 	 MaLoaiKhachHang char(5),
 	 foreign key (MaLoaiKhachHang) references LOAIKHACHHANG(MaLoaiKhachHang),
 
-	 CMND char(13),
+	 CMND varchar(50),
 	 DiaChi varchar(50),
-	 HeSoThucTe int
+	 HeSoThucTe float
 )
 
 create table THAMSO
