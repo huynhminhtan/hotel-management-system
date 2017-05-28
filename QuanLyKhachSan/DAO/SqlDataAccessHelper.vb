@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Xml
 
-Namespace SqlDataAccessHelper
+Namespace DAO
 
     Public Class SqlDataAccessHelper
 

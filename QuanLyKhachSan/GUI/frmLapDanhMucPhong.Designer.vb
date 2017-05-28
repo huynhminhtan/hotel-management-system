@@ -31,26 +31,21 @@ Partial Class frmLapDanhMucPhong
         Me.lblDonGia = New System.Windows.Forms.Label()
         Me.lblTenPhong = New System.Windows.Forms.Label()
         Me.lblGhiChu = New System.Windows.Forms.Label()
-        Me.lblTenLoaiPhong = New System.Windows.Forms.Label()
+        Me.lblLoaiPhong = New System.Windows.Forms.Label()
         Me.lblMaPhong = New System.Windows.Forms.Label()
-        Me.btnLapPhong = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.btnXoaPhong = New System.Windows.Forms.Button()
-        Me.btnCapNhat = New System.Windows.Forms.Button()
+        Me.btnThemPhong = New System.Windows.Forms.Button()
         Me.btnTimPhong = New System.Windows.Forms.Button()
         Me.btnThoat = New System.Windows.Forms.Button()
+        Me.btnLuu = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.grpMaPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.grpTenPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.grpLoaiPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.grpDonGia = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.grpGhiChu = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.btnNhapLai = New System.Windows.Forms.Button()
+        Me.dgvDanhMucPhong = New System.Windows.Forms.DataGridView()
+        Me.btnCapNhat = New System.Windows.Forms.Button()
+        Me.btnXoaPhong = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvDanhMucPhong, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -63,7 +58,7 @@ Partial Class frmLapDanhMucPhong
         Me.GroupBox1.Controls.Add(Me.lblDonGia)
         Me.GroupBox1.Controls.Add(Me.lblTenPhong)
         Me.GroupBox1.Controls.Add(Me.lblGhiChu)
-        Me.GroupBox1.Controls.Add(Me.lblTenLoaiPhong)
+        Me.GroupBox1.Controls.Add(Me.lblLoaiPhong)
         Me.GroupBox1.Controls.Add(Me.lblMaPhong)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
@@ -77,7 +72,7 @@ Partial Class frmLapDanhMucPhong
         '
         Me.cboTenLoaiPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.cboTenLoaiPhong.FormattingEnabled = True
-        Me.cboTenLoaiPhong.Location = New System.Drawing.Point(143, 80)
+        Me.cboTenLoaiPhong.Location = New System.Drawing.Point(392, 45)
         Me.cboTenLoaiPhong.Name = "cboTenLoaiPhong"
         Me.cboTenLoaiPhong.Size = New System.Drawing.Size(140, 21)
         Me.cboTenLoaiPhong.TabIndex = 10
@@ -94,7 +89,7 @@ Partial Class frmLapDanhMucPhong
         'txtTenPhong
         '
         Me.txtTenPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.txtTenPhong.Location = New System.Drawing.Point(392, 46)
+        Me.txtTenPhong.Location = New System.Drawing.Point(143, 83)
         Me.txtTenPhong.Name = "txtTenPhong"
         Me.txtTenPhong.Size = New System.Drawing.Size(140, 20)
         Me.txtTenPhong.TabIndex = 8
@@ -109,9 +104,11 @@ Partial Class frmLapDanhMucPhong
         '
         'txtMaPhong
         '
+        Me.txtMaPhong.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.txtMaPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.txtMaPhong.Location = New System.Drawing.Point(143, 46)
         Me.txtMaPhong.Name = "txtMaPhong"
+        Me.txtMaPhong.ReadOnly = True
         Me.txtMaPhong.Size = New System.Drawing.Size(140, 20)
         Me.txtMaPhong.TabIndex = 5
         '
@@ -129,7 +126,7 @@ Partial Class frmLapDanhMucPhong
         '
         Me.lblTenPhong.AutoSize = True
         Me.lblTenPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.lblTenPhong.Location = New System.Drawing.Point(317, 46)
+        Me.lblTenPhong.Location = New System.Drawing.Point(68, 83)
         Me.lblTenPhong.Name = "lblTenPhong"
         Me.lblTenPhong.Size = New System.Drawing.Size(62, 13)
         Me.lblTenPhong.TabIndex = 3
@@ -139,150 +136,123 @@ Partial Class frmLapDanhMucPhong
         '
         Me.lblGhiChu.AutoSize = True
         Me.lblGhiChu.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.lblGhiChu.Location = New System.Drawing.Point(43, 121)
+        Me.lblGhiChu.Location = New System.Drawing.Point(83, 121)
         Me.lblGhiChu.Name = "lblGhiChu"
         Me.lblGhiChu.Size = New System.Drawing.Size(47, 13)
         Me.lblGhiChu.TabIndex = 2
         Me.lblGhiChu.Text = "Ghi chú:"
         '
-        'lblTenLoaiPhong
+        'lblLoaiPhong
         '
-        Me.lblTenLoaiPhong.AutoSize = True
-        Me.lblTenLoaiPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.lblTenLoaiPhong.Location = New System.Drawing.Point(43, 80)
-        Me.lblTenLoaiPhong.Name = "lblTenLoaiPhong"
-        Me.lblTenLoaiPhong.Size = New System.Drawing.Size(81, 13)
-        Me.lblTenLoaiPhong.TabIndex = 1
-        Me.lblTenLoaiPhong.Text = "Tên loại phòng:"
+        Me.lblLoaiPhong.AutoSize = True
+        Me.lblLoaiPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        Me.lblLoaiPhong.Location = New System.Drawing.Point(317, 46)
+        Me.lblLoaiPhong.Name = "lblLoaiPhong"
+        Me.lblLoaiPhong.Size = New System.Drawing.Size(63, 13)
+        Me.lblLoaiPhong.TabIndex = 1
+        Me.lblLoaiPhong.Text = "Loại phòng:"
         '
         'lblMaPhong
         '
         Me.lblMaPhong.AutoSize = True
         Me.lblMaPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.lblMaPhong.Location = New System.Drawing.Point(43, 46)
+        Me.lblMaPhong.Location = New System.Drawing.Point(72, 46)
         Me.lblMaPhong.Name = "lblMaPhong"
         Me.lblMaPhong.Size = New System.Drawing.Size(58, 13)
         Me.lblMaPhong.TabIndex = 0
         Me.lblMaPhong.Text = "Mã phòng:"
         '
-        'btnLapPhong
-        '
-        Me.btnLapPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.btnLapPhong.Location = New System.Drawing.Point(368, 45)
-        Me.btnLapPhong.Name = "btnLapPhong"
-        Me.btnLapPhong.Size = New System.Drawing.Size(90, 23)
-        Me.btnLapPhong.TabIndex = 1
-        Me.btnLapPhong.Text = "&Lập phòng"
-        Me.btnLapPhong.UseVisualStyleBackColor = True
-        '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.btnNhapLai)
         Me.GroupBox2.Controls.Add(Me.btnXoaPhong)
         Me.GroupBox2.Controls.Add(Me.btnCapNhat)
+        Me.GroupBox2.Controls.Add(Me.btnThemPhong)
         Me.GroupBox2.Controls.Add(Me.btnTimPhong)
         Me.GroupBox2.Controls.Add(Me.btnThoat)
-        Me.GroupBox2.Controls.Add(Me.btnLapPhong)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 339)
+        Me.GroupBox2.Controls.Add(Me.btnLuu)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 188)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(607, 102)
         Me.GroupBox2.TabIndex = 2
         Me.GroupBox2.TabStop = False
         '
-        'btnXoaPhong
+        'btnThemPhong
         '
-        Me.btnXoaPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.btnXoaPhong.Location = New System.Drawing.Point(31, 63)
-        Me.btnXoaPhong.Name = "btnXoaPhong"
-        Me.btnXoaPhong.Size = New System.Drawing.Size(90, 23)
-        Me.btnXoaPhong.TabIndex = 6
-        Me.btnXoaPhong.Text = "Xóa phòng"
-        Me.btnXoaPhong.UseVisualStyleBackColor = True
-        '
-        'btnCapNhat
-        '
-        Me.btnCapNhat.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.btnCapNhat.Location = New System.Drawing.Point(31, 28)
-        Me.btnCapNhat.Name = "btnCapNhat"
-        Me.btnCapNhat.Size = New System.Drawing.Size(90, 23)
-        Me.btnCapNhat.TabIndex = 5
-        Me.btnCapNhat.Text = "Cập nhật"
-        Me.btnCapNhat.UseVisualStyleBackColor = True
+        Me.btnThemPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        Me.btnThemPhong.Location = New System.Drawing.Point(184, 66)
+        Me.btnThemPhong.Name = "btnThemPhong"
+        Me.btnThemPhong.Size = New System.Drawing.Size(90, 23)
+        Me.btnThemPhong.TabIndex = 8
+        Me.btnThemPhong.Text = "Thêm phòng"
+        Me.btnThemPhong.UseVisualStyleBackColor = True
         '
         'btnTimPhong
         '
         Me.btnTimPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.btnTimPhong.Location = New System.Drawing.Point(143, 28)
+        Me.btnTimPhong.Location = New System.Drawing.Point(40, 66)
         Me.btnTimPhong.Name = "btnTimPhong"
         Me.btnTimPhong.Size = New System.Drawing.Size(90, 23)
-        Me.btnTimPhong.TabIndex = 3
-        Me.btnTimPhong.Text = "Tìm  phòng"
+        Me.btnTimPhong.TabIndex = 7
+        Me.btnTimPhong.Text = "Tìm phòng"
         Me.btnTimPhong.UseVisualStyleBackColor = True
         '
         'btnThoat
         '
         Me.btnThoat.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.btnThoat.Location = New System.Drawing.Point(480, 45)
+        Me.btnThoat.Location = New System.Drawing.Point(478, 28)
         Me.btnThoat.Name = "btnThoat"
         Me.btnThoat.Size = New System.Drawing.Size(90, 23)
-        Me.btnThoat.TabIndex = 2
-        Me.btnThoat.Text = "&Thoát"
+        Me.btnThoat.TabIndex = 6
+        Me.btnThoat.Text = "Thoát"
         Me.btnThoat.UseVisualStyleBackColor = True
+        '
+        'btnLuu
+        '
+        Me.btnLuu.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        Me.btnLuu.Location = New System.Drawing.Point(40, 28)
+        Me.btnLuu.Name = "btnLuu"
+        Me.btnLuu.Size = New System.Drawing.Size(90, 23)
+        Me.btnLuu.TabIndex = 5
+        Me.btnLuu.Text = "Lưu"
+        Me.btnLuu.UseVisualStyleBackColor = True
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.DataGridView1)
-        Me.GroupBox3.Location = New System.Drawing.Point(12, 188)
+        Me.GroupBox3.Controls.Add(Me.dgvDanhMucPhong)
+        Me.GroupBox3.Location = New System.Drawing.Point(12, 293)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(607, 148)
         Me.GroupBox3.TabIndex = 3
         Me.GroupBox3.TabStop = False
         '
-        'DataGridView1
+        'dgvDanhMucPhong
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.grpMaPhong, Me.grpTenPhong, Me.grpLoaiPhong, Me.grpDonGia, Me.grpGhiChu})
-        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView1.Location = New System.Drawing.Point(3, 16)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(601, 129)
-        Me.DataGridView1.TabIndex = 0
+        Me.dgvDanhMucPhong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvDanhMucPhong.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgvDanhMucPhong.Location = New System.Drawing.Point(3, 16)
+        Me.dgvDanhMucPhong.Name = "dgvDanhMucPhong"
+        Me.dgvDanhMucPhong.Size = New System.Drawing.Size(601, 129)
+        Me.dgvDanhMucPhong.TabIndex = 0
         '
-        'grpMaPhong
+        'btnCapNhat
         '
-        Me.grpMaPhong.HeaderText = "Mã Phòng"
-        Me.grpMaPhong.Name = "grpMaPhong"
+        Me.btnCapNhat.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        Me.btnCapNhat.Location = New System.Drawing.Point(336, 66)
+        Me.btnCapNhat.Name = "btnCapNhat"
+        Me.btnCapNhat.Size = New System.Drawing.Size(90, 23)
+        Me.btnCapNhat.TabIndex = 9
+        Me.btnCapNhat.Text = "Cập nhật"
+        Me.btnCapNhat.UseVisualStyleBackColor = True
         '
-        'grpTenPhong
+        'btnXoaPhong
         '
-        Me.grpTenPhong.HeaderText = "Tên Phòng"
-        Me.grpTenPhong.Name = "grpTenPhong"
-        '
-        'grpLoaiPhong
-        '
-        Me.grpLoaiPhong.HeaderText = "Loại Phòng"
-        Me.grpLoaiPhong.Name = "grpLoaiPhong"
-        '
-        'grpDonGia
-        '
-        Me.grpDonGia.HeaderText = "Đơn Giá"
-        Me.grpDonGia.Name = "grpDonGia"
-        '
-        'grpGhiChu
-        '
-        Me.grpGhiChu.HeaderText = "Ghi Chú"
-        Me.grpGhiChu.Name = "grpGhiChu"
-        Me.grpGhiChu.Width = 150
-        '
-        'btnNhapLai
-        '
-        Me.btnNhapLai.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.btnNhapLai.Location = New System.Drawing.Point(143, 63)
-        Me.btnNhapLai.Name = "btnNhapLai"
-        Me.btnNhapLai.Size = New System.Drawing.Size(90, 23)
-        Me.btnNhapLai.TabIndex = 7
-        Me.btnNhapLai.Text = "Nhập lại"
-        Me.btnNhapLai.UseVisualStyleBackColor = True
+        Me.btnXoaPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        Me.btnXoaPhong.Location = New System.Drawing.Point(478, 66)
+        Me.btnXoaPhong.Name = "btnXoaPhong"
+        Me.btnXoaPhong.Size = New System.Drawing.Size(90, 23)
+        Me.btnXoaPhong.TabIndex = 10
+        Me.btnXoaPhong.Text = "Xóa phòng"
+        Me.btnXoaPhong.UseVisualStyleBackColor = True
         '
         'frmLapDanhMucPhong
         '
@@ -301,7 +271,7 @@ Partial Class frmLapDanhMucPhong
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvDanhMucPhong, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -309,25 +279,20 @@ Partial Class frmLapDanhMucPhong
     Friend WithEvents lblDonGia As System.Windows.Forms.Label
     Friend WithEvents lblTenPhong As System.Windows.Forms.Label
     Friend WithEvents lblGhiChu As System.Windows.Forms.Label
-    Friend WithEvents lblTenLoaiPhong As System.Windows.Forms.Label
     Friend WithEvents lblMaPhong As System.Windows.Forms.Label
     Friend WithEvents txtMaPhong As System.Windows.Forms.TextBox
     Friend WithEvents txtDonGia As System.Windows.Forms.TextBox
     Friend WithEvents txtTenPhong As System.Windows.Forms.TextBox
     Friend WithEvents txtGhiChu As System.Windows.Forms.TextBox
-    Friend WithEvents cboTenLoaiPhong As System.Windows.Forms.ComboBox
-    Friend WithEvents btnLapPhong As System.Windows.Forms.Button
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents btnThoat As System.Windows.Forms.Button
-    Friend WithEvents btnCapNhat As System.Windows.Forms.Button
-    Friend WithEvents btnTimPhong As System.Windows.Forms.Button
-    Friend WithEvents btnXoaPhong As System.Windows.Forms.Button
+    Friend WithEvents btnLuu As System.Windows.Forms.Button
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
-    Friend WithEvents grpMaPhong As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents grpTenPhong As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents grpLoaiPhong As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents grpDonGia As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents grpGhiChu As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents btnNhapLai As System.Windows.Forms.Button
+    Friend WithEvents dgvDanhMucPhong As System.Windows.Forms.DataGridView
+    Friend WithEvents cboTenLoaiPhong As System.Windows.Forms.ComboBox
+    Friend WithEvents lblLoaiPhong As System.Windows.Forms.Label
+    Friend WithEvents btnThoat As System.Windows.Forms.Button
+    Friend WithEvents btnTimPhong As System.Windows.Forms.Button
+    Friend WithEvents btnThemPhong As System.Windows.Forms.Button
+    Friend WithEvents btnXoaPhong As System.Windows.Forms.Button
+    Friend WithEvents btnCapNhat As System.Windows.Forms.Button
 End Class

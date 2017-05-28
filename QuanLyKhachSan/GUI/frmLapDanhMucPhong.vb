@@ -1,4 +1,6 @@
-﻿Public Class frmLapDanhMucPhong
+﻿Imports BUS.BUS
+
+Public Class frmLapDanhMucPhong
 
     Private Sub frmLapDanhMucPhong_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -11,5 +13,12 @@
 
         ' 
 
+        ' Thử select danh sách loại phòng
+        dgvDanhMucPhong.DataSource = LoaiPhongBUS.SelectAllLoaiPhong()
+
     End Sub
+
+
+
+
 End Class
