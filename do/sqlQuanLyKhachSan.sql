@@ -2,7 +2,7 @@
 
 use QuanLyKhachSan
 
-create table LOAIPHONG
+create table LOAIPHONG	
 (
 	MaLoaiPhong char(5) primary key,
 	TenLoaiPhong varchar(50),
@@ -14,7 +14,7 @@ create table PHONG
 	MaPhong char(5) primary key,
 	TenPhong varchar(50),
 	MaLoaiPhong char(5),
-	GhiChu varchar,
+	GhiChu varchar(300),
 
 	foreign key(MaLoaiPhong) references LOAIPHONG(MaLoaiPhong)
 )
@@ -24,7 +24,7 @@ create table TINHTRANG
 	MaTinhTrang char(5) primary key,
 	LoaiTinhTrang char(15),
 	MaPhong char(5),
-	Ngay date,
+	Ngay smalldatetime,
 
 	foreign key (MaPhong) references PHONG(MaPhong)
 )
@@ -50,8 +50,8 @@ create table PHIEUTHUE
 	MaPhong char(5),
 	foreign key (MaPhong) references PHONG(MaPhong),
 
-	NgayTraPhong date,
-	NgayBatDauThue date, 
+	NgayTraPhong smalldatetime,
+	NgayBatDauThue smalldatetime, 
 	DonGiaThueThucTe float,
 	ThanhTienPhong float,
 
@@ -72,7 +72,7 @@ create table CHITIETPHIEUTHUE
 	 foreign key (MaLoaiKhachHang) references LOAIKHACHHANG(MaLoaiKhachHang),
 
 	 CMND varchar(50),
-	 DiaChi varchar(50),
+	 DiaChi varchar(100),
 	 HeSoThucTe float
 )
 
@@ -82,7 +82,50 @@ create table THAMSO
 	TiLePhuThu float
 )
 
+create table BAOCAODOANHTHU
+(
+	MaBaoCaoDoanhThu char(5) primary key,
+	ThangBaoCaoDoanhThu smalldatetime,
+	TongDoanhThu float
+)
+
+
+create table CHITIETBAOCAODT
+(
+	MaChiTietBaoCaoDT char(5) primary key,
+	MaBaoCaoDoanhThu char(5),
+	foreign key (MaBaoCaoDoanhThu) references BAOCAODOANHTHU(MaBaoCaoDoanhThu),
+
+	MaLoaiPhong char(5),
+	foreign key (MaLoaiPhong) references LOAIPHONG(MaLoaiPhong),
+	
+	DoanhThuLoaiPhong float,
+	TiLeDoanhThu float
+)
+
+
+create table BAOCAOMATDO
+(
+	MaBaoCaoMatDo char(5) primary key,
+	ThangBaoCaoMatDo smalldatetime,
+)
+
+create table CHITIETBAOCAOMD
+(
+	MaChiTietBaoCaoMD char(5) primary key,
+	MaBaoCaoMatDo char(5),
+	foreign key (MaBaoCaoMatDo) references BAOCAOMATDO(MaBaoCaoMatDo),
+
+	MaPhong char(5),
+	foreign key (MaPhong) references PHONG(MaPhong),
+
+	SoNgayThueTrongThang int,
+	TiLeSuDung float
+)
+
+
 -- tạo mã tự động tăng
+
 if exists (select * from sysobjects where name = 'LOAIPHONG' and type = 'P')
     drop procedure NewLoaiPhong
 go
@@ -113,6 +156,7 @@ SET NOCOUNT ON
 		INSERT INTO LOAIPHONG(MaLoaiPhong, TenLoaiPhong, DonGiaThue) VALUES ('LP000',@LoaiPhongName, @DonGiaThue)
 	END
 END 
+
 
 EXEC NewLoaiPhong 'VIP', 120000
 EXEC NewLoaiPhong 'GOLD', 140000
