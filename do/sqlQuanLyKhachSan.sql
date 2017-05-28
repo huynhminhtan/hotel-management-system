@@ -136,7 +136,8 @@ CREATE PROCEDURE NewLoaiPhong
 
 AS BEGIN
 
-SET NOCOUNT ON
+-- on show: X row(s) affected 
+--SET NOCOUNT ON  
 
      IF exists (SELECT *FROM LOAIPHONG)
      BEGIN
@@ -157,9 +158,22 @@ SET NOCOUNT ON
 	END
 END 
 
+-- Select all LoaiPhong
+CREATE PROCEDURE selectAllLoaiPhong
+As begin
+	Select MaLoaiPhong, TenLoaiPhong, DonGiaThue
+	From LOAIPHONG
+end
+
+
+---------------------
+-----------------
 
 EXEC NewLoaiPhong 'VIP', 120000
 EXEC NewLoaiPhong 'GOLD', 140000
 EXEC NewLoaiPhong 'STANDAR', 100000
+
+EXEC selectAllLoaiPhong
+
 
 SELECT *FROM LOAIPHONG
