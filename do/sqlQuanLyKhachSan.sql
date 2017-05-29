@@ -15,7 +15,8 @@ create table PHONG
 	MaPhong char(5) primary key,
 	TenPhong varchar(50),
 	MaLoaiPhong char(5),
-	GhiChu varchar(300),
+	GhiChu nvarchar(300),
+	isDelete bit default 0,
 
 	foreign key(MaLoaiPhong) references LOAIPHONG(MaLoaiPhong)
 )
@@ -125,7 +126,7 @@ create table CHITIETBAOCAOMD
 )
 
 
--- tạo mã tự động tăng
+-- Insert LoaiPhong với mã tự động tăng
 
 if exists (select * from sysobjects where name = 'LOAIPHONG' and type = 'P')
     drop procedure NewLoaiPhong
@@ -178,6 +179,25 @@ As begin
 end
 
 
+-- Select PhongMoiNhat
+CREATE PROCEDURE selectPhongMoiNhat
+AS begin
+	Select top 1 *
+	From PHONG
+	Where (isDelete = 0)
+	Order by MaPhong DESC
+end
+
+--- Insert Phong
+CREATE PROCEDURE insertPhong
+	@MaPhong char(5),
+	@TenPhong varchar(50),
+	@MaLoaiPhong char(5),
+	@GhiChu nvarchar(300)
+AS BEGIN
+	INSERT INTO PHONG(MaPhong, TenPhong, MaLoaiPhong, GhiChu) VALUES (@MaPhong, @TenPhong, @MaLoaiPhong, @GhiChu)
+END
+
 ---------------------
 -----------------
 
@@ -189,4 +209,8 @@ EXEC selectLoaiPhongAll
 
 EXEC selectLoaiPhongByMaLoaiPhong 'LP000'
 
+EXEC insertPhong 'PH001', 'VIP69', 'LP001', N'Phòng này ở mát mẻ lắm nhé anh em - bà con' 
+
 SELECT *FROM LOAIPHONG where isDelete = 0
+
+Select top 1 * From PHONG where isDelete = 0 order by MaLoaiPhong DESC
