@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports DTO.DTO
 
 Namespace DAO
 
@@ -13,7 +14,7 @@ Namespace DAO
                 dt = SqlDataAccessHelper.ExecuteQuery("selectPhongMoiNhat", Nothing)
 
                 If (dt.Rows.Count <= 0) Then
-                    Return Nothing
+                    Return Nothing ' không có phòng nào trong CSDL
                 End If
 
                 Dim row As DataRow = dt.Rows(0)

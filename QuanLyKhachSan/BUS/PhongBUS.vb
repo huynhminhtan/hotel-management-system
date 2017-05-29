@@ -17,16 +17,6 @@ Namespace BUS
             Return maPhongMoiNhat
         End Function
 
-        Public Shared Function selectDonGiaByMaLoaiPhong(MaLoaiPhong As String) As String
-            Dim donGia As String = ""
-            If (LoaiPhongDAO.kiemTraLoaiPhongByMaLoaiPhong(MaLoaiPhong) = True) Then
-                Dim lp As New LoaiPhongDTO
-                lp = LoaiPhongDAO.selectLoaiPhongByMaLoaiPhong(MaLoaiPhong)
-                donGia = lp.DonGiaThue.ToString
-            End If
-            Return donGia
-        End Function
-
 #End Region
 
     End Class
