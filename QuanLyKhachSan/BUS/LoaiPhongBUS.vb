@@ -13,13 +13,13 @@ Namespace BUS
         End Function
 
         Public Shared Function selectDonGiaByMaLoaiPhong(MaLoaiPhong As String) As String
-            Dim result As String = ""
+            Dim donGia As String = Nothing
             If (DAO.DAO.LoaiPhongDAO.kiemTraLoaiPhongByMaLoaiPhong(MaLoaiPhong) = True) Then
                 Dim lp As New LoaiPhongDTO
                 lp = DAO.DAO.LoaiPhongDAO.selectLoaiPhongByMaLoaiPhong(MaLoaiPhong)
-                result = lp.DonGiaThue.ToString
+                donGia = lp.DonGiaThue.ToString
             End If
-            Return result
+            Return donGia
         End Function
 
 #End Region
