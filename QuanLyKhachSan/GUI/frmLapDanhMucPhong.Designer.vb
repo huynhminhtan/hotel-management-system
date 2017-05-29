@@ -34,14 +34,14 @@ Partial Class frmLapDanhMucPhong
         Me.lblLoaiPhong = New System.Windows.Forms.Label()
         Me.lblMaPhong = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.btnXoaPhong = New System.Windows.Forms.Button()
+        Me.btnCapNhat = New System.Windows.Forms.Button()
         Me.btnThemPhong = New System.Windows.Forms.Button()
         Me.btnTimPhong = New System.Windows.Forms.Button()
         Me.btnThoat = New System.Windows.Forms.Button()
         Me.btnLuu = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.dgvDanhMucPhong = New System.Windows.Forms.DataGridView()
-        Me.btnCapNhat = New System.Windows.Forms.Button()
-        Me.btnXoaPhong = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -176,6 +176,26 @@ Partial Class frmLapDanhMucPhong
         Me.GroupBox2.TabIndex = 2
         Me.GroupBox2.TabStop = False
         '
+        'btnXoaPhong
+        '
+        Me.btnXoaPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        Me.btnXoaPhong.Location = New System.Drawing.Point(478, 66)
+        Me.btnXoaPhong.Name = "btnXoaPhong"
+        Me.btnXoaPhong.Size = New System.Drawing.Size(90, 23)
+        Me.btnXoaPhong.TabIndex = 10
+        Me.btnXoaPhong.Text = "Xóa phòng"
+        Me.btnXoaPhong.UseVisualStyleBackColor = True
+        '
+        'btnCapNhat
+        '
+        Me.btnCapNhat.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        Me.btnCapNhat.Location = New System.Drawing.Point(336, 66)
+        Me.btnCapNhat.Name = "btnCapNhat"
+        Me.btnCapNhat.Size = New System.Drawing.Size(90, 23)
+        Me.btnCapNhat.TabIndex = 9
+        Me.btnCapNhat.Text = "Cập nhật"
+        Me.btnCapNhat.UseVisualStyleBackColor = True
+        '
         'btnThemPhong
         '
         Me.btnThemPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
@@ -233,26 +253,6 @@ Partial Class frmLapDanhMucPhong
         Me.dgvDanhMucPhong.Name = "dgvDanhMucPhong"
         Me.dgvDanhMucPhong.Size = New System.Drawing.Size(601, 129)
         Me.dgvDanhMucPhong.TabIndex = 0
-        '
-        'btnCapNhat
-        '
-        Me.btnCapNhat.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.btnCapNhat.Location = New System.Drawing.Point(336, 66)
-        Me.btnCapNhat.Name = "btnCapNhat"
-        Me.btnCapNhat.Size = New System.Drawing.Size(90, 23)
-        Me.btnCapNhat.TabIndex = 9
-        Me.btnCapNhat.Text = "Cập nhật"
-        Me.btnCapNhat.UseVisualStyleBackColor = True
-        '
-        'btnXoaPhong
-        '
-        Me.btnXoaPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.btnXoaPhong.Location = New System.Drawing.Point(478, 66)
-        Me.btnXoaPhong.Name = "btnXoaPhong"
-        Me.btnXoaPhong.Size = New System.Drawing.Size(90, 23)
-        Me.btnXoaPhong.TabIndex = 10
-        Me.btnXoaPhong.Text = "Xóa phòng"
-        Me.btnXoaPhong.UseVisualStyleBackColor = True
         '
         'frmLapDanhMucPhong
         '

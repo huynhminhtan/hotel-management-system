@@ -127,6 +127,10 @@
       <Project>{0e91c88c-24e8-4ad3-a4c9-a350ee3a98a5}</Project>
       <Name>BUS</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.vbproj">
+      <Project>{3fd550fc-fc94-49bf-8e72-8f55014e41da}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

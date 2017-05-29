@@ -31,16 +31,72 @@ Namespace DAO
 #End Region
 
 #Region "Retrieving"
-        Public Shared Function selectAllLoaiPhong() As DataTable
+        Public Shared Function selectLoaiPhongAll() As List(Of LoaiPhongDTO)
             Dim dt As New DataTable
+            Dim list As New List(Of LoaiPhongDTO)
             Try
-                dt = SqlDataAccessHelper.ExecuteQuery("selectAllLoaiPhong", Nothing)
+                dt = SqlDataAccessHelper.ExecuteQuery("selectLoaiPhongAll", Nothing)
+
+                For Each row As DataRow In dt.Rows
+                    Dim loaiPhong As New LoaiPhongDTO
+
+                    loaiPhong.MaLoaiPhong = row("MaLoaiPhong").ToString
+                    loaiPhong.TenLoaiPhong = row("TenLoaiPhong").ToString
+                    loaiPhong.DonGiaThue = Double.Parse(row("DonGiaThue").ToString)
+
+                    list.Add(loaiPhong)
+                Next
+
             Catch ex As Exception
                 Throw ex
             End Try
-            Return dt
+            Return list
 
         End Function
+
+        Public Shared Function kiemTraLoaiPhongByMaLoaiPhong(MaLoaiPhong As String) As Boolean
+            Dim result As Boolean = False
+            Try
+                Dim SqlParams As New List(Of SqlParameter)
+
+                SqlParams.Add(New SqlParameter("@MaLoaiPhong", MaLoaiPhong))
+
+                Dim dt As New DataTable
+                dt = SqlDataAccessHelper.ExecuteQuery("selectLoaiPhongByMaLoaiPhong", SqlParams)
+
+                If (dt.Rows.Count = 1) Then
+                    result = True
+                End If
+
+            Catch ex As Exception
+                Throw ex
+            End Try
+            Return result
+        End Function
+
+        Public Shared Function selectLoaiPhongByMaLoaiPhong(MaLoaiPhong As String) As LoaiPhongDTO
+            Dim lp As New LoaiPhongDTO
+
+            Try
+                Dim SqlParams As New List(Of SqlParameter)
+                SqlParams.Add(New SqlParameter("@MaLoaiPhong", MaLoaiPhong))
+
+                Dim dt As New DataTable
+                dt = SqlDataAccessHelper.ExecuteQuery("selectLoaiPhongByMaLoaiPhong", SqlParams)
+
+                Dim row As DataRow = dt.Rows(0)
+
+                lp.TenLoaiPhong = row("TenLoaiPhong").ToString
+                lp.MaLoaiPhong = row("MaLoaiPhong").ToString
+                lp.DonGiaThue = Double.Parse(row("DonGiaThue").ToString)
+
+            Catch ex As Exception
+                Throw ex
+            End Try
+
+            Return lp
+        End Function
+
 #End Region
 
     End Class

@@ -103,6 +103,10 @@
       <Project>{449c01ae-22b9-4972-be02-aa6a2fd8b86d}</Project>
       <Name>DAO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.vbproj">
+      <Project>{3fd550fc-fc94-49bf-8e72-8f55014e41da}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

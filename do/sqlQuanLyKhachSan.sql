@@ -6,7 +6,8 @@ create table LOAIPHONG
 (
 	MaLoaiPhong char(5) primary key,
 	TenLoaiPhong varchar(50),
-	DonGiaThue float
+	DonGiaThue float,
+	isDelete bit default 0,
 )
 
 create table PHONG
@@ -131,7 +132,7 @@ if exists (select * from sysobjects where name = 'LOAIPHONG' and type = 'P')
 go
 CREATE PROCEDURE NewLoaiPhong
 
-     @LoaiPhongName VARCHAR(50),
+     @TenLoaiPhong VARCHAR(50),
      @DonGiaThue float
 
 AS BEGIN
@@ -144,7 +145,7 @@ AS BEGIN
 		 INSERT INTO LOAIPHONG(MaLoaiPhong, TenLoaiPhong, DonGiaThue)
 		 SELECT 
 				'LP' + RIGHT('000' + CAST(LoaiPhong_ID + 1 AS NVARCHAR(3)), 3)
-			  , @LoaiPhongName
+			  , @TenLoaiPhong
 			  ,@DonGiaThue
 		 FROM (
 			  SELECT TOP 1 LoaiPhong_ID = CAST(RIGHT(MaLoaiPhong, 3) AS INT)
@@ -154,15 +155,26 @@ AS BEGIN
 	END
 	ELSE
 	BEGIN
-		INSERT INTO LOAIPHONG(MaLoaiPhong, TenLoaiPhong, DonGiaThue) VALUES ('LP000',@LoaiPhongName, @DonGiaThue)
+		INSERT INTO LOAIPHONG(MaLoaiPhong, TenLoaiPhong, DonGiaThue) VALUES ('LP000',@TenLoaiPhong, @DonGiaThue)
 	END
 END 
 
 -- Select all LoaiPhong
-CREATE PROCEDURE selectAllLoaiPhong
+CREATE PROCEDURE selectLoaiPhongAll
+As begin
+	Select MaLoaiPhong, TenLoaiPhong, DonGiaThue 
+	From LOAIPHONG
+	Where isDelete = 0
+end
+
+
+-- Select LoaiPhong by id
+CREATE PROCEDURE selectLoaiPhongByMaLoaiPhong
+	@MaLoaiPhong char(5)
 As begin
 	Select MaLoaiPhong, TenLoaiPhong, DonGiaThue
 	From LOAIPHONG
+	Where (isDelete = 0) AND (MaLoaiPhong = @MaLoaiPhong)
 end
 
 
@@ -173,7 +185,8 @@ EXEC NewLoaiPhong 'VIP', 120000
 EXEC NewLoaiPhong 'GOLD', 140000
 EXEC NewLoaiPhong 'STANDAR', 100000
 
-EXEC selectAllLoaiPhong
+EXEC selectLoaiPhongAll 
 
+EXEC selectLoaiPhongByMaLoaiPhong 'LP000'
 
-SELECT *FROM LOAIPHONG
+SELECT *FROM LOAIPHONG where isDelete = 0
