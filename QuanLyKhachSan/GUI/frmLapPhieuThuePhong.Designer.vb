@@ -22,6 +22,7 @@ Partial Class frmLapPhieuThuePhong
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.dtpNgayKetThuc = New System.Windows.Forms.DateTimePicker()
         Me.lblNgayKetThuc = New System.Windows.Forms.Label()
@@ -40,16 +41,16 @@ Partial Class frmLapPhieuThuePhong
         Me.btnLuu = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.dgvDanhSachKhachThue = New System.Windows.Forms.DataGridView()
-        Me.TenKhachHang = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LoaiKhach = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CMND = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DiaChi = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.dgvTrangThaiPhong = New System.Windows.Forms.DataGridView()
         Me.TenPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Ngay = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TinhTrang = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DonGia = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TenKhachHang = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LoaiKhach = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CMND = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DiaChi = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -83,6 +84,7 @@ Partial Class frmLapPhieuThuePhong
         'dtpNgayKetThuc
         '
         Me.dtpNgayKetThuc.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        Me.dtpNgayKetThuc.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtpNgayKetThuc.Location = New System.Drawing.Point(392, 104)
         Me.dtpNgayKetThuc.Name = "dtpNgayKetThuc"
         Me.dtpNgayKetThuc.Size = New System.Drawing.Size(140, 20)
@@ -94,9 +96,9 @@ Partial Class frmLapPhieuThuePhong
         Me.lblNgayKetThuc.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.lblNgayKetThuc.Location = New System.Drawing.Point(311, 107)
         Me.lblNgayKetThuc.Name = "lblNgayKetThuc"
-        Me.lblNgayKetThuc.Size = New System.Drawing.Size(75, 13)
+        Me.lblNgayKetThuc.Size = New System.Drawing.Size(77, 13)
         Me.lblNgayKetThuc.TabIndex = 13
-        Me.lblNgayKetThuc.Text = "Ngày bắt đầu:"
+        Me.lblNgayKetThuc.Text = "Ngày kết thúc:"
         '
         'lblNgayBatDau
         '
@@ -111,6 +113,7 @@ Partial Class frmLapPhieuThuePhong
         'dtpNgayBatDau
         '
         Me.dtpNgayBatDau.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        Me.dtpNgayBatDau.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtpNgayBatDau.Location = New System.Drawing.Point(143, 104)
         Me.dtpNgayBatDau.Name = "dtpNgayBatDau"
         Me.dtpNgayBatDau.Size = New System.Drawing.Size(140, 20)
@@ -118,6 +121,7 @@ Partial Class frmLapPhieuThuePhong
         '
         'cboMaPhong
         '
+        Me.cboMaPhong.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboMaPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.cboMaPhong.FormattingEnabled = True
         Me.cboMaPhong.Location = New System.Drawing.Point(143, 68)
@@ -245,30 +249,6 @@ Partial Class frmLapPhieuThuePhong
         Me.dgvDanhSachKhachThue.Size = New System.Drawing.Size(607, 94)
         Me.dgvDanhSachKhachThue.TabIndex = 0
         '
-        'TenKhachHang
-        '
-        Me.TenKhachHang.HeaderText = "Tên Khách Hàng"
-        Me.TenKhachHang.Name = "TenKhachHang"
-        Me.TenKhachHang.Width = 150
-        '
-        'LoaiKhach
-        '
-        Me.LoaiKhach.HeaderText = "Loại Khách"
-        Me.LoaiKhach.Name = "LoaiKhach"
-        Me.LoaiKhach.Width = 150
-        '
-        'CMND
-        '
-        Me.CMND.HeaderText = "CMND"
-        Me.CMND.Name = "CMND"
-        Me.CMND.Width = 150
-        '
-        'DiaChi
-        '
-        Me.DiaChi.HeaderText = "Địa Chỉ"
-        Me.DiaChi.Name = "DiaChi"
-        Me.DiaChi.Width = 154
-        '
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.dgvTrangThaiPhong)
@@ -315,6 +295,32 @@ Partial Class frmLapPhieuThuePhong
         Me.DonGia.Name = "DonGia"
         Me.DonGia.Width = 154
         '
+        'TenKhachHang
+        '
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.TenKhachHang.DefaultCellStyle = DataGridViewCellStyle1
+        Me.TenKhachHang.HeaderText = "Tên Khách Hàng"
+        Me.TenKhachHang.Name = "TenKhachHang"
+        Me.TenKhachHang.Width = 150
+        '
+        'LoaiKhach
+        '
+        Me.LoaiKhach.HeaderText = "Loại Khách"
+        Me.LoaiKhach.Name = "LoaiKhach"
+        Me.LoaiKhach.Width = 150
+        '
+        'CMND
+        '
+        Me.CMND.HeaderText = "CMND"
+        Me.CMND.Name = "CMND"
+        Me.CMND.Width = 150
+        '
+        'DiaChi
+        '
+        Me.DiaChi.HeaderText = "Địa Chỉ"
+        Me.DiaChi.Name = "DiaChi"
+        Me.DiaChi.Width = 154
+        '
         'frmLapPhieuThuePhong
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -355,14 +361,14 @@ Partial Class frmLapPhieuThuePhong
     Friend WithEvents btnLuu As System.Windows.Forms.Button
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents dgvDanhSachKhachThue As System.Windows.Forms.DataGridView
-    Friend WithEvents TenKhachHang As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents LoaiKhach As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents CMND As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DiaChi As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
     Friend WithEvents dgvTrangThaiPhong As System.Windows.Forms.DataGridView
     Friend WithEvents TenPhong As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Ngay As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents TinhTrang As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DonGia As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents TenKhachHang As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents LoaiKhach As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CMND As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DiaChi As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

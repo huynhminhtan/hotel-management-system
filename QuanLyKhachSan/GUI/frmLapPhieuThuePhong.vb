@@ -42,12 +42,9 @@ Public Class frmLapPhieuThuePhong
         Return maPhieuThueTang
     End Function
 
-
     Private Sub txtTenPhong_Validated(sender As Object, e As EventArgs) Handles txtTenPhong.Validated
         hienThiMaPhongTheoTenPhong()
     End Sub
-
-
 
     Private Sub txtTenPhong_KeyDown(sender As Object, e As KeyEventArgs) Handles txtTenPhong.KeyDown
         If (e.KeyCode = Keys.Enter) Then
