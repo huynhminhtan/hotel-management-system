@@ -1,4 +1,6 @@
-﻿Imports BUS.BUS
+﻿Imports System.ComponentModel
+Imports System.Threading
+Imports BUS.BUS
 Imports DTO.DTO
 Imports GUI.XuLy
 
@@ -84,13 +86,34 @@ Public Class frmLapPhieuThuePhong
             ' hiển thị tên phòng
             txtTenPhong.Text = cboMaPhong.SelectedItem.TenPhong
 
-            MessageBox.Show("Tên phòng không có trong hệ thống.")
+            Using New CenteredMessageBox(Me)
+                MessageBox.Show("Tên phòng không có trong hệ thống.")
+            End Using
+
+        End If
+
+    End Sub
+
+    Private Sub dgvDanhSachKhachThue_RowValidating(sender As Object, e As DataGridViewCellCancelEventArgs) Handles dgvDanhSachKhachThue.RowValidating
+        Dim chuoi = sender.CurrentRow.Cells(sender.CurrentCell.ColumnIndex).Value.ToString
+
+        If (String.IsNullOrEmpty(chuoi)) Then
+            Return
+        ElseIf (String.IsNullOrWhiteSpace(chuoi)) Then
+            e.Cancel = True
+
+            Using New CenteredMessageBox(Me)
+                MessageBox.Show(Me, "Vui lòng nhập giá trị hợp lệ!")
+            End Using
         End If
 
     End Sub
 
     Protected Overrides Sub WndProc(ByRef m As Message)
-        If m.Msg = 16 Then
+
+
+        ' chặn sự kiện Validate của tất cả control trên form khi nhấn nút thoát (X) hoặc Alt+F4
+        If (m.Msg = 16) Then
             AutoValidate = AutoValidate.Disable
         End If
         MyBase.WndProc(m)

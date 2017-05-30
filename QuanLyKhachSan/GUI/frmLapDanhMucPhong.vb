@@ -42,7 +42,11 @@ Public Class frmLapDanhMucPhong
 
         ' Kiểm tra nhập tên phòng hợp lệ
         If (XuLyGUI.laChuoiHopLe(txtTenPhong.Text) = False) Then
-            MessageBox.Show("Vui lòng nhập tên phòng hợp lệ.")
+
+            Using New CenteredMessageBox(Me)
+                MessageBox.Show("Vui lòng nhập tên phòng hợp lệ.")
+            End Using
+
             Return
         End If
 
@@ -100,7 +104,11 @@ Public Class frmLapDanhMucPhong
 
         ' Kiểm tra nhập tên phòng hợp lệ
         If (XuLyGUI.laChuoiHopLe(txtTenPhong.Text) = False) Then
-            MessageBox.Show("Vui lòng nhập tên phòng hợp lệ.")
+
+            Using New CenteredMessageBox(Me)
+                MessageBox.Show("Vui lòng nhập tên phòng hợp lệ.")
+            End Using
+
             Return
         End If
 
@@ -175,8 +183,13 @@ Public Class frmLapDanhMucPhong
 
     Private Sub frmLapDanhMucPhong_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If (danhSachPhongTam.Rows.Count > 0) Then
-            Dim luaChon = (MessageBox.Show(Me, "Bạn có muốn lưu các phòng đã nhập không?", "Lưu lại?",
-                                           MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1))
+            Dim luaChon As DialogResult
+
+            Using New CenteredMessageBox(Me)
+                luaChon = (MessageBox.Show(Me, "Bạn có muốn lưu các phòng đã nhập không?", "Lưu lại?",
+                                               MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1))
+            End Using
+
             If (luaChon = DialogResult.Yes) Then
                 themDanhSachPhong()
             ElseIf (luaChon = DialogResult.Cancel) Then
@@ -197,11 +210,15 @@ Public Class frmLapDanhMucPhong
         Next
 
         Dim ketQua = PhongBUS.themDanhSachPhong(danhSachPhong)
-        If (ketQua = 0) Then
-            MessageBox.Show(Me, "Thêm phòng thất bại", "Thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Else
-            MessageBox.Show(Me, "Thêm " + ketQua.ToString + " phòng thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
-        End If
+
+        Using New CenteredMessageBox(Me)
+            If (ketQua = 0) Then
+                MessageBox.Show(Me, "Thêm phòng thất bại", "Thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Else
+                MessageBox.Show(Me, "Thêm " + ketQua.ToString + " phòng thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
+            End If
+        End Using
+        
     End Sub
 
 End Class
