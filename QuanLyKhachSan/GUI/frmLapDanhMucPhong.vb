@@ -155,4 +155,16 @@ Public Class frmLapDanhMucPhong
         End If
         Return True
     End Function
+
+    Private Sub btnLuu_Click(sender As Object, e As EventArgs) Handles btnLuu.Click
+        ' Lưu Data Table xuống CSDL
+
+        '' Chuyển DataTable: danhSachPhongTam sang List<Of PhongDTO>
+
+        '' Lưu xuống CSDL thoong qua BUS
+        '' PhongBUS.themDanhSachPhong(listPhong as List<Of PhongDTO>)
+        '''' PhongDAO.ThemPhong(phong AS PhongDTO)
+        ''''> Ham Them CSDL Them Phoong
+
+    End Sub
 End Class

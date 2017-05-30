@@ -26,7 +26,7 @@ Namespace DAO
 #End Region
 
 #Region "ExecuteNoneQuery"
-        Public Shared Function ExecuteNoneQuery(spName As String, sqlParams As List(Of SqlParameter))
+        Public Shared Function ExecuteNoneQuery(spName As String, sqlParams As List(Of SqlParameter)) As Integer
 
             'MsgBox(ConnectionString)
 

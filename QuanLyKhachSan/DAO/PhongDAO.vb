@@ -5,6 +5,34 @@ Namespace DAO
 
     Public Class PhongDAO
 
+#Region "Inserting"
+
+        Public Shared Function themPhong(phong As PhongDTO) As Boolean
+            Dim trangThai As Boolean = False
+
+            Try
+                Dim sqlParams As New List(Of SqlParameter)
+                sqlParams.Add(New SqlParameter("@MaPhong", phong.MaPhong))
+                sqlParams.Add(New SqlParameter("@TenPhong", phong.TenPhong))
+                sqlParams.Add(New SqlParameter("@MaLoaiPhong", phong.MaLoaiPhong))
+                sqlParams.Add(New SqlParameter("@GhiChu", phong.GhiChu))
+
+                Dim n As Integer = SqlDataAccessHelper.ExecuteNoneQuery("insertPhong", sqlParams)
+
+                ' SqlDataAccessHelper.ExecuteNoneQuery : trả về số row bị ảnh hưởng trong CSDL
+                If (n = 1) Then
+                    trangThai = True
+                End If
+
+            Catch ex As Exception
+                Throw ex
+            End Try
+            Return trangThai
+
+        End Function
+
+#End Region
+
 #Region "Retrieving"
         Public Shared Function selectPhongMoiNhat() As PhongDTO
             Dim ph As New PhongDTO
