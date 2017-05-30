@@ -1,5 +1,6 @@
 ﻿Imports BUS.BUS
 Imports DTO.DTO
+Imports GUI.XuLy
 
 
 Public Class frmLapPhieuThuePhong
@@ -88,13 +89,11 @@ Public Class frmLapPhieuThuePhong
 
     End Sub
 
-
-    Private Sub dgvDanhSachKhachThue_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgvDanhSachKhachThue.CellEndEdit
-
-        ' lưu dgvDanhSachKhachThue vào danhSachKhachThue
-
-        danhSachKhachThue.Rows(dgvDanhSachKhachThue.CurrentRow.Index)(dgvDanhSachKhachThue.CurrentCell.ColumnIndex) = (dgvDanhSachKhachThue.CurrentRow.Cells(dgvDanhSachKhachThue.CurrentCell.ColumnIndex)).ToString
-
-        MessageBox.Show("asdfsdaf")
+    Protected Overrides Sub WndProc(ByRef m As Message)
+        If m.Msg = 16 Then
+            AutoValidate = AutoValidate.Disable
+        End If
+        MyBase.WndProc(m)
     End Sub
+
 End Class
