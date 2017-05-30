@@ -5,21 +5,7 @@ Public Class frmLapDanhMucPhong
 
     Private danhSachPhongTam As New DataTable
 
-
     Private Sub frmLapDanhMucPhong_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        ' Load danh sách tên loại phòng lên combobox
-        ''''' Tạo ở lớp LoaiPhongBUS.SelectLoaiPhongAll();
-        '''''''''''Tạo lớp LoaiPhongDA0.SelectLoaiPhongAll();
-        '''''''''''''''''Tạo lớp sqlDataAccessHelper, dùng kỹ thuật parameter để truy cập dữ liệu
-
-        ' Nhận dữ liệu từ combobox để truyền cho dataGridView hiển thị danh sách Phòng theo Tên loại phòng.
-
-        ' 
-
-        ' Thử select danh sách loại phòng
-        ' dgvDanhMucPhong.DataSource = LoaiPhongBUS.SelectAllLoaiPhong()
-
 
         ' hiển thị danh sách loại phòng
         cboTenLoaiPhong.DisplayMember = "TenLoaiPhong" ' cột cần hiển thị ra ngoài comboboxs
@@ -41,10 +27,7 @@ Public Class frmLapDanhMucPhong
         danhSachPhongTam.Columns.Add("DonGia", GetType(Double))
         danhSachPhongTam.Columns.Add("GhiChu", GetType(String))
 
-
-
     End Sub
-
 
     Private Sub cboTenLoaiPhong_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboTenLoaiPhong.SelectedIndexChanged
         ' hiển thị đơn giá từ database tương ứng với cboTenLoaiPhong
@@ -56,8 +39,9 @@ Public Class frmLapDanhMucPhong
 
     Private Sub btnThemPhong_Click(sender As Object, e As EventArgs) Handles btnThemPhong.Click
 
-        If (String.IsNullOrEmpty(txtTenPhong.Text)) Then
-            MessageBox.Show("Vui lòng nhập tên phòng.")
+        ' Kiểm tra nhập tên phòng hợp lệ
+        If (laChuoiHopLe(txtTenPhong.Text) = False) Then
+            MessageBox.Show("Vui lòng nhập tên phòng hợp lệ.")
             Return
         End If
 
@@ -101,7 +85,6 @@ Public Class frmLapDanhMucPhong
             txtMaPhong.Text = dgvDanhMucPhong.CurrentRow.Cells("MaPhong").Value.ToString
             txtTenPhong.Text = dgvDanhMucPhong.CurrentRow.Cells("TenPhong").Value.ToString
 
-            'cboTenLoaiPhong.SelectedIndex = 
             cboTenLoaiPhong.SelectedValue = dgvDanhMucPhong.CurrentRow.Cells("MaLoaiPhong").Value
 
             txtDonGia.Text = dgvDanhMucPhong.CurrentRow.Cells("DonGia").Value.ToString
@@ -110,35 +93,66 @@ Public Class frmLapDanhMucPhong
 
     End Sub
 
-    'Private Sub dgvDanhMucPhong_CurrentCellChanged(sender As Object, e As EventArgs) Handles dgvDanhMucPhong.CurrentCellChanged
-    '    If (dgvDanhMucPhong.CurrentRow IsNot Nothing) Then
-    '        txtMaPhong.Text = dgvDanhMucPhong.CurrentRow.Cells("MaPhong").Value.ToString
-    '        txtTenPhong.Text = dgvDanhMucPhong.CurrentRow.Cells("TenPhong").Value.ToString
-
-    '        'cboTenLoaiPhong.SelectedValue = dgvDanhMucPhong.CurrentRow.Cells("MaLoaiPhong").Value
-
-    '        txtDonGia.Text = dgvDanhMucPhong.CurrentRow.Cells("DonGia").Value.ToString
-    '        txtGhiChu.Text = dgvDanhMucPhong.CurrentRow.Cells("GhiChu").Value.ToString
-    '    End If
-    'End Sub
-
     Private Sub btnCapNhat_Click(sender As Object, e As EventArgs) Handles btnCapNhat.Click
         ' lấy chỉ số của hàng đang được chọn
         Dim chiSo As Integer
         chiSo = dgvDanhMucPhong.CurrentRow.Index
 
-        ' Cập nhật lại danhSachPhongTam
+        ' Kiểm tra nhập tên phòng hợp lệ
+        If (laChuoiHopLe(txtTenPhong.Text) = False) Then
+            MessageBox.Show("Vui lòng nhập tên phòng hợp lệ.")
+            Return
+        End If
 
+        ' Cập nhật lại danhSachPhongTam
         danhSachPhongTam.Rows(chiSo)("TenPhong") = txtTenPhong.Text
         danhSachPhongTam.Rows(chiSo)("MaLoaiPhong") = cboTenLoaiPhong.SelectedItem.MaLoaiPhong
         danhSachPhongTam.Rows(chiSo)("TenLoaiPhong") = cboTenLoaiPhong.SelectedItem.TenLoaiPhong
         danhSachPhongTam.Rows(chiSo)("DonGia") = Double.Parse(txtDonGia.Text)
         danhSachPhongTam.Rows(chiSo)("GhiChu") = txtGhiChu.Text
 
-
+        ' Hiển thị danhSachPhongTam mới
         dgvDanhMucPhong.DataSource = Nothing
         dgvDanhMucPhong.DataSource = danhSachPhongTam
-        '  MessageBox.Show(chiSo.ToString)
+
+        ' dọn dẹp các txtbox
+        txtTenPhong.Text = ""
+        txtGhiChu.Text = ""
 
     End Sub
+
+    Private Sub btnXoaPhong_Click(sender As Object, e As EventArgs) Handles btnXoaPhong.Click
+        ' lấy chỉ số của hàng đang được chọn
+        Dim chiSo As Integer
+        chiSo = dgvDanhMucPhong.CurrentRow.Index
+
+        danhSachPhongTam.Rows(chiSo).Delete()
+
+        ' cập nhật lại mã phòng khi đã xóa trong DanhSachPhongTam
+        '' lấy mã phòng mới nhất từ CSDL
+        Dim maPhongMoi As String = PhongBUS.selectMaPhongMoiNhat()
+
+        '' lấy số lượng các phòng trong DanhSachPhongTam
+        '' Tạo mã phòng mới và gán lại vào cột MaPhong trong DanhSachPhongTam
+        For i As Integer = 0 To (danhSachPhongTam.Rows.Count - 1)
+            maPhongMoi = tangMaphong(maPhongMoi)
+            danhSachPhongTam.Rows(i)("MaPhong") = maPhongMoi
+        Next
+
+        ' Hiển thị danhSachPhongTam mới
+        dgvDanhMucPhong.DataSource = Nothing
+        dgvDanhMucPhong.DataSource = danhSachPhongTam
+
+        ' dọn dẹp các txtbox
+        txtTenPhong.Text = ""
+        txtGhiChu.Text = ""
+
+    End Sub
+
+    Public Shared Function laChuoiHopLe(str As String) As Boolean
+        If (String.IsNullOrEmpty(str) Or String.IsNullOrWhiteSpace(str)) Then
+            Return False
+        End If
+        Return True
+    End Function
 End Class
