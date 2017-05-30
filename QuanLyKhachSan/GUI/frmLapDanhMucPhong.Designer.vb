@@ -43,6 +43,7 @@ Partial Class frmLapDanhMucPhong
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.dgvDanhMucPhong = New System.Windows.Forms.DataGridView()
         Me.MaPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MaLoaiPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TenPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.LoaiPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DonGia = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -255,7 +256,7 @@ Partial Class frmLapDanhMucPhong
         Me.dgvDanhMucPhong.AllowUserToAddRows = False
         Me.dgvDanhMucPhong.AllowUserToDeleteRows = False
         Me.dgvDanhMucPhong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvDanhMucPhong.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.MaPhong, Me.TenPhong, Me.LoaiPhong, Me.DonGia, Me.GhiChu})
+        Me.dgvDanhMucPhong.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.MaPhong, Me.MaLoaiPhong, Me.TenPhong, Me.LoaiPhong, Me.DonGia, Me.GhiChu})
         Me.dgvDanhMucPhong.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvDanhMucPhong.Location = New System.Drawing.Point(3, 16)
         Me.dgvDanhMucPhong.Name = "dgvDanhMucPhong"
@@ -272,6 +273,14 @@ Partial Class frmLapDanhMucPhong
         Me.MaPhong.HeaderText = "Mã Phòng"
         Me.MaPhong.Name = "MaPhong"
         Me.MaPhong.ReadOnly = True
+        '
+        'MaLoaiPhong
+        '
+        Me.MaLoaiPhong.DataPropertyName = "MaLoaiPhong"
+        Me.MaLoaiPhong.HeaderText = "Mã Loại Phòng"
+        Me.MaLoaiPhong.Name = "MaLoaiPhong"
+        Me.MaLoaiPhong.ReadOnly = True
+        Me.MaLoaiPhong.Visible = False
         '
         'TenPhong
         '
@@ -347,6 +356,7 @@ Partial Class frmLapDanhMucPhong
     Friend WithEvents btnXoaPhong As System.Windows.Forms.Button
     Friend WithEvents btnCapNhat As System.Windows.Forms.Button
     Friend WithEvents MaPhong As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents MaLoaiPhong As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents TenPhong As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents LoaiPhong As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DonGia As System.Windows.Forms.DataGridViewTextBoxColumn

@@ -29,6 +29,10 @@ Public Class frmLapDanhMucPhong
         ' hiển thị mã loại phòng đã tăng
         txtMaPhong.Text = tangMaphong(PhongBUS.selectMaPhongMoiNhat())
 
+        ' hiển thị danh sách các loại phòng tạm
+        dgvDanhMucPhong.AutoGenerateColumns = False
+        dgvDanhMucPhong.DataSource = danhSachPhongTam
+
         ' khởi tạo bảng phòng tạm
         danhSachPhongTam.Columns.Add("MaPhong", GetType(String))
         danhSachPhongTam.Columns.Add("TenPhong", GetType(String))
@@ -37,9 +41,7 @@ Public Class frmLapDanhMucPhong
         danhSachPhongTam.Columns.Add("DonGia", GetType(Double))
         danhSachPhongTam.Columns.Add("GhiChu", GetType(String))
 
-        ' hiển thị danh sách các loại phòng tạm
-        'dgvDanhMucPhong.AutoGenerateColumns = False
-        dgvDanhMucPhong.DataSource = danhSachPhongTam
+       
 
     End Sub
 
