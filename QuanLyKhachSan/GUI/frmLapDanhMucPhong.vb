@@ -155,8 +155,7 @@ Public Class frmLapDanhMucPhong
         End If
         Return True
     End Function
-
-    Private Sub btnLuu_Click(sender As Object, e As EventArgs) Handles btnLuu.Click
+Private Sub btnLuu_Click(sender As Object, e As EventArgs) Handles btnLuu.Click
         Dim danhSachPhong As List(Of PhongDTO) = Nothing
         For i As Integer = 0 To danhSachPhongTam.Rows.Count - 1
             Dim phong As New PhongDTO
@@ -172,5 +171,4 @@ Public Class frmLapDanhMucPhong
         Else
             MessageBox.Show(frmLapDanhMucPhong, "Thêm phòng thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If
-    End Sub
-End Class
+    End SubEnd Class
