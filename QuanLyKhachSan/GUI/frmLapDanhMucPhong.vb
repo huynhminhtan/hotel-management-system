@@ -155,4 +155,22 @@ Public Class frmLapDanhMucPhong
         End If
         Return True
     End Function
+
+    Private Sub btnLuu_Click(sender As Object, e As EventArgs) Handles btnLuu.Click
+        Dim danhSachPhong As List(Of PhongDTO) = Nothing
+        For i As Integer = 0 To danhSachPhongTam.Rows.Count - 1
+            Dim phong As New PhongDTO
+            phong.MaPhong = danhSachPhongTam.Rows(i).Item("MaPhong")
+            phong.TenPhong = danhSachPhongTam.Rows(i).Item("TenPhong")
+            phong.MaLoaiPhong = danhSachPhongTam.Rows(i).Item("MaLoaiPhong")
+            phong.GhiChu = danhSachPhongTam.Rows(i).Item("GhiChu")
+            danhSachPhong.Add(phong)
+        Next
+        Dim ketQua = PhongBUS.themDanhSachPhong(danhSachPhong)
+        If (ketQua = 0) Then
+            MessageBox.Show(frmLapDanhMucPhong, "Thêm phòng thất bại", "Thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Else
+            MessageBox.Show(frmLapDanhMucPhong, "Thêm phòng thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        End If
+    End Sub
 End Class
