@@ -41,7 +41,7 @@ Public Class frmLapDanhMucPhong
         danhSachPhongTam.Columns.Add("DonGia", GetType(Double))
         danhSachPhongTam.Columns.Add("GhiChu", GetType(String))
 
-       
+
 
     End Sub
 
@@ -77,6 +77,10 @@ Public Class frmLapDanhMucPhong
         ' tăng mã phòng
         txtMaPhong.Text = tangMaphong(danhSachPhongTam.Rows(danhSachPhongTam.Rows.Count - 1).Item(0).ToString)
 
+        ' dọn dẹp các txtbox
+        txtTenPhong.Text = ""
+        txtGhiChu.Text = ""
+
     End Sub
 
     Private Function tangMaphong(maPhong As String) As String
@@ -103,6 +107,7 @@ Public Class frmLapDanhMucPhong
             txtDonGia.Text = dgvDanhMucPhong.CurrentRow.Cells("DonGia").Value.ToString
             txtGhiChu.Text = dgvDanhMucPhong.CurrentRow.Cells("GhiChu").Value.ToString
         End If
+
     End Sub
 
     'Private Sub dgvDanhMucPhong_CurrentCellChanged(sender As Object, e As EventArgs) Handles dgvDanhMucPhong.CurrentCellChanged
@@ -116,4 +121,24 @@ Public Class frmLapDanhMucPhong
     '        txtGhiChu.Text = dgvDanhMucPhong.CurrentRow.Cells("GhiChu").Value.ToString
     '    End If
     'End Sub
+
+    Private Sub btnCapNhat_Click(sender As Object, e As EventArgs) Handles btnCapNhat.Click
+        ' lấy chỉ số của hàng đang được chọn
+        Dim chiSo As Integer
+        chiSo = dgvDanhMucPhong.CurrentRow.Index
+
+        ' Cập nhật lại danhSachPhongTam
+
+        danhSachPhongTam.Rows(chiSo)("TenPhong") = txtTenPhong.Text
+        danhSachPhongTam.Rows(chiSo)("MaLoaiPhong") = cboTenLoaiPhong.SelectedItem.MaLoaiPhong
+        danhSachPhongTam.Rows(chiSo)("TenLoaiPhong") = cboTenLoaiPhong.SelectedItem.TenLoaiPhong
+        danhSachPhongTam.Rows(chiSo)("DonGia") = Double.Parse(txtDonGia.Text)
+        danhSachPhongTam.Rows(chiSo)("GhiChu") = txtGhiChu.Text
+
+
+        dgvDanhMucPhong.DataSource = Nothing
+        dgvDanhMucPhong.DataSource = danhSachPhongTam
+        '  MessageBox.Show(chiSo.ToString)
+
+    End Sub
 End Class
