@@ -1,4 +1,5 @@
 ﻿Imports BUS.BUS
+Imports DTO.DTO
 
 
 Public Class frmLapPhieuThuePhong
@@ -8,6 +9,7 @@ Public Class frmLapPhieuThuePhong
         ' hiển thị danh sách mã phòng
         cboMaPhong.DataSource = PhongBUS.selectPhongAll()
         cboMaPhong.DisplayMember = "MaPhong"
+        ' cboMaPhong.ValueMember = "MaPhong"
 
         ' hiển thị tên phòng
         txtTenPhong.Text = cboMaPhong.SelectedItem.TenPhong
@@ -39,4 +41,40 @@ Public Class frmLapPhieuThuePhong
 
         Return maPhieuThueTang
     End Function
+
+
+    Private Sub txtTenPhong_Validated(sender As Object, e As EventArgs) Handles txtTenPhong.Validated
+        hienThiMaPhongTheoTenPhong()
+    End Sub
+
+
+
+    Private Sub txtTenPhong_KeyDown(sender As Object, e As KeyEventArgs) Handles txtTenPhong.KeyDown
+        If (e.KeyCode = Keys.Enter) Then
+            cboMaPhong.Focus()
+        End If
+    End Sub
+
+    Private Sub hienThiMaPhongTheoTenPhong()
+        Dim tenPhongTam As String = txtTenPhong.Text
+
+        ' tìm tenPhongTam có trong danh sách phòng hay không
+        Dim timThay As Boolean = False
+
+        For i As Integer = 0 To (cboMaPhong.DataSource.count - 1)
+            If (tenPhongTam = cboMaPhong.DataSource(i).TenPhong) Then
+                cboMaPhong.SelectedIndex = i
+                timThay = True
+            End If
+        Next
+
+        If (timThay = False) Then
+            ' hiển thị tên phòng
+            txtTenPhong.Text = cboMaPhong.SelectedItem.TenPhong
+
+            MessageBox.Show("Tên phòng không có trong hệ thống.")
+        End If
+
+    End Sub
+
 End Class

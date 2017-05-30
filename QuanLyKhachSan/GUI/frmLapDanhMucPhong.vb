@@ -56,8 +56,7 @@ Public Class frmLapDanhMucPhong
         danhSachPhongTam.Rows.Add(maPhong, txtTenPhong.Text, cboTenLoaiPhong.SelectedItem.MaLoaiPhong,
                                   cboTenLoaiPhong.SelectedItem.TenLoaiPhong, txtDonGia.Text, txtGhiChu.Text)
 
-        dgvDanhMucPhong.DataSource = Nothing
-        dgvDanhMucPhong.DataSource = danhSachPhongTam
+        dgvDanhMucPhong.ResetBindings()
 
         ' tăng mã phòng
         txtMaPhong.Text = tangMaPhong(danhSachPhongTam.Rows(danhSachPhongTam.Rows.Count - 1).Item(0).ToString)
@@ -113,8 +112,7 @@ Public Class frmLapDanhMucPhong
         danhSachPhongTam.Rows(chiSo)("GhiChu") = txtGhiChu.Text
 
         ' Hiển thị danhSachPhongTam mới
-        dgvDanhMucPhong.DataSource = Nothing
-        dgvDanhMucPhong.DataSource = danhSachPhongTam
+        dgvDanhMucPhong.ResetBindings()
 
         ' dọn dẹp các txtbox
         txtTenPhong.Text = ""
@@ -141,8 +139,7 @@ Public Class frmLapDanhMucPhong
         Next
 
         ' Hiển thị danhSachPhongTam mới
-        dgvDanhMucPhong.DataSource = Nothing
-        dgvDanhMucPhong.DataSource = danhSachPhongTam
+        dgvDanhMucPhong.ResetBindings()
 
         ' dọn dẹp các txtbox
         txtTenPhong.Text = ""
