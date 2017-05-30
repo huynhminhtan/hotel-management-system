@@ -3,6 +3,7 @@ Imports DTO.DTO
 
 
 Public Class frmLapPhieuThuePhong
+    Private danhSachKhachThue As New DataTable
 
     Private Sub frmLapPhieuThuePhong_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -16,6 +17,19 @@ Public Class frmLapPhieuThuePhong
 
         ' hiển thị đơn giá
         txtDonGiaThue.Text = LoaiPhongBUS.selectDonGiaByMaLoaiPhong(cboMaPhong.SelectedItem.MaLoaiPhong)
+
+        ' khởi tạo danh sách khách thuê
+        danhSachKhachThue.Columns.Add("TenKhachHang", GetType(String))
+        danhSachKhachThue.Columns.Add("LoaiKhach", GetType(String))
+        danhSachKhachThue.Columns.Add("CMND", GetType(String))
+        danhSachKhachThue.Columns.Add("DiaChi", GetType(String))
+
+        danhSachKhachThue.Rows.Add("", "", "", "")
+        danhSachKhachThue.Rows.Add("", "", "", "")
+        danhSachKhachThue.Rows.Add("", "", "", "")
+
+        dgvDanhSachKhachThue.DataSource = danhSachKhachThue
+
     End Sub
 
     Private Sub cboMaPhong_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboMaPhong.SelectedIndexChanged
@@ -74,4 +88,13 @@ Public Class frmLapPhieuThuePhong
 
     End Sub
 
+
+    Private Sub dgvDanhSachKhachThue_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgvDanhSachKhachThue.CellEndEdit
+
+        ' lưu dgvDanhSachKhachThue vào danhSachKhachThue
+
+        danhSachKhachThue.Rows(dgvDanhSachKhachThue.CurrentRow.Index)(dgvDanhSachKhachThue.CurrentCell.ColumnIndex) = (dgvDanhSachKhachThue.CurrentRow.Cells(dgvDanhSachKhachThue.CurrentCell.ColumnIndex)).ToString
+
+        MessageBox.Show("asdfsdaf")
+    End Sub
 End Class
