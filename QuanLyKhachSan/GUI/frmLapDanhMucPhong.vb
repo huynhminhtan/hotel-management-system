@@ -158,22 +158,7 @@ Public Class frmLapDanhMucPhong
         Return True
     End Function
     Private Sub btnLuu_Click(sender As Object, e As EventArgs) Handles btnLuu.Click
-        Dim danhSachPhong As New List(Of PhongDTO)
-        For i As Integer = 0 To danhSachPhongTam.Rows.Count - 1
-            Dim phong As New PhongDTO
-            phong.MaPhong = danhSachPhongTam.Rows(i).Item("MaPhong")
-            phong.TenPhong = danhSachPhongTam.Rows(i).Item("TenPhong")
-            phong.MaLoaiPhong = danhSachPhongTam.Rows(i).Item("MaLoaiPhong")
-            phong.GhiChu = danhSachPhongTam.Rows(i).Item("GhiChu")
-            danhSachPhong.Add(phong)
-        Next
-
-        Dim ketQua = PhongBUS.themDanhSachPhong(danhSachPhong)
-        If (ketQua = 0) Then
-            MessageBox.Show(Me, "Thêm phòng thất bại", "Thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Else
-            MessageBox.Show(Me, "Thêm " + ketQua.ToString + " phòng thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
-        End If
+        themDanhSachPhong()
 
         ' dọn dẹp danhSachPhongTam
         danhSachPhongTam.Clear()
@@ -192,4 +177,40 @@ Public Class frmLapDanhMucPhong
             btnXoaPhong.Enabled = False
         End If
     End Sub
+
+    Private Sub btnThoat_Click(sender As Object, e As EventArgs) Handles btnThoat.Click
+        Me.Close()
+    End Sub
+
+    Private Sub frmLapDanhMucPhong_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If (danhSachPhongTam.Rows.Count > 0) Then
+            Dim luaChon = (MessageBox.Show(Me, "Bạn có muốn lưu các phòng đã nhập không?", "Lưu lại?",
+                                           MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1))
+            If (luaChon = DialogResult.Yes) Then
+                themDanhSachPhong()
+            ElseIf (luaChon = DialogResult.Cancel) Then
+                e.Cancel() = True
+            End If
+        End If
+    End Sub
+
+    Private Sub themDanhSachPhong()
+        Dim danhSachPhong As New List(Of PhongDTO)
+        For i As Integer = 0 To danhSachPhongTam.Rows.Count - 1
+            Dim phong As New PhongDTO
+            phong.MaPhong = danhSachPhongTam.Rows(i).Item("MaPhong")
+            phong.TenPhong = danhSachPhongTam.Rows(i).Item("TenPhong")
+            phong.MaLoaiPhong = danhSachPhongTam.Rows(i).Item("MaLoaiPhong")
+            phong.GhiChu = danhSachPhongTam.Rows(i).Item("GhiChu")
+            danhSachPhong.Add(phong)
+        Next
+
+        Dim ketQua = PhongBUS.themDanhSachPhong(danhSachPhong)
+        If (ketQua = 0) Then
+            MessageBox.Show(Me, "Thêm phòng thất bại", "Thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Else
+            MessageBox.Show(Me, "Thêm " + ketQua.ToString + " phòng thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
+        End If
+    End Sub
+
 End Class
