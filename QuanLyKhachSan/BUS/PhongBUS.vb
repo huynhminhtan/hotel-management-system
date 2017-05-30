@@ -19,6 +19,20 @@ Namespace BUS
 
 #End Region
 
+        Public Shared Function themDanhSachPhong(danhSachPhong As List(Of PhongDTO)) As Integer
+            Dim ketQua As Integer = 0
+            For i As Integer = 0 To danhSachPhong.Count - 1
+                Dim phong As New PhongDTO
+                phong.MaPhong = danhSachPhong(i).MaPhong
+                phong.TenPhong = danhSachPhong(i).TenPhong
+                phong.MaLoaiPhong = danhSachPhong(i).MaLoaiPhong
+                phong.GhiChu = danhSachPhong(i).GhiChu
+                If (PhongDAO.themPhong(phong)) Then
+                    ketQua += 1
+                End If
+            Next
+            Return ketQua
+        End Function
     End Class
 
 End Namespace
