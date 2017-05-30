@@ -22,5 +22,8 @@ Public Class frmLapPhieuThuePhong
 
         ' hiển thị đơn giá
         txtDonGiaThue.Text = LoaiPhongBUS.selectDonGiaByMaLoaiPhong(cboMaPhong.SelectedItem.MaLoaiPhong)
+
+        ' hiển thị mã phiếu thuê
+        txtMaPhieuThue.Text = ""
     End Sub
 End Class

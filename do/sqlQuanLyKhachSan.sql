@@ -7,7 +7,7 @@ create table LOAIPHONG
 	MaLoaiPhong char(5) primary key,
 	TenLoaiPhong varchar(50),
 	DonGiaThue float,
-	isDelete bit default 0,
+	isDeleted bit default 0,
 )
 
 create table PHONG
@@ -16,7 +16,7 @@ create table PHONG
 	TenPhong varchar(50),
 	MaLoaiPhong char(5),
 	GhiChu nvarchar(300),
-	isDelete bit default 0,
+	isDeleted bit default 0,
 
 	foreign key(MaLoaiPhong) references LOAIPHONG(MaLoaiPhong)
 )
@@ -44,11 +44,13 @@ create table HOADON
 	TenKhachHangHD varchar(50),
 	DiaChiKhachHD varchar(100),
 	TriGiaHoaDon float
+
+	isDeleted bit default 0,
 )
 
 create table PHIEUTHUE
 (
-	MaPhieuthue char(5) primary key,
+	MaPhieuThue char(5) primary key,
 	MaPhong char(5),
 	foreign key (MaPhong) references PHONG(MaPhong),
 
@@ -57,10 +59,11 @@ create table PHIEUTHUE
 	DonGiaThueThucTe float,
 	ThanhTienPhong float,
 
-	MaHoaDon char(5),
-	foreign key (MaHoaDon) references HOADON(MaHoaDon),
+	MaHoaDon char(5) default null,
+	--foreign key (MaHoaDon) references HOADON(MaHoaDon),
 
 	PhuThuThucTe float,
+	isDeleted bit default 0,
 )
 
 create table CHITIETPHIEUTHUE
@@ -165,7 +168,7 @@ CREATE PROCEDURE selectLoaiPhongAll
 As begin
 	Select MaLoaiPhong, TenLoaiPhong, DonGiaThue 
 	From LOAIPHONG
-	Where isDelete = 0
+	Where isDeleted = 0
 end
 
 
@@ -175,7 +178,7 @@ CREATE PROCEDURE selectLoaiPhongByMaLoaiPhong
 As begin
 	Select MaLoaiPhong, TenLoaiPhong, DonGiaThue
 	From LOAIPHONG
-	Where (isDelete = 0) AND (MaLoaiPhong = @MaLoaiPhong)
+	Where (isDeleted = 0) AND (MaLoaiPhong = @MaLoaiPhong)
 end
 
 
@@ -184,7 +187,7 @@ CREATE PROCEDURE selectPhongMoiNhat
 AS begin
 	Select top 1 *
 	From PHONG
-	Where (isDelete = 0)
+	Where (isDeleted = 0)
 	Order by MaPhong DESC
 end
 
@@ -201,8 +204,21 @@ END
 -- Select PhongAll
 CREATE PROCEDURE selectPhongAll
 AS BEGIN
-	SELECT * FROM PHONG WHERE isDelete = 0
+	SELECT MaPhong, TenPhong, MaLoaiPhong, GhiChu
+	FROM PHONG 
+	WHERE isDeleted = 0
 END	
+
+-- Select PhieuthueMoiNhat
+CREATE PROCEDURE selectPhieuThueMoiNhat
+AS BEGIN
+	SELECT TOP 1 
+	 MaPhieuThue, MaPhong, NgayTraPhong,
+	 NgayBatDauThue, DonGiaThueThucTe, 
+	 ThanhTienPhong, MaHoaDon, PhuThuThucTe
+	FROM PHIEUTHUE
+	WHERE isDeleted = 0
+END
 
 ---------------------
 -----------------
@@ -220,6 +236,8 @@ EXEC insertPhong 'PH005', 'VIP69', 'LP001', 'Phòng này ở mát mẻ lắm nh�
 EXEC selectPhongMoiNhat
 
 EXEC selectPhongAll
+
+EXEC selectPhieuThueMoiNhat
 
 SELECT *FROM LOAIPHONG where isDelete = 0
 
