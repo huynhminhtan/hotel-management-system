@@ -198,6 +198,12 @@ AS BEGIN
 	INSERT INTO PHONG(MaPhong, TenPhong, MaLoaiPhong, GhiChu) VALUES (@MaPhong, @TenPhong, @MaLoaiPhong, @GhiChu)
 END
 
+-- Select PhongAll
+CREATE PROCEDURE selectPhongAll
+AS BEGIN
+	SELECT * FROM PHONG WHERE isDelete = 0
+END	
+
 ---------------------
 -----------------
 
@@ -209,8 +215,13 @@ EXEC selectLoaiPhongAll
 
 EXEC selectLoaiPhongByMaLoaiPhong 'LP000'
 
-EXEC insertPhong 'PH001', 'VIP69', 'LP001', N'Phòng này ở mát mẻ lắm nhé anh em - bà con' 
+EXEC insertPhong 'PH005', 'VIP69', 'LP001', 'Phòng này ở mát mẻ lắm nhé anh em - bà con' 
+
+EXEC selectPhongMoiNhat
+
+EXEC selectPhongAll
 
 SELECT *FROM LOAIPHONG where isDelete = 0
 
-Select top 1 * From PHONG where isDelete = 0 order by MaLoaiPhong DESC
+Select top 1 * From PHONG where isDelete = 0 order by MaPhong DESC
+

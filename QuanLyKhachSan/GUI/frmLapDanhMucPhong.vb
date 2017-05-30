@@ -1,5 +1,6 @@
 ﻿Imports BUS.BUS
 Imports DTO.DTO
+Imports GUI.XuLy
 
 Public Class frmLapDanhMucPhong
 
@@ -41,7 +42,7 @@ Public Class frmLapDanhMucPhong
     Private Sub btnThemPhong_Click(sender As Object, e As EventArgs) Handles btnThemPhong.Click
 
         ' Kiểm tra nhập tên phòng hợp lệ
-        If (laChuoiHopLe(txtTenPhong.Text) = False) Then
+        If (XuLyGUI.laChuoiHopLe(txtTenPhong.Text) = False) Then
             MessageBox.Show("Vui lòng nhập tên phòng hợp lệ.")
             Return
         End If
@@ -100,7 +101,7 @@ Public Class frmLapDanhMucPhong
         chiSo = dgvDanhMucPhong.CurrentRow.Index
 
         ' Kiểm tra nhập tên phòng hợp lệ
-        If (laChuoiHopLe(txtTenPhong.Text) = False) Then
+        If (XuLyGUI.laChuoiHopLe(txtTenPhong.Text) = False) Then
             MessageBox.Show("Vui lòng nhập tên phòng hợp lệ.")
             Return
         End If
@@ -151,12 +152,8 @@ Public Class frmLapDanhMucPhong
 
     End Sub
 
-    Public Shared Function laChuoiHopLe(str As String) As Boolean
-        If (String.IsNullOrEmpty(str) Or String.IsNullOrWhiteSpace(str)) Then
-            Return False
-        End If
-        Return True
-    End Function
+
+
     Private Sub btnLuu_Click(sender As Object, e As EventArgs) Handles btnLuu.Click
         themDanhSachPhong()
 

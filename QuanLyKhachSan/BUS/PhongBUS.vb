@@ -17,6 +17,10 @@ Namespace BUS
             Return maPhongMoiNhat
         End Function
 
+        Public Shared Function selectPhongAll() As List(Of PhongDTO)
+            Return PhongDAO.selectPhongALL()
+        End Function
+
 #End Region
 
         Public Shared Function themDanhSachPhong(danhSachPhong As List(Of PhongDTO)) As Integer
