@@ -38,7 +38,7 @@ Public Class frmLapDanhMucPhong
         danhSachPhongTam.Columns.Add("GhiChu", GetType(String))
 
         ' hiển thị danh sách các loại phòng tạm
-        dgvDanhMucPhong.AutoGenerateColumns = False
+        'dgvDanhMucPhong.AutoGenerateColumns = False
         dgvDanhMucPhong.DataSource = danhSachPhongTam
 
     End Sub
@@ -59,7 +59,14 @@ Public Class frmLapDanhMucPhong
             Return
         End If
 
-        danhSachPhongTam.Rows.Add(txtMaPhong.Text, txtTenPhong.Text, cboTenLoaiPhong.SelectedItem.MaLoaiPhong,
+        Dim maPhong As String = txtMaPhong.Text
+
+        If (danhSachPhongTam.Rows.Count - 1 >= 0) Then
+            maPhong = danhSachPhongTam.Rows(danhSachPhongTam.Rows.Count - 1).Item(0).ToString
+            maPhong = tangMaphong(maPhong)
+        End If
+
+        danhSachPhongTam.Rows.Add(maPhong, txtTenPhong.Text, cboTenLoaiPhong.SelectedItem.MaLoaiPhong,
                                   cboTenLoaiPhong.SelectedItem.TenLoaiPhong, txtDonGia.Text, txtGhiChu.Text)
 
         dgvDanhMucPhong.DataSource = Nothing
@@ -88,7 +95,8 @@ Public Class frmLapDanhMucPhong
             txtMaPhong.Text = dgvDanhMucPhong.CurrentRow.Cells("MaPhong").Value.ToString
             txtTenPhong.Text = dgvDanhMucPhong.CurrentRow.Cells("TenPhong").Value.ToString
 
-            'cboTenLoaiPhong.SelectedValue = dgvDanhMucPhong.CurrentRow.Cells("MaLoaiPhong").Value
+            'cboTenLoaiPhong.SelectedIndex = 
+            cboTenLoaiPhong.SelectedValue = dgvDanhMucPhong.CurrentRow.Cells("MaLoaiPhong").Value
 
             txtDonGia.Text = dgvDanhMucPhong.CurrentRow.Cells("DonGia").Value.ToString
             txtGhiChu.Text = dgvDanhMucPhong.CurrentRow.Cells("GhiChu").Value.ToString
