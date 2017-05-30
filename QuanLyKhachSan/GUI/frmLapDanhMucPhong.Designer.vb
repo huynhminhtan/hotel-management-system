@@ -68,9 +68,9 @@ Partial Class frmLapDanhMucPhong
         Me.GroupBox1.Controls.Add(Me.lblMaPhong)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(16, 15)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Size = New System.Drawing.Size(809, 209)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
@@ -81,7 +81,7 @@ Partial Class frmLapDanhMucPhong
         Me.cboTenLoaiPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.cboTenLoaiPhong.FormattingEnabled = True
         Me.cboTenLoaiPhong.Location = New System.Drawing.Point(523, 55)
-        Me.cboTenLoaiPhong.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cboTenLoaiPhong.Margin = New System.Windows.Forms.Padding(4)
         Me.cboTenLoaiPhong.Name = "cboTenLoaiPhong"
         Me.cboTenLoaiPhong.Size = New System.Drawing.Size(185, 25)
         Me.cboTenLoaiPhong.TabIndex = 10
@@ -90,7 +90,7 @@ Partial Class frmLapDanhMucPhong
         '
         Me.txtDonGia.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.txtDonGia.Location = New System.Drawing.Point(523, 102)
-        Me.txtDonGia.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtDonGia.Margin = New System.Windows.Forms.Padding(4)
         Me.txtDonGia.Name = "txtDonGia"
         Me.txtDonGia.ReadOnly = True
         Me.txtDonGia.Size = New System.Drawing.Size(185, 23)
@@ -100,7 +100,7 @@ Partial Class frmLapDanhMucPhong
         '
         Me.txtTenPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.txtTenPhong.Location = New System.Drawing.Point(191, 102)
-        Me.txtTenPhong.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtTenPhong.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTenPhong.Name = "txtTenPhong"
         Me.txtTenPhong.Size = New System.Drawing.Size(185, 23)
         Me.txtTenPhong.TabIndex = 8
@@ -109,7 +109,7 @@ Partial Class frmLapDanhMucPhong
         '
         Me.txtGhiChu.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.txtGhiChu.Location = New System.Drawing.Point(191, 145)
-        Me.txtGhiChu.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtGhiChu.Margin = New System.Windows.Forms.Padding(4)
         Me.txtGhiChu.Name = "txtGhiChu"
         Me.txtGhiChu.Size = New System.Drawing.Size(185, 23)
         Me.txtGhiChu.TabIndex = 7
@@ -119,7 +119,7 @@ Partial Class frmLapDanhMucPhong
         Me.txtMaPhong.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.txtMaPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.txtMaPhong.Location = New System.Drawing.Point(191, 57)
-        Me.txtMaPhong.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtMaPhong.Margin = New System.Windows.Forms.Padding(4)
         Me.txtMaPhong.Name = "txtMaPhong"
         Me.txtMaPhong.ReadOnly = True
         Me.txtMaPhong.Size = New System.Drawing.Size(185, 23)
@@ -189,9 +189,9 @@ Partial Class frmLapDanhMucPhong
         Me.GroupBox2.Controls.Add(Me.btnThoat)
         Me.GroupBox2.Controls.Add(Me.btnLuu)
         Me.GroupBox2.Location = New System.Drawing.Point(16, 231)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Size = New System.Drawing.Size(809, 126)
         Me.GroupBox2.TabIndex = 2
         Me.GroupBox2.TabStop = False
@@ -201,7 +201,7 @@ Partial Class frmLapDanhMucPhong
         Me.btnXoaPhong.Enabled = False
         Me.btnXoaPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.btnXoaPhong.Location = New System.Drawing.Point(637, 81)
-        Me.btnXoaPhong.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnXoaPhong.Margin = New System.Windows.Forms.Padding(4)
         Me.btnXoaPhong.Name = "btnXoaPhong"
         Me.btnXoaPhong.Size = New System.Drawing.Size(120, 28)
         Me.btnXoaPhong.TabIndex = 10
@@ -213,7 +213,7 @@ Partial Class frmLapDanhMucPhong
         Me.btnCapNhat.Enabled = False
         Me.btnCapNhat.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.btnCapNhat.Location = New System.Drawing.Point(448, 81)
-        Me.btnCapNhat.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnCapNhat.Margin = New System.Windows.Forms.Padding(4)
         Me.btnCapNhat.Name = "btnCapNhat"
         Me.btnCapNhat.Size = New System.Drawing.Size(120, 28)
         Me.btnCapNhat.TabIndex = 9
@@ -224,7 +224,7 @@ Partial Class frmLapDanhMucPhong
         '
         Me.btnThemPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.btnThemPhong.Location = New System.Drawing.Point(245, 81)
-        Me.btnThemPhong.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnThemPhong.Margin = New System.Windows.Forms.Padding(4)
         Me.btnThemPhong.Name = "btnThemPhong"
         Me.btnThemPhong.Size = New System.Drawing.Size(120, 28)
         Me.btnThemPhong.TabIndex = 8
@@ -235,7 +235,7 @@ Partial Class frmLapDanhMucPhong
         '
         Me.btnTimPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.btnTimPhong.Location = New System.Drawing.Point(53, 81)
-        Me.btnTimPhong.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnTimPhong.Margin = New System.Windows.Forms.Padding(4)
         Me.btnTimPhong.Name = "btnTimPhong"
         Me.btnTimPhong.Size = New System.Drawing.Size(120, 28)
         Me.btnTimPhong.TabIndex = 7
@@ -246,7 +246,7 @@ Partial Class frmLapDanhMucPhong
         '
         Me.btnThoat.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.btnThoat.Location = New System.Drawing.Point(637, 34)
-        Me.btnThoat.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnThoat.Margin = New System.Windows.Forms.Padding(4)
         Me.btnThoat.Name = "btnThoat"
         Me.btnThoat.Size = New System.Drawing.Size(120, 28)
         Me.btnThoat.TabIndex = 6
@@ -258,7 +258,7 @@ Partial Class frmLapDanhMucPhong
         Me.btnLuu.Enabled = False
         Me.btnLuu.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.btnLuu.Location = New System.Drawing.Point(53, 34)
-        Me.btnLuu.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnLuu.Margin = New System.Windows.Forms.Padding(4)
         Me.btnLuu.Name = "btnLuu"
         Me.btnLuu.Size = New System.Drawing.Size(120, 28)
         Me.btnLuu.TabIndex = 5
@@ -269,9 +269,9 @@ Partial Class frmLapDanhMucPhong
         '
         Me.GroupBox3.Controls.Add(Me.dgvDanhMucPhong)
         Me.GroupBox3.Location = New System.Drawing.Point(16, 361)
-        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox3.Size = New System.Drawing.Size(809, 182)
         Me.GroupBox3.TabIndex = 3
         Me.GroupBox3.TabStop = False
@@ -284,7 +284,7 @@ Partial Class frmLapDanhMucPhong
         Me.dgvDanhMucPhong.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.MaPhong, Me.MaLoaiPhong, Me.TenPhong, Me.LoaiPhong, Me.DonGia, Me.GhiChu})
         Me.dgvDanhMucPhong.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvDanhMucPhong.Location = New System.Drawing.Point(4, 19)
-        Me.dgvDanhMucPhong.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dgvDanhMucPhong.Margin = New System.Windows.Forms.Padding(4)
         Me.dgvDanhMucPhong.Name = "dgvDanhMucPhong"
         Me.dgvDanhMucPhong.ReadOnly = True
         Me.dgvDanhMucPhong.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
@@ -349,7 +349,7 @@ Partial Class frmLapDanhMucPhong
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.Name = "frmLapDanhMucPhong"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
