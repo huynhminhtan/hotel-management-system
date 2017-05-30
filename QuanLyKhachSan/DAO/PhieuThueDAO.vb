@@ -1,4 +1,6 @@
-﻿Namespace DAO
+﻿Imports DTO.DTO
+
+Namespace DAO
 
     Public Class PhieuThueDAO
 
@@ -23,7 +25,7 @@
 
                 ' Kiểu ngày trả phòng
                 phieuThue.NgayTraPhong = row("NgayTraPhong").ToString
-                phieuThue.NgayBatDayThue = row("NgayBatDayThue").ToString
+                phieuThue.NgayBatDauThue = row("NgayBatDauThue").ToString
 
                 phieuThue.DonGiaThueThucTe = Double.Parse(row("DonGiaThueThucTe").ToString)
                 phieuThue.ThanhTienPhong = Double.Parse(row("ThanhTienPhong").ToString)
@@ -31,7 +33,7 @@
                 phieuThue.PhuThuThucTe = Double.Parse(row("PhuThuThucTe").ToString)
 
             Catch ex As Exception
-
+                Throw ex
             End Try
             Return phieuThue
         End Function

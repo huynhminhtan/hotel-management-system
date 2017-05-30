@@ -1,4 +1,5 @@
 ﻿Imports DAO.DAO
+Imports DTO.DTO
 
 Namespace BUS
 
@@ -14,7 +15,7 @@ Namespace BUS
 
                 maPhieuThue = phieuThueMoiNhat.MaPhieuThue
             End If
-
+            Return maPhieuThue
         End Function
 
 #End Region

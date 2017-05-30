@@ -24,6 +24,19 @@ Public Class frmLapPhieuThuePhong
         txtDonGiaThue.Text = LoaiPhongBUS.selectDonGiaByMaLoaiPhong(cboMaPhong.SelectedItem.MaLoaiPhong)
 
         ' hiển thị mã phiếu thuê
-        txtMaPhieuThue.Text = ""
+        txtMaPhieuThue.Text = tangMaPhieuThue(PhieuThueBUS.selectMaPhieuThueMoiNhat())
     End Sub
+
+    Private Function tangMaPhieuThue(maPhieuThue As String) As String
+
+        If (maPhieuThue = Nothing) Then
+            Return "PT000"
+        End If
+
+        Dim maPhieuThueTang As String
+
+        maPhieuThueTang = "PT" + ((Integer.Parse(maPhieuThue.Substring(2)) + 1).ToString).PadLeft(3, "0")
+
+        Return maPhieuThueTang
+    End Function
 End Class

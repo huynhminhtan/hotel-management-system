@@ -6,7 +6,6 @@ Public Class frmLapDanhMucPhong
 
     Private danhSachPhongTam As New DataTable
 
-
     Private Sub frmLapDanhMucPhong_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         ' hiển thị danh sách loại phòng
@@ -15,7 +14,7 @@ Public Class frmLapDanhMucPhong
         cboTenLoaiPhong.DataSource = LoaiPhongBUS.selectLoaiPhongAll()
 
         ' hiển thị mã loại phòng đã tăng
-        txtMaPhong.Text = tangMaphong(PhongBUS.selectMaPhongMoiNhat())
+        txtMaPhong.Text = tangMaPhong(PhongBUS.selectMaPhongMoiNhat())
 
         ' hiển thị danh sách các loại phòng tạm
         dgvDanhMucPhong.AutoGenerateColumns = False
@@ -51,7 +50,7 @@ Public Class frmLapDanhMucPhong
 
         If (danhSachPhongTam.Rows.Count - 1 >= 0) Then
             maPhong = danhSachPhongTam.Rows(danhSachPhongTam.Rows.Count - 1).Item(0).ToString
-            maPhong = tangMaphong(maPhong)
+            maPhong = tangMaPhong(maPhong)
         End If
 
         danhSachPhongTam.Rows.Add(maPhong, txtTenPhong.Text, cboTenLoaiPhong.SelectedItem.MaLoaiPhong,
@@ -61,7 +60,7 @@ Public Class frmLapDanhMucPhong
         dgvDanhMucPhong.DataSource = danhSachPhongTam
 
         ' tăng mã phòng
-        txtMaPhong.Text = tangMaphong(danhSachPhongTam.Rows(danhSachPhongTam.Rows.Count - 1).Item(0).ToString)
+        txtMaPhong.Text = tangMaPhong(danhSachPhongTam.Rows(danhSachPhongTam.Rows.Count - 1).Item(0).ToString)
 
         ' dọn dẹp các txtbox
         txtTenPhong.Text = ""
@@ -69,7 +68,7 @@ Public Class frmLapDanhMucPhong
 
     End Sub
 
-    Private Function tangMaphong(maPhong As String) As String
+    Private Function tangMaPhong(maPhong As String) As String
 
         If (maPhong = Nothing) Then
             Return "PH000"
@@ -137,7 +136,7 @@ Public Class frmLapDanhMucPhong
         '' lấy số lượng các phòng trong DanhSachPhongTam
         '' Tạo mã phòng mới và gán lại vào cột MaPhong trong DanhSachPhongTam
         For i As Integer = 0 To (danhSachPhongTam.Rows.Count - 1)
-            maPhongMoi = tangMaphong(maPhongMoi)
+            maPhongMoi = tangMaPhong(maPhongMoi)
             danhSachPhongTam.Rows(i)("MaPhong") = maPhongMoi
         Next
 
@@ -148,11 +147,9 @@ Public Class frmLapDanhMucPhong
         ' dọn dẹp các txtbox
         txtTenPhong.Text = ""
         txtGhiChu.Text = ""
-        txtMaPhong.Text = tangMaphong(maPhongMoi)
+        txtMaPhong.Text = tangMaPhong(maPhongMoi)
 
     End Sub
-
-
 
     Private Sub btnLuu_Click(sender As Object, e As EventArgs) Handles btnLuu.Click
         themDanhSachPhong()

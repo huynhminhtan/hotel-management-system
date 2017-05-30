@@ -77,7 +77,7 @@
             End Set
         End Property
 
-        Public Property MaPieuThue As String
+        Public Property MaPhieuThue As String
             Get
                 Return _maPieuThue
             End Get
