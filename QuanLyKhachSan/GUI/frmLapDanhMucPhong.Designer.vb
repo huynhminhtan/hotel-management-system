@@ -198,6 +198,7 @@ Partial Class frmLapDanhMucPhong
         '
         'btnXoaPhong
         '
+        Me.btnXoaPhong.Enabled = False
         Me.btnXoaPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.btnXoaPhong.Location = New System.Drawing.Point(637, 81)
         Me.btnXoaPhong.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
@@ -209,6 +210,7 @@ Partial Class frmLapDanhMucPhong
         '
         'btnCapNhat
         '
+        Me.btnCapNhat.Enabled = False
         Me.btnCapNhat.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.btnCapNhat.Location = New System.Drawing.Point(448, 81)
         Me.btnCapNhat.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
@@ -253,6 +255,7 @@ Partial Class frmLapDanhMucPhong
         '
         'btnLuu
         '
+        Me.btnLuu.Enabled = False
         Me.btnLuu.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.btnLuu.Location = New System.Drawing.Point(53, 34)
         Me.btnLuu.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)

@@ -5,6 +5,7 @@ Public Class frmLapDanhMucPhong
 
     Private danhSachPhongTam As New DataTable
 
+
     Private Sub frmLapDanhMucPhong_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         ' hiển thị danh sách loại phòng
@@ -81,15 +82,15 @@ Public Class frmLapDanhMucPhong
     End Function
 
     Private Sub dgvDanhMucPhong_SelectionChanged(sender As Object, e As EventArgs) Handles dgvDanhMucPhong.SelectionChanged
+        ' hiển thị thông tin phòng được chọn lên Label và Combobox
         If (dgvDanhMucPhong.CurrentRow IsNot Nothing) Then
             txtMaPhong.Text = dgvDanhMucPhong.CurrentRow.Cells("MaPhong").Value.ToString
             txtTenPhong.Text = dgvDanhMucPhong.CurrentRow.Cells("TenPhong").Value.ToString
-
             cboTenLoaiPhong.SelectedValue = dgvDanhMucPhong.CurrentRow.Cells("MaLoaiPhong").Value
-
             txtDonGia.Text = dgvDanhMucPhong.CurrentRow.Cells("DonGia").Value.ToString
             txtGhiChu.Text = dgvDanhMucPhong.CurrentRow.Cells("GhiChu").Value.ToString
         End If
+
 
     End Sub
 
@@ -146,6 +147,7 @@ Public Class frmLapDanhMucPhong
         ' dọn dẹp các txtbox
         txtTenPhong.Text = ""
         txtGhiChu.Text = ""
+        txtMaPhong.Text = tangMaphong(maPhongMoi)
 
     End Sub
 
@@ -155,8 +157,8 @@ Public Class frmLapDanhMucPhong
         End If
         Return True
     End Function
-Private Sub btnLuu_Click(sender As Object, e As EventArgs) Handles btnLuu.Click
-        Dim danhSachPhong As List(Of PhongDTO) = Nothing
+    Private Sub btnLuu_Click(sender As Object, e As EventArgs) Handles btnLuu.Click
+        Dim danhSachPhong As New List(Of PhongDTO)
         For i As Integer = 0 To danhSachPhongTam.Rows.Count - 1
             Dim phong As New PhongDTO
             phong.MaPhong = danhSachPhongTam.Rows(i).Item("MaPhong")
@@ -165,10 +167,29 @@ Private Sub btnLuu_Click(sender As Object, e As EventArgs) Handles btnLuu.Click
             phong.GhiChu = danhSachPhongTam.Rows(i).Item("GhiChu")
             danhSachPhong.Add(phong)
         Next
+
         Dim ketQua = PhongBUS.themDanhSachPhong(danhSachPhong)
         If (ketQua = 0) Then
-            MessageBox.Show(frmLapDanhMucPhong, "Thêm phòng thất bại", "Thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(Me, "Thêm phòng thất bại", "Thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
-            MessageBox.Show(frmLapDanhMucPhong, "Thêm phòng thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            MessageBox.Show(Me, "Thêm " + ketQua.ToString + " phòng thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
         End If
-    End SubEnd Class
+
+        ' dọn dẹp danhSachPhongTam
+        danhSachPhongTam.Clear()
+
+    End Sub
+
+    Private Sub dgvDanhMucPhong_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles dgvDanhMucPhong.DataBindingComplete
+        ' hiển thị button "Lưu" và "Cập nhật"
+        If (danhSachPhongTam.Rows.Count > 0) Then
+            btnCapNhat.Enabled = True
+            btnLuu.Enabled = True
+            btnXoaPhong.Enabled = True
+        Else
+            btnCapNhat.Enabled = False
+            btnLuu.Enabled = False
+            btnXoaPhong.Enabled = False
+        End If
+    End Sub
+End Class
