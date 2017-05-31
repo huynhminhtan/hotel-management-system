@@ -107,7 +107,6 @@ Public Class frmLapPhieuThuePhong
 
     Protected Overrides Sub WndProc(ByRef m As Message)
 
-
         ' chặn sự kiện Validate của tất cả control trên form khi nhấn nút thoát (X) hoặc Alt+F4
         If (m.Msg = 16) Then
             AutoValidate = AutoValidate.Disable
@@ -134,7 +133,7 @@ Public Class frmLapPhieuThuePhong
 
     ' tạo sự kiện giới hạn số dòng (khách hàng) được thêm bởi người dùng
     Private Sub dgvDanhSachKhachThue_UserAddedRow(sender As Object, e As DataGridViewRowEventArgs) Handles dgvDanhSachKhachThue.UserAddedRow
-        Dim SoKhachToiDa As Integer = 3
+        Dim SoKhachToiDa As Integer = ThamSoBUS.selectThamSoAll().SoKhachToiDa
 
         If (dgvDanhSachKhachThue.Rows.Count > SoKhachToiDa) Then
             dgvDanhSachKhachThue.AllowUserToAddRows = False

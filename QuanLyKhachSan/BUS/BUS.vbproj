@@ -80,6 +80,7 @@
     </Compile>
     <Compile Include="PhieuThueBUS.vb" />
     <Compile Include="PhongBUS.vb" />
+    <Compile Include="ThamSoBUS.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
