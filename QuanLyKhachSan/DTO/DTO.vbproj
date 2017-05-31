@@ -83,6 +83,7 @@
     <Compile Include="PhieuThueDTO.vb" />
     <Compile Include="PhongDTO.vb" />
     <Compile Include="ThamSoDTO.vb" />
+    <Compile Include="TinhTrangDTO.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
