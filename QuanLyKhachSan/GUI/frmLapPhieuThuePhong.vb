@@ -133,7 +133,11 @@ Public Class frmLapPhieuThuePhong
 
     ' tạo sự kiện giới hạn số dòng (khách hàng) được thêm bởi người dùng
     Private Sub dgvDanhSachKhachThue_UserAddedRow(sender As Object, e As DataGridViewRowEventArgs) Handles dgvDanhSachKhachThue.UserAddedRow
-        Dim SoKhachToiDa As Integer = ThamSoBUS.selectThamSoAll().SoKhachToiDa
+
+        Dim SoKhachToiDa As Integer = 3
+        If (ThamSoBUS.selectThamSoAll() IsNot Nothing) Then
+            SoKhachToiDa = ThamSoBUS.selectThamSoAll().SoKhachToiDa
+        End If
 
         If (dgvDanhSachKhachThue.Rows.Count > SoKhachToiDa) Then
             dgvDanhSachKhachThue.AllowUserToAddRows = False
