@@ -239,6 +239,46 @@ AS BEGIN
 	WHERE isDeleted = 0
 END
 
+-- Insert PhieuThue với mã tự động tăng
+CREATE PROCEDURE NewPhieuThue
+
+	@MaPhong char(5),
+	@NgayTraPhong smalldatetime,
+	@NgayBatDauThue smalldatetime, 
+	@DonGiaThueThucTe float,
+	@ThanhTienPhong float,
+	--@MaHoaDon char(5),
+	@PhuThuThucTe float
+
+AS BEGIN
+
+-- on show: X row(s) affected 
+--SET NOCOUNT ON  
+
+     IF exists (SELECT *FROM PHIEUTHUE)
+     BEGIN
+		 INSERT INTO PHIEUTHUE(MaPhieuThue, MaPhong, NgayTraPhong, NgayBatDauThue, DonGiaThueThucTe, ThanhTienPhong, MaHoaDon, PhuThuThucTe)
+		 SELECT 
+				'PT' + RIGHT('000' + CAST(PhieuThue_ID + 1 AS NVARCHAR(3)), 3),
+				@MaPhong,
+				@NgayTraPhong ,
+				@NgayBatDauThue , 
+				@DonGiaThueThucTe ,
+				@ThanhTienPhong ,
+				null,
+				@PhuThuThucTe 
+		 FROM (
+			  SELECT TOP 1 PhieuThue_ID = CAST(RIGHT(MaPhieuThue, 3) AS INT)
+			  FROM PHIEUTHUE
+			  ORDER BY MaPhieuThue DESC
+		 ) t
+	END
+	ELSE
+	BEGIN
+		INSERT INTO PHIEUTHUE(MaPhieuThue, MaPhong, NgayTraPhong, NgayBatDauThue, DonGiaThueThucTe, ThanhTienPhong, MaHoaDon, PhuThuThucTe) 
+		VALUES ('PT000', @MaPhong, @NgayTraPhong, @NgayBatDauThue, @DonGiaThueThucTe, @ThanhTienPhong, null, @PhuThuThucTe)
+	END
+END 
 ---------------------
 -----------------
 
