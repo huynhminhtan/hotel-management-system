@@ -6,7 +6,6 @@ Imports GUI.XuLy
 
 
 Public Class frmLapPhieuThuePhong
-    Private danhSachKhachThue As New DataTable
 
     Private Sub frmLapPhieuThuePhong_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -22,14 +21,11 @@ Public Class frmLapPhieuThuePhong
         txtDonGiaThue.Text = LoaiPhongBUS.selectDonGiaByMaLoaiPhong(cboMaPhong.SelectedItem.MaLoaiPhong)
 
         ' khởi tạo danh sách khách thuê
+        Dim danhSachKhachThue As New DataTable
         danhSachKhachThue.Columns.Add("TenKhachHang", GetType(String))
         danhSachKhachThue.Columns.Add("LoaiKhach", GetType(String))
         danhSachKhachThue.Columns.Add("CMND", GetType(String))
         danhSachKhachThue.Columns.Add("DiaChi", GetType(String))
-
-        'danhSachKhachThue.Rows.Add("", "", "", "")
-        'danhSachKhachThue.Rows.Add("", "", "", "")
-        'danhSachKhachThue.Rows.Add("", "", "", "")
 
         dgvDanhSachKhachThue.DataSource = danhSachKhachThue
 
@@ -120,18 +116,18 @@ Public Class frmLapPhieuThuePhong
     End Sub
 
     Private Sub btnLuu_Click(sender As Object, e As EventArgs) Handles btnLuu.Click
-        Dim dtDanSachKhachThue As DataTable = dgvDanhSachKhachThue.DataSource
+        Dim dtDanhSachKhachThue As DataTable = dgvDanhSachKhachThue.DataSource
 
         ' hiển thị giá trị trong dt để kiểm tra
         Dim str As String = ""
-        For Each row As DataRow In dtDanSachKhachThue.Rows
-            For Each col As DataColumn In dtDanSachKhachThue.Columns
+        For Each row As DataRow In dtDanhSachKhachThue.Rows
+            For Each col As DataColumn In dtDanhSachKhachThue.Columns
                 str += row(col) + " "
             Next
             str += vbCrLf
         Next
 
-        MessageBox.Show(dtDanSachKhachThue.Rows.Count.ToString)
+        MessageBox.Show(dtDanhSachKhachThue.Rows.Count.ToString)
         MessageBox.Show(str)
 
     End Sub
