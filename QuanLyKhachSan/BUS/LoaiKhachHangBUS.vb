@@ -1,6 +1,6 @@
-﻿Imports DAO
-Imports DTO
+﻿Imports DAO.DAO
 Imports DTO.DTO
+
 
 Namespace BUS
     Public Class LoaiKhachHangBUS
