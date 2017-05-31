@@ -32,6 +32,9 @@ Public Class frmLapPhieuThuePhong
         cboDgvLoaiKhach.DataSource = PhongBUS.selectPhongAll()
         cboDgvLoaiKhach.DisplayMember = "MaPhong"
 
+        ' giới hạn NgayTraPhong
+        dtpNgayTraPhong.MinDate = dtpNgayBatDauThue.Value
+
     End Sub
 
     Private Sub cboMaPhong_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboMaPhong.SelectedIndexChanged
@@ -137,8 +140,15 @@ Public Class frmLapPhieuThuePhong
         ' MaHoaDon mặc định là null khi lập hóa đơn mới được cập nhật
         '  phieuThue.MaHoaDon = ""
         phieuThue.PhuThuThucTe = ThamSoBUS.selectThamSoAll().TiLePhuThu
-
-        MessageBox.Show(str)
+        Using New CenteredMessageBox(Me)
+            If (PhieuThueBUS.themPhieuThue(phieuThue) = True) Then
+                MessageBox.Show("Lập phiếu thuê thành công.")
+            Else
+                MessageBox.Show("Lập phiếu thuê không thành công.")
+            End If
+        End Using
+        
+        'MessageBox.Show(str)
     End Sub
 
     Private Sub dgvDanhSachKhachThue_UserAddedRow(sender As Object, e As DataGridViewRowEventArgs) Handles dgvDanhSachKhachThue.UserAddedRow
@@ -176,5 +186,10 @@ Public Class frmLapPhieuThuePhong
             e.Cancel = True
         End If
         dgvDanhSachKhachThue.AllowUserToAddRows = True
+    End Sub
+
+    Private Sub dtpNgayBatDauThue_ValueChanged(sender As Object, e As EventArgs) Handles dtpNgayBatDauThue.ValueChanged
+        ' giới hạn NgayTraPhong
+        dtpNgayTraPhong.MinDate = dtpNgayBatDauThue.Value
     End Sub
 End Class
