@@ -74,12 +74,12 @@ create table CHITIETPHIEUTHUE
 	 MaPhieuThue char(5),
 	 foreign key (MaPhieuThue) references PHIEUTHUE(MaPhieuThue),
 
-	 TenKhachHang varchar(50),
+	 TenKhachHang nvarchar(50),
 	 MaLoaiKhachHang char(5),
 	 foreign key (MaLoaiKhachHang) references LOAIKHACHHANG(MaLoaiKhachHang),
 
 	 CMND varchar(50),
-	 DiaChi varchar(100),
+	 DiaChi nvarchar(100),
 	 HeSoThucTe float
 )
 
@@ -279,6 +279,46 @@ AS BEGIN
 		VALUES ('PT000', @MaPhong, @NgayTraPhong, @NgayBatDauThue, @DonGiaThueThucTe, @ThanhTienPhong, null, @PhuThuThucTe)
 	END
 END 
+
+
+-- Insert ChiTietPhieuThue với mã tự động tăng
+CREATE PROCEDURE NewChiTietPhieuThue
+
+	 @MaPhieuThue char(5),
+	 @TenKhachHang varchar(50),
+	 @MaLoaiKhachHang char(5),
+	 @CMND varchar(50),
+	 @DiaChi varchar(100),
+	 @HeSoThucTe float
+
+AS BEGIN
+
+-- on show: X row(s) affected 
+--SET NOCOUNT ON  
+
+     IF exists (SELECT *FROM CHITIETPHIEUTHUE)
+     BEGIN
+		 INSERT INTO CHITIETPHIEUTHUE(MaChiTietPhieuThue, MaPhieuThue, TenKhachHang, MaLoaiKhachHang, CMND, DiaChi, HeSoThucTe)
+		 SELECT 
+				'CP' + RIGHT('000' + CAST(ChiTietPhieuThue_ID + 1 AS NVARCHAR(3)), 3),
+				@MaPhieuThue,
+				@TenKhachHang ,
+				@MaLoaiKhachHang , 
+				@CMND ,
+				@DiaChi ,
+				@HeSoThucTe
+		 FROM (
+			  SELECT TOP 1 ChiTietPhieuThue_ID = CAST(RIGHT(MaChiTietPhieuThue, 3) AS INT)
+			  FROM CHITIETPHIEUTHUE
+			  ORDER BY MaChiTietPhieuThue DESC
+		 ) t
+	END
+	ELSE
+	BEGIN
+		INSERT INTO CHITIETPHIEUTHUE(MaChiTietPhieuThue, MaPhieuThue, TenKhachHang, MaLoaiKhachHang, CMND, DiaChi, HeSoThucTe) 
+		VALUES ('CP000', @MaPhieuThue, @TenKhachHang, @MaLoaiKhachHang, @CMND, @DiaChi, @HeSoThucTe)
+	END
+END 
 ---------------------
 -----------------
 
@@ -302,6 +342,8 @@ EXEC selectPhieuThueMoiNhat
 
 EXEC selectLoaiKhachHangAll
 
+EXEC NewChiTietPhieuThue 'PT000', N'Nguyễn Văn A', 'LK000', '299933234', N'Khóm An Lạc', 1.2
+
 Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK000', 'LKVIP', 1.2)
 Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK001', 'LKSTANDAR', 1)
 
@@ -311,4 +353,4 @@ Select top 1 * From PHONG where isDelete = 0 order by MaPhong DESC
 
 INSERT INTO PHIEUTHUE(MaPhieuThue, MaPhong, NgayTraPhong, NgayBatDauThue, DonGiaThueThucTe, ThanhTienPhong, MaHoaDon, PhuThuThucTe) VALUES ('PT000', 'PH001', '01/21/2001', '02/13/2001', 170000, 200000, null, 1.1)
 
-select * FRom PHIEUTHUE
+select * FRom CHITIETPHIEUTHUE
