@@ -30,7 +30,9 @@ Public Class frmLapPhieuThuePhong
 
         ' hiển thị loại khách lên combobox
         cboDgvLoaiKhach.DataSource = LoaiKhachHangBUS.selectLoaiKhachHangAll()
-        cboDgvLoaiKhach.DisplayMember = "MaPhong"
+        cboDgvLoaiKhach.DisplayMember = "TenLoaiKhachHang"
+        cboDgvLoaiKhach.ValueMember = "MaLoaiKhachHang"
+        cboDgvLoaiKhach.DefaultCellStyle.NullValue = "Chọn loại khách"
 
         ' giới hạn NgayTraPhong
         dtpNgayTraPhong.MinDate = dtpNgayBatDauThue.Value
