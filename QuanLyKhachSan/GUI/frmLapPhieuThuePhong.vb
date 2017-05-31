@@ -119,6 +119,17 @@ Public Class frmLapPhieuThuePhong
             str += vbCrLf
         Next
 
+        '' hiển thị giá trị trong dt để kiểm tra ver 2
+        'Dim str As String = ""
+        'For idHang As Integer = 0 To dgvDanhSachKhachThue.Rows.Count - 1
+        '    For idCot As Integer = 0 To dgvDanhSachKhachThue.Columns.Count - 1
+        '        If (String.IsNullOrEmpty(dgvDanhSachKhachThue.Rows(idHang).Cells(idCot).Value) = False) Then
+        '            str += dgvDanhSachKhachThue.Rows(idHang).Cells(idCot).Value.ToString + " "
+        '        End If
+        '    Next
+        '    str += vbCrLf
+        'Next
+
         ' MessageBox.Show(dtDanhSachKhachThue.Rows.Count.ToString)
         '   MessageBox.Show(str)
 
