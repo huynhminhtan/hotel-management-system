@@ -81,6 +81,7 @@
     <Compile Include="PhieuThueDAO.vb" />
     <Compile Include="PhongDAO.vb" />
     <Compile Include="SqlDataAccessHelper.vb" />
+    <Compile Include="ThamSoDAO.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
