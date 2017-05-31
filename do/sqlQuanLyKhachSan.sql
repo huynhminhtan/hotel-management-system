@@ -351,7 +351,9 @@ EXEC selectPhieuThueMoiNhat
 
 EXEC selectLoaiKhachHangAll
 
-EXEC NewChiTietPhieuThue 'PT000', N'Nguyễn Văn A', 'LK000', '299933234', N'Khóm An Lạc', 1.2
+EXEC NewChiTietPhieuThue 'PT027', N'Nguyễn Văn A', 'LK000', '299933234', N'Khóm An Lạc', 1.2
+
+EXEC NewPhieuThue 'PH001', '01/01/2001', '01/01/2002', 1.2, 2999, 1.2
 
 EXEC selectLoaiKhachHangByMaLoaiKhach 'LK000'
 
@@ -365,3 +367,5 @@ Select top 1 * From PHONG where isDelete = 0 order by MaPhong DESC
 INSERT INTO PHIEUTHUE(MaPhieuThue, MaPhong, NgayTraPhong, NgayBatDauThue, DonGiaThueThucTe, ThanhTienPhong, MaHoaDon, PhuThuThucTe) VALUES ('PT000', 'PH001', '01/21/2001', '02/13/2001', 170000, 200000, null, 1.1)
 
 select * FRom CHITIETPHIEUTHUE
+
+select * FRom PHIEUTHUE
