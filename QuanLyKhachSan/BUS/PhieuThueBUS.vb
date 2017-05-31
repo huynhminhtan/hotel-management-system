@@ -20,6 +20,14 @@ Namespace BUS
 
 #End Region
 
+#Region "Inserting"
+
+        Public Shared Function themPhieuThue(phieuThue As PhieuThueDTO) As Boolean
+            Return PhieuThueDAO.insertPhieuThue(phieuThue)
+        End Function
+
+#End Region
+
     End Class
 
 End Namespace

@@ -7,7 +7,7 @@ Namespace DAO
 
 #Region "Inserting"
 
-        Public Shared Function themPhong(phong As PhongDTO) As Boolean
+        Public Shared Function insertPhong(phong As PhongDTO) As Boolean
             Dim trangThai As Boolean = False
 
             Try
