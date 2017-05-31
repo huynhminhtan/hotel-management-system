@@ -4,7 +4,7 @@
 #Region "Attribute"
         Private _maLoaiKhachHang As String
         Private _tenLoaiKhachHang As String
-        Private _heSo As Double
+        Private _heSoKhach As Double
 #End Region
 
 #Region "Property"
@@ -26,12 +26,12 @@
             End Set
         End Property
 
-        Public Property HeSo As Double
+        Public Property HeSoKhach As Double
             Get
-                Return _heSo
+                Return _heSoKhach
             End Get
             Set(value As Double)
-                _heSo = value
+                _heSoKhach = value
             End Set
         End Property
 #End Region
@@ -40,7 +40,7 @@
         Sub New()
             _maLoaiKhachHang = Nothing
             _tenLoaiKhachHang = Nothing
-            _heSo = 1
+            _heSoKhach = 1
         End Sub
 #End Region
 

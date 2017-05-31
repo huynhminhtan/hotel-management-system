@@ -8,7 +8,7 @@ Namespace BUS
 #Region "Retrieving"
 
         Public Shared Function selectLoaiKhachHangAll() As List(Of LoaiKhachHangDTO)
-            Return LoaiKhachHangDAO.selectLoaiPhongAll()
+            Return LoaiKhachHangDAO.selectLoaiKhachHangAll()
         End Function
 
 #End Region
