@@ -29,7 +29,7 @@ Public Class frmLapPhieuThuePhong
         dgvDanhSachKhachThue.DataSource = danhSachKhachThue
 
         ' hiển thị loại khách lên combobox
-        cboDgvLoaiKhach.DataSource = PhongBUS.selectPhongAll()
+        cboDgvLoaiKhach.DataSource = LoaiKhachHangBUS.selectLoaiKhachHangAll()
         cboDgvLoaiKhach.DisplayMember = "MaPhong"
 
         ' giới hạn NgayTraPhong
@@ -147,7 +147,7 @@ Public Class frmLapPhieuThuePhong
                 MessageBox.Show("Lập phiếu thuê không thành công.")
             End If
         End Using
-        
+
         'MessageBox.Show(str)
     End Sub
 
