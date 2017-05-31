@@ -37,6 +37,8 @@ Public Class frmLapPhieuThuePhong
 
         ' giới hạn NgayTraPhong
         dtpNgayTraPhong.MinDate = dtpNgayBatDauThue.Value
+        ' giới hạn NgayBatDauThue
+        dtpNgayBatDauThue.MinDate = Date.Now
 
     End Sub
 
