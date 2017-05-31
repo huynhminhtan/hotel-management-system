@@ -23,11 +23,13 @@ Public Class frmLapPhieuThuePhong
         ' khởi tạo danh sách khách thuê
         Dim danhSachKhachThue As New DataTable
         danhSachKhachThue.Columns.Add("TenKhachHang", GetType(String))
-        danhSachKhachThue.Columns.Add("LoaiKhach", GetType(String))
         danhSachKhachThue.Columns.Add("CMND", GetType(String))
         danhSachKhachThue.Columns.Add("DiaChi", GetType(String))
 
         dgvDanhSachKhachThue.DataSource = danhSachKhachThue
+        LoaiKhach.DataSource = PhongBUS.selectPhongAll()
+        LoaiKhach.DisplayMember = "MaPhong"
+
 
     End Sub
 
@@ -90,21 +92,6 @@ Public Class frmLapPhieuThuePhong
 
     End Sub
 
-    Private Sub dgvDanhSachKhachThue_RowValidating(sender As Object, e As DataGridViewCellCancelEventArgs) Handles dgvDanhSachKhachThue.RowValidating
-        Dim chuoi = sender.CurrentRow.Cells(sender.CurrentCell.ColumnIndex).Value.ToString
-
-        If (String.IsNullOrEmpty(chuoi)) Then
-            Return
-        ElseIf (String.IsNullOrWhiteSpace(chuoi)) Then
-            e.Cancel = True
-
-            Using New CenteredMessageBox(Me)
-                MessageBox.Show(Me, "Vui lòng nhập giá trị hợp lệ!")
-            End Using
-        End If
-
-    End Sub
-
     Protected Overrides Sub WndProc(ByRef m As Message)
 
         ' chặn sự kiện Validate của tất cả control trên form khi nhấn nút thoát (X) hoặc Alt+F4
@@ -142,5 +129,23 @@ Public Class frmLapPhieuThuePhong
         If (dgvDanhSachKhachThue.Rows.Count > SoKhachToiDa) Then
             dgvDanhSachKhachThue.AllowUserToAddRows = False
         End If
+    End Sub
+
+    Private Sub dgvDanhSachKhachThue_CellValidating(sender As Object, e As DataGridViewCellValidatingEventArgs) Handles dgvDanhSachKhachThue.CellValidating
+        Dim chuoi = sender.CurrentRow.Cells(sender.CurrentCell.ColumnIndex).EditedFormattedValue.ToString()
+
+        If (String.IsNullOrEmpty(chuoi)) Then
+            Return
+        ElseIf (String.IsNullOrWhiteSpace(chuoi)) Then
+            e.Cancel = True
+
+            Using New CenteredMessageBox(Me)
+                MessageBox.Show(Me, "Vui lòng nhập giá trị hợp lệ!")
+            End Using
+        End If
+    End Sub
+
+    Private Sub dgvDanhSachKhachThue_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgvDanhSachKhachThue.UserDeletingRow
+        MessageBox.Show("zz")
     End Sub
 End Class
