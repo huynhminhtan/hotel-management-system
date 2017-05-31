@@ -319,6 +319,15 @@ AS BEGIN
 		VALUES ('CP000', @MaPhieuThue, @TenKhachHang, @MaLoaiKhachHang, @CMND, @DiaChi, @HeSoThucTe)
 	END
 END 
+
+-- select LoaiKhachHangByMaLoaiKhach
+CREATE PROCEDURE selectLoaiKhachHangByMaLoaiKhach
+	@MaLoaiKhach char(5)
+AS BEGIN
+	SELECT MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach
+	FROM LOAIKHACHHANG
+	WHERE MaLoaiKhachHang = @MaLoaiKhach
+END
 ---------------------
 -----------------
 
@@ -343,6 +352,8 @@ EXEC selectPhieuThueMoiNhat
 EXEC selectLoaiKhachHangAll
 
 EXEC NewChiTietPhieuThue 'PT000', N'Nguyễn Văn A', 'LK000', '299933234', N'Khóm An Lạc', 1.2
+
+EXEC selectLoaiKhachHangByMaLoaiKhach 'LK000'
 
 Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK000', 'LKVIP', 1.2)
 Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK001', 'LKSTANDAR', 1)
