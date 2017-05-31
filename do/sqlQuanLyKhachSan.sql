@@ -24,9 +24,9 @@ create table PHONG
 create table TINHTRANG
 (
 	MaTinhTrang char(5) primary key,
-	LoaiTinhTrang char(15),
+	LoaiTinhTrang char(15) default 'TRONG',
 	MaPhong char(5),
-	Ngay smalldatetime,
+	NgayCuaTinhTrang smalldatetime,
 
 	foreign key (MaPhong) references PHONG(MaPhong)
 )
@@ -328,6 +328,39 @@ AS BEGIN
 	FROM LOAIKHACHHANG
 	WHERE MaLoaiKhachHang = @MaLoaiKhach
 END
+
+-- Insert TinhTrang với mã tự động tăng
+CREATE PROCEDURE NewTinhTrang
+
+	@LoaiTinhTrang varchar(15),
+	@MaPhong char(5),
+	@NgayCuaTinhTrang smalldatetime
+
+AS BEGIN
+
+-- on show: X row(s) affected 
+--SET NOCOUNT ON  
+
+     IF exists (SELECT *FROM TINHTRANG)
+     BEGIN
+		 INSERT INTO TINHTRANG(MaTinhTrang, LoaiTinhTrang, MaPhong, NgayCuaTinhTrang)
+		 SELECT 
+				'TT' + RIGHT('000' + CAST(TinhTrang_ID + 1 AS NVARCHAR(3)), 3),
+				@LoaiTinhTrang ,
+				@MaPhong ,
+				@NgayCuaTinhTrang 
+		 FROM (
+			  SELECT TOP 1 TinhTrang_ID = CAST(RIGHT(MaTinhTrang, 3) AS INT)
+			  FROM TINHTRANG
+			  ORDER BY MaTinhTrang DESC
+		 ) t
+	END
+	ELSE
+	BEGIN
+		INSERT INTO TINHTRANG(MaTinhTrang, LoaiTinhTrang, MaPhong, NgayCuaTinhTrang) 
+		VALUES ('TT000', @LoaiTinhTrang, @MaPhong, @NgayCuaTinhTrang)
+	END
+END 
 ---------------------
 -----------------
 
@@ -357,6 +390,8 @@ EXEC NewPhieuThue 'PH001', '01/01/2001', '01/01/2002', 1.2, 2999, 1.2
 
 EXEC selectLoaiKhachHangByMaLoaiKhach 'LK000'
 
+EXEC NewTinhTrang
+
 Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK000', 'LKVIP', 1.2)
 Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK001', 'LKSTANDAR', 1)
 
@@ -368,4 +403,4 @@ INSERT INTO PHIEUTHUE(MaPhieuThue, MaPhong, NgayTraPhong, NgayBatDauThue, DonGia
 
 select * FRom CHITIETPHIEUTHUE
 
-select * FRom PHIEUTHUE
+select * FRom TINHTRANG
