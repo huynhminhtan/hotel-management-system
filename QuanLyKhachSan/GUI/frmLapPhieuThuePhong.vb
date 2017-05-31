@@ -27,9 +27,9 @@ Public Class frmLapPhieuThuePhong
         danhSachKhachThue.Columns.Add("CMND", GetType(String))
         danhSachKhachThue.Columns.Add("DiaChi", GetType(String))
 
-        danhSachKhachThue.Rows.Add("", "", "", "")
-        danhSachKhachThue.Rows.Add("", "", "", "")
-        danhSachKhachThue.Rows.Add("", "", "", "")
+        'danhSachKhachThue.Rows.Add("", "", "", "")
+        'danhSachKhachThue.Rows.Add("", "", "", "")
+        'danhSachKhachThue.Rows.Add("", "", "", "")
 
         dgvDanhSachKhachThue.DataSource = danhSachKhachThue
 
@@ -119,4 +119,29 @@ Public Class frmLapPhieuThuePhong
         MyBase.WndProc(m)
     End Sub
 
+    Private Sub btnLuu_Click(sender As Object, e As EventArgs) Handles btnLuu.Click
+        Dim dtDanSachKhachThue As DataTable = dgvDanhSachKhachThue.DataSource
+
+        ' hiển thị giá trị trong dt để kiểm tra
+        Dim str As String = ""
+        For Each row As DataRow In dtDanSachKhachThue.Rows
+            For Each col As DataColumn In dtDanSachKhachThue.Columns
+                str += row(col) + " "
+            Next
+            str += vbCrLf
+        Next
+
+        MessageBox.Show(dtDanSachKhachThue.Rows.Count.ToString)
+        MessageBox.Show(str)
+
+    End Sub
+
+    ' tạo sự kiện giới hạn số dòng (khách hàng) được thêm bởi người dùng
+    Private Sub dgvDanhSachKhachThue_UserAddedRow(sender As Object, e As DataGridViewRowEventArgs) Handles dgvDanhSachKhachThue.UserAddedRow
+        Dim SoKhachToiDa As Integer = 3
+
+        If (dgvDanhSachKhachThue.Rows.Count > SoKhachToiDa) Then
+            dgvDanhSachKhachThue.AllowUserToAddRows = False
+        End If
+    End Sub
 End Class
