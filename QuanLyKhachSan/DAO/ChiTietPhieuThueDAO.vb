@@ -8,7 +8,7 @@ Namespace DAO
 
 #Region "Inserting"
 
-        Public Function insertChiTietPhieuThue(chiTietPhieuThue As ChiTietPhieuThueDTO) As Boolean
+        Public Shared Function insertChiTietPhieuThue(chiTietPhieuThue As ChiTietPhieuThueDTO) As Boolean
             Dim trangThai As Boolean = False
 
             Try
