@@ -83,8 +83,9 @@ create table CHITIETPHIEUTHUE
 
 create table THAMSO
 (
-	SoKhachToiDa int,
-	TiLePhuThu float
+	id tinyint not null default 1 primary key,
+	SoKhachToiDa int default 3,
+	TiLePhuThu float default 1.25,
 )
 
 create table BAOCAODOANHTHU
@@ -225,6 +226,7 @@ CREATE PROCEDURE selectThamSoAll
 AS BEGIN
 	SELECT SoKhachToiDa, TiLePhuThu
 	FROM THAMSO
+	WHERE id = 1
 END
 ---------------------
 -----------------
