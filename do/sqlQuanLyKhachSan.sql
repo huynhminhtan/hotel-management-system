@@ -35,7 +35,9 @@ create table LOAIKHACHHANG
 (
 	MaLoaiKhachHang char(5) primary key,
 	TenLoaiKhachHang varchar(50),
-	HeSoKhach float
+	HeSoKhach float,
+
+	isDeleted bit default 0,
 )
 
 create table HOADON
@@ -228,6 +230,15 @@ AS BEGIN
 	FROM THAMSO
 	WHERE id = 1
 END
+
+-- Select LoaiKhachHangAll
+CREATE PROCEDURE selectLoaiKhachHangAll
+AS BEGIN
+	SELECT MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach
+	FROM LOAIKHACHHANG
+	WHERE isDeleted = 0
+END
+
 ---------------------
 -----------------
 
@@ -248,6 +259,11 @@ EXEC selectPhongMoiNhat
 EXEC selectPhongAll
 
 EXEC selectPhieuThueMoiNhat
+
+EXEC selectLoaiKhachHangAll
+
+Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK000', 'LKVIP', 1.2)
+Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK001', 'LKSTANDAR', 1)
 
 SELECT *FROM LOAIPHONG where isDelete = 0
 
