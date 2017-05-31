@@ -1,4 +1,6 @@
-﻿Namespace DAO
+﻿Imports DTO.DTO
+
+Namespace DAO
 
     Public Class ThamSoDAO
 
