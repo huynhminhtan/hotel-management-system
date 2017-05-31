@@ -220,6 +220,12 @@ AS BEGIN
 	WHERE isDeleted = 0
 END
 
+-- Select ThamSoAll
+CREATE PROCEDURE selectThamSoAll
+AS BEGIN
+	SELECT SoKhachToiDa, TiLePhuThu
+	FROM THAMSO
+END
 ---------------------
 -----------------
 
@@ -230,6 +236,8 @@ EXEC NewLoaiPhong 'STANDAR', 100000
 EXEC selectLoaiPhongAll 
 
 EXEC selectLoaiPhongByMaLoaiPhong 'LP000'
+
+EXEC selectThamSoAll
 
 EXEC insertPhong 'PH005', 'VIP69', 'LP001', 'Phòng này ở mát mẻ lắm nhé anh em - bà con' 
 
@@ -243,3 +251,6 @@ SELECT *FROM LOAIPHONG where isDelete = 0
 
 Select top 1 * From PHONG where isDelete = 0 order by MaPhong DESC
 
+INSERT INTO PHIEUTHUE(MaPhieuThue, MaPhong, NgayTraPhong, NgayBatDauThue, DonGiaThueThucTe, ThanhTienPhong, MaHoaDon, PhuThuThucTe) VALUES ('PT000', 'PH001', '01/21/2001', '02/13/2001', 170000, 200000, null, 1.1)
+
+select * FRom PHIEUTHUE
