@@ -11,6 +11,10 @@ Namespace BUS
             Return LoaiKhachHangDAO.selectLoaiKhachHangAll()
         End Function
 
+        Public Shared Function selectHeSoKhachByMaLoaiKhach(MaLoaiKhach As String) As Double
+            Return LoaiKhachHangDAO.selectHeSoKhachByMaLoaiKhach(MaLoaiKhach)
+        End Function
+
 #End Region
 
     End Class

@@ -1,4 +1,5 @@
-﻿Imports DTO.DTO
+﻿Imports System.Data.SqlClient
+Imports DTO.DTO
 
 Namespace DAO
 
@@ -32,6 +33,28 @@ Namespace DAO
                 Throw ex
             End Try
             Return list
+        End Function
+
+        Shared Function selectHeSoKhachByMaLoaiKhach(MaLoaiKhach As String) As Double
+            Dim heSoKhach As Double
+
+            Try
+                Dim SqlParams As New List(Of SqlParameter)
+                SqlParams.Add(New SqlParameter("@MaLoaiKhach", MaLoaiKhach))
+
+                Dim dt As New DataTable
+                dt = SqlDataAccessHelper.ExecuteQuery("selectHeSoKhachByMaLoaiKhach", SqlParams)
+
+                Dim row As DataRow = dt.Rows(0)
+
+                heSoKhach = Double.Parse(row("HeSoKhach").ToString)
+
+            Catch ex As Exception
+                Throw ex
+            End Try
+
+            Return heSoKhach
+
         End Function
 
 #End Region
