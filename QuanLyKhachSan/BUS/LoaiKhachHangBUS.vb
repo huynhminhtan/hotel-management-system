@@ -12,7 +12,7 @@ Namespace BUS
         End Function
 
         Public Shared Function selectHeSoKhachByMaLoaiKhach(MaLoaiKhach As String) As Double
-            Return LoaiKhachHangDAO.selectHeSoKhachByMaLoaiKhach(MaLoaiKhach)
+            Return LoaiKhachHangDAO.selectLoaiKhachHangByMaLoaiKhach(MaLoaiKhach).HeSoKhach
         End Function
 
 #End Region
