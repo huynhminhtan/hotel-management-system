@@ -90,6 +90,8 @@ Public Class frmLapPhieuThuePhong
 
     End Sub
 
+
+    ' TODO: Hàm lỗi 
     Private Sub dgvDanhSachKhachThue_RowValidating(sender As Object, e As DataGridViewCellCancelEventArgs) Handles dgvDanhSachKhachThue.RowValidating
         Dim chuoi = sender.CurrentRow.Cells(sender.CurrentCell.ColumnIndex).Value.ToString
 
@@ -126,9 +128,31 @@ Public Class frmLapPhieuThuePhong
             str += vbCrLf
         Next
 
-        MessageBox.Show(dtDanhSachKhachThue.Rows.Count.ToString)
-        MessageBox.Show(str)
+        ' MessageBox.Show(dtDanhSachKhachThue.Rows.Count.ToString)
+        '   MessageBox.Show(str)
 
+        ' lưu phiếu thuê xuống CSDL
+        '' kiểm tra NgayBatDauThue < NgayTraPhong
+        '' tính thành tiền:
+
+        Dim phieuThue As New PhieuThueDTO
+
+        ' MaPhieuThue được tăng tự động khi lưu mới phiếu thuê
+        'phieuThue.MaPhieuThue = txtMaPhieuThue.Text
+        phieuThue.MaPhong = cboMaPhong.SelectedItem.MaPhong
+        phieuThue.NgayBatDauThue = dtpNgayBatDauThue.Value.ToShortDateString()
+        phieuThue.NgayTraPhong = dtpNgayTraPhong.Value.ToShortDateString()
+        phieuThue.DonGiaThueThucTe = txtDonGiaThue.Text
+
+        ' tính thành tiền phòng
+        Dim soNgayThue As Integer = (phieuThue.NgayTraPhong - phieuThue.NgayBatDauThue).Days + 1
+        phieuThue.ThanhTienPhong = soNgayThue * phieuThue.DonGiaThueThucTe
+
+        ' MaHoaDon mặc định là null khi lập hóa đơn mới được cập nhật
+        '  phieuThue.MaHoaDon = ""
+        phieuThue.PhuThuThucTe = ThamSoBUS.selectThamSoAll().TiLePhuThu
+
+        MessageBox.Show(str)
     End Sub
 
     ' tạo sự kiện giới hạn số dòng (khách hàng) được thêm bởi người dùng
