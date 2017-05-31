@@ -41,16 +41,16 @@ Partial Class frmLapPhieuThuePhong
         Me.btnLuu = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.dgvDanhSachKhachThue = New System.Windows.Forms.DataGridView()
-        Me.TenKhachHang = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cboDgvLoaiKhach = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.CMND = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DiaChi = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.dgvTrangThaiPhong = New System.Windows.Forms.DataGridView()
         Me.TenPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Ngay = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TinhTrang = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DonGia = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TenKhachHang = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cboDgvLoaiKhach = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.CMND = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DiaChi = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -231,7 +231,7 @@ Partial Class frmLapPhieuThuePhong
         Me.GroupBox3.Controls.Add(Me.dgvDanhSachKhachThue)
         Me.GroupBox3.Location = New System.Drawing.Point(12, 164)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox3.Size = New System.Drawing.Size(607, 110)
         Me.GroupBox3.TabIndex = 4
         Me.GroupBox3.TabStop = False
@@ -263,41 +263,12 @@ Partial Class frmLapPhieuThuePhong
         Me.dgvDanhSachKhachThue.Size = New System.Drawing.Size(599, 89)
         Me.dgvDanhSachKhachThue.TabIndex = 0
         '
-        'TenKhachHang
-        '
-        Me.TenKhachHang.DataPropertyName = "TenKhachHang"
-        Me.TenKhachHang.HeaderText = "Tên Khách Hàng"
-        Me.TenKhachHang.Name = "TenKhachHang"
-        Me.TenKhachHang.Width = 150
-        '
-        'cboDgvLoaiKhach
-        '
-        Me.cboDgvLoaiKhach.HeaderText = "Loại Khách"
-        Me.cboDgvLoaiKhach.Name = "cboDgvLoaiKhach"
-        Me.cboDgvLoaiKhach.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.cboDgvLoaiKhach.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.cboDgvLoaiKhach.Width = 150
-        '
-        'CMND
-        '
-        Me.CMND.DataPropertyName = "CMND"
-        Me.CMND.HeaderText = "CMND"
-        Me.CMND.Name = "CMND"
-        Me.CMND.Width = 115
-        '
-        'DiaChi
-        '
-        Me.DiaChi.DataPropertyName = "DiaChi"
-        Me.DiaChi.HeaderText = "Địa Chỉ"
-        Me.DiaChi.Name = "DiaChi"
-        Me.DiaChi.Width = 154
-        '
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.dgvTrangThaiPhong)
         Me.GroupBox4.Location = New System.Drawing.Point(12, 336)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox4.Size = New System.Drawing.Size(607, 161)
         Me.GroupBox4.TabIndex = 5
         Me.GroupBox4.TabStop = False
@@ -344,6 +315,36 @@ Partial Class frmLapPhieuThuePhong
         Me.DonGia.Name = "DonGia"
         Me.DonGia.ReadOnly = True
         Me.DonGia.Width = 154
+        '
+        'TenKhachHang
+        '
+        Me.TenKhachHang.DataPropertyName = "TenKhachHang"
+        Me.TenKhachHang.HeaderText = "Tên Khách Hàng"
+        Me.TenKhachHang.Name = "TenKhachHang"
+        Me.TenKhachHang.Width = 150
+        '
+        'cboDgvLoaiKhach
+        '
+        Me.cboDgvLoaiKhach.DataPropertyName = "TenLoaiKhachHang"
+        Me.cboDgvLoaiKhach.HeaderText = "Loại Khách"
+        Me.cboDgvLoaiKhach.Name = "cboDgvLoaiKhach"
+        Me.cboDgvLoaiKhach.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.cboDgvLoaiKhach.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.cboDgvLoaiKhach.Width = 150
+        '
+        'CMND
+        '
+        Me.CMND.DataPropertyName = "CMND"
+        Me.CMND.HeaderText = "CMND"
+        Me.CMND.Name = "CMND"
+        Me.CMND.Width = 115
+        '
+        'DiaChi
+        '
+        Me.DiaChi.DataPropertyName = "DiaChi"
+        Me.DiaChi.HeaderText = "Địa Chỉ"
+        Me.DiaChi.Name = "DiaChi"
+        Me.DiaChi.Width = 154
         '
         'frmLapPhieuThuePhong
         '

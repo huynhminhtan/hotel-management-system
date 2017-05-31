@@ -28,11 +28,12 @@ Public Class frmLapPhieuThuePhong
 
         dgvDanhSachKhachThue.DataSource = danhSachKhachThue
 
-        ' hiển thị loại khách lên combobox
+        ' hiển thị loại khách lên combobox : DatagridviewComboBoxColumn 
         cboDgvLoaiKhach.DataSource = LoaiKhachHangBUS.selectLoaiKhachHangAll()
         cboDgvLoaiKhach.DisplayMember = "TenLoaiKhachHang"
         cboDgvLoaiKhach.ValueMember = "MaLoaiKhachHang"
         cboDgvLoaiKhach.DefaultCellStyle.NullValue = "Chọn loại khách"
+        cboDgvLoaiKhach.Name = "MaLoaiKhachHang"
 
         ' giới hạn NgayTraPhong
         dtpNgayTraPhong.MinDate = dtpNgayBatDauThue.Value
@@ -108,38 +109,11 @@ Public Class frmLapPhieuThuePhong
     End Sub
 
     Private Sub btnLuu_Click(sender As Object, e As EventArgs) Handles btnLuu.Click
-        Dim dtDanhSachKhachThue As DataTable = dgvDanhSachKhachThue.DataSource
 
-        ' hiển thị giá trị trong dt để kiểm tra
-        Dim str As String = ""
-        For Each row As DataRow In dtDanhSachKhachThue.Rows
-            For Each col As DataColumn In dtDanhSachKhachThue.Columns
-                str += row(col) + " "
-            Next
-            str += vbCrLf
-        Next
-
-        '' hiển thị giá trị trong dt để kiểm tra ver 2
-        'Dim str As String = ""
-        'For idHang As Integer = 0 To dgvDanhSachKhachThue.Rows.Count - 1
-        '    For idCot As Integer = 0 To dgvDanhSachKhachThue.Columns.Count - 1
-        '        If (String.IsNullOrEmpty(dgvDanhSachKhachThue.Rows(idHang).Cells(idCot).Value) = False) Then
-        '            str += dgvDanhSachKhachThue.Rows(idHang).Cells(idCot).Value.ToString + " "
-        '        End If
-        '    Next
-        '    str += vbCrLf
-        'Next
-
-        ' MessageBox.Show(dtDanhSachKhachThue.Rows.Count.ToString)
-        '   MessageBox.Show(str)
-
-        ' lưu phiếu thuê xuống CSDL
-        '' kiểm tra NgayBatDauThue < NgayTraPhong
-        '' tính thành tiền:
-
+        '' >> lưu phiếu thuê xuống CSDL
         Dim phieuThue As New PhieuThueDTO
 
-        ' MaPhieuThue được tăng tự động khi lưu mới phiếu thuê
+        'phieuThue.MaPhieuThue được tăng tự động khi lưu mới phiếu thuê
         'phieuThue.MaPhieuThue = txtMaPhieuThue.Text
         phieuThue.MaPhong = cboMaPhong.SelectedItem.MaPhong
         phieuThue.NgayBatDauThue = dtpNgayBatDauThue.Value.ToShortDateString()
@@ -149,19 +123,40 @@ Public Class frmLapPhieuThuePhong
         ' tính thành tiền phòng
         Dim soNgayThue As Integer = (phieuThue.NgayTraPhong - phieuThue.NgayBatDauThue).Days + 1
         phieuThue.ThanhTienPhong = soNgayThue * phieuThue.DonGiaThueThucTe
-
         ' MaHoaDon mặc định là null khi lập hóa đơn mới được cập nhật
         '  phieuThue.MaHoaDon = ""
         phieuThue.PhuThuThucTe = ThamSoBUS.selectThamSoAll().TiLePhuThu
+
+        '' >> Lưu chi tiết phiếu thuê xuống CSDL
+        Dim dtDanhSachKhachThue As DataTable = dgvDanhSachKhachThue.DataSource
+        Dim listChiTietPhieuThue As New List(Of ChiTietPhieuThueDTO)
+
+        For idong As Integer = 0 To (dtDanhSachKhachThue.Rows.Count - 1)
+            Dim chiTietPhieuThue As New ChiTietPhieuThueDTO
+
+            chiTietPhieuThue.MaPhieuThue = txtMaPhieuThue.Text.ToString
+            chiTietPhieuThue.TenKhachHang = dgvDanhSachKhachThue.Rows(idong).Cells("TenKhachHang").Value
+            chiTietPhieuThue.MaLoaiKhachHang = dgvDanhSachKhachThue.Rows(idong).Cells("MaLoaiKhachHang").Value
+            chiTietPhieuThue.CMnd = dgvDanhSachKhachThue.Rows(idong).Cells("CMND").Value
+            chiTietPhieuThue.DiaChi = dgvDanhSachKhachThue.Rows(idong).Cells("DiaChi").Value
+            chiTietPhieuThue.HeSoThucTe = LoaiKhachHangBUS.selectHeSoKhachByMaLoaiKhach(chiTietPhieuThue.MaLoaiKhachHang)
+
+            listChiTietPhieuThue.Add(chiTietPhieuThue)
+        Next
+
+        ' Lưu phiếu thuê và danh sách chi tiết phiếu thuê xuống CSDL
         Using New CenteredMessageBox(Me)
-            If (PhieuThueBUS.themPhieuThue(phieuThue) = True) Then
+            If ((PhieuThueBUS.themPhieuThue(phieuThue) = True) And
+                (ChiTietPhieuThueBUS.themDanhSachChiTietPhieuThue(listChiTietPhieuThue) > 0)) Then
                 MessageBox.Show("Lập phiếu thuê thành công.")
             Else
                 MessageBox.Show("Lập phiếu thuê không thành công.")
             End If
         End Using
 
-        'MessageBox.Show(str)
+        ' Thoát khỏi from Lập phiếu thuê phòng
+        Me.Close()
+
     End Sub
 
     Private Sub dgvDanhSachKhachThue_UserAddedRow(sender As Object, e As DataGridViewRowEventArgs) Handles dgvDanhSachKhachThue.UserAddedRow
