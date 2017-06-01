@@ -76,6 +76,12 @@
     <Compile Include="frmLapDanhMucPhong.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmLapHoaDon.Designer.vb">
+      <DependentUpon>frmLapHoaDon.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLapHoaDon.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmLapPhieuThuePhong.Designer.vb">
       <DependentUpon>frmLapPhieuThuePhong.vb</DependentUpon>
     </Compile>
@@ -115,6 +121,9 @@
   <ItemGroup>
     <EmbeddedResource Include="frmLapDanhMucPhong.resx">
       <DependentUpon>frmLapDanhMucPhong.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLapHoaDon.resx">
+      <DependentUpon>frmLapHoaDon.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLapPhieuThuePhong.resx">
       <DependentUpon>frmLapPhieuThuePhong.vb</DependentUpon>
