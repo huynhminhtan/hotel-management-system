@@ -196,14 +196,37 @@ AS begin
 	Order by MaPhong DESC
 end
 
---- Insert Phong
-CREATE PROCEDURE insertPhong
-	@MaPhong char(5),
-	@TenPhong varchar(50),
+--- Insert Phong với mã tự động tăng
+CREATE PROCEDURE NewPhong
+
+	@TenPhong nvarchar(50),
 	@MaLoaiPhong char(5),
 	@GhiChu nvarchar(300)
+
 AS BEGIN
-	INSERT INTO PHONG(MaPhong, TenPhong, MaLoaiPhong, GhiChu) VALUES (@MaPhong, @TenPhong, @MaLoaiPhong, @GhiChu)
+
+-- on show: X row(s) affected 
+--SET NOCOUNT ON  
+
+     IF exists (SELECT *FROM PHONG)
+     BEGIN
+		 INSERT INTO PHONG(MaPhong, TenPhong, MaLoaiPhong, GhiChu)
+		 SELECT 
+				'PH' + RIGHT('000' + CAST(Phong_ID + 1 AS NVARCHAR(3)), 3),
+				@TenPhong ,
+				@MaLoaiPhong ,
+				@GhiChu 
+		 FROM (
+			  SELECT TOP 1 Phong_ID = CAST(RIGHT(MaPhong, 3) AS INT)
+			  FROM PHONG
+			  ORDER BY MaPhong DESC
+		 ) t
+	END
+	ELSE
+	BEGIN
+		INSERT INTO PHONG(MaPhong, TenPhong, MaLoaiPhong, GhiChu) 
+		VALUES ('PH000', @TenPhong, @MaLoaiPhong, @GhiChu)
+	END
 END
 
 -- Select PhongAll
@@ -287,10 +310,10 @@ END
 CREATE PROCEDURE NewChiTietPhieuThue
 
 	 @MaPhieuThue char(5),
-	 @TenKhachHang varchar(50),
+	 @TenKhachHang nvarchar(50),
 	 @MaLoaiKhachHang char(5),
 	 @CMND varchar(50),
-	 @DiaChi varchar(100),
+	 @DiaChi nvarchar(100),
 	 @HeSoThucTe float
 
 AS BEGIN
@@ -363,6 +386,17 @@ AS BEGIN
 		VALUES ('TT00000000000000000000', @LoaiTinhTrang, @MaPhong, @NgayCuaTinhTrang)
 	END
 END 
+
+-- select TinhTrangPhongByThoiGian
+CREATE PROCEDURE selectTinhTrangPhongByThoiGian
+	@NgayBatDau smalldatetime,
+	@NgayKetThuc smalldatetime
+AS BEGIN
+	SELECT TenPhong, NgayCuaTinhTrang, LoaiTinhTrang, DonGiaThue
+	FROM (TINHTRANG INNER JOIN PHONG ON PHONG.MaPhong = TINHTRANG.MaPhong)
+		INNER JOIN LOAIPHONG ON PHONG.MaLoaiPhong = LOAIPHONG.MaLoaiPhong
+	WHERE NgayCuaTinhTrang BETWEEN @NgayBatDau AND @NgayKetThuc
+END
 ---------------------
 -----------------
 
@@ -376,7 +410,7 @@ EXEC selectLoaiPhongByMaLoaiPhong 'LP000'
 
 EXEC selectThamSoAll
 
-EXEC insertPhong 'PH005', 'VIP69', 'LP001', 'Phòng này ở mát mẻ lắm nhé anh em - bà con' 
+EXEC NewPhong 'VIP69', 'LP001', 'Phòng này ở mát mẻ lắm nhé anh em - bà con' 
 
 EXEC selectPhongMoiNhat
 
@@ -394,6 +428,8 @@ EXEC selectLoaiKhachHangByMaLoaiKhach 'LK000'
 
 EXEC NewTinhTrang 'TRONG', 'PH000', '01/01/2001' 
 
+EXEC selectTinhTrangPhongByThoiGian '9/1/2017','9/2/2017'
+
 Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK000', 'LKVIP', 1.2)
 Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK001', 'LKSTANDAR', 1)
 
@@ -406,3 +442,5 @@ INSERT INTO PHIEUTHUE(MaPhieuThue, MaPhong, NgayTraPhong, NgayBatDauThue, DonGia
 select * FRom CHITIETPHIEUTHUE
 
 select * FRom TINHTRANG
+
+DELETE FROM TINHTRANG
