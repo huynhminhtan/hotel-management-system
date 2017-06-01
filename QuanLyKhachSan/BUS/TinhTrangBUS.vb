@@ -11,7 +11,7 @@ Namespace BUS
             For chiSo As Integer = 1 To (Cons.namTinhTrang * 365)
                 Dim tinhTrangTam As New TinhTrangDTO
 
-                tinhTrangTam.NgayCuaTinhTrang = ngayTam
+                tinhTrangTam.NgayCuaTinhTrang = ngayTam.Date
                 tinhTrangTam.LoaiTinhTrang = tinhTrang.LoaiTinhTrang
                 tinhTrangTam.MaPhong = tinhTrang.MaPhong
 
@@ -25,6 +25,11 @@ Namespace BUS
 
             Return True
         End Function
+
+        Public Shared Function selectTinhTrangPhongByThoiGian(ngayBatDau As Date, ngayKetThuc As Date) As DataTable
+            Return TinhTrangDAO.selectTinhTrangPhongByThoiGian(ngayBatDau, ngayKetThuc.AddDays(1))
+        End Function
+
     End Class
 
 End Namespace

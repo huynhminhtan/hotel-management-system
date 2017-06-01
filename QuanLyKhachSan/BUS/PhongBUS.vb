@@ -26,7 +26,7 @@ Namespace BUS
         Public Shared Function themDanhSachPhong(danhSachPhong As List(Of PhongDTO)) As Integer
             Dim ketQua As Integer = 0
             For i As Integer = 0 To (danhSachPhong.Count - 1)
-                If (PhongDAO.insertPhong(danhSachPhong(i))) Then
+                If (PhongDAO.themPhong(danhSachPhong(i))) Then
                     ketQua += 1
 
                     ' thêm tình trạng cho phòng

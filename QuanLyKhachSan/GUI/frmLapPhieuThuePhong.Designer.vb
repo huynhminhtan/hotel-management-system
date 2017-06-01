@@ -23,6 +23,9 @@ Partial Class frmLapPhieuThuePhong
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.dtpNgayTraPhong = New System.Windows.Forms.DateTimePicker()
         Me.lblNgayTraPhong = New System.Windows.Forms.Label()
@@ -41,16 +44,16 @@ Partial Class frmLapPhieuThuePhong
         Me.btnLuu = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.dgvDanhSachKhachThue = New System.Windows.Forms.DataGridView()
+        Me.TenKhachHang = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cboDgvLoaiKhach = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.CMND = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DiaChi = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.dgvTrangThaiPhong = New System.Windows.Forms.DataGridView()
         Me.TenPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Ngay = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TinhTrang = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DonGia = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TenKhachHang = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cboDgvLoaiKhach = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.CMND = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DiaChi = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -241,6 +244,7 @@ Partial Class frmLapPhieuThuePhong
         '
         Me.dgvDanhSachKhachThue.AllowUserToResizeColumns = False
         Me.dgvDanhSachKhachThue.AllowUserToResizeRows = False
+        Me.dgvDanhSachKhachThue.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvDanhSachKhachThue.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText
         Me.dgvDanhSachKhachThue.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
@@ -263,6 +267,32 @@ Partial Class frmLapPhieuThuePhong
         Me.dgvDanhSachKhachThue.Size = New System.Drawing.Size(599, 89)
         Me.dgvDanhSachKhachThue.TabIndex = 0
         '
+        'TenKhachHang
+        '
+        Me.TenKhachHang.DataPropertyName = "TenKhachHang"
+        Me.TenKhachHang.HeaderText = "Tên Khách Hàng"
+        Me.TenKhachHang.Name = "TenKhachHang"
+        '
+        'cboDgvLoaiKhach
+        '
+        Me.cboDgvLoaiKhach.DataPropertyName = "TenLoaiKhachHang"
+        Me.cboDgvLoaiKhach.HeaderText = "Loại Khách"
+        Me.cboDgvLoaiKhach.Name = "cboDgvLoaiKhach"
+        Me.cboDgvLoaiKhach.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.cboDgvLoaiKhach.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'CMND
+        '
+        Me.CMND.DataPropertyName = "CMND"
+        Me.CMND.HeaderText = "CMND"
+        Me.CMND.Name = "CMND"
+        '
+        'DiaChi
+        '
+        Me.DiaChi.DataPropertyName = "DiaChi"
+        Me.DiaChi.HeaderText = "Địa Chỉ"
+        Me.DiaChi.Name = "DiaChi"
+        '
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.dgvTrangThaiPhong)
@@ -272,12 +302,23 @@ Partial Class frmLapPhieuThuePhong
         Me.GroupBox4.Size = New System.Drawing.Size(607, 161)
         Me.GroupBox4.TabIndex = 5
         Me.GroupBox4.TabStop = False
-        Me.GroupBox4.Text = "Trạng thái phòng"
+        Me.GroupBox4.Text = "Trạng thái phòng theo ngày bắt đầu và ngày kết thúc"
         '
         'dgvTrangThaiPhong
         '
         Me.dgvTrangThaiPhong.AllowUserToAddRows = False
         Me.dgvTrangThaiPhong.AllowUserToDeleteRows = False
+        Me.dgvTrangThaiPhong.AllowUserToResizeColumns = False
+        Me.dgvTrangThaiPhong.AllowUserToResizeRows = False
+        Me.dgvTrangThaiPhong.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvTrangThaiPhong.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvTrangThaiPhong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvTrangThaiPhong.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.TenPhong, Me.Ngay, Me.TinhTrang, Me.DonGia})
         Me.dgvTrangThaiPhong.Dock = System.Windows.Forms.DockStyle.Fill
@@ -290,61 +331,35 @@ Partial Class frmLapPhieuThuePhong
         '
         'TenPhong
         '
+        Me.TenPhong.DataPropertyName = "TenPhong"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.TenPhong.DefaultCellStyle = DataGridViewCellStyle3
         Me.TenPhong.HeaderText = "Tên Phòng"
         Me.TenPhong.Name = "TenPhong"
         Me.TenPhong.ReadOnly = True
-        Me.TenPhong.Width = 150
         '
         'Ngay
         '
+        Me.Ngay.DataPropertyName = "NgayCuaTinhTrang"
         Me.Ngay.HeaderText = "Ngày"
         Me.Ngay.Name = "Ngay"
         Me.Ngay.ReadOnly = True
-        Me.Ngay.Width = 150
         '
         'TinhTrang
         '
+        Me.TinhTrang.DataPropertyName = "LoaiTinhTrang"
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Green
+        Me.TinhTrang.DefaultCellStyle = DataGridViewCellStyle4
         Me.TinhTrang.HeaderText = "Tình Trạng"
         Me.TinhTrang.Name = "TinhTrang"
         Me.TinhTrang.ReadOnly = True
-        Me.TinhTrang.Width = 150
         '
         'DonGia
         '
+        Me.DonGia.DataPropertyName = "DonGiaThue"
         Me.DonGia.HeaderText = "Đơn Giá"
         Me.DonGia.Name = "DonGia"
         Me.DonGia.ReadOnly = True
-        Me.DonGia.Width = 154
-        '
-        'TenKhachHang
-        '
-        Me.TenKhachHang.DataPropertyName = "TenKhachHang"
-        Me.TenKhachHang.HeaderText = "Tên Khách Hàng"
-        Me.TenKhachHang.Name = "TenKhachHang"
-        Me.TenKhachHang.Width = 150
-        '
-        'cboDgvLoaiKhach
-        '
-        Me.cboDgvLoaiKhach.DataPropertyName = "TenLoaiKhachHang"
-        Me.cboDgvLoaiKhach.HeaderText = "Loại Khách"
-        Me.cboDgvLoaiKhach.Name = "cboDgvLoaiKhach"
-        Me.cboDgvLoaiKhach.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.cboDgvLoaiKhach.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.cboDgvLoaiKhach.Width = 150
-        '
-        'CMND
-        '
-        Me.CMND.DataPropertyName = "CMND"
-        Me.CMND.HeaderText = "CMND"
-        Me.CMND.Name = "CMND"
-        Me.CMND.Width = 115
-        '
-        'DiaChi
-        '
-        Me.DiaChi.DataPropertyName = "DiaChi"
-        Me.DiaChi.HeaderText = "Địa Chỉ"
-        Me.DiaChi.Name = "DiaChi"
-        Me.DiaChi.Width = 154
         '
         'frmLapPhieuThuePhong
         '
@@ -390,12 +405,12 @@ Partial Class frmLapPhieuThuePhong
     Friend WithEvents dgvDanhSachKhachThue As System.Windows.Forms.DataGridView
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
     Friend WithEvents dgvTrangThaiPhong As System.Windows.Forms.DataGridView
-    Friend WithEvents TenPhong As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Ngay As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents TinhTrang As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DonGia As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents TenKhachHang As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents cboDgvLoaiKhach As System.Windows.Forms.DataGridViewComboBoxColumn
     Friend WithEvents CMND As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DiaChi As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents TenPhong As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Ngay As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents TinhTrang As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DonGia As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

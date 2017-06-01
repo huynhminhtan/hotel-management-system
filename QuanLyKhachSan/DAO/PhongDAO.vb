@@ -7,17 +7,19 @@ Namespace DAO
 
 #Region "Inserting"
 
-        Public Shared Function insertPhong(phong As PhongDTO) As Boolean
+        Public Shared Function themPhong(phong As PhongDTO) As Boolean
             Dim trangThai As Boolean = False
 
             Try
                 Dim sqlParams As New List(Of SqlParameter)
-                sqlParams.Add(New SqlParameter("@MaPhong", phong.MaPhong))
-                sqlParams.Add(New SqlParameter("@TenPhong", phong.TenPhong))
+                'sqlParams.Add(New SqlParameter("@MaPhong", phong.MaPhong))
+                Dim sqlpa As New SqlParameter("@TenPhong", SqlDbType.NVarChar)
+                sqlpa.Value = phong.TenPhong
+                sqlParams.Add(sqlpa)
                 sqlParams.Add(New SqlParameter("@MaLoaiPhong", phong.MaLoaiPhong))
                 sqlParams.Add(New SqlParameter("@GhiChu", phong.GhiChu))
 
-                Dim n As Integer = SqlDataAccessHelper.ExecuteNoneQuery("insertPhong", sqlParams)
+                Dim n As Integer = SqlDataAccessHelper.ExecuteNoneQuery("NewPhong", sqlParams)
 
                 ' SqlDataAccessHelper.ExecuteNoneQuery : trả về số row bị ảnh hưởng trong CSDL
                 If (n = 1) Then

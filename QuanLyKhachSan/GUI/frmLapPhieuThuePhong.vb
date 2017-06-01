@@ -10,15 +10,19 @@ Public Class frmLapPhieuThuePhong
     Private Sub frmLapPhieuThuePhong_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         ' hiển thị danh sách mã phòng
-        cboMaPhong.DataSource = PhongBUS.selectPhongAll()
-        cboMaPhong.DisplayMember = "MaPhong"
-        ' cboMaPhong.ValueMember = "MaPhong"
+        Try
+            cboMaPhong.DataSource = PhongBUS.selectPhongAll()
+            cboMaPhong.DisplayMember = "MaPhong"
+            ' cboMaPhong.ValueMember = "MaPhong"
 
-        ' hiển thị tên phòng
-        txtTenPhong.Text = cboMaPhong.SelectedItem.TenPhong
-
-        ' hiển thị đơn giá
-        txtDonGiaThue.Text = LoaiPhongBUS.selectDonGiaByMaLoaiPhong(cboMaPhong.SelectedItem.MaLoaiPhong)
+            ' hiển thị tên phòng
+            txtTenPhong.Text = cboMaPhong.SelectedItem.TenPhong
+            ' hiển thị đơn giá
+            txtDonGiaThue.Text = LoaiPhongBUS.selectDonGiaByMaLoaiPhong(cboMaPhong.SelectedItem.MaLoaiPhong)
+        Catch ex As Exception
+            MessageBox.Show("Không có phòng nào trong hệ thống.")
+            Return
+        End Try
 
         ' khởi tạo danh sách khách thuê
         Dim danhSachKhachThue As New DataTable
@@ -39,6 +43,10 @@ Public Class frmLapPhieuThuePhong
         dtpNgayTraPhong.MinDate = dtpNgayBatDauThue.Value
         ' giới hạn NgayBatDauThue
         dtpNgayBatDauThue.MinDate = Date.Now
+
+        ' hiển thị danh sách tình trạng của các phòng trong khoảng thời gian
+        '  từ NgayBatDauThue đến NgayTraPhong
+        hienThiDanhSachTinhTrangByThoiGian()
 
     End Sub
 
@@ -201,5 +209,16 @@ Public Class frmLapPhieuThuePhong
     Private Sub dtpNgayBatDauThue_ValueChanged(sender As Object, e As EventArgs) Handles dtpNgayBatDauThue.ValueChanged
         ' giới hạn NgayTraPhong
         dtpNgayTraPhong.MinDate = dtpNgayBatDauThue.Value
+
+        hienThiDanhSachTinhTrangByThoiGian()
+    End Sub
+
+    Private Sub hienThiDanhSachTinhTrangByThoiGian()
+        dgvTrangThaiPhong.DataSource = TinhTrangBUS.selectTinhTrangPhongByThoiGian(dtpNgayBatDauThue.Value.ToShortDateString(),
+                                                   dtpNgayTraPhong.Value.ToShortDateString())
+    End Sub
+
+    Private Sub dtpNgayTraPhong_ValueChanged(sender As Object, e As EventArgs) Handles dtpNgayTraPhong.ValueChanged
+        hienThiDanhSachTinhTrangByThoiGian()
     End Sub
 End Class
