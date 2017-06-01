@@ -28,6 +28,8 @@ Namespace DAO
         End Function
 #End Region
 
+#Region "Retrieving"
+
         Public Shared Function selectTinhTrangPhongByThoiGian(ngayBatDau As Date, ngayKetThuc As Date) As DataTable
 
             Dim dt As New DataTable
@@ -48,6 +50,31 @@ Namespace DAO
             Return dt
 
         End Function
+
+#End Region
+
+#Region "Updating"
+
+        Public Shared Function capNhatTinhTrangPhongByMaPhong(maPhong As String, ngayThue As Date) As Boolean
+            Try
+                Dim sqlParams As New List(Of SqlParameter)
+
+                sqlParams.Add(New SqlParameter("@MaPhong", maPhong))
+                sqlParams.Add(New SqlParameter("@NgayCuaTinhTrang", ngayThue))
+
+                Dim n As Integer = SqlDataAccessHelper.ExecuteNoneQuery("capNhatTinhTrangPhongByMaPhong", sqlParams)
+
+                If (n < 0) Then
+                    Return False
+                End If
+
+            Catch ex As Exception
+                Throw ex
+            End Try
+            Return True
+        End Function
+
+#End Region
 
     End Class
 

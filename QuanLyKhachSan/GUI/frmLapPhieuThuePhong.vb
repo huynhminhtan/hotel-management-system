@@ -137,7 +137,7 @@ Public Class frmLapPhieuThuePhong
         '  phieuThue.MaHoaDon = ""
         phieuThue.PhuThuThucTe = ThamSoBUS.selectThamSoAll().TiLePhuThu
 
-        '' >> Lưu chi tiết phiếu thuê xuống CSDL
+        '' >> lưu chi tiết phiếu thuê xuống CSDL
         Dim dtDanhSachKhachThue As DataTable = dgvDanhSachKhachThue.DataSource
         Dim listChiTietPhieuThue As New List(Of ChiTietPhieuThueDTO)
 
@@ -154,17 +154,19 @@ Public Class frmLapPhieuThuePhong
             listChiTietPhieuThue.Add(chiTietPhieuThue)
         Next
 
-        ' Lưu phiếu thuê và danh sách chi tiết phiếu thuê xuống CSDL
+        ' lưu phiếu thuê và danh sách chi tiết phiếu thuê xuống CSDL
+        ' cập nhật lại tình trạng của phòng
         Using New CenteredMessageBox(Me)
             If ((PhieuThueBUS.themPhieuThue(phieuThue) = True) And
-                (ChiTietPhieuThueBUS.themDanhSachChiTietPhieuThue(listChiTietPhieuThue) > 0)) Then
+                (ChiTietPhieuThueBUS.themDanhSachChiTietPhieuThue(listChiTietPhieuThue) > 0) And
+                (TinhTrangBUS.capNhatTinhTrangPhongByMaPhong(phieuThue.MaPhong, phieuThue.NgayBatDauThue, phieuThue.NgayTraPhong) = True)) Then
                 MessageBox.Show("Lập phiếu thuê thành công.")
             Else
                 MessageBox.Show("Lập phiếu thuê không thành công.")
             End If
         End Using
 
-        ' Thoát khỏi from Lập phiếu thuê phòng
+        ' thoát khỏi from Lập phiếu thuê phòng
         Me.Close()
 
     End Sub
