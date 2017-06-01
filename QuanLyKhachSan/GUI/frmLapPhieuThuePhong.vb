@@ -120,6 +120,16 @@ Public Class frmLapPhieuThuePhong
 
     Private Sub btnLuu_Click(sender As Object, e As EventArgs) Handles btnLuu.Click
 
+        ' kiểm tra phòng còn trống trong khoảng thời gian NgayBatDau và NgayTraPhong
+        If (TinhTrangBUS.phongDuocThue(cboMaPhong.SelectedItem.MaPhong,
+                                               dtpNgayBatDauThue.Value.ToShortDateString(),
+                                               dtpNgayTraPhong.Value.ToShortDateString()) = True) Then
+            Using New CenteredMessageBox(Me)
+                MessageBox.Show("Phòng đã được thuê.")
+                Return
+            End Using
+
+        End If
         '' >> lưu phiếu thuê xuống CSDL
         Dim phieuThue As New PhieuThueDTO
 

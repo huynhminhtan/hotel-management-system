@@ -51,6 +51,29 @@ Namespace DAO
 
         End Function
 
+        Public Shared Function phongDuocThue(maPhong As String,
+                                                     ngayBatDau As Date, ngayTraPhong As Date) As Boolean
+            Dim dt As New DataTable
+
+            Try
+                Dim sqlParams As New List(Of SqlParameter)
+
+                sqlParams.Add(New SqlParameter("@MaPhong", maPhong))
+                sqlParams.Add(New SqlParameter("@NgayBatDau", ngayBatDau))
+                sqlParams.Add(New SqlParameter("@NgayTraPhong", ngayTraPhong))
+
+                dt = SqlDataAccessHelper.ExecuteQuery("phongDuocThue", sqlParams)
+
+                If (dt.Rows.Count > 0) Then
+                    Return True 'có phòng đã thuê 
+                End If
+
+            Catch ex As Exception
+                Throw ex
+            End Try
+            Return False
+        End Function
+
 #End Region
 
 #Region "Updating"

@@ -36,6 +36,11 @@ Namespace BUS
             Return TinhTrangDAO.selectTinhTrangPhongByThoiGian(ngayBatDau, ngayKetThuc)
         End Function
 
+        Public Shared Function phongDuocThue(maPhong As String,
+                                                 ngayBatDau As Date, ngayTraPhong As Date) As Boolean
+            Return TinhTrangDAO.phongDuocThue(maPhong, ngayBatDau, ngayTraPhong)
+        End Function
+
 #End Region
 
 #Region "Updating"
