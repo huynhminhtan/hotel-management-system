@@ -420,6 +420,19 @@ AS BEGIN
 		  ((@NgayBatDau <= NgayCuaTinhTrang) AND (NgayCuaTinhTrang <= @NgayTraPhong)) AND
 		  (LoaiTinhTrang = 'DA THUE')
 END
+
+-- selectPhongAllByNgayBatDauVaNgayKetThuc
+CREATE PROCEDURE selectPhongAllByNgayBatDauVaNgayTraPhong
+	@NgayBatDau smalldatetime,
+	@NgayTraPhong smalldatetime
+AS BEGIN
+	SELECT DISTINCT PHONG.MaPhong, TenPhong, TenLoaiPhong, DonGiaThue, LoaiTinhTrang
+	FROM ((TINHTRANG INNER JOIN PHONG ON PHONG.MaPhong = TINHTRANG.MaPhong)
+			INNER JOIN LOAIPHONG ON PHONG.MaLoaiPhong = LOAIPHONG.MaLoaiPhong)
+	WHERE ((@NgayBatDau <= NgayCuaTinhTrang) AND (NgayCuaTinhTrang <= @NgayTraPhong)) AND
+			(PHONG.isDeleted = 0)
+END
+
 ---------------------
 -----------------
 
@@ -456,6 +469,8 @@ EXEC selectTinhTrangPhongByThoiGian '9/1/2017','9/2/2017'
 EXEC capNhatTinhTrangPhongByMaPhong 'PH000', '06/01/2017'
 
 EXEC phongDuocThue 'PH000', '6/1/2017', '6/20/2017' 
+
+EXEC selectPhongAllByNgayBatDauVaNgayTraPhong '6/1/2017', '6/1/2017' 
 
 Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK000', 'LKVIP', 1.2)
 Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK001', 'LKSTANDAR', 1)
