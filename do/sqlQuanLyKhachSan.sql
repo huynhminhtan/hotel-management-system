@@ -13,7 +13,7 @@ create table LOAIPHONG
 create table PHONG
 (
 	MaPhong char(5) primary key,
-	TenPhong varchar(50),
+	TenPhong nvarchar(50),
 	MaLoaiPhong char(5),
 	GhiChu nvarchar(300),
 	isDeleted bit default 0,
@@ -21,9 +21,11 @@ create table PHONG
 	foreign key(MaLoaiPhong) references LOAIPHONG(MaLoaiPhong)
 )
 
+ALTER TABLE PHONG  ALTER COLUMN TenPhong nvarchar(50)
+
 create table TINHTRANG
 (
-	MaTinhTrang char(5) primary key,
+	MaTinhTrang char(22) primary key,
 	LoaiTinhTrang char(15) default 'TRONG',
 	MaPhong char(5),
 	NgayCuaTinhTrang smalldatetime,
@@ -345,12 +347,12 @@ AS BEGIN
      BEGIN
 		 INSERT INTO TINHTRANG(MaTinhTrang, LoaiTinhTrang, MaPhong, NgayCuaTinhTrang)
 		 SELECT 
-				'TT' + RIGHT('000' + CAST(TinhTrang_ID + 1 AS NVARCHAR(3)), 3),
+				'TT' + RIGHT('00000000000000000000' + CAST(TinhTrang_ID + 1 AS NVARCHAR(20)), 20),
 				@LoaiTinhTrang ,
 				@MaPhong ,
 				@NgayCuaTinhTrang 
 		 FROM (
-			  SELECT TOP 1 TinhTrang_ID = CAST(RIGHT(MaTinhTrang, 3) AS INT)
+			  SELECT TOP 1 TinhTrang_ID = CAST(RIGHT(MaTinhTrang, 20) AS INT)
 			  FROM TINHTRANG
 			  ORDER BY MaTinhTrang DESC
 		 ) t
@@ -358,7 +360,7 @@ AS BEGIN
 	ELSE
 	BEGIN
 		INSERT INTO TINHTRANG(MaTinhTrang, LoaiTinhTrang, MaPhong, NgayCuaTinhTrang) 
-		VALUES ('TT000', @LoaiTinhTrang, @MaPhong, @NgayCuaTinhTrang)
+		VALUES ('TT00000000000000000000', @LoaiTinhTrang, @MaPhong, @NgayCuaTinhTrang)
 	END
 END 
 ---------------------
@@ -390,7 +392,7 @@ EXEC NewPhieuThue 'PH001', '01/01/2001', '01/01/2002', 1.2, 2999, 1.2
 
 EXEC selectLoaiKhachHangByMaLoaiKhach 'LK000'
 
-EXEC NewTinhTrang
+EXEC NewTinhTrang 'TRONG', 'PH000', '01/01/2001' 
 
 Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK000', 'LKVIP', 1.2)
 Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK001', 'LKSTANDAR', 1)
