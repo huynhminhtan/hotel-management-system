@@ -21,7 +21,13 @@ Namespace BUS
             Return PhongDAO.selectPhongALL()
         End Function
 
+        Public Shared Function selectPhongAllByNgayBatDauVaNgayTraPhong(ngayBatDau As Date,
+                                                                        ngayTraPhong As Date) As DataTable
+            Return PhongDAO.selectPhongAllByNgayBatDauVaNgayTraPhong(ngayBatDau, ngayTraPhong)
+        End Function
 #End Region
+
+#Region "Inserting"
 
         Public Shared Function themDanhSachPhong(danhSachPhong As List(Of PhongDTO)) As Integer
             Dim ketQua As Integer = 0
@@ -41,6 +47,8 @@ Namespace BUS
             Next
             Return ketQua
         End Function
+
+#End Region
     End Class
 
 End Namespace

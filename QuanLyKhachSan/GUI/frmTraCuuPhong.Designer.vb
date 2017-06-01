@@ -23,7 +23,14 @@ Partial Class frmTraCuuPhong
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.dgvDanhSachPhong = New System.Windows.Forms.DataGridView()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lblTinhTrang = New System.Windows.Forms.Label()
+        Me.cboTinhTrang = New System.Windows.Forms.ComboBox()
+        Me.cboDonGiaThue = New System.Windows.Forms.ComboBox()
+        Me.txtTenPhong = New System.Windows.Forms.TextBox()
+        Me.lblTenPhong = New System.Windows.Forms.Label()
+        Me.lblTenLoaiPhong = New System.Windows.Forms.Label()
         Me.dtpNgayTraPhong = New System.Windows.Forms.DateTimePicker()
         Me.lblNgayTraPhong = New System.Windows.Forms.Label()
         Me.lblNgayBatDauThue = New System.Windows.Forms.Label()
@@ -32,30 +39,23 @@ Partial Class frmTraCuuPhong
         Me.txtMaPhong = New System.Windows.Forms.TextBox()
         Me.lblMaPhong = New System.Windows.Forms.Label()
         Me.lblDonGiaThue = New System.Windows.Forms.Label()
-        Me.lblTenLoaiPhong = New System.Windows.Forms.Label()
-        Me.txtTenPhong = New System.Windows.Forms.TextBox()
-        Me.lblTenPhong = New System.Windows.Forms.Label()
-        Me.cboDonGiaThue = New System.Windows.Forms.ComboBox()
-        Me.lblTinhTrang = New System.Windows.Forms.Label()
-        Me.cboTinhTrang = New System.Windows.Forms.ComboBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.btnHuy = New System.Windows.Forms.Button()
         Me.btnTim = New System.Windows.Forms.Button()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.MaPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TenPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.LoaiPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DonGiaThue = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TinhTrang = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox3.SuspendLayout()
+        CType(Me.dgvDanhSachPhong, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.DataGridView1)
+        Me.GroupBox3.Controls.Add(Me.dgvDanhSachPhong)
         Me.GroupBox3.Location = New System.Drawing.Point(12, 258)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4)
@@ -63,6 +63,24 @@ Partial Class frmTraCuuPhong
         Me.GroupBox3.TabIndex = 6
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Danh sách phòng"
+        '
+        'dgvDanhSachPhong
+        '
+        Me.dgvDanhSachPhong.AllowUserToAddRows = False
+        Me.dgvDanhSachPhong.AllowUserToDeleteRows = False
+        Me.dgvDanhSachPhong.AllowUserToOrderColumns = True
+        Me.dgvDanhSachPhong.AllowUserToResizeColumns = False
+        Me.dgvDanhSachPhong.AllowUserToResizeRows = False
+        Me.dgvDanhSachPhong.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvDanhSachPhong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvDanhSachPhong.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.MaPhong, Me.TenPhong, Me.LoaiPhong, Me.DonGiaThue, Me.TinhTrang})
+        Me.dgvDanhSachPhong.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgvDanhSachPhong.Location = New System.Drawing.Point(4, 17)
+        Me.dgvDanhSachPhong.Name = "dgvDanhSachPhong"
+        Me.dgvDanhSachPhong.ReadOnly = True
+        Me.dgvDanhSachPhong.RowHeadersWidth = 10
+        Me.dgvDanhSachPhong.Size = New System.Drawing.Size(599, 218)
+        Me.dgvDanhSachPhong.TabIndex = 0
         '
         'GroupBox1
         '
@@ -87,6 +105,65 @@ Partial Class frmTraCuuPhong
         Me.GroupBox1.TabIndex = 5
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "TRA CỨU PHÒNG"
+        '
+        'lblTinhTrang
+        '
+        Me.lblTinhTrang.AutoSize = True
+        Me.lblTinhTrang.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        Me.lblTinhTrang.Location = New System.Drawing.Point(63, 107)
+        Me.lblTinhTrang.Name = "lblTinhTrang"
+        Me.lblTinhTrang.Size = New System.Drawing.Size(58, 13)
+        Me.lblTinhTrang.TabIndex = 20
+        Me.lblTinhTrang.Text = "Tình trạng:"
+        '
+        'cboTinhTrang
+        '
+        Me.cboTinhTrang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboTinhTrang.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        Me.cboTinhTrang.FormattingEnabled = True
+        Me.cboTinhTrang.Items.AddRange(New Object() {"TRONG", "DA THUE"})
+        Me.cboTinhTrang.Location = New System.Drawing.Point(143, 104)
+        Me.cboTinhTrang.Name = "cboTinhTrang"
+        Me.cboTinhTrang.Size = New System.Drawing.Size(140, 21)
+        Me.cboTinhTrang.TabIndex = 19
+        '
+        'cboDonGiaThue
+        '
+        Me.cboDonGiaThue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboDonGiaThue.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        Me.cboDonGiaThue.FormattingEnabled = True
+        Me.cboDonGiaThue.Location = New System.Drawing.Point(392, 67)
+        Me.cboDonGiaThue.Name = "cboDonGiaThue"
+        Me.cboDonGiaThue.Size = New System.Drawing.Size(140, 21)
+        Me.cboDonGiaThue.TabIndex = 18
+        '
+        'txtTenPhong
+        '
+        Me.txtTenPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        Me.txtTenPhong.Location = New System.Drawing.Point(392, 34)
+        Me.txtTenPhong.Name = "txtTenPhong"
+        Me.txtTenPhong.Size = New System.Drawing.Size(140, 20)
+        Me.txtTenPhong.TabIndex = 17
+        '
+        'lblTenPhong
+        '
+        Me.lblTenPhong.AutoSize = True
+        Me.lblTenPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        Me.lblTenPhong.Location = New System.Drawing.Point(324, 37)
+        Me.lblTenPhong.Name = "lblTenPhong"
+        Me.lblTenPhong.Size = New System.Drawing.Size(62, 13)
+        Me.lblTenPhong.TabIndex = 16
+        Me.lblTenPhong.Text = "Tên phòng:"
+        '
+        'lblTenLoaiPhong
+        '
+        Me.lblTenLoaiPhong.AutoSize = True
+        Me.lblTenLoaiPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        Me.lblTenLoaiPhong.Location = New System.Drawing.Point(63, 71)
+        Me.lblTenLoaiPhong.Name = "lblTenLoaiPhong"
+        Me.lblTenLoaiPhong.Size = New System.Drawing.Size(63, 13)
+        Me.lblTenLoaiPhong.TabIndex = 15
+        Me.lblTenLoaiPhong.Text = "Loại phòng:"
         '
         'dtpNgayTraPhong
         '
@@ -165,64 +242,6 @@ Partial Class frmTraCuuPhong
         Me.lblDonGiaThue.TabIndex = 1
         Me.lblDonGiaThue.Text = "Đơn giá thuê:"
         '
-        'lblTenLoaiPhong
-        '
-        Me.lblTenLoaiPhong.AutoSize = True
-        Me.lblTenLoaiPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.lblTenLoaiPhong.Location = New System.Drawing.Point(63, 71)
-        Me.lblTenLoaiPhong.Name = "lblTenLoaiPhong"
-        Me.lblTenLoaiPhong.Size = New System.Drawing.Size(63, 13)
-        Me.lblTenLoaiPhong.TabIndex = 15
-        Me.lblTenLoaiPhong.Text = "Loại phòng:"
-        '
-        'txtTenPhong
-        '
-        Me.txtTenPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.txtTenPhong.Location = New System.Drawing.Point(392, 34)
-        Me.txtTenPhong.Name = "txtTenPhong"
-        Me.txtTenPhong.Size = New System.Drawing.Size(140, 20)
-        Me.txtTenPhong.TabIndex = 17
-        '
-        'lblTenPhong
-        '
-        Me.lblTenPhong.AutoSize = True
-        Me.lblTenPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.lblTenPhong.Location = New System.Drawing.Point(324, 37)
-        Me.lblTenPhong.Name = "lblTenPhong"
-        Me.lblTenPhong.Size = New System.Drawing.Size(62, 13)
-        Me.lblTenPhong.TabIndex = 16
-        Me.lblTenPhong.Text = "Tên phòng:"
-        '
-        'cboDonGiaThue
-        '
-        Me.cboDonGiaThue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboDonGiaThue.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.cboDonGiaThue.FormattingEnabled = True
-        Me.cboDonGiaThue.Location = New System.Drawing.Point(392, 67)
-        Me.cboDonGiaThue.Name = "cboDonGiaThue"
-        Me.cboDonGiaThue.Size = New System.Drawing.Size(140, 21)
-        Me.cboDonGiaThue.TabIndex = 18
-        '
-        'lblTinhTrang
-        '
-        Me.lblTinhTrang.AutoSize = True
-        Me.lblTinhTrang.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.lblTinhTrang.Location = New System.Drawing.Point(63, 107)
-        Me.lblTinhTrang.Name = "lblTinhTrang"
-        Me.lblTinhTrang.Size = New System.Drawing.Size(58, 13)
-        Me.lblTinhTrang.TabIndex = 20
-        Me.lblTinhTrang.Text = "Tình trạng:"
-        '
-        'cboTinhTrang
-        '
-        Me.cboTinhTrang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboTinhTrang.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.cboTinhTrang.FormattingEnabled = True
-        Me.cboTinhTrang.Location = New System.Drawing.Point(143, 104)
-        Me.cboTinhTrang.Name = "cboTinhTrang"
-        Me.cboTinhTrang.Size = New System.Drawing.Size(140, 21)
-        Me.cboTinhTrang.TabIndex = 19
-        '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.btnHuy)
@@ -253,57 +272,44 @@ Partial Class frmTraCuuPhong
         Me.btnTim.Text = "Tìm"
         Me.btnTim.UseVisualStyleBackColor = True
         '
-        'DataGridView1
-        '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.AllowUserToOrderColumns = True
-        Me.DataGridView1.AllowUserToResizeColumns = False
-        Me.DataGridView1.AllowUserToResizeRows = False
-        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.MaPhong, Me.TenPhong, Me.LoaiPhong, Me.DonGiaThue, Me.TinhTrang})
-        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView1.Location = New System.Drawing.Point(4, 17)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.RowHeadersWidth = 10
-        Me.DataGridView1.Size = New System.Drawing.Size(599, 218)
-        Me.DataGridView1.TabIndex = 0
-        '
         'MaPhong
         '
+        Me.MaPhong.DataPropertyName = "MaPhong"
         Me.MaPhong.HeaderText = "Mã Phòng"
         Me.MaPhong.Name = "MaPhong"
         Me.MaPhong.ReadOnly = True
         '
         'TenPhong
         '
+        Me.TenPhong.DataPropertyName = "TenPhong"
         Me.TenPhong.HeaderText = "Tên Phòng"
         Me.TenPhong.Name = "TenPhong"
         Me.TenPhong.ReadOnly = True
         '
         'LoaiPhong
         '
+        Me.LoaiPhong.DataPropertyName = "TenLoaiPhong"
         Me.LoaiPhong.HeaderText = "Loại Phòng"
         Me.LoaiPhong.Name = "LoaiPhong"
         Me.LoaiPhong.ReadOnly = True
         '
         'DonGiaThue
         '
+        Me.DonGiaThue.DataPropertyName = "DonGiaThue"
         Me.DonGiaThue.HeaderText = "Đơn Giá Thuê"
         Me.DonGiaThue.Name = "DonGiaThue"
         Me.DonGiaThue.ReadOnly = True
         '
         'TinhTrang
         '
+        Me.TinhTrang.DataPropertyName = "LoaiTinhTrang"
         Me.TinhTrang.HeaderText = "Tình Trạng"
         Me.TinhTrang.Name = "TinhTrang"
         Me.TinhTrang.ReadOnly = True
         '
         'frmTraCuuPhong
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(631, 509)
         Me.Controls.Add(Me.GroupBox2)
@@ -311,14 +317,14 @@ Partial Class frmTraCuuPhong
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "frmTraCuuPhong"
         Me.Text = "frmTraCuuPhong"
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        Me.GroupBox2.ResumeLayout(False)
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ResumeLayout(False)
+        Me.GroupBox3.ResumeLayout(false)
+        CType(Me.dgvDanhSachPhong,System.ComponentModel.ISupportInitialize).EndInit
+        Me.GroupBox1.ResumeLayout(false)
+        Me.GroupBox1.PerformLayout
+        Me.GroupBox2.ResumeLayout(false)
+        Me.ResumeLayout(false)
 
-    End Sub
+End Sub
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents lblTenLoaiPhong As System.Windows.Forms.Label
@@ -338,7 +344,7 @@ Partial Class frmTraCuuPhong
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents btnHuy As System.Windows.Forms.Button
     Friend WithEvents btnTim As System.Windows.Forms.Button
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents dgvDanhSachPhong As System.Windows.Forms.DataGridView
     Friend WithEvents MaPhong As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents TenPhong As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents LoaiPhong As System.Windows.Forms.DataGridViewTextBoxColumn

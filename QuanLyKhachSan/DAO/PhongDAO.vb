@@ -89,6 +89,28 @@ Namespace DAO
             End Try
             Return listPhong
         End Function
+
+        Public Shared Function selectPhongAllByNgayBatDauVaNgayTraPhong(ngayBatDau As Date,
+                                                                        ngayTraPhong As Date) As DataTable
+            Dim dt As New DataTable
+
+            Try
+                Dim sqlParams As New List(Of SqlParameter)
+
+                sqlParams.Add(New SqlParameter("@NgayBatDau", ngayBatDau.Date))
+                sqlParams.Add(New SqlParameter("@NgayTraPhong", ngayTraPhong.Date))
+
+                dt = SqlDataAccessHelper.ExecuteQuery("selectPhongAllByNgayBatDauVaNgayTraPhong", sqlParams)
+
+                If (dt.Rows.Count <= 0) Then
+                    Return Nothing
+                End If
+
+            Catch ex As Exception
+                Throw ex
+            End Try
+            Return dt
+        End Function
 #End Region
 
     End Class
