@@ -25,9 +25,18 @@ Namespace BUS
 
         Public Shared Function themDanhSachPhong(danhSachPhong As List(Of PhongDTO)) As Integer
             Dim ketQua As Integer = 0
-            For i As Integer = 0 To danhSachPhong.Count - 1
+            For i As Integer = 0 To (danhSachPhong.Count - 1)
                 If (PhongDAO.insertPhong(danhSachPhong(i))) Then
                     ketQua += 1
+
+                    ' thêm tình trạng cho phòng
+                    Dim tinhTrang As New TinhTrangDTO
+                    tinhTrang.LoaiTinhTrang = "TRONG"
+                    tinhTrang.MaPhong = danhSachPhong(i).MaPhong
+
+                    If (TinhTrangBUS.themTinhTrang(tinhTrang, Date.Now) = False) Then
+                        Return 0
+                    End If
                 End If
             Next
             Return ketQua
