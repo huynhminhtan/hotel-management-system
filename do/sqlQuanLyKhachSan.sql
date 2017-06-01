@@ -397,6 +397,16 @@ AS BEGIN
 		INNER JOIN LOAIPHONG ON PHONG.MaLoaiPhong = LOAIPHONG.MaLoaiPhong
 	WHERE NgayCuaTinhTrang BETWEEN @NgayBatDau AND @NgayKetThuc
 END
+
+-- update capNhatTinhTrangPhongByMaPhong
+CREATE PROCEDURE capNhatTinhTrangPhongByMaPhong
+	@MaPhong char(5),
+	@NgayCuaTinhTrang smalldatetime
+AS BEGIN
+	UPDATE TINHTRANG
+	SET LoaiTinhTrang = 'DA THUE'
+	WHERE (MaPhong = @MaPhong) AND NgayCuaTinhTrang = @NgayCuaTinhTrang
+END
 ---------------------
 -----------------
 
@@ -441,6 +451,6 @@ INSERT INTO PHIEUTHUE(MaPhieuThue, MaPhong, NgayTraPhong, NgayBatDauThue, DonGia
 
 select * FRom CHITIETPHIEUTHUE
 
-select * FRom TINHTRANG
+select top 1 * FRom TINHTRANG
 
-DELETE FROM TINHTRANG
+DELETE FROM PHONG
