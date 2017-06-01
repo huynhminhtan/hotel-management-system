@@ -1,0 +1,7 @@
+﻿- Chưa validate nhập vào CMND
+- Tìm kiếm linh hoạt: khi set giá trị bất kì không cần viết store procedure riêng lẽ cho từng trường hợp.
+
+- Chức năng tìm phòng: 
+ + Chỉ theo: tên phòng hoặc theo mã phòng, ngày bắt đầu, ngày kết thúc: hiển thị những phòng có tên phòng hoặc mã phòng tương ứng với ngày bắt đầu, ngày kết thúc phù hợp với giá trị tìm kiếm.
+ + Chỉ theo: tên loại phòng hoặc đơn giá, tình trạng, ngày bắt đầu, ngày kết thúc: hiển thị những phòng có tên loại phòng hoặc đơn giá, tình trạng phù hợp với giá trị tìm kiếm và tương ứng với ngày bắt đầu, ngày kết thúc.
+
