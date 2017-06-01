@@ -407,6 +407,19 @@ AS BEGIN
 	SET LoaiTinhTrang = 'DA THUE'
 	WHERE (MaPhong = @MaPhong) AND NgayCuaTinhTrang = @NgayCuaTinhTrang
 END
+
+-- kiemTraTinhTrangPhongByMaPhong
+CREATE PROCEDURE phongDuocThue
+	@MaPhong char(5),
+	@NgayBatDau smalldatetime,
+	@NgayTraPhong smalldatetime
+AS BEGIN
+	SELECT *
+	FROM TINHTRANG
+	WHERE (MaPhong = @MaPhong) AND 
+		  ((@NgayBatDau <= NgayCuaTinhTrang) AND (NgayCuaTinhTrang <= @NgayTraPhong)) AND
+		  (LoaiTinhTrang = 'DA THUE')
+END
 ---------------------
 -----------------
 
@@ -440,6 +453,10 @@ EXEC NewTinhTrang 'TRONG', 'PH000', '01/01/2001'
 
 EXEC selectTinhTrangPhongByThoiGian '9/1/2017','9/2/2017'
 
+EXEC capNhatTinhTrangPhongByMaPhong 'PH000', '06/01/2017'
+
+EXEC phongDuocThue 'PH000', '6/1/2017', '6/20/2017' 
+
 Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK000', 'LKVIP', 1.2)
 Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK001', 'LKSTANDAR', 1)
 
@@ -451,6 +468,6 @@ INSERT INTO PHIEUTHUE(MaPhieuThue, MaPhong, NgayTraPhong, NgayBatDauThue, DonGia
 
 select * FRom CHITIETPHIEUTHUE
 
-select top 1 * FRom TINHTRANG
+select* FRom PHIEUTHUE
 
 DELETE FROM PHONG
