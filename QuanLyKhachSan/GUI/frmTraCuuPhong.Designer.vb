@@ -24,6 +24,12 @@ Partial Class frmTraCuuPhong
     Private Sub InitializeComponent()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.dgvDanhSachPhong = New System.Windows.Forms.DataGridView()
+        Me.MaPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TenPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LoaiPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DonGiaThue = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TinhTrang = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Ngay = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.lblTinhTrang = New System.Windows.Forms.Label()
         Me.cboTinhTrang = New System.Windows.Forms.ComboBox()
@@ -42,11 +48,6 @@ Partial Class frmTraCuuPhong
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.btnHuy = New System.Windows.Forms.Button()
         Me.btnTim = New System.Windows.Forms.Button()
-        Me.MaPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TenPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LoaiPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DonGiaThue = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TinhTrang = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox3.SuspendLayout()
         CType(Me.dgvDanhSachPhong, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -73,7 +74,7 @@ Partial Class frmTraCuuPhong
         Me.dgvDanhSachPhong.AllowUserToResizeRows = False
         Me.dgvDanhSachPhong.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvDanhSachPhong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvDanhSachPhong.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.MaPhong, Me.TenPhong, Me.LoaiPhong, Me.DonGiaThue, Me.TinhTrang})
+        Me.dgvDanhSachPhong.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.MaPhong, Me.TenPhong, Me.LoaiPhong, Me.DonGiaThue, Me.TinhTrang, Me.Ngay})
         Me.dgvDanhSachPhong.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvDanhSachPhong.Location = New System.Drawing.Point(4, 17)
         Me.dgvDanhSachPhong.Name = "dgvDanhSachPhong"
@@ -81,6 +82,48 @@ Partial Class frmTraCuuPhong
         Me.dgvDanhSachPhong.RowHeadersWidth = 10
         Me.dgvDanhSachPhong.Size = New System.Drawing.Size(599, 218)
         Me.dgvDanhSachPhong.TabIndex = 0
+        '
+        'MaPhong
+        '
+        Me.MaPhong.DataPropertyName = "MaPhong"
+        Me.MaPhong.HeaderText = "Mã Phòng"
+        Me.MaPhong.Name = "MaPhong"
+        Me.MaPhong.ReadOnly = True
+        '
+        'TenPhong
+        '
+        Me.TenPhong.DataPropertyName = "TenPhong"
+        Me.TenPhong.HeaderText = "Tên Phòng"
+        Me.TenPhong.Name = "TenPhong"
+        Me.TenPhong.ReadOnly = True
+        '
+        'LoaiPhong
+        '
+        Me.LoaiPhong.DataPropertyName = "TenLoaiPhong"
+        Me.LoaiPhong.HeaderText = "Loại Phòng"
+        Me.LoaiPhong.Name = "LoaiPhong"
+        Me.LoaiPhong.ReadOnly = True
+        '
+        'DonGiaThue
+        '
+        Me.DonGiaThue.DataPropertyName = "DonGiaThue"
+        Me.DonGiaThue.HeaderText = "Đơn Giá Thuê"
+        Me.DonGiaThue.Name = "DonGiaThue"
+        Me.DonGiaThue.ReadOnly = True
+        '
+        'TinhTrang
+        '
+        Me.TinhTrang.DataPropertyName = "LoaiTinhTrang"
+        Me.TinhTrang.HeaderText = "Tình Trạng"
+        Me.TinhTrang.Name = "TinhTrang"
+        Me.TinhTrang.ReadOnly = True
+        '
+        'Ngay
+        '
+        Me.Ngay.DataPropertyName = "NgayCuaTinhTrang"
+        Me.Ngay.HeaderText = "Ngày"
+        Me.Ngay.Name = "Ngay"
+        Me.Ngay.ReadOnly = True
         '
         'GroupBox1
         '
@@ -215,7 +258,7 @@ Partial Class frmTraCuuPhong
         '
         'txtMaPhong
         '
-        Me.txtMaPhong.Cursor = System.Windows.Forms.Cursors.Arrow
+        Me.txtMaPhong.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtMaPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.txtMaPhong.Location = New System.Drawing.Point(143, 34)
         Me.txtMaPhong.Name = "txtMaPhong"
@@ -272,49 +315,16 @@ Partial Class frmTraCuuPhong
         Me.btnTim.Text = "Tìm"
         Me.btnTim.UseVisualStyleBackColor = True
         '
-        'MaPhong
-        '
-        Me.MaPhong.DataPropertyName = "MaPhong"
-        Me.MaPhong.HeaderText = "Mã Phòng"
-        Me.MaPhong.Name = "MaPhong"
-        Me.MaPhong.ReadOnly = True
-        '
-        'TenPhong
-        '
-        Me.TenPhong.DataPropertyName = "TenPhong"
-        Me.TenPhong.HeaderText = "Tên Phòng"
-        Me.TenPhong.Name = "TenPhong"
-        Me.TenPhong.ReadOnly = True
-        '
-        'LoaiPhong
-        '
-        Me.LoaiPhong.DataPropertyName = "TenLoaiPhong"
-        Me.LoaiPhong.HeaderText = "Loại Phòng"
-        Me.LoaiPhong.Name = "LoaiPhong"
-        Me.LoaiPhong.ReadOnly = True
-        '
-        'DonGiaThue
-        '
-        Me.DonGiaThue.DataPropertyName = "DonGiaThue"
-        Me.DonGiaThue.HeaderText = "Đơn Giá Thuê"
-        Me.DonGiaThue.Name = "DonGiaThue"
-        Me.DonGiaThue.ReadOnly = True
-        '
-        'TinhTrang
-        '
-        Me.TinhTrang.DataPropertyName = "LoaiTinhTrang"
-        Me.TinhTrang.HeaderText = "Tình Trạng"
-        Me.TinhTrang.Name = "TinhTrang"
-        Me.TinhTrang.ReadOnly = True
-        '
         'frmTraCuuPhong
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(631, 509)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MaximizeBox = False
         Me.Name = "frmTraCuuPhong"
         Me.Text = "frmTraCuuPhong"
         Me.GroupBox3.ResumeLayout(false)
@@ -350,4 +360,5 @@ End Sub
     Friend WithEvents LoaiPhong As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DonGiaThue As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents TinhTrang As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Ngay As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

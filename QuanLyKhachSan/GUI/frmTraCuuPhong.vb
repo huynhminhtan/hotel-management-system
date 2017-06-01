@@ -42,4 +42,51 @@ Public Class frmTraCuuPhong
         ' hiển thị giới hạn NgayTrPhong
         dtpNgayTraPhong.MinDate = dtpNgayBatDauThue.Value
     End Sub
+
+    Private Sub btnTim_Click(sender As Object, e As EventArgs) Handles btnTim.Click
+        If (String.IsNullOrEmpty(txtMaPhong.Text)) And (String.IsNullOrEmpty(txtTenPhong.Text)) Then
+            dgvDanhSachPhong.DataSource = PhongBUS.selectPhongKhongMaPhongKhongTenPhong(cboTenLoaiPhong.SelectedItem.MaLoaiPhong.ToString,
+                                                              Double.Parse(cboDonGiaThue.SelectedItem.DonGiaThue.ToString),
+                                                              cboTinhTrang.SelectedItem.ToString,
+                                                              dtpNgayBatDauThue.Value,
+                                                              dtpNgayTraPhong.Value)
+        ElseIf ((String.IsNullOrEmpty(txtMaPhong.Text) = False) And (String.IsNullOrEmpty(txtTenPhong.Text))) Then
+            ' khi tìm kiếm phòng thì phải biết được loại phòng hoặc đơn giá
+            'dgvDanhSachPhong.DataSource = PhongBUS.selectPhongKhongTenPhong((txtMaPhong.Text),
+            '                                                  cboTenLoaiPhong.SelectedItem.MaLoaiPhong.ToString,
+            '                                                  Double.Parse(cboDonGiaThue.SelectedItem.DonGiaThue.ToString),
+            '                                                  cboTinhTrang.SelectedItem.ToString,
+            '                                                  dtpNgayBatDauThue.Value,
+            '                                                  dtpNgayTraPhong.Value)
+
+            dgvDanhSachPhong.DataSource = PhongBUS.selectPhongByMaPhongNgayBatDauNgayTraPhong((txtMaPhong.Text),
+                                                            dtpNgayBatDauThue.Value,
+                                                            dtpNgayTraPhong.Value)
+        ElseIf ((String.IsNullOrEmpty(txtMaPhong.Text)) And (String.IsNullOrEmpty(txtTenPhong.Text) = False)) Then
+            ' khi tìm kiếm phòng thì phải biết được loại phòng hoặc đơn giá
+            'dgvDanhSachPhong.DataSource = PhongBUS.selectPhongKhongMaPhong((txtTenPhong.Text),
+            '                                                  cboTenLoaiPhong.SelectedItem.MaLoaiPhong.ToString,
+            '                                                  Double.Parse(cboDonGiaThue.SelectedItem.DonGiaThue.ToString),
+            '                                                  cboTinhTrang.SelectedItem.ToString,
+            '                                                  dtpNgayBatDauThue.Value,
+            '                                                  dtpNgayTraPhong.Value)
+
+            dgvDanhSachPhong.DataSource = PhongBUS.selectPhongByTenPhongNgayBatDauNgayTraPhong((txtTenPhong.Text),
+                                                              dtpNgayBatDauThue.Value,
+                                                              dtpNgayTraPhong.Value)
+        End If
+
+        ' xóa giá trị đã có
+        txtTenPhong.Text = ""
+        txtMaPhong.Text = ""
+    End Sub
+
+   
+    Private Sub txtMaPhong_TextChanged(sender As Object, e As EventArgs) Handles txtMaPhong.TextChanged
+        txtTenPhong.Text = ""
+    End Sub
+
+    Private Sub txtTenPhong_TextChanged(sender As Object, e As EventArgs) Handles txtTenPhong.TextChanged
+        txtMaPhong.Text = ""
+    End Sub
 End Class

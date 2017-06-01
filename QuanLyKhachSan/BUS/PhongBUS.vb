@@ -25,6 +25,48 @@ Namespace BUS
                                                                         ngayTraPhong As Date) As DataTable
             Return PhongDAO.selectPhongAllByNgayBatDauVaNgayTraPhong(ngayBatDau, ngayTraPhong)
         End Function
+
+        Public Shared Function selectPhongKhongMaPhongKhongTenPhong(maLoaiPhong As String,
+                                                                    donGiaThue As Double,
+                                                                    loaiTinhTrang As String,
+                                                                    ngayBatDau As Date,
+                                                                    ngayTraPhong As Date) As DataTable
+            Return PhongDAO.selectPhongKhongMaPhongKhongTenPhong(maLoaiPhong, donGiaThue,
+                                                                 loaiTinhTrang, ngayBatDau, ngayTraPhong)
+        End Function
+
+        'Public Shared Function selectPhongKhongTenPhong(maPhong As String,
+        '                                                maLoaiPhong As String,
+        '                                                donGiaThue As Double,
+        '                                                loaiTinhTrang As String,
+        '                                                ngayBatDau As Date,
+        '                                                ngayTraPhong As Date) As DataTable
+        '    Return PhongDAO.selectPhongKhongTenPhong(maPhong, maLoaiPhong, donGiaThue,
+        '                                                         loaiTinhTrang, ngayBatDau, ngayTraPhong)
+        'End Function
+
+        'Public Shared Function selectPhongKhongMaPhong(tenPhong As String,
+        '                                                maLoaiPhong As String,
+        '                                                donGiaThue As Double,
+        '                                                loaiTinhTrang As String,
+        '                                                ngayBatDau As Date,
+        '                                                ngayTraPhong As Date) As DataTable
+        '    Return PhongDAO.selectPhongKhongMaPhong(tenPhong, maLoaiPhong, donGiaThue,
+        '                                                         loaiTinhTrang, ngayBatDau, ngayTraPhong)
+        'End Function
+
+        Public Shared Function selectPhongByMaPhongNgayBatDauNgayTraPhong(maPhong As String,
+                                                       ngayBatDau As Date,
+                                                       ngayTraPhong As Date) As DataTable
+            Return PhongDAO.selectPhongByMaPhongNgayBatDauNgayTraPhong(maPhong, ngayBatDau, ngayTraPhong)
+        End Function
+
+        Public Shared Function selectPhongByTenPhongNgayBatDauNgayTraPhong(tenPhong As String,
+                                                       ngayBatDau As Date,
+                                                       ngayTraPhong As Date) As DataTable
+            Return PhongDAO.selectPhongByTenPhongNgayBatDauNgayTraPhong(tenPhong, ngayBatDau, ngayTraPhong)
+        End Function
+
 #End Region
 
 #Region "Inserting"
