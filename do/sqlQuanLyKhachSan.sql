@@ -426,11 +426,97 @@ CREATE PROCEDURE selectPhongAllByNgayBatDauVaNgayTraPhong
 	@NgayBatDau smalldatetime,
 	@NgayTraPhong smalldatetime
 AS BEGIN
-	SELECT DISTINCT PHONG.MaPhong, TenPhong, TenLoaiPhong, DonGiaThue, LoaiTinhTrang
+	SELECT DISTINCT PHONG.MaPhong, TenPhong, TenLoaiPhong, DonGiaThue, LoaiTinhTrang, NgayCuaTinhTrang
 	FROM ((TINHTRANG INNER JOIN PHONG ON PHONG.MaPhong = TINHTRANG.MaPhong)
 			INNER JOIN LOAIPHONG ON PHONG.MaLoaiPhong = LOAIPHONG.MaLoaiPhong)
 	WHERE ((@NgayBatDau <= NgayCuaTinhTrang) AND (NgayCuaTinhTrang <= @NgayTraPhong)) AND
 			(PHONG.isDeleted = 0)
+END
+
+-- selectPhongKhongMaPhongKhongTenPhong
+CREATE PROCEDURE selectPhongKhongMaPhongKhongTenPhong
+	@MaLoaiPhong char(5),
+	@DonGiaThue float,
+	@LoaiTinhTrang char(15),
+	@NgayBatDau smalldatetime,
+	@NgayTraPhong smalldatetime
+AS BEGIN
+	SELECT DISTINCT PHONG.MaPhong, TenPhong, TenLoaiPhong, DonGiaThue, LoaiTinhTrang, NgayCuaTinhTrang
+	FROM ((TINHTRANG INNER JOIN PHONG ON PHONG.MaPhong = TINHTRANG.MaPhong)
+			INNER JOIN LOAIPHONG ON PHONG.MaLoaiPhong = LOAIPHONG.MaLoaiPhong)
+	WHERE ((@NgayBatDau <= NgayCuaTinhTrang) AND (NgayCuaTinhTrang <= @NgayTraPhong)) AND
+			(PHONG.isDeleted = 0) AND
+			(LOAIPHONG.MaLoaiPhong = @MaLoaiPhong) AND
+			(DonGiaThue = @DonGiaThue) AND
+			(LoaiTinhTrang = @LoaiTinhTrang)
+END
+
+-- selectPhongKhongTenPhong
+CREATE PROCEDURE selectPhongKhongTenPhong
+	@MaPhong char(5),
+	@MaLoaiPhong char(5),
+	@DonGiaThue float,
+	@LoaiTinhTrang char(15),
+	@NgayBatDau smalldatetime,
+	@NgayTraPhong smalldatetime
+AS BEGIN
+	SELECT PHONG.MaPhong, TenPhong, TenLoaiPhong, DonGiaThue, LoaiTinhTrang, NgayCuaTinhTrang
+	FROM ((TINHTRANG INNER JOIN PHONG ON PHONG.MaPhong = TINHTRANG.MaPhong)
+			INNER JOIN LOAIPHONG ON PHONG.MaLoaiPhong = LOAIPHONG.MaLoaiPhong)
+	WHERE ((@NgayBatDau <= NgayCuaTinhTrang) AND (NgayCuaTinhTrang <= @NgayTraPhong)) AND
+			(PHONG.isDeleted = 0) AND
+			(LOAIPHONG.MaLoaiPhong = @MaLoaiPhong) AND
+			(DonGiaThue = @DonGiaThue) AND
+			(LoaiTinhTrang = @LoaiTinhTrang) AND
+			(PHONG.MaPhong = @MaPhong)
+END
+
+-- selectPhongKhongMaPhong
+CREATE PROCEDURE selectPhongKhongMaPhong
+	@TenPhong nvarchar(50),
+	@MaLoaiPhong char(5),
+	@DonGiaThue float,
+	@LoaiTinhTrang char(15),
+	@NgayBatDau smalldatetime,
+	@NgayTraPhong smalldatetime
+AS BEGIN
+	SELECT PHONG.MaPhong, TenPhong, TenLoaiPhong, DonGiaThue, LoaiTinhTrang, NgayCuaTinhTrang
+	FROM ((TINHTRANG INNER JOIN PHONG ON PHONG.MaPhong = TINHTRANG.MaPhong)
+			INNER JOIN LOAIPHONG ON PHONG.MaLoaiPhong = LOAIPHONG.MaLoaiPhong)
+	WHERE ((@NgayBatDau <= NgayCuaTinhTrang) AND (NgayCuaTinhTrang <= @NgayTraPhong)) AND
+			(PHONG.isDeleted = 0) AND
+			(LOAIPHONG.MaLoaiPhong = @MaLoaiPhong) AND
+			(DonGiaThue = @DonGiaThue) AND
+			(LoaiTinhTrang = @LoaiTinhTrang) AND
+			(PHONG.TenPhong = @TenPhong)
+END
+
+-- selectPhongByMaPhongNgayBatDauNgayTraPhong
+CREATE PROCEDURE selectPhongByMaPhongNgayBatDauNgayTraPhong
+	@MaPhong char(5),
+	@NgayBatDau smalldatetime,
+	@NgayTraPhong smalldatetime
+AS BEGIN
+	SELECT PHONG.MaPhong, TenPhong, TenLoaiPhong, DonGiaThue, LoaiTinhTrang, NgayCuaTinhTrang
+	FROM ((TINHTRANG INNER JOIN PHONG ON PHONG.MaPhong = TINHTRANG.MaPhong)
+			INNER JOIN LOAIPHONG ON PHONG.MaLoaiPhong = LOAIPHONG.MaLoaiPhong)
+	WHERE ((@NgayBatDau <= NgayCuaTinhTrang) AND (NgayCuaTinhTrang <= @NgayTraPhong)) AND
+			(PHONG.isDeleted = 0) AND
+			(PHONG.MaPhong = @MaPhong)
+END
+
+-- selectPhongByTenPhongNgayBatDauNgayTraPhong
+CREATE PROCEDURE selectPhongByTenPhongNgayBatDauNgayTraPhong
+	@TenPhong nvarchar(50),
+	@NgayBatDau smalldatetime,
+	@NgayTraPhong smalldatetime
+AS BEGIN
+	SELECT PHONG.MaPhong, TenPhong, TenLoaiPhong, DonGiaThue, LoaiTinhTrang, NgayCuaTinhTrang
+	FROM ((TINHTRANG INNER JOIN PHONG ON PHONG.MaPhong = TINHTRANG.MaPhong)
+			INNER JOIN LOAIPHONG ON PHONG.MaLoaiPhong = LOAIPHONG.MaLoaiPhong)
+	WHERE ((@NgayBatDau <= NgayCuaTinhTrang) AND (NgayCuaTinhTrang <= @NgayTraPhong)) AND
+			(PHONG.isDeleted = 0) AND
+			(PHONG.TenPhong = @TenPhong)
 END
 
 ---------------------
@@ -471,6 +557,12 @@ EXEC capNhatTinhTrangPhongByMaPhong 'PH000', '06/01/2017'
 EXEC phongDuocThue 'PH000', '6/1/2017', '6/20/2017' 
 
 EXEC selectPhongAllByNgayBatDauVaNgayTraPhong '6/1/2017', '6/1/2017' 
+
+EXEC selectPhongKhongMaPhongKhongTenPhong 'LP000', '120000', 'TRONG', '6/1/2017', '6/5/2017'
+
+EXEC selectPhongKhongTenPhong 'PH001', 'LP000', '120000', 'TRONG', '6/1/2017', '6/1/2017'
+
+EXEC selectPhongKhongMaPhong N'Phòng Lạnh', 'LP000', '120000', 'TRONG', '6/1/2017', '6/1/2017'
 
 Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK000', 'LKVIP', 1.2)
 Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK001', 'LKSTANDAR', 1)
