@@ -45,9 +45,9 @@ create table LOAIKHACHHANG
 create table HOADON
 (
 	MaHoaDon char(5) primary key,
-	TenKhachHangHD varchar(50),
-	DiaChiKhachHD varchar(100),
-	TriGiaHoaDon float
+	TenKhachHangHD nvarchar(50),
+	DiaChiKhachHD nvarchar(100),
+	TriGiaHoaDon float,
 
 	isDeleted bit default 0,
 )
@@ -63,7 +63,7 @@ create table PHIEUTHUE
 	DonGiaThueThucTe float,
 	ThanhTienPhong float,
 
-	MaHoaDon char(5) default null,
+	MaHoaDon char(5),
 	--foreign key (MaHoaDon) references HOADON(MaHoaDon),
 
 	PhuThuThucTe float,
@@ -282,7 +282,7 @@ AS BEGIN
 
      IF exists (SELECT *FROM PHIEUTHUE)
      BEGIN
-		 INSERT INTO PHIEUTHUE(MaPhieuThue, MaPhong, NgayTraPhong, NgayBatDauThue, DonGiaThueThucTe, ThanhTienPhong, MaHoaDon, PhuThuThucTe)
+		 INSERT INTO PHIEUTHUE(MaPhieuThue, MaPhong, NgayTraPhong, NgayBatDauThue, DonGiaThueThucTe, ThanhTienPhong, PhuThuThucTe)
 		 SELECT 
 				'PT' + RIGHT('000' + CAST(PhieuThue_ID + 1 AS NVARCHAR(3)), 3),
 				@MaPhong,
@@ -290,7 +290,6 @@ AS BEGIN
 				@NgayBatDauThue , 
 				@DonGiaThueThucTe ,
 				@ThanhTienPhong ,
-				null,
 				@PhuThuThucTe 
 		 FROM (
 			  SELECT TOP 1 PhieuThue_ID = CAST(RIGHT(MaPhieuThue, 3) AS INT)
@@ -300,8 +299,8 @@ AS BEGIN
 	END
 	ELSE
 	BEGIN
-		INSERT INTO PHIEUTHUE(MaPhieuThue, MaPhong, NgayTraPhong, NgayBatDauThue, DonGiaThueThucTe, ThanhTienPhong, MaHoaDon, PhuThuThucTe) 
-		VALUES ('PT000', @MaPhong, @NgayTraPhong, @NgayBatDauThue, @DonGiaThueThucTe, @ThanhTienPhong, null, @PhuThuThucTe)
+		INSERT INTO PHIEUTHUE(MaPhieuThue, MaPhong, NgayTraPhong, NgayBatDauThue, DonGiaThueThucTe, ThanhTienPhong, PhuThuThucTe) 
+		VALUES ('PT000', @MaPhong, @NgayTraPhong, @NgayBatDauThue, @DonGiaThueThucTe, @ThanhTienPhong, @PhuThuThucTe)
 	END
 END 
 
@@ -452,44 +451,44 @@ AS BEGIN
 END
 
 -- selectPhongKhongTenPhong
-CREATE PROCEDURE selectPhongKhongTenPhong
-	@MaPhong char(5),
-	@MaLoaiPhong char(5),
-	@DonGiaThue float,
-	@LoaiTinhTrang char(15),
-	@NgayBatDau smalldatetime,
-	@NgayTraPhong smalldatetime
-AS BEGIN
-	SELECT PHONG.MaPhong, TenPhong, TenLoaiPhong, DonGiaThue, LoaiTinhTrang, NgayCuaTinhTrang
-	FROM ((TINHTRANG INNER JOIN PHONG ON PHONG.MaPhong = TINHTRANG.MaPhong)
-			INNER JOIN LOAIPHONG ON PHONG.MaLoaiPhong = LOAIPHONG.MaLoaiPhong)
-	WHERE ((@NgayBatDau <= NgayCuaTinhTrang) AND (NgayCuaTinhTrang <= @NgayTraPhong)) AND
-			(PHONG.isDeleted = 0) AND
-			(LOAIPHONG.MaLoaiPhong = @MaLoaiPhong) AND
-			(DonGiaThue = @DonGiaThue) AND
-			(LoaiTinhTrang = @LoaiTinhTrang) AND
-			(PHONG.MaPhong = @MaPhong)
-END
+--CREATE PROCEDURE selectPhongKhongTenPhong
+--	@MaPhong char(5),
+--	@MaLoaiPhong char(5),
+--	@DonGiaThue float,
+--	@LoaiTinhTrang char(15),
+--	@NgayBatDau smalldatetime,
+--	@NgayTraPhong smalldatetime
+--AS BEGIN
+--	SELECT PHONG.MaPhong, TenPhong, TenLoaiPhong, DonGiaThue, LoaiTinhTrang, NgayCuaTinhTrang
+--	FROM ((TINHTRANG INNER JOIN PHONG ON PHONG.MaPhong = TINHTRANG.MaPhong)
+--			INNER JOIN LOAIPHONG ON PHONG.MaLoaiPhong = LOAIPHONG.MaLoaiPhong)
+--	WHERE ((@NgayBatDau <= NgayCuaTinhTrang) AND (NgayCuaTinhTrang <= @NgayTraPhong)) AND
+--			(PHONG.isDeleted = 0) AND
+--			(LOAIPHONG.MaLoaiPhong = @MaLoaiPhong) AND
+--			(DonGiaThue = @DonGiaThue) AND
+--			(LoaiTinhTrang = @LoaiTinhTrang) AND
+--			(PHONG.MaPhong = @MaPhong)
+--END
 
 -- selectPhongKhongMaPhong
-CREATE PROCEDURE selectPhongKhongMaPhong
-	@TenPhong nvarchar(50),
-	@MaLoaiPhong char(5),
-	@DonGiaThue float,
-	@LoaiTinhTrang char(15),
-	@NgayBatDau smalldatetime,
-	@NgayTraPhong smalldatetime
-AS BEGIN
-	SELECT PHONG.MaPhong, TenPhong, TenLoaiPhong, DonGiaThue, LoaiTinhTrang, NgayCuaTinhTrang
-	FROM ((TINHTRANG INNER JOIN PHONG ON PHONG.MaPhong = TINHTRANG.MaPhong)
-			INNER JOIN LOAIPHONG ON PHONG.MaLoaiPhong = LOAIPHONG.MaLoaiPhong)
-	WHERE ((@NgayBatDau <= NgayCuaTinhTrang) AND (NgayCuaTinhTrang <= @NgayTraPhong)) AND
-			(PHONG.isDeleted = 0) AND
-			(LOAIPHONG.MaLoaiPhong = @MaLoaiPhong) AND
-			(DonGiaThue = @DonGiaThue) AND
-			(LoaiTinhTrang = @LoaiTinhTrang) AND
-			(PHONG.TenPhong = @TenPhong)
-END
+--CREATE PROCEDURE selectPhongKhongMaPhong
+--	@TenPhong nvarchar(50),
+--	@MaLoaiPhong char(5),
+--	@DonGiaThue float,
+--	@LoaiTinhTrang char(15),
+--	@NgayBatDau smalldatetime,
+--	@NgayTraPhong smalldatetime
+--AS BEGIN
+--	SELECT PHONG.MaPhong, TenPhong, TenLoaiPhong, DonGiaThue, LoaiTinhTrang, NgayCuaTinhTrang
+--	FROM ((TINHTRANG INNER JOIN PHONG ON PHONG.MaPhong = TINHTRANG.MaPhong)
+--			INNER JOIN LOAIPHONG ON PHONG.MaLoaiPhong = LOAIPHONG.MaLoaiPhong)
+--	WHERE ((@NgayBatDau <= NgayCuaTinhTrang) AND (NgayCuaTinhTrang <= @NgayTraPhong)) AND
+--			(PHONG.isDeleted = 0) AND
+--			(LOAIPHONG.MaLoaiPhong = @MaLoaiPhong) AND
+--			(DonGiaThue = @DonGiaThue) AND
+--			(LoaiTinhTrang = @LoaiTinhTrang) AND
+--			(PHONG.TenPhong = @TenPhong)
+--END
 
 -- selectPhongByMaPhongNgayBatDauNgayTraPhong
 CREATE PROCEDURE selectPhongByMaPhongNgayBatDauNgayTraPhong
@@ -518,6 +517,111 @@ AS BEGIN
 			(PHONG.isDeleted = 0) AND
 			(PHONG.TenPhong = @TenPhong)
 END
+
+-- selectPhieuThueHDByMaPhieuThue
+CREATE PROCEDURE selectPhieuThueHDByMaPhieuThue
+	@MaPhieuThue char(5)
+AS BEGIN
+	SELECT TenPhong, NgayBatDauThue, NgayTraPhong, DonGiaThueThucTe, ThanhTienPhong, PhuThuThucTe
+	FROM PHONG INNER JOIN PHIEUTHUE ON PHONG.MaPhong = PHIEUTHUE.MaPhong
+	WHERE (PHIEUTHUE.isDeleted = 0) AND 
+			(PHIEUTHUE.MaPhieuThue = @MaPhieuThue) AND
+			(MaHoaDon IS NULL)
+END
+
+-- kiemTraPhieuThueByMaPhieuThue
+CREATE PROCEDURE kiemTraPhieuThueByMaPhieuThue
+	@MaPhieuThue char(5)
+AS BEGIN
+	SELECT *
+	FROM PHIEUTHUE
+	WHERE (isDeleted = 0) AND 
+			(MaPhieuThue = @MaPhieuThue) AND
+			(MaHoaDon IS NULL)
+
+END
+
+-- kiemTraPhieuThueDaLapHoaDon
+CREATE PROCEDURE kiemTraPhieuThueDaLapHoaDon
+	@MaPhieuThue char(5)
+AS BEGIN
+	SELECT *
+	FROM PHIEUTHUE
+	WHERE (isDeleted = 0) AND 
+			(MaPhieuThue = @MaPhieuThue) AND
+			(MaHoaDon IS NOT NULL)
+END
+
+-- selectChiTietPhieuThueByMaPhieuThue :: kiểm tra số khách có trong 1 phiếu thuê (1 phòng)
+CREATE PROCEDURE selectChiTietPhieuAllThueByMaPhieuThue
+	@MaPhieuThue char(5)
+AS BEGIN
+	SELECT MaChiTietPhieuThue, MaPhieuThue, TenKhachHang, MaLoaiKhachHang, CMND, DiaChi, HeSoThucTe
+	FROM CHITIETPHIEUTHUE
+	WHERE MaPhieuThue = @MaPhieuThue
+END
+
+-- bỏ qua vì hệ số thực tế có trong CTPhiếu thuê
+-- selectLoaiKhachHangCoHeSoKhachLonNhat
+--CREATE PROCEDURE selectLoaiKhachHangCoHeSoKhachLonNhat
+--AS BEGIN
+--	SELECT TOP 1 MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach
+--	FROM LOAIKHACHHANG
+--	WHERE (isDeleted = 0)
+--	ORDER BY HeSoKhach DESC 
+--END
+
+-- capNhatMaHoaDonByMaPhieuThue
+CREATE PROCEDURE capNhatMaHoaDonByMaPhieuThue
+	@MaPhieuThue char(5),
+	@MaHoaDon char(5)
+AS BEGIN
+	UPDATE PHIEUTHUE
+	SET MaHoaDon = @MaHoaDon
+	WHERE MaPhieuThue = @MaPhieuThue
+END
+
+-- selectHoaDonMoiNhatAll
+CREATE PROCEDURE selectHoaDonMoiNhatAll
+AS BEGIN
+	SELECT TOP 1 MaHoaDon, TenKhachHangHD, DiaChiKhachHD, TriGiaHoaDon
+	FROM HOADON
+	WHERE (isDeleted = 0)
+	ORDER BY MaHoaDon DESC
+END
+
+-- insert HoaDon với mã tự động tăng
+CREATE PROCEDURE NewHoaDon
+
+	@TenKhachHangHD nvarchar(50),
+	@DiaChiKhachHD nvarchar(100),
+	@TriGiaHoaDon float
+
+AS BEGIN
+
+-- on show: X row(s) affected 
+--SET NOCOUNT ON  
+
+     IF exists (SELECT *FROM HOADON)
+     BEGIN
+		 INSERT INTO HOADON(MaHoaDon, TenKhachHangHD, DiaChiKhachHD, TriGiaHoaDon)
+		 SELECT 
+				'HD' + RIGHT('000' + CAST(HoaDon_ID + 1 AS NVARCHAR(3)), 3),
+				@TenKhachHangHD ,
+				@DiaChiKhachHD ,
+				@TriGiaHoaDon
+		 FROM (
+			  SELECT TOP 1 HoaDon_ID = CAST(RIGHT(MaHoaDon, 3) AS INT)
+			  FROM HOADON
+			  ORDER BY MaHoaDon DESC
+		 ) t
+	END
+	ELSE
+	BEGIN
+		INSERT INTO HOADON(MaHoaDon, TenKhachHangHD, DiaChiKhachHD, TriGiaHoaDon)
+		VALUES ('HD000', @TenKhachHangHD, @DiaChiKhachHD, @TriGiaHoaDon)
+	END
+END 
 
 ---------------------
 -----------------
@@ -564,6 +668,18 @@ EXEC selectPhongKhongTenPhong 'PH001', 'LP000', '120000', 'TRONG', '6/1/2017', '
 
 EXEC selectPhongKhongMaPhong N'Phòng Lạnh', 'LP000', '120000', 'TRONG', '6/1/2017', '6/1/2017'
 
+EXEC selectPhieuThueHDByMaPhieuThue 'PT002'
+
+EXEC kiemTraPhieuThueByMaPhieuThue 'PT001'
+
+EXEC selectChiTietPhieuAllThueByMaPhieuThue 'PT001'
+
+EXEC NewHoaDon N'Khách hàng', N'địa chỉ', 8222.23
+
+EXEC capNhatMaHoaDonByMaPhieuThue 'PT000', 'HD000'
+
+--EXEC selectLoaiKhachHangCoHeSoKhachLonNhat
+
 Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK000', 'LKVIP', 1.2)
 Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK001', 'LKSTANDAR', 1)
 
@@ -574,7 +690,10 @@ Select top 1 * From PHONG where isDelete = 0 order by MaPhong DESC
 INSERT INTO PHIEUTHUE(MaPhieuThue, MaPhong, NgayTraPhong, NgayBatDauThue, DonGiaThueThucTe, ThanhTienPhong, MaHoaDon, PhuThuThucTe) VALUES ('PT000', 'PH001', '01/21/2001', '02/13/2001', 170000, 200000, null, 1.1)
 
 select * FRom CHITIETPHIEUTHUE
-
-select* FRom PHIEUTHUE
+select * FRom LOAIKHACHHANG
+select * FRom HOADON
+select * FRom PHIEUTHUE where MaHoaDon IS NULL
 
 DELETE FROM PHONG
+
+
