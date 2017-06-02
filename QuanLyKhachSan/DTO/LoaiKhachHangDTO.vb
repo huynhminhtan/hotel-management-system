@@ -1,13 +1,13 @@
 ﻿Namespace DTO
     Public Class LoaiKhachHangDTO
 
-#Region "Attribute"
+#Region "Attributes"
         Private _maLoaiKhachHang As String
         Private _tenLoaiKhachHang As String
         Private _heSoKhach As Double
 #End Region
 
-#Region "Property"
+#Region "Properties"
         Public Property TenLoaiKhachHang As String
             Get
                 Return _tenLoaiKhachHang

@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="ChiTietPhieuThueBUS.vb" />
     <Compile Include="Cons.vb" />
+    <Compile Include="HoaDonBUS.vb" />
     <Compile Include="LoaiKhachHangBUS.vb" />
     <Compile Include="LoaiPhongBUS.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

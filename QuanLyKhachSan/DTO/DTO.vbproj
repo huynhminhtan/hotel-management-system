@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChiTietPhieuThueDTO.vb" />
+    <Compile Include="HoaDonDTO.vb" />
     <Compile Include="LoaiKhachHangDTO.vb" />
     <Compile Include="LoaiPhongDTO.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

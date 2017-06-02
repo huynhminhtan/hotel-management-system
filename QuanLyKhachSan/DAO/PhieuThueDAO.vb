@@ -39,6 +39,60 @@ Namespace DAO
             Return phieuThue
         End Function
 
+        Public Shared Function selectPhieuThueHDByMaPhieuThue(maPhieuThue As String) As DataTable
+            Dim dt As New DataTable
+
+            Try
+                Dim sqlParams As New List(Of SqlParameter)
+                sqlParams.Add(New SqlParameter("@MaPhieuThue", maPhieuThue))
+
+                dt = SqlDataAccessHelper.ExecuteQuery("selectPhieuThueHDByMaPhieuThue", sqlParams)
+
+                If (dt.Rows.Count <= 0) Then
+                    Return Nothing
+                End If
+
+            Catch ex As Exception
+                Throw ex
+            End Try
+            Return dt
+        End Function
+
+        Public Shared Function kiemTraPhieuThueByMaPhieuThue(maPhieuThue As String) As Boolean
+            Try
+                Dim sqlParams As New List(Of SqlParameter)
+                sqlParams.Add(New SqlParameter("@MaPhieuThue", maPhieuThue))
+
+                Dim dt As New DataTable
+                dt = SqlDataAccessHelper.ExecuteQuery("kiemTraPhieuThueByMaPhieuThue", sqlParams)
+
+                If (dt.Rows.Count = 1) Then
+                    Return True
+                End If
+
+            Catch ex As Exception
+                Throw ex
+            End Try
+            Return False
+        End Function
+
+        Public Shared Function kiemTraPhieuThueDaLapHoaDon(maPhieuThue As String) As Boolean
+            Try
+                Dim sqlParams As New List(Of SqlParameter)
+                sqlParams.Add(New SqlParameter("@MaPhieuThue", maPhieuThue))
+
+                Dim dt As New DataTable
+                dt = SqlDataAccessHelper.ExecuteQuery("kiemTraPhieuThueDaLapHoaDon", sqlParams)
+
+                If (dt.Rows.Count = 1) Then
+                    Return True
+                End If
+
+            Catch ex As Exception
+                Throw ex
+            End Try
+            Return False
+        End Function
 #End Region
 
 #Region "Inserting"
@@ -50,8 +104,8 @@ Namespace DAO
                 Dim sqlParams As New List(Of SqlParameter)
 
                 sqlParams.Add(New SqlParameter("@MaPhong", phieuThue.MaPhong))
-                sqlParams.Add(New SqlParameter("@NgayTraPhong", phieuThue.NgayTraPhong))
-                sqlParams.Add(New SqlParameter("@NgayBatDauThue", phieuThue.NgayBatDauThue))
+                sqlParams.Add(New SqlParameter("@NgayTraPhong", phieuThue.NgayTraPhong.Date))
+                sqlParams.Add(New SqlParameter("@NgayBatDauThue", phieuThue.NgayBatDauThue.Date))
                 sqlParams.Add(New SqlParameter("@DonGiaThueThucTe", phieuThue.DonGiaThueThucTe))
                 sqlParams.Add(New SqlParameter("@ThanhTienPhong", phieuThue.ThanhTienPhong))
                 sqlParams.Add(New SqlParameter("@PhuThuThucTe", phieuThue.PhuThuThucTe))
@@ -70,6 +124,27 @@ Namespace DAO
         End Function
 
 #End Region
+
+        Public Shared Function daThanhToanHoaDon(maHoaDon As String, maPhieuThue As String) As Boolean
+
+            Try
+                Dim sqlParams As New List(Of SqlParameter)
+
+                sqlParams.Add(New SqlParameter("@MaHoaDon", maHoaDon))
+                sqlParams.Add(New SqlParameter("@MaPhieuThue", maPhieuThue))
+
+                Dim n As Integer = 0
+                n = SqlDataAccessHelper.ExecuteNoneQuery("capNhatMaHoaDonByMaPhieuThue", sqlParams)
+
+                If (n = 1) Then
+                    Return True
+                End If
+
+            Catch ex As Exception
+                Throw ex
+            End Try
+            Return False
+        End Function
 
     End Class
 

@@ -19,5 +19,13 @@ Namespace BUS
 
 #End Region
 
+#Region "Retrieving"
+
+        Public Shared Function selectDanhSachChiTietPhieuAllThueByMaPhieuThue(maPhieuThue As String) As List(Of ChiTietPhieuThueDTO)
+            Return ChiTietPhieuThueDAO.selectDanhSachChiTietPhieuAllThueByMaPhieuThue(maPhieuThue)
+        End Function
+
+        
+#End Region
     End Class
 End Namespace

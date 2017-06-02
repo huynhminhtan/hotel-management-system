@@ -9,6 +9,12 @@
         End Get
     End Property
 
+    Public Shared ReadOnly Property maLoaiKhachNuocNgoai() As String
+        Get
+            Return "LK001"
+        End Get
+    End Property
+
 #End Region
 
 End Class

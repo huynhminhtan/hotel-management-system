@@ -18,6 +18,17 @@ Namespace BUS
             Return maPhieuThue
         End Function
 
+        Public Shared Function kiemTraPhieuThueByMaPhieuThue(maPhieuThue As String) As Boolean
+            Return PhieuThueDAO.kiemTraPhieuThueByMaPhieuThue(maPhieuThue)
+        End Function
+
+        Public Shared Function selectPhieuThueHDByMaPhieuThue(maPhieuThue As String) As DataTable
+            Return PhieuThueDAO.selectPhieuThueHDByMaPhieuThue(maPhieuThue)
+        End Function
+
+        Public Shared Function kiemTraPhieuThueDaLapHoaDon(maPhieuThue As String) As Boolean
+            Return PhieuThueDAO.kiemTraPhieuThueDaLapHoaDon(maPhieuThue)
+        End Function
 #End Region
 
 #Region "Inserting"
@@ -27,6 +38,10 @@ Namespace BUS
         End Function
 
 #End Region
+
+        Public Shared Function daThanhToanHoaDon(maHoaDon As String, maPhieuThue As String) As Boolean
+            Return PhieuThueDAO.daThanhToanHoaDon(maHoaDon, maPhieuThue)
+        End Function
 
     End Class
 
