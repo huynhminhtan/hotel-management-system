@@ -4,6 +4,7 @@ Imports System.Data.SqlClient
 Namespace DAO
 
     Public Class HoaDonDAO
+
 #Region "Retrieving"
 
         Public Shared Function selectHoaDonMoiNhatAll() As HoaDonDTO
@@ -32,6 +33,29 @@ Namespace DAO
         End Function
 
 #End Region
+
+#Region "Inserting"
+        Public Shared Function themHoaDon(hoaDon As HoaDonDTO) As Boolean
+            Try
+                Dim sqlParams As New List(Of SqlParameter)
+
+                sqlParams.Add(New SqlParameter("@TenKhachHangHD", hoaDon.TenKhachHangHD))
+                sqlParams.Add(New SqlParameter("@DiaChiKhachHD", hoaDon.DiaChiKhachHD))
+                sqlParams.Add(New SqlParameter("@TriGiaHoaDon", hoaDon.TriGiaHoaDon))
+
+                Dim n As Integer = SqlDataAccessHelper.ExecuteNoneQuery("NewHoaDon", sqlParams)
+
+                If (n = 1) Then
+                    Return True
+                End If
+
+            Catch ex As Exception
+                Throw ex
+            End Try
+            Return False
+        End Function
+#End Region
+
     End Class
 
 End Namespace

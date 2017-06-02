@@ -110,18 +110,12 @@ Namespace BUS
         End Function
 #End Region
 
-        Public Shared Function tangMaHoaDon(maHoaDon As String) As String
-
-            If (maHoaDon = Nothing) Then
-                Return "HD000"
-            End If
-
-            Dim maHoaDonTang As String
-
-            maHoaDonTang = "HD" + ((Integer.Parse(maHoaDon.Substring(2)) + 1).ToString).PadLeft(3, "0")
-
-            Return maHoaDonTang
+#Region "Inserting"
+        Public Shared Function themHoaDon(hoaDon As HoaDonDTO) As Boolean
+            Return HoaDonDAO.themHoaDon(hoaDon)
         End Function
+#End Region
+
     End Class
 
 End Namespace

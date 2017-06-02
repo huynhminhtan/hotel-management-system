@@ -35,7 +35,7 @@ Partial Class frmLapHoaDon
         Me.btnLapHoaDon = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.txtDiaChi = New System.Windows.Forms.TextBox()
-        Me.txtTraGiaHoaDon = New System.Windows.Forms.TextBox()
+        Me.txtTriGiaHoaDon = New System.Windows.Forms.TextBox()
         Me.txtTenKhachHang = New System.Windows.Forms.TextBox()
         Me.lblTriGiaHoaDon = New System.Windows.Forms.Label()
         Me.lblDiaChi = New System.Windows.Forms.Label()
@@ -76,7 +76,6 @@ Partial Class frmLapHoaDon
         Me.dgvDanhSachPhieuThue.Location = New System.Drawing.Point(4, 17)
         Me.dgvDanhSachPhieuThue.Name = "dgvDanhSachPhieuThue"
         Me.dgvDanhSachPhieuThue.RowHeadersWidth = 15
-        Me.dgvDanhSachPhieuThue.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.dgvDanhSachPhieuThue.Size = New System.Drawing.Size(599, 186)
         Me.dgvDanhSachPhieuThue.TabIndex = 0
         '
@@ -91,28 +90,28 @@ Partial Class frmLapHoaDon
         Me.TenPhong.DataPropertyName = "TenPhong"
         Me.TenPhong.HeaderText = "Tên Phòng"
         Me.TenPhong.Name = "TenPhong"
-        Me.TenPhong.ReadOnly = True
+        Me.TenPhong.ReadOnly = true
         '
         'SoNgayThue
         '
         Me.SoNgayThue.DataPropertyName = "SoNgayThue"
         Me.SoNgayThue.HeaderText = "Số Ngày Thuê"
         Me.SoNgayThue.Name = "SoNgayThue"
-        Me.SoNgayThue.ReadOnly = True
+        Me.SoNgayThue.ReadOnly = true
         '
         'DonGiaThue
         '
         Me.DonGiaThue.DataPropertyName = "DonGiaThue"
         Me.DonGiaThue.HeaderText = "Đơn Giá"
         Me.DonGiaThue.Name = "DonGiaThue"
-        Me.DonGiaThue.ReadOnly = True
+        Me.DonGiaThue.ReadOnly = true
         '
         'ThanhTien
         '
         Me.ThanhTien.DataPropertyName = "ThanhTien"
         Me.ThanhTien.HeaderText = "Thành Tiền"
         Me.ThanhTien.Name = "ThanhTien"
-        Me.ThanhTien.ReadOnly = True
+        Me.ThanhTien.ReadOnly = true
         '
         'GroupBox2
         '
@@ -122,67 +121,67 @@ Partial Class frmLapHoaDon
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(607, 49)
         Me.GroupBox2.TabIndex = 7
-        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.TabStop = false
         '
         'btnHuy
         '
-        Me.btnHuy.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        Me.btnHuy.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163,Byte))
         Me.btnHuy.Location = New System.Drawing.Point(408, 15)
         Me.btnHuy.Name = "btnHuy"
         Me.btnHuy.Size = New System.Drawing.Size(90, 23)
         Me.btnHuy.TabIndex = 6
         Me.btnHuy.Text = "Hủy"
-        Me.btnHuy.UseVisualStyleBackColor = True
+        Me.btnHuy.UseVisualStyleBackColor = true
         '
         'btnLapHoaDon
         '
-        Me.btnLapHoaDon.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        Me.btnLapHoaDon.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163,Byte))
         Me.btnLapHoaDon.Location = New System.Drawing.Point(102, 15)
         Me.btnLapHoaDon.Name = "btnLapHoaDon"
         Me.btnLapHoaDon.Size = New System.Drawing.Size(90, 23)
         Me.btnLapHoaDon.TabIndex = 5
         Me.btnLapHoaDon.Text = "Lập hóa đơn"
-        Me.btnLapHoaDon.UseVisualStyleBackColor = True
+        Me.btnLapHoaDon.UseVisualStyleBackColor = true
         '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.txtDiaChi)
-        Me.GroupBox1.Controls.Add(Me.txtTraGiaHoaDon)
+        Me.GroupBox1.Controls.Add(Me.txtTriGiaHoaDon)
         Me.GroupBox1.Controls.Add(Me.txtTenKhachHang)
         Me.GroupBox1.Controls.Add(Me.lblTriGiaHoaDon)
         Me.GroupBox1.Controls.Add(Me.lblDiaChi)
         Me.GroupBox1.Controls.Add(Me.lblTenKhachHang)
-        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163,Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(607, 131)
         Me.GroupBox1.TabIndex = 6
-        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.TabStop = false
         Me.GroupBox1.Text = "LẬP HÓA ĐƠN THANH TOÁN"
         '
         'txtDiaChi
         '
         Me.txtDiaChi.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtDiaChi.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        Me.txtDiaChi.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163,Byte))
         Me.txtDiaChi.Location = New System.Drawing.Point(392, 37)
         Me.txtDiaChi.Name = "txtDiaChi"
         Me.txtDiaChi.Size = New System.Drawing.Size(140, 20)
         Me.txtDiaChi.TabIndex = 9
         '
-        'txtTraGiaHoaDon
+        'txtTriGiaHoaDon
         '
-        Me.txtTraGiaHoaDon.Cursor = System.Windows.Forms.Cursors.Default
-        Me.txtTraGiaHoaDon.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.txtTraGiaHoaDon.Location = New System.Drawing.Point(392, 80)
-        Me.txtTraGiaHoaDon.Name = "txtTraGiaHoaDon"
-        Me.txtTraGiaHoaDon.ReadOnly = True
-        Me.txtTraGiaHoaDon.Size = New System.Drawing.Size(140, 20)
-        Me.txtTraGiaHoaDon.TabIndex = 8
+        Me.txtTriGiaHoaDon.Cursor = System.Windows.Forms.Cursors.Default
+        Me.txtTriGiaHoaDon.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163,Byte))
+        Me.txtTriGiaHoaDon.Location = New System.Drawing.Point(392, 80)
+        Me.txtTriGiaHoaDon.Name = "txtTriGiaHoaDon"
+        Me.txtTriGiaHoaDon.ReadOnly = true
+        Me.txtTriGiaHoaDon.Size = New System.Drawing.Size(140, 20)
+        Me.txtTriGiaHoaDon.TabIndex = 8
         '
         'txtTenKhachHang
         '
         Me.txtTenKhachHang.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtTenKhachHang.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        Me.txtTenKhachHang.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163,Byte))
         Me.txtTenKhachHang.Location = New System.Drawing.Point(125, 37)
         Me.txtTenKhachHang.Name = "txtTenKhachHang"
         Me.txtTenKhachHang.Size = New System.Drawing.Size(140, 20)
@@ -190,8 +189,8 @@ Partial Class frmLapHoaDon
         '
         'lblTriGiaHoaDon
         '
-        Me.lblTriGiaHoaDon.AutoSize = True
-        Me.lblTriGiaHoaDon.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        Me.lblTriGiaHoaDon.AutoSize = true
+        Me.lblTriGiaHoaDon.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163,Byte))
         Me.lblTriGiaHoaDon.Location = New System.Drawing.Point(301, 83)
         Me.lblTriGiaHoaDon.Name = "lblTriGiaHoaDon"
         Me.lblTriGiaHoaDon.Size = New System.Drawing.Size(82, 13)
@@ -200,8 +199,8 @@ Partial Class frmLapHoaDon
         '
         'lblDiaChi
         '
-        Me.lblDiaChi.AutoSize = True
-        Me.lblDiaChi.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        Me.lblDiaChi.AutoSize = true
+        Me.lblDiaChi.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163,Byte))
         Me.lblDiaChi.Location = New System.Drawing.Point(330, 40)
         Me.lblDiaChi.Name = "lblDiaChi"
         Me.lblDiaChi.Size = New System.Drawing.Size(43, 13)
@@ -210,8 +209,8 @@ Partial Class frmLapHoaDon
         '
         'lblTenKhachHang
         '
-        Me.lblTenKhachHang.AutoSize = True
-        Me.lblTenKhachHang.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        Me.lblTenKhachHang.AutoSize = true
+        Me.lblTenKhachHang.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163,Byte))
         Me.lblTenKhachHang.Location = New System.Drawing.Point(30, 40)
         Me.lblTenKhachHang.Name = "lblTenKhachHang"
         Me.lblTenKhachHang.Size = New System.Drawing.Size(89, 13)
@@ -220,7 +219,7 @@ Partial Class frmLapHoaDon
         '
         'frmLapHoaDon
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(631, 423)
         Me.Controls.Add(Me.GroupBox4)
@@ -228,14 +227,14 @@ Partial Class frmLapHoaDon
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "frmLapHoaDon"
         Me.Text = "frmLapHoaDon"
-        Me.GroupBox4.ResumeLayout(False)
-        CType(Me.dgvDanhSachPhieuThue, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        Me.ResumeLayout(False)
+        Me.GroupBox4.ResumeLayout(false)
+        CType(Me.dgvDanhSachPhieuThue,System.ComponentModel.ISupportInitialize).EndInit
+        Me.GroupBox2.ResumeLayout(false)
+        Me.GroupBox1.ResumeLayout(false)
+        Me.GroupBox1.PerformLayout
+        Me.ResumeLayout(false)
 
-    End Sub
+End Sub
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
     Friend WithEvents dgvDanhSachPhieuThue As System.Windows.Forms.DataGridView
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
@@ -243,7 +242,7 @@ Partial Class frmLapHoaDon
     Friend WithEvents btnLapHoaDon As System.Windows.Forms.Button
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents txtDiaChi As System.Windows.Forms.TextBox
-    Friend WithEvents txtTraGiaHoaDon As System.Windows.Forms.TextBox
+    Friend WithEvents txtTriGiaHoaDon As System.Windows.Forms.TextBox
     Friend WithEvents txtTenKhachHang As System.Windows.Forms.TextBox
     Friend WithEvents lblTriGiaHoaDon As System.Windows.Forms.Label
     Friend WithEvents lblDiaChi As System.Windows.Forms.Label

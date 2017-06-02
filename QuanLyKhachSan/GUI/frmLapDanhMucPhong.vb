@@ -72,16 +72,7 @@ Public Class frmLapDanhMucPhong
     End Sub
 
     Private Function tangMaPhong(maPhong As String) As String
-
-        If (maPhong = Nothing) Then
-            Return "PH000"
-        End If
-
-        Dim maPhongTang As String
-
-        maPhongTang = "PH" + ((Integer.Parse(maPhong.Substring(2)) + 1).ToString).PadLeft(3, "0")
-
-        Return maPhongTang
+        Return XuLyGUI.tangMa(maPhong, "PH")
     End Function
 
     Private Sub dgvDanhMucPhong_SelectionChanged(sender As Object, e As EventArgs) Handles dgvDanhMucPhong.SelectionChanged

@@ -14,6 +14,19 @@ Namespace XuLy
             Return True
         End Function
 
+        Public Shared Function tangMa(ma As String, tienTo As String) As String
+
+            If (ma = Nothing) Then
+                Return tienTo + "000"
+            End If
+
+            Dim maTang As String
+
+            maTang = tienTo + ((Integer.Parse(ma.Substring(2)) + 1).ToString).PadLeft(3, "0")
+
+            Return maTang
+        End Function
+
     End Class
     
     Public Class CenteredMessageBox

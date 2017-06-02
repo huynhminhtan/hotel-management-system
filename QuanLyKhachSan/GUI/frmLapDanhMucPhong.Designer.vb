@@ -41,13 +41,13 @@ Partial Class frmLapDanhMucPhong
         Me.btnThoat = New System.Windows.Forms.Button()
         Me.btnLuu = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.dgvDanhMucPhong = New System.Windows.Forms.DataGridView()
-        Me.MaPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MaLoaiPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TenPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LoaiPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DonGia = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GhiChu = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DonGia = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LoaiPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TenPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MaLoaiPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MaPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgvDanhMucPhong = New System.Windows.Forms.DataGridView()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -255,6 +255,54 @@ Partial Class frmLapDanhMucPhong
         Me.GroupBox3.TabIndex = 3
         Me.GroupBox3.TabStop = False
         '
+        'GhiChu
+        '
+        Me.GhiChu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.GhiChu.DataPropertyName = "GhiChu"
+        Me.GhiChu.HeaderText = "Ghi Chú"
+        Me.GhiChu.Name = "GhiChu"
+        Me.GhiChu.ReadOnly = True
+        '
+        'DonGia
+        '
+        Me.DonGia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.DonGia.DataPropertyName = "DonGia"
+        Me.DonGia.HeaderText = "Đơn Giá"
+        Me.DonGia.Name = "DonGia"
+        Me.DonGia.ReadOnly = True
+        '
+        'LoaiPhong
+        '
+        Me.LoaiPhong.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.LoaiPhong.DataPropertyName = "TenLoaiPhong"
+        Me.LoaiPhong.HeaderText = "Loại Phòng"
+        Me.LoaiPhong.Name = "LoaiPhong"
+        Me.LoaiPhong.ReadOnly = True
+        '
+        'TenPhong
+        '
+        Me.TenPhong.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.TenPhong.DataPropertyName = "TenPhong"
+        Me.TenPhong.HeaderText = "Tên Phòng"
+        Me.TenPhong.Name = "TenPhong"
+        Me.TenPhong.ReadOnly = True
+        '
+        'MaLoaiPhong
+        '
+        Me.MaLoaiPhong.DataPropertyName = "MaLoaiPhong"
+        Me.MaLoaiPhong.HeaderText = "Mã Loại Phòng"
+        Me.MaLoaiPhong.Name = "MaLoaiPhong"
+        Me.MaLoaiPhong.ReadOnly = True
+        Me.MaLoaiPhong.Visible = False
+        '
+        'MaPhong
+        '
+        Me.MaPhong.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.MaPhong.DataPropertyName = "MaPhong"
+        Me.MaPhong.HeaderText = "Mã Phòng"
+        Me.MaPhong.Name = "MaPhong"
+        Me.MaPhong.ReadOnly = True
+        '
         'dgvDanhMucPhong
         '
         Me.dgvDanhMucPhong.AllowUserToAddRows = False
@@ -265,58 +313,9 @@ Partial Class frmLapDanhMucPhong
         Me.dgvDanhMucPhong.Location = New System.Drawing.Point(3, 16)
         Me.dgvDanhMucPhong.Name = "dgvDanhMucPhong"
         Me.dgvDanhMucPhong.ReadOnly = True
-        Me.dgvDanhMucPhong.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
         Me.dgvDanhMucPhong.RowHeadersVisible = False
         Me.dgvDanhMucPhong.Size = New System.Drawing.Size(601, 129)
         Me.dgvDanhMucPhong.TabIndex = 0
-        '
-        'MaPhong
-        '
-        Me.MaPhong.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.MaPhong.DataPropertyName = "MaPhong"
-        Me.MaPhong.HeaderText = "Mã Phòng"
-        Me.MaPhong.Name = "MaPhong"
-        Me.MaPhong.ReadOnly = True
-        '
-        'MaLoaiPhong
-        '
-        Me.MaLoaiPhong.DataPropertyName = "MaLoaiPhong"
-        Me.MaLoaiPhong.HeaderText = "Mã Loại Phòng"
-        Me.MaLoaiPhong.Name = "MaLoaiPhong"
-        Me.MaLoaiPhong.ReadOnly = True
-        Me.MaLoaiPhong.Visible = False
-        '
-        'TenPhong
-        '
-        Me.TenPhong.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.TenPhong.DataPropertyName = "TenPhong"
-        Me.TenPhong.HeaderText = "Tên Phòng"
-        Me.TenPhong.Name = "TenPhong"
-        Me.TenPhong.ReadOnly = True
-        '
-        'LoaiPhong
-        '
-        Me.LoaiPhong.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.LoaiPhong.DataPropertyName = "TenLoaiPhong"
-        Me.LoaiPhong.HeaderText = "Loại Phòng"
-        Me.LoaiPhong.Name = "LoaiPhong"
-        Me.LoaiPhong.ReadOnly = True
-        '
-        'DonGia
-        '
-        Me.DonGia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.DonGia.DataPropertyName = "DonGia"
-        Me.DonGia.HeaderText = "Đơn Giá"
-        Me.DonGia.Name = "DonGia"
-        Me.DonGia.ReadOnly = True
-        '
-        'GhiChu
-        '
-        Me.GhiChu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.GhiChu.DataPropertyName = "GhiChu"
-        Me.GhiChu.HeaderText = "Ghi Chú"
-        Me.GhiChu.Name = "GhiChu"
-        Me.GhiChu.ReadOnly = True
         '
         'frmLapDanhMucPhong
         '
@@ -351,7 +350,6 @@ Partial Class frmLapDanhMucPhong
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents btnLuu As System.Windows.Forms.Button
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
-    Friend WithEvents dgvDanhMucPhong As System.Windows.Forms.DataGridView
     Friend WithEvents cboTenLoaiPhong As System.Windows.Forms.ComboBox
     Friend WithEvents lblLoaiPhong As System.Windows.Forms.Label
     Friend WithEvents btnThoat As System.Windows.Forms.Button
@@ -359,6 +357,7 @@ Partial Class frmLapDanhMucPhong
     Friend WithEvents btnThemPhong As System.Windows.Forms.Button
     Friend WithEvents btnXoaPhong As System.Windows.Forms.Button
     Friend WithEvents btnCapNhat As System.Windows.Forms.Button
+    Friend WithEvents dgvDanhMucPhong As System.Windows.Forms.DataGridView
     Friend WithEvents MaPhong As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents MaLoaiPhong As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents TenPhong As System.Windows.Forms.DataGridViewTextBoxColumn
