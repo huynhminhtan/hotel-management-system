@@ -70,6 +70,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmLapBaoCaoDoanhThu.Designer.vb">
+      <DependentUpon>frmLapBaoCaoDoanhThu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLapBaoCaoDoanhThu.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmLapDanhMucPhong.Designer.vb">
       <DependentUpon>frmLapDanhMucPhong.vb</DependentUpon>
     </Compile>
@@ -119,6 +125,9 @@
     <Compile Include="XuLyGUI.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmLapBaoCaoDoanhThu.resx">
+      <DependentUpon>frmLapBaoCaoDoanhThu.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLapDanhMucPhong.resx">
       <DependentUpon>frmLapDanhMucPhong.vb</DependentUpon>
     </EmbeddedResource>
