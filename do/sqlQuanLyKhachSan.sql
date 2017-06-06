@@ -691,9 +691,9 @@ INSERT INTO PHIEUTHUE(MaPhieuThue, MaPhong, NgayTraPhong, NgayBatDauThue, DonGia
 
 select * FRom CHITIETPHIEUTHUE
 select * FRom LOAIKHACHHANG
-select * FRom HOADON
+select * FRom TINHTRANG where MONTH(NgayCuaTinhTrang) = MONTH('2017-06-08') and
+								YEAR(NgayCuaTinhTrang) = YEAR('2017-06-08')
 select * FRom PHIEUTHUE where MaHoaDon IS NULL
 
 DELETE FROM PHONG
-
 

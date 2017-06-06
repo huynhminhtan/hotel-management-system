@@ -137,6 +137,9 @@
     <EmbeddedResource Include="frmLapPhieuThuePhong.resx">
       <DependentUpon>frmLapPhieuThuePhong.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmTraCuuPhong.resx">
       <DependentUpon>frmTraCuuPhong.vb</DependentUpon>
     </EmbeddedResource>

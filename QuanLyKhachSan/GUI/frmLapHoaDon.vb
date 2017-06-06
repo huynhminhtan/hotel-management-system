@@ -9,7 +9,7 @@ Public Class frmLapHoaDon
 
         Dim maPhieuThue As String = ""
         'maPhieuThue = dgvDanhSachPhieuThue.CurrentRow.Cells("MaPhieuThue").Value
-        maPhieuThue = dgvDanhSachPhieuThue.CurrentCell.Value.ToString
+        maPhieuThue = dgvDanhSachPhieuThue.CurrentCell.Value
 
         If (String.IsNullOrEmpty(maPhieuThue)) Then
             Return
