@@ -70,6 +70,18 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmBaoCaoThang.Designer.vb">
+      <DependentUpon>frmBaoCaoThang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBaoCaoThang.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHeThong.Designer.vb">
+      <DependentUpon>frmHeThong.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmHeThong.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmLapBaoCaoDoanhThu.Designer.vb">
       <DependentUpon>frmLapBaoCaoDoanhThu.vb</DependentUpon>
     </Compile>
@@ -101,6 +113,24 @@
       <DependentUpon>frmMain.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmQuanLyPhieuThue.Designer.vb">
+      <DependentUpon>frmQuanLyPhieuThue.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmQuanLyPhieuThue.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQuanLyPhong.Designer.vb">
+      <DependentUpon>frmQuanLyPhong.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmQuanLyPhong.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThayDoiQuyDinh.Designer.vb">
+      <DependentUpon>frmThayDoiQuyDinh.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmThayDoiQuyDinh.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmTraCuuPhong.Designer.vb">
       <DependentUpon>frmTraCuuPhong.vb</DependentUpon>
     </Compile>
@@ -125,6 +155,12 @@
     <Compile Include="XuLyGUI.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmBaoCaoThang.resx">
+      <DependentUpon>frmBaoCaoThang.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHeThong.resx">
+      <DependentUpon>frmHeThong.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLapBaoCaoDoanhThu.resx">
       <DependentUpon>frmLapBaoCaoDoanhThu.vb</DependentUpon>
     </EmbeddedResource>
@@ -139,6 +175,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQuanLyPhieuThue.resx">
+      <DependentUpon>frmQuanLyPhieuThue.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQuanLyPhong.resx">
+      <DependentUpon>frmQuanLyPhong.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThayDoiQuyDinh.resx">
+      <DependentUpon>frmThayDoiQuyDinh.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTraCuuPhong.resx">
       <DependentUpon>frmTraCuuPhong.vb</DependentUpon>
