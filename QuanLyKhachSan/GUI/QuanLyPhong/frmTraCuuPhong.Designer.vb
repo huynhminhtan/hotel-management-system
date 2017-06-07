@@ -57,10 +57,11 @@ Partial Class frmTraCuuPhong
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.dgvDanhSachPhong)
-        Me.GroupBox3.Location = New System.Drawing.Point(12, 258)
+        Me.GroupBox3.Location = New System.Drawing.Point(16, 318)
+        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox3.Size = New System.Drawing.Size(607, 239)
+        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.GroupBox3.Size = New System.Drawing.Size(809, 294)
         Me.GroupBox3.TabIndex = 6
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Danh sách phòng"
@@ -76,11 +77,12 @@ Partial Class frmTraCuuPhong
         Me.dgvDanhSachPhong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvDanhSachPhong.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.MaPhong, Me.TenPhong, Me.LoaiPhong, Me.DonGiaThue, Me.TinhTrang, Me.Ngay})
         Me.dgvDanhSachPhong.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgvDanhSachPhong.Location = New System.Drawing.Point(4, 17)
+        Me.dgvDanhSachPhong.Location = New System.Drawing.Point(5, 20)
+        Me.dgvDanhSachPhong.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dgvDanhSachPhong.Name = "dgvDanhSachPhong"
         Me.dgvDanhSachPhong.ReadOnly = True
         Me.dgvDanhSachPhong.RowHeadersWidth = 10
-        Me.dgvDanhSachPhong.Size = New System.Drawing.Size(599, 218)
+        Me.dgvDanhSachPhong.Size = New System.Drawing.Size(799, 269)
         Me.dgvDanhSachPhong.TabIndex = 0
         '
         'MaPhong
@@ -142,9 +144,11 @@ Partial Class frmTraCuuPhong
         Me.GroupBox1.Controls.Add(Me.lblMaPhong)
         Me.GroupBox1.Controls.Add(Me.lblDonGiaThue)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
+        Me.GroupBox1.Location = New System.Drawing.Point(16, 15)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(607, 185)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Size = New System.Drawing.Size(809, 228)
         Me.GroupBox1.TabIndex = 5
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "TRA CỨU PHÒNG"
@@ -153,9 +157,10 @@ Partial Class frmTraCuuPhong
         '
         Me.lblTinhTrang.AutoSize = True
         Me.lblTinhTrang.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.lblTinhTrang.Location = New System.Drawing.Point(63, 107)
+        Me.lblTinhTrang.Location = New System.Drawing.Point(84, 132)
+        Me.lblTinhTrang.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTinhTrang.Name = "lblTinhTrang"
-        Me.lblTinhTrang.Size = New System.Drawing.Size(58, 13)
+        Me.lblTinhTrang.Size = New System.Drawing.Size(77, 17)
         Me.lblTinhTrang.TabIndex = 20
         Me.lblTinhTrang.Text = "Tình trạng:"
         '
@@ -165,9 +170,10 @@ Partial Class frmTraCuuPhong
         Me.cboTinhTrang.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.cboTinhTrang.FormattingEnabled = True
         Me.cboTinhTrang.Items.AddRange(New Object() {"TRONG", "DA THUE"})
-        Me.cboTinhTrang.Location = New System.Drawing.Point(143, 104)
+        Me.cboTinhTrang.Location = New System.Drawing.Point(191, 128)
+        Me.cboTinhTrang.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cboTinhTrang.Name = "cboTinhTrang"
-        Me.cboTinhTrang.Size = New System.Drawing.Size(140, 21)
+        Me.cboTinhTrang.Size = New System.Drawing.Size(185, 25)
         Me.cboTinhTrang.TabIndex = 19
         '
         'cboDonGiaThue
@@ -175,26 +181,29 @@ Partial Class frmTraCuuPhong
         Me.cboDonGiaThue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboDonGiaThue.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.cboDonGiaThue.FormattingEnabled = True
-        Me.cboDonGiaThue.Location = New System.Drawing.Point(392, 67)
+        Me.cboDonGiaThue.Location = New System.Drawing.Point(523, 82)
+        Me.cboDonGiaThue.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cboDonGiaThue.Name = "cboDonGiaThue"
-        Me.cboDonGiaThue.Size = New System.Drawing.Size(140, 21)
+        Me.cboDonGiaThue.Size = New System.Drawing.Size(185, 25)
         Me.cboDonGiaThue.TabIndex = 18
         '
         'txtTenPhong
         '
         Me.txtTenPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.txtTenPhong.Location = New System.Drawing.Point(392, 34)
+        Me.txtTenPhong.Location = New System.Drawing.Point(523, 42)
+        Me.txtTenPhong.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtTenPhong.Name = "txtTenPhong"
-        Me.txtTenPhong.Size = New System.Drawing.Size(140, 20)
+        Me.txtTenPhong.Size = New System.Drawing.Size(185, 23)
         Me.txtTenPhong.TabIndex = 17
         '
         'lblTenPhong
         '
         Me.lblTenPhong.AutoSize = True
         Me.lblTenPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.lblTenPhong.Location = New System.Drawing.Point(324, 37)
+        Me.lblTenPhong.Location = New System.Drawing.Point(432, 46)
+        Me.lblTenPhong.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTenPhong.Name = "lblTenPhong"
-        Me.lblTenPhong.Size = New System.Drawing.Size(62, 13)
+        Me.lblTenPhong.Size = New System.Drawing.Size(81, 17)
         Me.lblTenPhong.TabIndex = 16
         Me.lblTenPhong.Text = "Tên phòng:"
         '
@@ -202,9 +211,10 @@ Partial Class frmTraCuuPhong
         '
         Me.lblTenLoaiPhong.AutoSize = True
         Me.lblTenLoaiPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.lblTenLoaiPhong.Location = New System.Drawing.Point(63, 71)
+        Me.lblTenLoaiPhong.Location = New System.Drawing.Point(84, 87)
+        Me.lblTenLoaiPhong.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTenLoaiPhong.Name = "lblTenLoaiPhong"
-        Me.lblTenLoaiPhong.Size = New System.Drawing.Size(63, 13)
+        Me.lblTenLoaiPhong.Size = New System.Drawing.Size(83, 17)
         Me.lblTenLoaiPhong.TabIndex = 15
         Me.lblTenLoaiPhong.Text = "Loại phòng:"
         '
@@ -212,18 +222,20 @@ Partial Class frmTraCuuPhong
         '
         Me.dtpNgayTraPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.dtpNgayTraPhong.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpNgayTraPhong.Location = New System.Drawing.Point(392, 141)
+        Me.dtpNgayTraPhong.Location = New System.Drawing.Point(523, 174)
+        Me.dtpNgayTraPhong.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dtpNgayTraPhong.Name = "dtpNgayTraPhong"
-        Me.dtpNgayTraPhong.Size = New System.Drawing.Size(140, 20)
+        Me.dtpNgayTraPhong.Size = New System.Drawing.Size(185, 23)
         Me.dtpNgayTraPhong.TabIndex = 14
         '
         'lblNgayTraPhong
         '
         Me.lblNgayTraPhong.AutoSize = True
         Me.lblNgayTraPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.lblNgayTraPhong.Location = New System.Drawing.Point(303, 147)
+        Me.lblNgayTraPhong.Location = New System.Drawing.Point(404, 181)
+        Me.lblNgayTraPhong.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNgayTraPhong.Name = "lblNgayTraPhong"
-        Me.lblNgayTraPhong.Size = New System.Drawing.Size(83, 13)
+        Me.lblNgayTraPhong.Size = New System.Drawing.Size(110, 17)
         Me.lblNgayTraPhong.TabIndex = 13
         Me.lblNgayTraPhong.Text = "Ngày trả phòng:"
         '
@@ -231,9 +243,10 @@ Partial Class frmTraCuuPhong
         '
         Me.lblNgayBatDauThue.AutoSize = True
         Me.lblNgayBatDauThue.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.lblNgayBatDauThue.Location = New System.Drawing.Point(311, 107)
+        Me.lblNgayBatDauThue.Location = New System.Drawing.Point(415, 132)
+        Me.lblNgayBatDauThue.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNgayBatDauThue.Name = "lblNgayBatDauThue"
-        Me.lblNgayBatDauThue.Size = New System.Drawing.Size(75, 13)
+        Me.lblNgayBatDauThue.Size = New System.Drawing.Size(97, 17)
         Me.lblNgayBatDauThue.TabIndex = 12
         Me.lblNgayBatDauThue.Text = "Ngày bắt đầu:"
         '
@@ -241,9 +254,10 @@ Partial Class frmTraCuuPhong
         '
         Me.dtpNgayBatDauThue.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.dtpNgayBatDauThue.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpNgayBatDauThue.Location = New System.Drawing.Point(392, 104)
+        Me.dtpNgayBatDauThue.Location = New System.Drawing.Point(523, 128)
+        Me.dtpNgayBatDauThue.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dtpNgayBatDauThue.Name = "dtpNgayBatDauThue"
-        Me.dtpNgayBatDauThue.Size = New System.Drawing.Size(140, 20)
+        Me.dtpNgayBatDauThue.Size = New System.Drawing.Size(185, 23)
         Me.dtpNgayBatDauThue.TabIndex = 11
         '
         'cboTenLoaiPhong
@@ -251,27 +265,30 @@ Partial Class frmTraCuuPhong
         Me.cboTenLoaiPhong.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboTenLoaiPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.cboTenLoaiPhong.FormattingEnabled = True
-        Me.cboTenLoaiPhong.Location = New System.Drawing.Point(143, 68)
+        Me.cboTenLoaiPhong.Location = New System.Drawing.Point(191, 84)
+        Me.cboTenLoaiPhong.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cboTenLoaiPhong.Name = "cboTenLoaiPhong"
-        Me.cboTenLoaiPhong.Size = New System.Drawing.Size(140, 21)
+        Me.cboTenLoaiPhong.Size = New System.Drawing.Size(185, 25)
         Me.cboTenLoaiPhong.TabIndex = 10
         '
         'txtMaPhong
         '
         Me.txtMaPhong.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtMaPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.txtMaPhong.Location = New System.Drawing.Point(143, 34)
+        Me.txtMaPhong.Location = New System.Drawing.Point(191, 42)
+        Me.txtMaPhong.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtMaPhong.Name = "txtMaPhong"
-        Me.txtMaPhong.Size = New System.Drawing.Size(140, 20)
+        Me.txtMaPhong.Size = New System.Drawing.Size(185, 23)
         Me.txtMaPhong.TabIndex = 0
         '
         'lblMaPhong
         '
         Me.lblMaPhong.AutoSize = True
         Me.lblMaPhong.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.lblMaPhong.Location = New System.Drawing.Point(68, 37)
+        Me.lblMaPhong.Location = New System.Drawing.Point(91, 46)
+        Me.lblMaPhong.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMaPhong.Name = "lblMaPhong"
-        Me.lblMaPhong.Size = New System.Drawing.Size(58, 13)
+        Me.lblMaPhong.Size = New System.Drawing.Size(75, 17)
         Me.lblMaPhong.TabIndex = 3
         Me.lblMaPhong.Text = "Mã phòng:"
         '
@@ -279,9 +296,10 @@ Partial Class frmTraCuuPhong
         '
         Me.lblDonGiaThue.AutoSize = True
         Me.lblDonGiaThue.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.lblDonGiaThue.Location = New System.Drawing.Point(315, 71)
+        Me.lblDonGiaThue.Location = New System.Drawing.Point(420, 87)
+        Me.lblDonGiaThue.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblDonGiaThue.Name = "lblDonGiaThue"
-        Me.lblDonGiaThue.Size = New System.Drawing.Size(71, 13)
+        Me.lblDonGiaThue.Size = New System.Drawing.Size(93, 17)
         Me.lblDonGiaThue.TabIndex = 1
         Me.lblDonGiaThue.Text = "Đơn giá thuê:"
         '
@@ -289,18 +307,21 @@ Partial Class frmTraCuuPhong
         '
         Me.GroupBox2.Controls.Add(Me.btnHuy)
         Me.GroupBox2.Controls.Add(Me.btnTim)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 203)
+        Me.GroupBox2.Location = New System.Drawing.Point(16, 250)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(607, 49)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Size = New System.Drawing.Size(809, 60)
         Me.GroupBox2.TabIndex = 7
         Me.GroupBox2.TabStop = False
         '
         'btnHuy
         '
         Me.btnHuy.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.btnHuy.Location = New System.Drawing.Point(408, 15)
+        Me.btnHuy.Location = New System.Drawing.Point(544, 18)
+        Me.btnHuy.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnHuy.Name = "btnHuy"
-        Me.btnHuy.Size = New System.Drawing.Size(90, 23)
+        Me.btnHuy.Size = New System.Drawing.Size(120, 28)
         Me.btnHuy.TabIndex = 6
         Me.btnHuy.Text = "Hủy"
         Me.btnHuy.UseVisualStyleBackColor = True
@@ -308,24 +329,27 @@ Partial Class frmTraCuuPhong
         'btnTim
         '
         Me.btnTim.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.btnTim.Location = New System.Drawing.Point(102, 15)
+        Me.btnTim.Location = New System.Drawing.Point(136, 18)
+        Me.btnTim.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnTim.Name = "btnTim"
-        Me.btnTim.Size = New System.Drawing.Size(90, 23)
+        Me.btnTim.Size = New System.Drawing.Size(120, 28)
         Me.btnTim.TabIndex = 5
         Me.btnTim.Text = "Tìm"
         Me.btnTim.UseVisualStyleBackColor = True
         '
         'frmTraCuuPhong
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(631, 509)
+        Me.ClientSize = New System.Drawing.Size(841, 626)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.MaximizeBox = False
         Me.Name = "frmTraCuuPhong"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmTraCuuPhong"
         Me.GroupBox3.ResumeLayout(false)
         CType(Me.dgvDanhSachPhong,System.ComponentModel.ISupportInitialize).EndInit

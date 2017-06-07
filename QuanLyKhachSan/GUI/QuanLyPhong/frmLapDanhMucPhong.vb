@@ -5,6 +5,7 @@ Imports GUI.XuLy
 Public Class frmLapDanhMucPhong
 
     Private danhSachPhongTam As New DataTable
+    Private fatherForm As frmQuanLyPhong
 
     Private Sub frmLapDanhMucPhong_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -212,4 +213,12 @@ Public Class frmLapDanhMucPhong
         
     End Sub
 
+    Sub New(frmFather As frmQuanLyPhong)
+        InitializeComponent()
+        fatherForm = frmFather
+    End Sub
+
+    Private Sub frmLapDanhMucPhong_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fatherForm.CapNhat()
+    End Sub
 End Class

@@ -2,6 +2,7 @@
 
 Public Class frmTraCuuPhong
 
+    Private fatherForm As frmQuanLyPhong
 
     Private Sub frmTraCuuPhong_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' hiển thị danh sách loại phòng
@@ -88,5 +89,14 @@ Public Class frmTraCuuPhong
 
     Private Sub txtTenPhong_TextChanged(sender As Object, e As EventArgs) Handles txtTenPhong.TextChanged
         txtMaPhong.Text = ""
+    End Sub
+
+    Sub New(formFather As frmQuanLyPhong)
+        InitializeComponent()
+        fatherForm = formFather
+    End Sub
+
+    Private Sub frmTraCuuPhong_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fatherForm.CapNhat()
     End Sub
 End Class

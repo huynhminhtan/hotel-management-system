@@ -4,6 +4,7 @@ Imports DTO.DTO
 
 Public Class frmLapHoaDon
     Private _triGiaHoaDon As Double = 0
+    Private fatherForm As frmQuanLyPhieuThue
 
     Private Sub dgvDanhSachPhieuThue_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgvDanhSachPhieuThue.CellEndEdit
 
@@ -155,4 +156,12 @@ Public Class frmLapHoaDon
         End Using
     End Sub
 
+    Sub New(formFather As frmQuanLyPhieuThue)
+        InitializeComponent()
+        fatherForm = formFather
+    End Sub
+
+    Private Sub frmLapHoaDon_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fatherForm.CapNhat()
+    End Sub
 End Class

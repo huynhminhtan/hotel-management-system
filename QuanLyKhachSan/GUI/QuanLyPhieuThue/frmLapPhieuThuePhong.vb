@@ -7,6 +7,8 @@ Imports GUI.XuLy
 
 Public Class frmLapPhieuThuePhong
 
+    Private fatherForm As frmQuanLyPhieuThue
+
     Private Sub frmLapPhieuThuePhong_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         ' hiển thị danh sách mã phòng
@@ -220,4 +222,14 @@ Public Class frmLapPhieuThuePhong
     Private Sub dtpNgayTraPhong_ValueChanged(sender As Object, e As EventArgs) Handles dtpNgayTraPhong.ValueChanged
         hienThiDanhSachTinhTrangByThoiGian()
     End Sub
+
+    Sub New(formFather As frmQuanLyPhieuThue)
+        InitializeComponent()
+        fatherForm = formFather
+    End Sub
+
+    Private Sub frmLapPhieuThuePhong_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fatherForm.CapNhat()
+    End Sub
+
 End Class

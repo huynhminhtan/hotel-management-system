@@ -40,7 +40,7 @@ Partial Class frmMain
         Me.tabControlQuanLy.Controls.Add(Me.tabThayDoiQuyDinh)
         Me.tabControlQuanLy.Controls.Add(Me.tabHeThong)
         Me.tabControlQuanLy.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tabControlQuanLy.ItemSize = New System.Drawing.Size(200, 20)
+        Me.tabControlQuanLy.ItemSize = New System.Drawing.Size(200, 50)
         Me.tabControlQuanLy.Location = New System.Drawing.Point(0, 0)
         Me.tabControlQuanLy.Margin = New System.Windows.Forms.Padding(0)
         Me.tabControlQuanLy.Name = "tabControlQuanLy"
@@ -53,10 +53,10 @@ Partial Class frmMain
         '
         'tabQuanLyPhong
         '
-        Me.tabQuanLyPhong.Location = New System.Drawing.Point(4, 24)
+        Me.tabQuanLyPhong.Location = New System.Drawing.Point(4, 54)
         Me.tabQuanLyPhong.Margin = New System.Windows.Forms.Padding(0)
         Me.tabQuanLyPhong.Name = "tabQuanLyPhong"
-        Me.tabQuanLyPhong.Size = New System.Drawing.Size(1296, 725)
+        Me.tabQuanLyPhong.Size = New System.Drawing.Size(1296, 695)
         Me.tabQuanLyPhong.TabIndex = 0
         Me.tabQuanLyPhong.Text = "Quản Lý Phòng"
         Me.tabQuanLyPhong.UseVisualStyleBackColor = True

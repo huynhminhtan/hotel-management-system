@@ -94,22 +94,22 @@
     <Compile Include="frmLapBaoCaoDoanhThu.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLapDanhMucPhong.Designer.vb">
+    <Compile Include="QuanLyPhong\frmLapDanhMucPhong.Designer.vb">
       <DependentUpon>frmLapDanhMucPhong.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmLapDanhMucPhong.vb">
+    <Compile Include="QuanLyPhong\frmLapDanhMucPhong.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLapHoaDon.Designer.vb">
+    <Compile Include="QuanLyPhieuThue\frmLapHoaDon.Designer.vb">
       <DependentUpon>frmLapHoaDon.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmLapHoaDon.vb">
+    <Compile Include="QuanLyPhieuThue\frmLapHoaDon.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLapPhieuThuePhong.Designer.vb">
+    <Compile Include="QuanLyPhieuThue\frmLapPhieuThuePhong.Designer.vb">
       <DependentUpon>frmLapPhieuThuePhong.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmLapPhieuThuePhong.vb">
+    <Compile Include="QuanLyPhieuThue\frmLapPhieuThuePhong.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.vb">
@@ -119,16 +119,16 @@
       <DependentUpon>frmMain.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmQuanLyPhieuThue.Designer.vb">
+    <Compile Include="QuanLyPhieuThue\frmQuanLyPhieuThue.Designer.vb">
       <DependentUpon>frmQuanLyPhieuThue.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmQuanLyPhieuThue.vb">
+    <Compile Include="QuanLyPhieuThue\frmQuanLyPhieuThue.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmQuanLyPhong.Designer.vb">
+    <Compile Include="QuanLyPhong\frmQuanLyPhong.Designer.vb">
       <DependentUpon>frmQuanLyPhong.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmQuanLyPhong.vb">
+    <Compile Include="QuanLyPhong\frmQuanLyPhong.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmThayDoiQuyDinh.Designer.vb">
@@ -137,10 +137,10 @@
     <Compile Include="frmThayDoiQuyDinh.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTraCuuPhong.Designer.vb">
+    <Compile Include="QuanLyPhong\frmTraCuuPhong.Designer.vb">
       <DependentUpon>frmTraCuuPhong.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmTraCuuPhong.vb">
+    <Compile Include="QuanLyPhong\frmTraCuuPhong.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -173,28 +173,28 @@
     <EmbeddedResource Include="frmLapBaoCaoDoanhThu.resx">
       <DependentUpon>frmLapBaoCaoDoanhThu.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLapDanhMucPhong.resx">
+    <EmbeddedResource Include="QuanLyPhong\frmLapDanhMucPhong.resx">
       <DependentUpon>frmLapDanhMucPhong.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLapHoaDon.resx">
+    <EmbeddedResource Include="QuanLyPhieuThue\frmLapHoaDon.resx">
       <DependentUpon>frmLapHoaDon.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLapPhieuThuePhong.resx">
+    <EmbeddedResource Include="QuanLyPhieuThue\frmLapPhieuThuePhong.resx">
       <DependentUpon>frmLapPhieuThuePhong.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmQuanLyPhieuThue.resx">
+    <EmbeddedResource Include="QuanLyPhieuThue\frmQuanLyPhieuThue.resx">
       <DependentUpon>frmQuanLyPhieuThue.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmQuanLyPhong.resx">
+    <EmbeddedResource Include="QuanLyPhong\frmQuanLyPhong.resx">
       <DependentUpon>frmQuanLyPhong.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmThayDoiQuyDinh.resx">
       <DependentUpon>frmThayDoiQuyDinh.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTraCuuPhong.resx">
+    <EmbeddedResource Include="QuanLyPhong\frmTraCuuPhong.resx">
       <DependentUpon>frmTraCuuPhong.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -228,6 +228,7 @@
       <Name>DTO</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
