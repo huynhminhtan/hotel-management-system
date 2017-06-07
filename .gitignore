@@ -1,0 +1,18 @@
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+[Xx]64/
+[Xx]86/
+[Bb]uild/
+bld/
+[Bb]in/
+[Oo]bj/
+
+*.suo
+*.user
+/QuanLyKhachSan/GUI/bin
+/do/Documents/NMCNPM_QuanLyKhachSan.zip
+/QuanLyKhachSan/GUI/My Project/Application.myapp
+/QuanLyKhachSan/GUI/My Project/Application.Designer.vb
