@@ -819,6 +819,15 @@ AS BEGIN
 	WHERE ((MONTH(ThangBaoCaoMatDo) = MONTH(@ThangBaoCaoMatDo) AND
 		YEAR(ThangBaoCaoMatDo) = YEAR(@ThangBaoCaoMatDo)))
 END
+
+-- selectPhieuThueChuaLapHoaDon
+CREATE PROCEDURE selectPhieuThueChuaLapHoaDon
+AS BEGIN
+	SELECT MaPhieuThue, MaPhong, NgayTraPhong, NgayBatDauThue, DonGiaThueThucTe, ThanhTienPhong, MaHoaDon, PhuThuThucTe
+	FROM PHIEUTHUE
+	WHERE (isDeleted = 0) AND
+		(MaHoaDon is null)
+END
 ---------------------
 -----------------
 
@@ -854,7 +863,7 @@ EXEC selectTinhTrangPhongByThoiGian '9/1/2017','9/2/2017'
 
 EXEC capNhatTinhTrangPhongByMaPhong 'PH000', '06/01/2017'
 
-EXEC phongDuocThue 'PH000', '6/1/2017', '6/20/2017' 
+EXEC phongDuocThue 'PH000', '6/3/2017', '6/3/2017' 
 
 EXEC selectPhongAllByNgayBatDauVaNgayTraPhong '6/1/2017', '6/1/2017' 
 
@@ -894,6 +903,8 @@ EXEC selectBaoCaoMatDoMoiNhat
 EXEC NewChiTietBaoCaoMD 'MD000', 'PH000', 7, '3.4%'
 
 EXEC selectBaoCaoMatDoByThang '2017-07-06 00:00:00'
+
+EXEC selectPhieuThueChuaLapHoaDon
 
 Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK000', 'LKVIP', 1.2)
 Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK001', 'LKSTANDAR', 1)
