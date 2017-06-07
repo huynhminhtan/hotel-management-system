@@ -19,6 +19,12 @@ Namespace BUS
         End Function
 #End Region
 
+#Region "Retrieving"
+        Public Shared Function selectChiTietBaoCaoMatDoByMaBaoCaoMatDo(maBaoCaoMatDo As String) As List(Of ChiTietBaoCaoMDDTO)
+            Return ChiTietBaoCaoMDDAO.selectChiTietBaoCaoMDByMaBaoCaoMatDo(maBaoCaoMatDo)
+        End Function
+#End Region
+
     End Class
 
 End Namespace

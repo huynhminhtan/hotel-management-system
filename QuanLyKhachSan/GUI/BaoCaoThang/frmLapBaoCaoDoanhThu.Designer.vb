@@ -47,9 +47,9 @@ Partial Class frmLapBaoCaoDoanhThu
         '
         Me.GroupBox4.Controls.Add(Me.dgvBaoCao)
         Me.GroupBox4.Location = New System.Drawing.Point(13, 251)
-        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(5)
         Me.GroupBox4.Size = New System.Drawing.Size(809, 255)
         Me.GroupBox4.TabIndex = 11
         Me.GroupBox4.TabStop = False
@@ -114,9 +114,9 @@ Partial Class frmLapBaoCaoDoanhThu
         Me.GroupBox2.Controls.Add(Me.btnHuy)
         Me.GroupBox2.Controls.Add(Me.btnLapBaoCao)
         Me.GroupBox2.Location = New System.Drawing.Point(13, 167)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Size = New System.Drawing.Size(809, 60)
         Me.GroupBox2.TabIndex = 10
         Me.GroupBox2.TabStop = False
@@ -125,7 +125,7 @@ Partial Class frmLapBaoCaoDoanhThu
         '
         Me.btnHuy.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.btnHuy.Location = New System.Drawing.Point(544, 18)
-        Me.btnHuy.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnHuy.Margin = New System.Windows.Forms.Padding(4)
         Me.btnHuy.Name = "btnHuy"
         Me.btnHuy.Size = New System.Drawing.Size(120, 28)
         Me.btnHuy.TabIndex = 6
@@ -136,7 +136,7 @@ Partial Class frmLapBaoCaoDoanhThu
         '
         Me.btnLapBaoCao.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.btnLapBaoCao.Location = New System.Drawing.Point(136, 18)
-        Me.btnLapBaoCao.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnLapBaoCao.Margin = New System.Windows.Forms.Padding(4)
         Me.btnLapBaoCao.Name = "btnLapBaoCao"
         Me.btnLapBaoCao.Size = New System.Drawing.Size(120, 28)
         Me.btnLapBaoCao.TabIndex = 5
@@ -151,9 +151,9 @@ Partial Class frmLapBaoCaoDoanhThu
         Me.GroupBox1.Controls.Add(Me.lblThang)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(13, 15)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Size = New System.Drawing.Size(809, 145)
         Me.GroupBox1.TabIndex = 9
         Me.GroupBox1.TabStop = False
@@ -164,7 +164,7 @@ Partial Class frmLapBaoCaoDoanhThu
         Me.dtpThang.CustomFormat = "MM/yyyy"
         Me.dtpThang.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dtpThang.Location = New System.Drawing.Point(141, 66)
-        Me.dtpThang.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dtpThang.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpThang.Name = "dtpThang"
         Me.dtpThang.Size = New System.Drawing.Size(169, 26)
         Me.dtpThang.TabIndex = 9
@@ -174,7 +174,7 @@ Partial Class frmLapBaoCaoDoanhThu
         Me.txtTongDoanhThu.Cursor = System.Windows.Forms.Cursors.Default
         Me.txtTongDoanhThu.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.txtTongDoanhThu.Location = New System.Drawing.Point(531, 66)
-        Me.txtTongDoanhThu.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtTongDoanhThu.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTongDoanhThu.Name = "txtTongDoanhThu"
         Me.txtTongDoanhThu.ReadOnly = True
         Me.txtTongDoanhThu.Size = New System.Drawing.Size(185, 23)
@@ -210,8 +210,9 @@ Partial Class frmLapBaoCaoDoanhThu
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmLapBaoCaoDoanhThu"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmLapBaoCaoDoanhThu"
         Me.GroupBox4.ResumeLayout(False)
         CType(Me.dgvBaoCao, System.ComponentModel.ISupportInitialize).EndInit()

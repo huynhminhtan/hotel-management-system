@@ -24,6 +24,12 @@
                 _maBaoCaoMatDo = value
             End Set
         End Property
+
+        Public ReadOnly Property TenBaoCao() As String
+            Get
+                Return "Báo cáo mật độ sử dụng phòng tháng " + _thangBaoCaoMatDo.Month.ToString + "/" + _thangBaoCaoMatDo.Year.ToString
+            End Get
+        End Property
 #End Region
 
 #Region "Default constructor"

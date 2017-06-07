@@ -26,9 +26,11 @@ Namespace BUS
             Return BaoCaoDoanhThuDAO.kiemTraBaoCaoDTByThangBaoCaoVaTongDoanhThu(baoCaoDoanhThu)
         End Function
 
-#End Region
+        Public Shared Function selectBaoCaoDoanhThuAll() As List(Of BaoCaoDoanhThuDTO)
+            Return BaoCaoDoanhThuDAO.selectBaoCaoDoanhThuAll()
+        End Function
 
-        
+#End Region
 
     End Class
 

@@ -30,7 +30,7 @@ Namespace DAO
 
 #Region "Retrieving"
 
-        Public Shared Function selectChiTietBaoCaoMDByMaBaoCaoMaDo(maBaoCaoMatDo As String) As List(Of ChiTietBaoCaoMDDTO)
+        Public Shared Function selectChiTietBaoCaoMDByMaBaoCaoMatDo(maBaoCaoMatDo As String) As List(Of ChiTietBaoCaoMDDTO)
             Dim danhSachChiTietBaoCaoMD As New List(Of ChiTietBaoCaoMDDTO)
             Try
                 Dim sqlParams As New List(Of SqlParameter)
