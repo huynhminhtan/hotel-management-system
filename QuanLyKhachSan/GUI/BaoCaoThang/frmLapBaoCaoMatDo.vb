@@ -4,6 +4,8 @@ Imports GUI.XuLy
 
 Public Class frmLapBaoCaoMatDo
 
+    Private fatherForm As frmBaoCaoThang
+
     Private Sub frmLapBaoCaoMatDo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dtpThang.MaxDate = Date.Now
 
@@ -91,5 +93,15 @@ Public Class frmLapBaoCaoMatDo
 
     Private Sub btnHuy_Click(sender As Object, e As EventArgs) Handles btnHuy.Click
         Me.Close()
+    End Sub
+
+    Sub New(formFather As frmBaoCaoThang)
+        InitializeComponent()
+        fatherForm = formFather
+    End Sub
+
+
+    Private Sub frmLapBaoCaoMatDo_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fatherForm.CapNhat()
     End Sub
 End Class
