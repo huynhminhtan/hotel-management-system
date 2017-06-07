@@ -8,25 +8,26 @@ Public Class frmLapBaoCaoDoanhThu
     Private danhSachChiTietBaoCaoDT As New List(Of ChiTietBaoCaoDTDTO)
 
     Private Sub btnLapBaoCao_Click(sender As Object, e As EventArgs) Handles btnLapBaoCao.Click
-        ' lập báo cáo mới khi chưa có trong hệ thống
-        If (BaoCaoDoanhThuBUS.kiemTraBaoCaoDTByThangBaoCaoVaTongDoanhThu(baoCaoDoanhThu) = True) Then
-            MessageBox.Show("Báo cáo đã có trong hệ thống.")
-            Return
-        End If
+        Using New CenteredMessageBox(Me)
+            ' lập báo cáo mới khi chưa có trong hệ thống
+            If (BaoCaoDoanhThuBUS.kiemTraBaoCaoDTByThangBaoCaoVaTongDoanhThu(baoCaoDoanhThu) = True) Then
+                MessageBox.Show("Báo cáo đã có trong hệ thống.")
+                Return
+            End If
 
-        ' lập báo cáo khi đã có dữ liệu
-        If (baoCaoDoanhThu.TongDoanhThu <= 0) Then
-            MessageBox.Show("Tháng không có dữ liệu.")
-            Return
-        End If
+            ' lập báo cáo khi đã có dữ liệu
+            If (baoCaoDoanhThu.TongDoanhThu <= 0) Then
+                MessageBox.Show("Tháng không có dữ liệu.")
+                Return
+            End If
 
-        ' lưu báo cáo xuống csdl
-        ' lưu chi tiết báo cáo xuống csdl
-        If ((BaoCaoDoanhThuBUS.themBaoCao(baoCaoDoanhThu)) And
-           (ChiTietBaoCaoDTBUS.themDanhSachChiTietBaoCaoDT(danhSachChiTietBaoCaoDT) > 0)) Then
-            MessageBox.Show("Lập báo cáo doanh thu thành công.")
-        End If
-
+            ' lưu báo cáo xuống csdl
+            ' lưu chi tiết báo cáo xuống csdl
+            If ((BaoCaoDoanhThuBUS.themBaoCao(baoCaoDoanhThu)) And
+               (ChiTietBaoCaoDTBUS.themDanhSachChiTietBaoCaoDT(danhSachChiTietBaoCaoDT) > 0)) Then
+                MessageBox.Show("Lập báo cáo doanh thu thành công.")
+            End If
+        End Using
     End Sub
 
     Private Sub frmLapBaoCaoDoanhThu_Load(sender As Object, e As EventArgs) Handles MyBase.Load

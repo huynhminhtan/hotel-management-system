@@ -130,7 +130,7 @@ create table CHITIETBAOCAOMD
 	foreign key (MaPhong) references PHONG(MaPhong),
 
 	SoNgayThueTrongThang int,
-	TiLeSuDung float
+	TiLeSuDung varchar(50)
 )
 
 
@@ -723,6 +723,102 @@ AS BEGIN
 			(YEAR(ThangBaoCaoDoanhThu) = YEAR(@ThangBaoCaoDoanhThu)) AND
 			TongDoanhThu = @TongDoanhThu
 END
+
+-- selectDanhSachPhongVoiSoNgayThuegByThang
+CREATE PROCEDURE selectDanhSachPhongVoiSoNgayThueByThang
+	@Thang smalldatetime
+AS BEGIN
+	SELECT COUNT(tenPhong) AS SoNgayThue, TenPhong, PHONG.MaPhong, TenLoaiPhong
+	FROM ((PHONG INNER JOIN TINHTRANG ON PHONG.MaPhong = TINHTRANG.MaPhong )
+			INNER JOIN LOAIPHONG ON PHONG.MaLoaiPhong = LOAIPHONG.MaLoaiPhong)
+	WHERE MONTH(NgayCuaTinhTrang) = MONTH(@Thang) AND
+		 YEAR(NgayCuaTinhTrang) = YEAR(@Thang) AND
+		 (PHONG.isDeleted = 0) AND
+		 (LoaiTinhTrang = 'DA THUE')
+	GROUP BY PHONG.MaPhong, TenPhong, PHONG.MaPhong, TenLoaiPhong
+END
+
+-- themBaoCaoMatDo
+CREATE PROCEDURE NewBaoCaoMatDo
+
+	@ThangBaoCaoMatDo smalldatetime
+
+AS BEGIN
+
+-- on show: X row(s) affected 
+--SET NOCOUNT ON  
+
+     IF exists (SELECT *FROM BAOCAOMATDO)
+     BEGIN
+		 INSERT INTO BAOCAOMATDO(MaBaoCaoMatDo, ThangBaoCaoMatDo)
+		 SELECT 
+				'MD' + RIGHT('000' + CAST(BaoCaoMatDo_ID + 1 AS NVARCHAR(3)), 3),
+				@ThangBaoCaoMatDo
+		 FROM (
+			  SELECT TOP 1 BaoCaoMatDo_ID = CAST(RIGHT(MaBaoCaoMatDo, 3) AS INT)
+			  FROM BAOCAOMATDO
+			  ORDER BY MaBaoCaoMatDo DESC
+		 ) t
+	END
+	ELSE
+	BEGIN
+		INSERT INTO BAOCAOMATDO(MaBaoCaoMatDo, ThangBaoCaoMatDo)
+		VALUES ('MD000',  @ThangBaoCaoMatDo)
+	END
+END 
+
+-- selectBaoCaoMatDoMoiNhat
+CREATE PROCEDURE selectBaoCaoMatDoMoiNhat 
+AS BEGIN
+	SELECT TOP 1 MaBaoCaoMatDo, ThangBaoCaoMatDo
+	FROM BAOCAOMATDO
+	ORDER BY MaBaoCaoMatDo DESC
+END
+
+-- themChiTietBaoCaoMD với mã tự động tăng
+CREATE PROCEDURE NewChiTietBaoCaoMD
+
+	@MaBaoCaoMatDo char(5),
+	@MaPhong char(5),
+	@SoNgayThueTrongThang int,
+	@TiLeSuDung varchar(50)
+
+AS BEGIN
+
+-- on show: X row(s) affected 
+--SET NOCOUNT ON  
+
+     IF exists (SELECT *FROM CHITIETBAOCAOMD)
+     BEGIN
+		 INSERT INTO CHITIETBAOCAOMD(MaChiTietBaoCaoMD, MaBaoCaoMatDo, MaPhong, SoNgayThueTrongThang, TiLeSuDung)
+		 SELECT 
+				'CD' + RIGHT('000' + CAST(CTBCMD_ID + 1 AS NVARCHAR(3)), 3),
+				@MaBaoCaoMatDo,
+				@MaPhong ,
+				@SoNgayThueTrongThang ,
+				@TiLeSuDung 
+		 FROM (
+			  SELECT TOP 1 CTBCMD_ID = CAST(RIGHT(MaChiTietBaoCaoMD, 3) AS INT)
+			  FROM CHITIETBAOCAOMD
+			  ORDER BY MaChiTietBaoCaoMD DESC
+		 ) t
+	END
+	ELSE
+	BEGIN
+		INSERT INTO CHITIETBAOCAOMD(MaChiTietBaoCaoMD, MaBaoCaoMatDo, MaPhong, SoNgayThueTrongThang, TiLeSuDung)
+		VALUES ('CD000',  @MaBaoCaoMatDo, @MaPhong, @SoNgayThueTrongThang, @TiLeSuDung)
+	END
+END 
+
+-- selectBaoCaoMatDoByThang
+CREATE PROCEDURE selectBaoCaoMatDoByThang
+	@ThangBaoCaoMatDo smalldatetime
+AS BEGIN
+	SELECT MaBaoCaoMatDo, ThangBaoCaoMatDo
+	FROM BAOCAOMATDO
+	WHERE ((MONTH(ThangBaoCaoMatDo) = MONTH(@ThangBaoCaoMatDo) AND
+		YEAR(ThangBaoCaoMatDo) = YEAR(@ThangBaoCaoMatDo)))
+END
 ---------------------
 -----------------
 
@@ -789,6 +885,16 @@ EXEC NewChiTietBaoCaoDT 'DT000', 'LP000', 233.4, '43.3%'
 EXEC kiemTraBaoCaoDTByThangBaoCaoVaTongDoanhThu '6-6-2017', 940000
 --EXEC selectLoaiKhachHangCoHeSoKhachLonNhat
 
+EXEC selectDanhSachPhongVoiSoNgayThueByThang '6-2-2017'
+
+EXEC NewBaoCaoMatDo '2-2-3'
+
+EXEC selectBaoCaoMatDoMoiNhat
+
+EXEC NewChiTietBaoCaoMD 'MD000', 'PH000', 7, '3.4%'
+
+EXEC selectBaoCaoMatDoByThang '2017-07-06 00:00:00'
+
 Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK000', 'LKVIP', 1.2)
 Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK001', 'LKSTANDAR', 1)
 
@@ -799,13 +905,11 @@ Select top 1 * From PHONG where isDelete = 0 order by MaPhong DESC
 INSERT INTO PHIEUTHUE(MaPhieuThue, MaPhong, NgayTraPhong, NgayBatDauThue, DonGiaThueThucTe, ThanhTienPhong, MaHoaDon, PhuThuThucTe) VALUES ('PT000', 'PH001', '01/21/2001', '02/13/2001', 170000, 200000, null, 1.1)
 
 select * FRom CHITIETPHIEUTHUE
-select * FRom BAOCAODOANHTHU
-select * FRom CHITIETBAOCAODT
+select * FRom BAOCAOMATDO
+select * FRom CHITIETBAOCAOMD
 select * FRom TINHTRANG where MONTH(NgayCuaTinhTrang) = MONTH('2017-06-08') and
 								YEAR(NgayCuaTinhTrang) = YEAR('2017-06-08')
 select * FRom PHIEUTHUE where MaHoaDon IS NULL
 
-DELETE FROM BAOCAODOANHTHU
-DELETE FROM CHITIETBAOCAODT
-
-
+DELETE FROM BAOCAOMATDO
+DELETE FROM CHITIETBAOCAOMD

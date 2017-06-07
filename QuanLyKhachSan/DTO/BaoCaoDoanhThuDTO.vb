@@ -39,7 +39,7 @@
 
 #Region "Default Constructor"
         Sub New()
-            _thangBaoCaoDoanhThu = Nothing
+            _thangBaoCaoDoanhThu = Date.Now
             _tongDoanhThu = 0
             _maBaoCaoDoanhThu = Nothing
         End Sub

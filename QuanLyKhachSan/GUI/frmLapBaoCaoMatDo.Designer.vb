@@ -32,9 +32,9 @@ Partial Class frmLapBaoCaoMatDo
         Me.lblThang = New System.Windows.Forms.Label()
         Me.MaPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TenPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LoaiPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TenLoaiPhong = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SoNgayThue = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TiLe = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TiLeSuDung = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgvBaoCao, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -49,7 +49,7 @@ Partial Class frmLapBaoCaoMatDo
         Me.dgvBaoCao.AllowUserToResizeRows = False
         Me.dgvBaoCao.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvBaoCao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvBaoCao.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.MaPhong, Me.TenPhong, Me.LoaiPhong, Me.SoNgayThue, Me.TiLe})
+        Me.dgvBaoCao.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.MaPhong, Me.TenPhong, Me.TenLoaiPhong, Me.SoNgayThue, Me.TiLeSuDung})
         Me.dgvBaoCao.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvBaoCao.Location = New System.Drawing.Point(4, 17)
         Me.dgvBaoCao.Margin = New System.Windows.Forms.Padding(2)
@@ -134,33 +134,39 @@ Partial Class frmLapBaoCaoMatDo
         '
         'MaPhong
         '
+        Me.MaPhong.DataPropertyName = "MaPhong"
         Me.MaPhong.HeaderText = "Mã Phòng"
         Me.MaPhong.Name = "MaPhong"
         Me.MaPhong.ReadOnly = True
         '
         'TenPhong
         '
+        Me.TenPhong.DataPropertyName = "TenPhong"
         Me.TenPhong.HeaderText = "Tên Phòng"
         Me.TenPhong.Name = "TenPhong"
         Me.TenPhong.ReadOnly = True
         '
-        'LoaiPhong
+        'TenLoaiPhong
         '
-        Me.LoaiPhong.HeaderText = "Loại Phòng"
-        Me.LoaiPhong.Name = "LoaiPhong"
-        Me.LoaiPhong.ReadOnly = True
+        Me.TenLoaiPhong.DataPropertyName = "TenLoaiPhong"
+        Me.TenLoaiPhong.HeaderText = "Loại Phòng"
+        Me.TenLoaiPhong.Name = "TenLoaiPhong"
+        Me.TenLoaiPhong.ReadOnly = True
         '
         'SoNgayThue
         '
-        Me.SoNgayThue.HeaderText = "Số Ngày Thuê"
+        Me.SoNgayThue.DataPropertyName = "SoNgayThueTrongThang"
+        Me.SoNgayThue.HeaderText = "Số Ngày Thuê Trong Tháng"
         Me.SoNgayThue.Name = "SoNgayThue"
         Me.SoNgayThue.ReadOnly = True
         '
-        'TiLe
+        'TiLeSuDung
         '
-        Me.TiLe.HeaderText = "Tỉ Lệ"
-        Me.TiLe.Name = "TiLe"
-        Me.TiLe.ReadOnly = True
+        Me.TiLeSuDung.DataPropertyName = "TiLeSuDung"
+        Me.TiLeSuDung.HeaderText = "Tỉ Lệ Sử Dụng"
+        Me.TiLeSuDung.Name = "TiLeSuDung"
+        Me.TiLeSuDung.ReadOnly = True
+        Me.TiLeSuDung.ToolTipText = "TiLeSuDung"
         '
         'frmLapBaoCaoMatDo
         '
@@ -190,7 +196,7 @@ Partial Class frmLapBaoCaoMatDo
     Friend WithEvents lblThang As System.Windows.Forms.Label
     Friend WithEvents MaPhong As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents TenPhong As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents LoaiPhong As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents TenLoaiPhong As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents SoNgayThue As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents TiLe As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents TiLeSuDung As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

@@ -63,7 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaoCaoDoanhThuDAO.vb" />
+    <Compile Include="BaoCaoMatDoDAO.vb" />
     <Compile Include="ChiTietBaoCaoDTDAO.vb" />
+    <Compile Include="ChiTietBaoCaoMDDAO.vb" />
     <Compile Include="ChiTietPhieuThueDAO.vb" />
     <Compile Include="HoaDonDAO.vb" />
     <Compile Include="LoaiKhachHangDAO.vb" />
