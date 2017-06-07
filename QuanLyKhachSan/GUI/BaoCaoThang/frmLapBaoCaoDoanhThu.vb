@@ -6,6 +6,7 @@ Public Class frmLapBaoCaoDoanhThu
 
     Private baoCaoDoanhThu As New BaoCaoDoanhThuDTO
     Private danhSachChiTietBaoCaoDT As New List(Of ChiTietBaoCaoDTDTO)
+    Private fatherForm As frmBaoCaoThang
 
     Private Sub btnLapBaoCao_Click(sender As Object, e As EventArgs) Handles btnLapBaoCao.Click
         Using New CenteredMessageBox(Me)
@@ -105,6 +106,15 @@ Public Class frmLapBaoCaoDoanhThu
 
     Private Sub btnHuy_Click(sender As Object, e As EventArgs) Handles btnHuy.Click
         Me.Close()
+    End Sub
+
+    Sub New(formFather As frmBaoCaoThang)
+        InitializeComponent()
+        fatherForm = formFather
+    End Sub
+
+    Private Sub frmLapBaoCaoDoanhThu_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fatherForm.CapNhat()
     End Sub
 End Class
 
