@@ -16,12 +16,11 @@ Public Class frmQuanLyPhong
         bangQuanLyPhong.Columns.Add("TinhTrang", GetType(String))
 
         ' lấy dữ liệu cho bảng
-        Dim danhSachPhong As List(Of PhongDTO)
-        danhSachPhong = PhongBUS.selectPhongAll()
+        CapNhat()
 
-        For Each phong As PhongDTO In danhSachPhong
-            Dim tenLoaiPhong As String
-        Next
+        ' hiện dữ liệu lên datagridview
+        dgvQuanLyPhong.DataSource = bangQuanLyPhong
+
     End Sub
 
     Private Sub btnThemPhong_Click(sender As Object, e As EventArgs) Handles btnThemPhong.Click
@@ -30,9 +29,25 @@ Public Class frmQuanLyPhong
     End Sub
 
     Public Sub CapNhat()
-        Using New CenteredMessageBox(Me)
-            MessageBox.Show("Đã update!")
-        End Using
+
+        bangQuanLyPhong.Clear()
+
+        Dim danhSachPhong As List(Of PhongDTO)
+        danhSachPhong = PhongBUS.selectPhongAll()
+
+        For Each phongTam As PhongDTO In danhSachPhong
+            Dim tenLoaiPhongTam As String = LoaiPhongBUS.selectTenLoaiPhongByMaLoaiPhong(phongTam.MaLoaiPhong)
+            Dim donGiaTam As Double = LoaiPhongBUS.selectDonGiaByMaLoaiPhong(phongTam.MaLoaiPhong)
+
+            Dim tinhTrangTam As String
+            If (TinhTrangBUS.phongDuocThue(phongTam.MaPhong, Date.Today, Date.Today) = True) Then
+                tinhTrangTam = "Đang thuê"
+            Else
+                tinhTrangTam = "Đang trống"
+            End If
+
+            bangQuanLyPhong.Rows.Add(phongTam.MaPhong, phongTam.TenPhong, tenLoaiPhongTam, donGiaTam, tinhTrangTam)
+        Next
     End Sub
 
     Private Sub btnTimPhong_Click(sender As Object, e As EventArgs) Handles btnTimPhong.Click

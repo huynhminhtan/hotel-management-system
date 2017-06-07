@@ -9,6 +9,7 @@ Namespace DTO
 #End Region
 
 #Region "Properties"
+
         Property MaLoaiPhong() As String
             Get
                 Return _maLoaiPhong
@@ -42,6 +43,12 @@ Namespace DTO
             _maLoaiPhong = Nothing
             _tenLoaiPhong = Nothing
             _donGiaThue = 0
+        End Sub
+
+        Sub New(maLoaiPhong As String, tenLoaiPhong As String, donGiaThue As Double)
+            _maLoaiPhong = maLoaiPhong
+            _tenLoaiPhong = tenLoaiPhong
+            _donGiaThue = donGiaThue
         End Sub
 #End Region
     End Class

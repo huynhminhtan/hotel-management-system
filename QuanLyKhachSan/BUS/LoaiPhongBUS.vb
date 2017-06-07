@@ -22,6 +22,16 @@ Namespace BUS
             Return donGia
         End Function
 
+        Public Shared Function selectTenLoaiPhongByMaLoaiPhong(MaLoaiPhong As String) As String
+            Dim tenLoaiPhong As String = Nothing
+            If (DAO.DAO.LoaiPhongDAO.kiemTraLoaiPhongByMaLoaiPhong(MaLoaiPhong) = True) Then
+                Dim lp As New LoaiPhongDTO
+                lp = DAO.DAO.LoaiPhongDAO.selectLoaiPhongByMaLoaiPhong(MaLoaiPhong)
+                tenLoaiPhong = lp.TenLoaiPhong
+            End If
+            Return tenLoaiPhong
+        End Function
+
 #End Region
 
     End Class

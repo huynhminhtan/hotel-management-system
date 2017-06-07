@@ -1,4 +1,5 @@
 ﻿Imports BUS.BUS
+Imports DTO.DTO
 
 Public Class frmTraCuuPhong
 
@@ -6,6 +7,8 @@ Public Class frmTraCuuPhong
 
     Private Sub frmTraCuuPhong_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' hiển thị danh sách loại phòng
+        ' Dim danhSachLoaiPhong As List(Of LoaiPhongDTO) = LoaiPhongBUS.selectLoaiPhongAll()
+        ' danhSachLoaiPhong.Add(New LoaiPhongDTO(Nothing, "Tất cả", 0))
         cboTenLoaiPhong.DataSource = LoaiPhongBUS.selectLoaiPhongAll()
         cboTenLoaiPhong.DisplayMember = "TenLoaiPhong"
 
@@ -82,7 +85,7 @@ Public Class frmTraCuuPhong
         txtMaPhong.Text = ""
     End Sub
 
-   
+
     Private Sub txtMaPhong_TextChanged(sender As Object, e As EventArgs) Handles txtMaPhong.TextChanged
         txtTenPhong.Text = ""
     End Sub
