@@ -26,6 +26,41 @@ Namespace DAO
             Return True
         End Function
 #End Region
+
+#Region "Retrieving"
+
+        Public Shared Function selectChiTietBaoCaoDoanhThuByMaBaoCaoDoanhThu(maBaoCaDoanhThu As String) As List(Of ChiTietBaoCaoDTDTO)
+            Dim danhSachChiTietBaoCaoDT As New List(Of ChiTietBaoCaoDTDTO)
+            Try
+                Dim sqlParams As New List(Of SqlParameter)
+                sqlParams.Add(New SqlParameter("@MaBaoCaoDoanhThu", maBaoCaDoanhThu))
+
+                Dim dt As New DataTable
+                dt = SqlDataAccessHelper.ExecuteQuery("selectChiTietBaoCaoDoanhThuByMaBaoCaoDoanhThu", sqlParams)
+
+                If (dt.Rows.Count <= 0) Then
+                    Return Nothing
+                End If
+
+                For Each hang As DataRow In dt.Rows
+                    Dim chiTietBaoCaoDT As New ChiTietBaoCaoDTDTO
+                    chiTietBaoCaoDT.MaChiTietBaoCaoDT = hang("MaChiTietBaoCaoDT").ToString
+                    chiTietBaoCaoDT.MaBaoCaoDoanhThu = hang("MaBaoCaoDoanhThu").ToString
+                    chiTietBaoCaoDT.MaLoaiPhong = hang("MaLoaiPhong").ToString
+                    chiTietBaoCaoDT.DoanhThuLoaiPhong = Double.Parse(hang("DoanhThuLoaiPhong").ToString)
+                    chiTietBaoCaoDT.TiLeDoanhThu = hang("TiLeDoanhThu").ToString
+
+                    danhSachChiTietBaoCaoDT.Add(chiTietBaoCaoDT)
+                Next
+
+            Catch ex As Exception
+                Throw ex
+            End Try
+            Return danhSachChiTietBaoCaoDT
+        End Function
+
+#End Region
+
     End Class
 
 End Namespace

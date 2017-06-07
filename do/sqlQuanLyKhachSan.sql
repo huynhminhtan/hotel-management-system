@@ -828,6 +828,60 @@ AS BEGIN
 	WHERE (isDeleted = 0) AND
 		(MaHoaDon is null)
 END
+
+-- selectPhieuThueByTinhTrangHoaDon
+CREATE PROCEDURE selectPhieuThueByTinhTrangHoaDon
+	@TinhTrangHoaDon nvarchar(50)
+AS BEGIN
+	IF (@TinhTrangHoaDon = 'DA THUE')
+		select * 
+		from PHIEUTHUE	
+		WHERE (MaHoaDon IS NOT NULL)
+	ELSE IF (@TinhTrangHoaDon = 'TRONG')
+		select * 
+		from PHIEUTHUE
+		WHERE (MaHoaDon IS NULL)
+	ELSE IF (@TinhTrangHoaDon = 'TAT CA')
+		select * 
+		from PHIEUTHUE
+	END
+
+Exec selectPhieuThueByTinhTrangHoaDon 'da THUE'
+
+-- selectBaoCaoDoanhThuAll
+CREATE PROCEDURE selectBaoCaoDoanhThuAll
+AS BEGIN
+	SELECT *
+	FROM BAOCAODOANHTHU
+END
+
+-- selectBaoCaoMatDoAll
+CREATE PROCEDURE selectBaoCaoMatDoAll
+AS BEGIN
+	SELECT *
+	FROM BAOCAOMATDO
+END
+
+EXEC selectBaoCaoDoanhThuAll
+
+-- selectChiTietBaoCaoDoanhThuByMaBaoCaoDoanhThu
+CREATE PROCEDURE selectChiTietBaoCaoDoanhThuByMaBaoCaoDoanhThu
+	@MaBaoCaoDoanhThu char(5)
+AS BEGIN
+	SELECT *
+	FROM CHITIETBAOCAODT
+	WHERE MaBaoCaoDoanhThu = @MaBaoCaoDoanhThu
+END
+
+-- selectChiTietBaoCaoMDByMaBaoCaoMaDo
+CREATE PROCEDURE selectChiTietBaoCaoMDByMaBaoCaoMaDo
+	@MaBaoCaoMatDo char(5)
+AS BEGIN
+	SELECT *
+	FROM CHITIETBAOCAOMD
+	WHERE MaBaoCaoMatDo = @MaBaoCaoMatDo
+END
+
 ---------------------
 -----------------
 
