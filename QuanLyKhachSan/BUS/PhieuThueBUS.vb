@@ -29,6 +29,11 @@ Namespace BUS
         Public Shared Function kiemTraPhieuThueDaLapHoaDon(maPhieuThue As String) As Boolean
             Return PhieuThueDAO.kiemTraPhieuThueDaLapHoaDon(maPhieuThue)
         End Function
+
+        Public Shared Function selectPhieuThueByNgayTraPhongMaLoaiPhong(ngayTraPhong As Date, maLoaiPhong As String) As List(Of PhieuThueDTO)
+            Return PhieuThueDAO.selectPhieuThueByNgayTraPhongMaLoaiPhong(ngayTraPhong, maLoaiPhong)
+        End Function
+
 #End Region
 
 #Region "Inserting"
@@ -42,6 +47,8 @@ Namespace BUS
         Public Shared Function daThanhToanHoaDon(maHoaDon As String, maPhieuThue As String) As Boolean
             Return PhieuThueDAO.daThanhToanHoaDon(maHoaDon, maPhieuThue)
         End Function
+
+
 
     End Class
 

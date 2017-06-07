@@ -93,6 +93,45 @@ Namespace DAO
             End Try
             Return False
         End Function
+
+        Shared Function selectPhieuThueByNgayTraPhongMaLoaiPhong(ngayTraPhong As Date, maLoaiPhong As String) As List(Of PhieuThueDTO)
+            Dim dsPhieuThue As New List(Of PhieuThueDTO)
+
+            Try
+                Dim sqlParams As New List(Of SqlParameter)
+                sqlParams.Add(New SqlParameter("@NgayTraPhong", ngayTraPhong))
+                sqlParams.Add(New SqlParameter("@MaLoaiPhong", maLoaiPhong))
+
+                Dim dt As New DataTable
+                dt = SqlDataAccessHelper.ExecuteQuery("selectPhieuThueByNgayTraPhongMaLoaiPhong", sqlParams)
+
+                If (dt.Rows.Count < 0) Then
+                    Return Nothing
+                End If
+
+                For Each hang As DataRow In dt.Rows
+                    Dim phieuThue As New PhieuThueDTO
+
+                    phieuThue.MaPhieuThue = hang("MaPhieuThue").ToString
+                    phieuThue.MaPhong = hang("MaPhong").ToString
+
+                    ' Kiểu ngày trả phòng
+                    phieuThue.NgayTraPhong = hang("NgayTraPhong").ToString
+                    phieuThue.NgayBatDauThue = hang("NgayBatDauThue").ToString
+
+                    phieuThue.DonGiaThueThucTe = Double.Parse(hang("DonGiaThueThucTe").ToString)
+                    phieuThue.ThanhTienPhong = Double.Parse(hang("ThanhTienPhong").ToString)
+                    phieuThue.MaHoaDon = hang("MaHoaDon").ToString
+                    phieuThue.PhuThuThucTe = Double.Parse(hang("PhuThuThucTe").ToString)
+
+                    dsPhieuThue.Add(phieuThue)
+                Next
+
+            Catch ex As Exception
+                Throw ex
+            End Try
+            Return dsPhieuThue
+        End Function
 #End Region
 
 #Region "Inserting"
