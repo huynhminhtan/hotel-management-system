@@ -44,28 +44,22 @@ Namespace DAO
             Return BaoCaoMatDo
         End Function
 
-        Public Shared Function selectBaoCaoMatDoByThang(thangBaoCaoMatDo As Date) As BaoCaoMatDoDTO
-            Dim baoCaoMatDo As New BaoCaoMatDoDTO
-
+        Public Shared Function kiemTraBaoCaoMatDoByThang(thangBaoCaoMatDo As Date) As Boolean
             Try
                 Dim sqlParams As New List(Of SqlParameter)
-                sqlParams.Add(New SqlParameter("@ThangBaoCaoMatDo", thangBaoCaoMatDo.ToShortDateString()))
+                sqlParams.Add(New SqlParameter("@ThangBaoCaoMatDo", thangBaoCaoMatDo))
 
                 Dim dt As New DataTable
                 dt = SqlDataAccessHelper.ExecuteQuery("selectBaoCaoMatDoByThang", sqlParams)
 
-                If (dt.Rows.Count <= 0) Then
-                    Return Nothing
+                If (dt.Rows.Count > 0) Then
+                    Return True
                 End If
-
-                Dim hang As DataRow = dt.Rows(0)
-                baoCaoMatDo.MaBaoCaoMatDo = hang("MabaoCaoMatDo").ToString
-                baoCaoMatDo.ThangBaoCaoMatDo = hang("ThangBaoCaoMatDo").ToString
 
             Catch ex As Exception
                 Throw ex
             End Try
-            Return baoCaoMatDo
+            Return False
         End Function
 #End Region
 

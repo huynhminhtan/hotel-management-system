@@ -22,11 +22,7 @@ Namespace BUS
         End Function
 
         Public Shared Function kiemTrabaoCaoMatDoByThang(thangBaoCaoMatDo As Date) As Boolean
-            If (BaoCaoMatDoDAO.selectBaoCaoMatDoByThang(thangBaoCaoMatDo) Is Nothing) Then
-                Return False
-            End If
-
-            Return True
+            Return BaoCaoMatDoDAO.kiemTraBaoCaoMatDoByThang(thangBaoCaoMatDo)
         End Function
 #End Region
 
