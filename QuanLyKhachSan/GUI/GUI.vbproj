@@ -70,6 +70,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmDangNhap.Designer.vb">
+      <DependentUpon>frmDangNhap.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDangNhap.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmBaoCaoThang.Designer.vb">
       <DependentUpon>frmBaoCaoThang.vb</DependentUpon>
     </Compile>
@@ -161,6 +167,9 @@
     <Compile Include="XuLyGUI.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmDangNhap.resx">
+      <DependentUpon>frmDangNhap.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBaoCaoThang.resx">
       <DependentUpon>frmBaoCaoThang.vb</DependentUpon>
     </EmbeddedResource>
