@@ -70,34 +70,34 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmDangNhap.Designer.vb">
+    <Compile Include="HeThong\frmDangNhap.Designer.vb">
       <DependentUpon>frmDangNhap.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmDangNhap.vb">
+    <Compile Include="HeThong\frmDangNhap.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBaoCaoThang.Designer.vb">
+    <Compile Include="BaoCaoThang\frmBaoCaoThang.Designer.vb">
       <DependentUpon>frmBaoCaoThang.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmBaoCaoThang.vb">
+    <Compile Include="BaoCaoThang\frmBaoCaoThang.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmHeThong.Designer.vb">
+    <Compile Include="HeThong\frmHeThong.Designer.vb">
       <DependentUpon>frmHeThong.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmHeThong.vb">
+    <Compile Include="HeThong\frmHeThong.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLapBaoCaoMatDo.Designer.vb">
+    <Compile Include="BaoCaoThang\frmLapBaoCaoMatDo.Designer.vb">
       <DependentUpon>frmLapBaoCaoMatDo.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmLapBaoCaoMatDo.vb">
+    <Compile Include="BaoCaoThang\frmLapBaoCaoMatDo.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLapBaoCaoDoanhThu.Designer.vb">
+    <Compile Include="BaoCaoThang\frmLapBaoCaoDoanhThu.Designer.vb">
       <DependentUpon>frmLapBaoCaoDoanhThu.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmLapBaoCaoDoanhThu.vb">
+    <Compile Include="BaoCaoThang\frmLapBaoCaoDoanhThu.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="QuanLyPhong\frmLapDanhMucPhong.Designer.vb">
@@ -137,10 +137,10 @@
     <Compile Include="QuanLyPhong\frmQuanLyPhong.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmThayDoiQuyDinh.Designer.vb">
+    <Compile Include="ThayDoiQuyDinh\frmThayDoiQuyDinh.Designer.vb">
       <DependentUpon>frmThayDoiQuyDinh.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmThayDoiQuyDinh.vb">
+    <Compile Include="ThayDoiQuyDinh\frmThayDoiQuyDinh.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="QuanLyPhong\frmTraCuuPhong.Designer.vb">
@@ -167,19 +167,19 @@
     <Compile Include="XuLyGUI.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmDangNhap.resx">
+    <EmbeddedResource Include="HeThong\frmDangNhap.resx">
       <DependentUpon>frmDangNhap.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBaoCaoThang.resx">
+    <EmbeddedResource Include="BaoCaoThang\frmBaoCaoThang.resx">
       <DependentUpon>frmBaoCaoThang.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmHeThong.resx">
+    <EmbeddedResource Include="HeThong\frmHeThong.resx">
       <DependentUpon>frmHeThong.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLapBaoCaoMatDo.resx">
+    <EmbeddedResource Include="BaoCaoThang\frmLapBaoCaoMatDo.resx">
       <DependentUpon>frmLapBaoCaoMatDo.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLapBaoCaoDoanhThu.resx">
+    <EmbeddedResource Include="BaoCaoThang\frmLapBaoCaoDoanhThu.resx">
       <DependentUpon>frmLapBaoCaoDoanhThu.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyPhong\frmLapDanhMucPhong.resx">
@@ -200,7 +200,7 @@
     <EmbeddedResource Include="QuanLyPhong\frmQuanLyPhong.resx">
       <DependentUpon>frmQuanLyPhong.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmThayDoiQuyDinh.resx">
+    <EmbeddedResource Include="ThayDoiQuyDinh\frmThayDoiQuyDinh.resx">
       <DependentUpon>frmThayDoiQuyDinh.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyPhong\frmTraCuuPhong.resx">
