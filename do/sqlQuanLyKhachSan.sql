@@ -134,8 +134,11 @@ create table CHITIETBAOCAOMD
 )
 
 
--- Insert LoaiPhong với mã tự động tăng
 
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+
+-- Insert LoaiPhong với mã tự động tăng
 if exists (select * from sysobjects where name = 'LOAIPHONG' and type = 'P')
     drop procedure NewLoaiPhong
 go
@@ -145,9 +148,6 @@ CREATE PROCEDURE NewLoaiPhong
      @DonGiaThue float
 
 AS BEGIN
-
--- on show: X row(s) affected 
---SET NOCOUNT ON  
 
      IF exists (SELECT *FROM LOAIPHONG)
      BEGIN
@@ -204,10 +204,6 @@ CREATE PROCEDURE NewPhong
 	@GhiChu nvarchar(300)
 
 AS BEGIN
-
--- on show: X row(s) affected 
---SET NOCOUNT ON  
-
      IF exists (SELECT *FROM PHONG)
      BEGIN
 		 INSERT INTO PHONG(MaPhong, TenPhong, MaLoaiPhong, GhiChu)
@@ -451,46 +447,6 @@ AS BEGIN
 			(LoaiTinhTrang = @LoaiTinhTrang)
 END
 
--- selectPhongKhongTenPhong
---CREATE PROCEDURE selectPhongKhongTenPhong
---	@MaPhong char(5),
---	@MaLoaiPhong char(5),
---	@DonGiaThue float,
---	@LoaiTinhTrang char(15),
---	@NgayBatDau smalldatetime,
---	@NgayTraPhong smalldatetime
---AS BEGIN
---	SELECT PHONG.MaPhong, TenPhong, TenLoaiPhong, DonGiaThue, LoaiTinhTrang, NgayCuaTinhTrang
---	FROM ((TINHTRANG INNER JOIN PHONG ON PHONG.MaPhong = TINHTRANG.MaPhong)
---			INNER JOIN LOAIPHONG ON PHONG.MaLoaiPhong = LOAIPHONG.MaLoaiPhong)
---	WHERE ((@NgayBatDau <= NgayCuaTinhTrang) AND (NgayCuaTinhTrang <= @NgayTraPhong)) AND
---			(PHONG.isDeleted = 0) AND
---			(LOAIPHONG.MaLoaiPhong = @MaLoaiPhong) AND
---			(DonGiaThue = @DonGiaThue) AND
---			(LoaiTinhTrang = @LoaiTinhTrang) AND
---			(PHONG.MaPhong = @MaPhong)
---END
-
--- selectPhongKhongMaPhong
---CREATE PROCEDURE selectPhongKhongMaPhong
---	@TenPhong nvarchar(50),
---	@MaLoaiPhong char(5),
---	@DonGiaThue float,
---	@LoaiTinhTrang char(15),
---	@NgayBatDau smalldatetime,
---	@NgayTraPhong smalldatetime
---AS BEGIN
---	SELECT PHONG.MaPhong, TenPhong, TenLoaiPhong, DonGiaThue, LoaiTinhTrang, NgayCuaTinhTrang
---	FROM ((TINHTRANG INNER JOIN PHONG ON PHONG.MaPhong = TINHTRANG.MaPhong)
---			INNER JOIN LOAIPHONG ON PHONG.MaLoaiPhong = LOAIPHONG.MaLoaiPhong)
---	WHERE ((@NgayBatDau <= NgayCuaTinhTrang) AND (NgayCuaTinhTrang <= @NgayTraPhong)) AND
---			(PHONG.isDeleted = 0) AND
---			(LOAIPHONG.MaLoaiPhong = @MaLoaiPhong) AND
---			(DonGiaThue = @DonGiaThue) AND
---			(LoaiTinhTrang = @LoaiTinhTrang) AND
---			(PHONG.TenPhong = @TenPhong)
---END
-
 -- selectPhongByMaPhongNgayBatDauNgayTraPhong
 DROP PRocedure selectPhongByMaPhongNgayBatDauNgayTraPhong
 
@@ -565,16 +521,6 @@ AS BEGIN
 	FROM CHITIETPHIEUTHUE
 	WHERE MaPhieuThue = @MaPhieuThue
 END
-
--- bỏ qua vì hệ số thực tế có trong CTPhiếu thuê
--- selectLoaiKhachHangCoHeSoKhachLonNhat
---CREATE PROCEDURE selectLoaiKhachHangCoHeSoKhachLonNhat
---AS BEGIN
---	SELECT TOP 1 MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach
---	FROM LOAIKHACHHANG
---	WHERE (isDeleted = 0)
---	ORDER BY HeSoKhach DESC 
---END
 
 -- capNhatMaHoaDonByMaPhieuThue
 CREATE PROCEDURE capNhatMaHoaDonByMaPhieuThue
@@ -935,9 +881,6 @@ CREATE PROCEDURE NewLoaiKhachHang
 
 AS BEGIN
 
--- on show: X row(s) affected 
---SET NOCOUNT ON  
-
      IF exists (SELECT *FROM LOAIKHACHHANG)
      BEGIN
 		 INSERT INTO LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach)
@@ -958,10 +901,6 @@ AS BEGIN
 	END
 END 
 
-EXEC NewLoaiKhachHang 'SILVER', 1.3
-
-Select * From THAMSO
-
 -- capNhatThamSo
 CREATE PROCEDURE capNhatThamSo
 	@SoKhachToiDa int,
@@ -973,9 +912,6 @@ AS BEGIN
 END
 
 
-EXEC capNhatThamSo 3, 1.25
-select * from THAMSO 
-
 -- seledctPhieuThueByMaPhieuThue
 CREATE PROCEDURE seledctPhieuThueByMaPhieuThue
 	@MaPhieuThue char(5)
@@ -985,9 +921,6 @@ AS BEGIN
 	WHERE (isDeleted = 0) AND
 	(MaPhieuThue = @MaPhieuThue)
 END
-
-Exec seledctPhieuThueByMaPhieuThue 'pt001'
-
 
 ---- selectPhongAllisDelete
 CREATE PROCEDURE selectPhongAllisDeleted
@@ -1012,102 +945,3 @@ AS BEGIN
 	SET MaPhong = @MaPhong, NgayTraPhong = @NgayTraPhong, NgayBatDauThue = @NgayBatDauThue, DonGiaThueThucTe = @DonGiaThueThucTe
 	WHERE MaPhieuThue = @MaPhieuThue
 END
-
-
-----------
------------
------------------
-
-EXEC NewLoaiPhong 'VIP', 120000
-EXEC NewLoaiPhong 'GOLD', 140000
-EXEC NewLoaiPhong 'STANDAR', 100000
-
-EXEC selectLoaiPhongAll 
-
-EXEC selectLoaiPhongByMaLoaiPhong 'LP000'
-
-EXEC selectThamSoAll
-
-EXEC NewPhong 'VIP69', 'LP001', 'Phòng này ở mát mẻ lắm nhé anh em - bà con' 
-
-EXEC selectPhongMoiNhat
-
-EXEC selectPhongAll
-
-EXEC selectPhieuThueMoiNhat
-
-EXEC selectLoaiKhachHangAll
-
-EXEC NewChiTietPhieuThue 'PT027', N'Nguyễn Văn A', 'LK000', '299933234', N'Khóm An Lạc', 1.2
-
-EXEC NewPhieuThue 'PH001', '01/01/2001', '01/01/2002', 1.2, 2999, 1.2
-
-EXEC selectLoaiKhachHangByMaLoaiKhach 'LK000'
-
-EXEC NewTinhTrang 'TRONG', 'PH000', '01/01/2001' 
-
-EXEC selectTinhTrangPhongByThoiGian '9/1/2017','9/2/2017'
-
-EXEC capNhatTinhTrangPhongByMaPhong 'PH000', '06/01/2017'
-
-EXEC phongDuocThue 'PH000', '6/3/2017', '6/3/2017' 
-
-EXEC selectPhongAllByNgayBatDauVaNgayTraPhong '6/1/2017', '6/1/2017' 
-
-EXEC selectPhongKhongMaPhongKhongTenPhong 'LP000', '120000', 'TRONG', '6/1/2017', '6/5/2017'
-
-EXEC selectPhongKhongTenPhong 'PH001', 'LP000', '120000', 'TRONG', '6/1/2017', '6/1/2017'
-
-EXEC selectPhongKhongMaPhong N'Phòng Lạnh', 'LP000', '120000', 'TRONG', '6/1/2017', '6/1/2017'
-
-EXEC selectPhieuThueHDByMaPhieuThue 'PT002'
-
-EXEC kiemTraPhieuThueByMaPhieuThue 'PT001'
-
-EXEC selectChiTietPhieuAllThueByMaPhieuThue 'PT000'
-
-EXEC NewHoaDon N'Khách hàng', N'địa chỉ', 8222.23
-
-EXEC capNhatMaHoaDonByMaPhieuThue 'PT000', 'HD000'
-
-EXEC selectPhieuThueByNgayTraPhongMaLoaiPhong '6-9-2017', 'LP000'
-
-EXEC NewBaoCaoDoanhThu '2-6-2017', 400.33
-
-EXEC selecBaoCaoDoanhThuMoiNhat
-
-EXEC NewChiTietBaoCaoDT 'DT000', 'LP000', 233.4, '43.3%'
-
-EXEC kiemTraBaoCaoDTByThangBaoCaoVaTongDoanhThu '6-6-2017', 940000
---EXEC selectLoaiKhachHangCoHeSoKhachLonNhat
-
-EXEC selectDanhSachPhongVoiSoNgayThueByThang '6-2-2017'
-
-EXEC NewBaoCaoMatDo '2-2-3'
-
-EXEC selectBaoCaoMatDoMoiNhat
-
-EXEC NewChiTietBaoCaoMD 'MD000', 'PH000', 7, '3.4%'
-
-EXEC selectBaoCaoMatDoByThang '2017-07-06 00:00:00'
-
-EXEC selectPhieuThueChuaLapHoaDon
-
-Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK000', 'LKVIP', 1.2)
-Insert into LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach) values ('LK001', 'LKSTANDAR', 1)
-
-SELECT *FROM LOAIPHONG where isDelete = 0
-
-Select top 1 * From PHONG where isDelete = 0 order by MaPhong DESC
-
-INSERT INTO PHIEUTHUE(MaPhieuThue, MaPhong, NgayTraPhong, NgayBatDauThue, DonGiaThueThucTe, ThanhTienPhong, MaHoaDon, PhuThuThucTe) VALUES ('PT000', 'PH001', '01/21/2001', '02/13/2001', 170000, 200000, null, 1.1)
-
-select * FRom CHITIETPHIEUTHUE
-select * FRom BAOCAOMATDO
-select * FRom PhieuThue
-select * FRom TINHTRANG where MONTH(NgayCuaTinhTrang) = MONTH('2017-06-08') and
-								YEAR(NgayCuaTinhTrang) = YEAR('2017-06-08')
-select * FRom PHIEUTHUE where MaHoaDon IS NULL
-
-DELETE FROM BAOCAOMATDO
-DELETE FROM CHITIETBAOCAOMD
