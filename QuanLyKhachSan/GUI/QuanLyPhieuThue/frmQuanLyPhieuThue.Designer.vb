@@ -59,25 +59,25 @@ Partial Class frmQuanLyPhieuThue
         Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel3, 0, 1)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
-        Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TableLayoutPanel1.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.TableLayoutPanel1.RowCount = 3
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.5!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 72.5!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1296, 725)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(972, 589)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.dgvQuanLyPhieuThue)
         Me.GroupBox4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GroupBox4.Location = New System.Drawing.Point(6, 202)
-        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.GroupBox4.Location = New System.Drawing.Point(4, 164)
+        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(11, 10, 11, 10)
-        Me.GroupBox4.Size = New System.Drawing.Size(1284, 519)
+        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(8, 8, 8, 8)
+        Me.GroupBox4.Size = New System.Drawing.Size(964, 421)
         Me.GroupBox4.TabIndex = 16
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Danh sách phiếu thuê"
@@ -92,13 +92,12 @@ Partial Class frmQuanLyPhieuThue
         Me.dgvQuanLyPhieuThue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvQuanLyPhieuThue.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ChonPhieuThue, Me.MaPhieuThue, Me.TenPhong, Me.DonGiaThueThucTe, Me.ThanhTienPhong, Me.MaHoaDon, Me.PhuThuThucTe, Me.NgayBatDauThue, Me.NgayTraPhong, Me.GhiChu})
         Me.dgvQuanLyPhieuThue.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgvQuanLyPhieuThue.Location = New System.Drawing.Point(11, 25)
-        Me.dgvQuanLyPhieuThue.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.dgvQuanLyPhieuThue.Location = New System.Drawing.Point(8, 21)
+        Me.dgvQuanLyPhieuThue.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.dgvQuanLyPhieuThue.Name = "dgvQuanLyPhieuThue"
-        Me.dgvQuanLyPhieuThue.ReadOnly = True
         Me.dgvQuanLyPhieuThue.RowHeadersVisible = False
         Me.dgvQuanLyPhieuThue.RowTemplate.Height = 24
-        Me.dgvQuanLyPhieuThue.Size = New System.Drawing.Size(1262, 484)
+        Me.dgvQuanLyPhieuThue.Size = New System.Drawing.Size(948, 392)
         Me.dgvQuanLyPhieuThue.TabIndex = 0
         '
         'ChonPhieuThue
@@ -193,22 +192,22 @@ Partial Class frmQuanLyPhieuThue
         Me.TableLayoutPanel2.Controls.Add(Me.btnCapNhatPhieuThue, 1, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.btnLapPhieuThuePhong, 0, 0)
         Me.TableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel2.Location = New System.Drawing.Point(6, 4)
-        Me.TableLayoutPanel2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TableLayoutPanel2.Location = New System.Drawing.Point(4, 4)
+        Me.TableLayoutPanel2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 1
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(1284, 158)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(964, 127)
         Me.TableLayoutPanel2.TabIndex = 0
         '
         'btnLapHoaDon
         '
         Me.btnLapHoaDon.BackColor = System.Drawing.Color.White
         Me.btnLapHoaDon.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.btnLapHoaDon.Location = New System.Drawing.Point(906, 20)
-        Me.btnLapHoaDon.Margin = New System.Windows.Forms.Padding(51, 20, 51, 20)
+        Me.btnLapHoaDon.Location = New System.Drawing.Point(680, 16)
+        Me.btnLapHoaDon.Margin = New System.Windows.Forms.Padding(38, 16, 38, 16)
         Me.btnLapHoaDon.Name = "btnLapHoaDon"
-        Me.btnLapHoaDon.Size = New System.Drawing.Size(327, 118)
+        Me.btnLapHoaDon.Size = New System.Drawing.Size(246, 95)
         Me.btnLapHoaDon.TabIndex = 2
         Me.btnLapHoaDon.Text = "Lập Hóa ĐơnThanh Toán"
         Me.btnLapHoaDon.UseVisualStyleBackColor = False
@@ -217,10 +216,10 @@ Partial Class frmQuanLyPhieuThue
         '
         Me.btnCapNhatPhieuThue.BackColor = System.Drawing.Color.White
         Me.btnCapNhatPhieuThue.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.btnCapNhatPhieuThue.Location = New System.Drawing.Point(478, 20)
-        Me.btnCapNhatPhieuThue.Margin = New System.Windows.Forms.Padding(51, 20, 51, 20)
+        Me.btnCapNhatPhieuThue.Location = New System.Drawing.Point(359, 16)
+        Me.btnCapNhatPhieuThue.Margin = New System.Windows.Forms.Padding(38, 16, 38, 16)
         Me.btnCapNhatPhieuThue.Name = "btnCapNhatPhieuThue"
-        Me.btnCapNhatPhieuThue.Size = New System.Drawing.Size(326, 118)
+        Me.btnCapNhatPhieuThue.Size = New System.Drawing.Size(245, 95)
         Me.btnCapNhatPhieuThue.TabIndex = 1
         Me.btnCapNhatPhieuThue.Text = "Cập Nhật Phiếu Thuê Phòng "
         Me.btnCapNhatPhieuThue.UseVisualStyleBackColor = False
@@ -229,10 +228,10 @@ Partial Class frmQuanLyPhieuThue
         '
         Me.btnLapPhieuThuePhong.BackColor = System.Drawing.Color.White
         Me.btnLapPhieuThuePhong.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.btnLapPhieuThuePhong.Location = New System.Drawing.Point(51, 20)
-        Me.btnLapPhieuThuePhong.Margin = New System.Windows.Forms.Padding(51, 20, 51, 20)
+        Me.btnLapPhieuThuePhong.Location = New System.Drawing.Point(38, 16)
+        Me.btnLapPhieuThuePhong.Margin = New System.Windows.Forms.Padding(38, 16, 38, 16)
         Me.btnLapPhieuThuePhong.Name = "btnLapPhieuThuePhong"
-        Me.btnLapPhieuThuePhong.Size = New System.Drawing.Size(325, 118)
+        Me.btnLapPhieuThuePhong.Size = New System.Drawing.Size(245, 95)
         Me.btnLapPhieuThuePhong.TabIndex = 0
         Me.btnLapPhieuThuePhong.Text = "Lập Phiếu Thuê Phòng"
         Me.btnLapPhieuThuePhong.UseVisualStyleBackColor = False
@@ -245,12 +244,12 @@ Partial Class frmQuanLyPhieuThue
         Me.TableLayoutPanel3.Controls.Add(Me.cboTinhTrangPhieuThue, 1, 0)
         Me.TableLayoutPanel3.Controls.Add(Me.txtTinhTrangPhieuThue, 0, 0)
         Me.TableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel3.Location = New System.Drawing.Point(6, 166)
-        Me.TableLayoutPanel3.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TableLayoutPanel3.Location = New System.Drawing.Point(4, 135)
+        Me.TableLayoutPanel3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
         Me.TableLayoutPanel3.RowCount = 1
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel3.Size = New System.Drawing.Size(1284, 32)
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(964, 25)
         Me.TableLayoutPanel3.TabIndex = 17
         '
         'cboTinhTrangPhieuThue
@@ -259,31 +258,32 @@ Partial Class frmQuanLyPhieuThue
         Me.cboTinhTrangPhieuThue.Dock = System.Windows.Forms.DockStyle.Left
         Me.cboTinhTrangPhieuThue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboTinhTrangPhieuThue.FormattingEnabled = True
-        Me.cboTinhTrangPhieuThue.Location = New System.Drawing.Point(259, 2)
-        Me.cboTinhTrangPhieuThue.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.cboTinhTrangPhieuThue.Location = New System.Drawing.Point(194, 2)
+        Me.cboTinhTrangPhieuThue.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cboTinhTrangPhieuThue.Name = "cboTinhTrangPhieuThue"
-        Me.cboTinhTrangPhieuThue.Size = New System.Drawing.Size(151, 24)
+        Me.cboTinhTrangPhieuThue.Size = New System.Drawing.Size(114, 21)
         Me.cboTinhTrangPhieuThue.TabIndex = 18
         '
         'txtTinhTrangPhieuThue
         '
         Me.txtTinhTrangPhieuThue.AutoSize = True
         Me.txtTinhTrangPhieuThue.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtTinhTrangPhieuThue.Location = New System.Drawing.Point(3, 0)
+        Me.txtTinhTrangPhieuThue.Location = New System.Drawing.Point(2, 0)
+        Me.txtTinhTrangPhieuThue.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.txtTinhTrangPhieuThue.Name = "txtTinhTrangPhieuThue"
-        Me.txtTinhTrangPhieuThue.Size = New System.Drawing.Size(250, 32)
+        Me.txtTinhTrangPhieuThue.Size = New System.Drawing.Size(188, 25)
         Me.txtTinhTrangPhieuThue.TabIndex = 0
         Me.txtTinhTrangPhieuThue.Text = "Chọn tình trạng phiếu thuê"
         Me.txtTinhTrangPhieuThue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'frmQuanLyPhieuThue
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1296, 725)
+        Me.ClientSize = New System.Drawing.Size(972, 589)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "frmQuanLyPhieuThue"
         Me.Text = "frmQuanLyPhieuThue"
         Me.TableLayoutPanel1.ResumeLayout(False)
