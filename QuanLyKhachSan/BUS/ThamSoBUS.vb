@@ -12,5 +12,13 @@ Namespace BUS
 
 #End Region
 
+#Region "Inserting"
+
+        Public Shared Function capNhatThamSo(thamSo As ThamSoDTO) As Boolean
+            Return ThamSoDAO.capNhatThamSo(thamSo)
+        End Function
+
+#End Region
+
     End Class
 End Namespace
