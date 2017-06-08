@@ -75,6 +75,14 @@ Namespace BUS
         End Function
 
 #End Region
+
+#Region "Updating"
+
+        Public Shared Function xoaPhongByMaPhong(maPhong As String) As Boolean
+            Return PhongDAO.xoaPhongByMaPhong(maPhong)
+        End Function
+
+#End Region
     End Class
 
 End Namespace

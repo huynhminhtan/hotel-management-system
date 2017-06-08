@@ -102,4 +102,8 @@ Public Class frmTraCuuPhong
     Private Sub frmTraCuuPhong_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         fatherForm.CapNhat()
     End Sub
+
+    Private Sub btnHuy_Click(sender As Object, e As EventArgs) Handles btnHuy.Click
+        Me.Close()
+    End Sub
 End Class

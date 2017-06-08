@@ -210,7 +210,26 @@ Namespace DAO
 
 #End Region
 
-      
+#Region "Update"
+
+        Public Shared Function xoaPhongByMaPhong(maPhong As String) As Boolean
+            Try
+                Dim sqlParams As New List(Of SqlParameter)
+                sqlParams.Add(New SqlParameter("@MaPhong", maPhong))
+
+                Dim n As Integer
+                n = SqlDataAccessHelper.ExecuteNoneQuery("uploadPhongByMaPhong", sqlParams)
+
+                If (n <= 0) Then
+                    Return False
+                End If
+            Catch ex As Exception
+                Throw ex
+            End Try
+            Return True
+        End Function
+
+#End Region
 
     End Class
 

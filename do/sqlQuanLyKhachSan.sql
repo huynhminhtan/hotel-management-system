@@ -491,12 +491,14 @@ END
 --END
 
 -- selectPhongByMaPhongNgayBatDauNgayTraPhong
+DROP PRocedure selectPhongByMaPhongNgayBatDauNgayTraPhong
+
 CREATE PROCEDURE selectPhongByMaPhongNgayBatDauNgayTraPhong
 	@MaPhong char(5),
 	@NgayBatDau smalldatetime,
 	@NgayTraPhong smalldatetime
 AS BEGIN
-	SELECT PHONG.MaPhong, TenPhong, TenLoaiPhong, DonGiaThue, LoaiTinhTrang, NgayCuaTinhTrang
+		SELECT PHONG.MaPhong as 'Mã Phòng', TenPhong as 'Tên Phòng', TenLoaiPhong as 'Tên Loại Phòng', DonGiaThue as 'Đơn Giá Thuê', LoaiTinhTrang as 'Tình Trạng', NgayCuaTinhTrang as 'Ngày'
 	FROM ((TINHTRANG INNER JOIN PHONG ON PHONG.MaPhong = TINHTRANG.MaPhong)
 			INNER JOIN LOAIPHONG ON PHONG.MaLoaiPhong = LOAIPHONG.MaLoaiPhong)
 	WHERE ((@NgayBatDau <= NgayCuaTinhTrang) AND (NgayCuaTinhTrang <= @NgayTraPhong)) AND
@@ -505,12 +507,14 @@ AS BEGIN
 END
 
 -- selectPhongByTenPhongNgayBatDauNgayTraPhong
+DROP PROCEDURE selectPhongByTenPhongNgayBatDauNgayTraPhong
+
 CREATE PROCEDURE selectPhongByTenPhongNgayBatDauNgayTraPhong
 	@TenPhong nvarchar(50),
 	@NgayBatDau smalldatetime,
 	@NgayTraPhong smalldatetime
 AS BEGIN
-	SELECT PHONG.MaPhong, TenPhong, TenLoaiPhong, DonGiaThue, LoaiTinhTrang, NgayCuaTinhTrang
+	SELECT PHONG.MaPhong as 'Mã Phòng', TenPhong as 'Tên Phòng', TenLoaiPhong as 'Tên Loại Phòng', DonGiaThue as 'Đơn Giá Thuê', LoaiTinhTrang as 'Tình Trạng', NgayCuaTinhTrang as 'Ngày'
 	FROM ((TINHTRANG INNER JOIN PHONG ON PHONG.MaPhong = TINHTRANG.MaPhong)
 			INNER JOIN LOAIPHONG ON PHONG.MaLoaiPhong = LOAIPHONG.MaLoaiPhong)
 	WHERE ((@NgayBatDau <= NgayCuaTinhTrang) AND (NgayCuaTinhTrang <= @NgayTraPhong)) AND
@@ -834,16 +838,16 @@ CREATE PROCEDURE selectPhieuThueByTinhTrangHoaDon
 	@TinhTrangHoaDon nvarchar(50)
 AS BEGIN
 	IF (@TinhTrangHoaDon = 'DA THUE')
-		select * 
-		from PHIEUTHUE	
+		select MaPhieuThue, NgayBatDauThue, NgayTraPhong, DonGiaThueThucTe, ThanhTienPhong, MaHoaDon, PhuThuThucTe, TenPhong, GhiChu 
+		from PHIEUTHUE inner join PHONG on PHIEUTHUE.MaPhong = PHONG.MaPhong
 		WHERE (MaHoaDon IS NOT NULL)
 	ELSE IF (@TinhTrangHoaDon = 'TRONG')
-		select * 
-		from PHIEUTHUE
+		select MaPhieuThue, NgayBatDauThue, NgayTraPhong, DonGiaThueThucTe, ThanhTienPhong, MaHoaDon, PhuThuThucTe, TenPhong, GhiChu  
+		from PHIEUTHUE inner join PHONG on PHIEUTHUE.MaPhong = PHONG.MaPhong
 		WHERE (MaHoaDon IS NULL)
 	ELSE IF (@TinhTrangHoaDon = 'TAT CA')
-		select * 
-		from PHIEUTHUE
+		select MaPhieuThue, NgayBatDauThue, NgayTraPhong, DonGiaThueThucTe, ThanhTienPhong, MaHoaDon, PhuThuThucTe, TenPhong, GhiChu  
+		from PHIEUTHUE inner join PHONG on PHIEUTHUE.MaPhong = PHONG.MaPhong
 	END
 
 Exec selectPhieuThueByTinhTrangHoaDon 'da THUE'
@@ -882,6 +886,18 @@ AS BEGIN
 	WHERE MaBaoCaoMatDo = @MaBaoCaoMatDo
 END
 
+-- upload Phong by MaPhong
+CREATE PROCEDURE uploadPhongByMaPhong
+	@MaPhong char(5)
+as begin
+	UPDATE PHONG
+	SET isDeleted = 1
+	WHERE MaPhong = @MaPhong 
+end
+
+EXEC uploadPhongByMaPhong 'Ph001'
+
+SELECT * FROM PHONG
 ---------------------
 -----------------
 
@@ -971,7 +987,7 @@ INSERT INTO PHIEUTHUE(MaPhieuThue, MaPhong, NgayTraPhong, NgayBatDauThue, DonGia
 
 select * FRom CHITIETPHIEUTHUE
 select * FRom BAOCAOMATDO
-select * FRom CHITIETBAOCAOMD
+select * FRom PhieuThue
 select * FRom TINHTRANG where MONTH(NgayCuaTinhTrang) = MONTH('2017-06-08') and
 								YEAR(NgayCuaTinhTrang) = YEAR('2017-06-08')
 select * FRom PHIEUTHUE where MaHoaDon IS NULL
