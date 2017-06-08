@@ -37,12 +37,12 @@ Public Class frmThemLoaiPhong
             loaiPhong.DonGiaThue = txtDonGiaThue.Text
 
             If (LoaiPhongBUS.themLoaiPhong(loaiPhong) = True) Then
-                    MessageBox.Show("Thêm loại phòng thành công.")
+                MessageBox.Show("Thêm loại phòng thành công.")
 
-                    dgvDanhSachLoaiPhong.DataSource = LoaiPhongBUS.selectLoaiPhongAll()
+                dgvDanhSachLoaiPhong.DataSource = LoaiPhongBUS.selectLoaiPhongAll()
 
-                    txtDonGiaThue.Text = ""
-                    txtTenLoaiPhong.Text = ""
+                txtDonGiaThue.Text = ""
+                txtTenLoaiPhong.Text = ""
             End If
         End Using
     End Sub
