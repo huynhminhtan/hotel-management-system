@@ -17,7 +17,7 @@ Namespace DAO
                 SqlParams.Add(New SqlParameter("@MaPhieuThue", chiTietPhieuThue.MaPhieuThue))
                 SqlParams.Add(New SqlParameter("@TenKhachHang", chiTietPhieuThue.TenKhachHang))
                 SqlParams.Add(New SqlParameter("@MaLoaiKhachHang", chiTietPhieuThue.MaLoaiKhachHang))
-                SqlParams.Add(New SqlParameter("@CMND", chiTietPhieuThue.CMnd))
+                SqlParams.Add(New SqlParameter("@CMND", chiTietPhieuThue.CMND))
                 SqlParams.Add(New SqlParameter("@DiaChi", chiTietPhieuThue.DiaChi))
                 SqlParams.Add(New SqlParameter("@HeSoThucTe", chiTietPhieuThue.HeSoThucTe))
 
@@ -61,7 +61,7 @@ Namespace DAO
                     chiTietPhieuThue.TenKhachHang = hang("TenKhachHang").ToString
                     chiTietPhieuThue.HeSoThucTe = Double.Parse(hang("HeSoThucTe").ToString)
                     chiTietPhieuThue.DiaChi = hang("DiaChi").ToString
-                    chiTietPhieuThue.CMnd = hang("CMND").ToString
+                    chiTietPhieuThue.CMND = hang("CMND").ToString
 
                     danhSachCTPT.Add(chiTietPhieuThue)
                 Next
