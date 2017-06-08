@@ -67,4 +67,9 @@ Public Class frmQuanLyPhieuThue
             MessageBox.Show("Phiếu thuê đã được lập hóa đơn.")
         End If
     End Sub
+
+    Private Sub btnCapNhatPhieuThue_Click(sender As Object, e As EventArgs) Handles btnCapNhatPhieuThue.Click
+        Dim formCapNhatPhieuThue As New frmCapNhatPhieuThue(Me)
+        formCapNhatPhieuThue.ShowDialog(Me)
+    End Sub
 End Class

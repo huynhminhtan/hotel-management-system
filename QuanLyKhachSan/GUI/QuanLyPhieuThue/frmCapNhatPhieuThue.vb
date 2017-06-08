@@ -4,6 +4,8 @@ Imports BUS.BUS
 
 Public Class frmCapNhatPhieuThue
 
+    Private fatherForm As frmQuanLyPhieuThue
+
     Private Sub frmCapNhatPhieuThue_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
@@ -60,7 +62,7 @@ Public Class frmCapNhatPhieuThue
         For Each chiTietPhieuThue As ChiTietPhieuThueDTO In danhSachChiTietPhieuThue
             danhSachKhachHang.Rows.Add(chiTietPhieuThue.TenKhachHang,
                                        LoaiKhachHangBUS.selectTenLoaiKhachHangByMaLoaiKhach(chiTietPhieuThue.MaLoaiKhachHang),
-                                       chiTietPhieuThue.CMnd, chiTietPhieuThue.DiaChi)
+                                       chiTietPhieuThue.CMND, chiTietPhieuThue.DiaChi)
         Next
 
         ' hiển thị danh sách khách thuê
@@ -158,5 +160,14 @@ Public Class frmCapNhatPhieuThue
         dtpNgayTraPhong.MinDate = dtpNgayBatDauThue.Value
 
         hienThiDanhSachTinhTrangByThoiGian()
+    End Sub
+
+    Sub New(formFather As frmQuanLyPhieuThue)
+        InitializeComponent()
+        fatherForm = formFather
+    End Sub
+
+    Private Sub frmCapNhatPhieuThue_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fatherForm.CapNhat()
     End Sub
 End Class
