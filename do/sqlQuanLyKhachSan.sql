@@ -959,7 +959,21 @@ END
 
 EXEC NewLoaiKhachHang 'SILVER', 1.3
 
-Select * From LoaiKhachHang
+Select * From THAMSO
+
+-- capNhatThamSo
+CREATE PROCEDURE capNhatThamSo
+	@SoKhachToiDa int,
+	@TiLePhuThu float
+
+AS BEGIN
+	Update THAMSO
+	SET SoKhachToiDa = @SoKhachToiDa, TiLePhuThu = @TiLePhuThu
+END
+
+
+EXEC capNhatThamSo 3, 1.25
+select * from THAMSO 
 ----------
 -----------
 -----------------
