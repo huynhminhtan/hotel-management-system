@@ -58,9 +58,11 @@ Public Class frmLapBaoCaoDoanhThu
 
             '' tính doanh thu theo loại phòng
             Dim doanhThuTam As Double = 0
-            For Each phieuThue As PhieuThueDTO In danhSachPhieuThueTrongThang
-                doanhThuTam += phieuThue.ThanhTienPhong
-            Next
+            If (danhSachPhieuThueTrongThang IsNot Nothing) Then
+                For Each phieuThue As PhieuThueDTO In danhSachPhieuThueTrongThang
+                    doanhThuTam += phieuThue.ThanhTienPhong
+                Next
+            End If
 
             '' tính tổng doanh thu
             tongDoanhThu += doanhThuTam
