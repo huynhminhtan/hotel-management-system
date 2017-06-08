@@ -71,4 +71,8 @@ Public Class frmCapNhatPhong
     Private Sub frmCapNhatPhong_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         fatherForm.CapNhat()
     End Sub
+
+    Private Sub btntThoat_Click(sender As Object, e As EventArgs) Handles btntThoat.Click
+        Me.Close()
+    End Sub
 End Class

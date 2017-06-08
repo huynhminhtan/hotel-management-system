@@ -12,6 +12,10 @@ Public Class frmHuyPhong
     Private Sub frmHuyPhong_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dgvDanhSachPhong.DataSource = PhongBUS.selectPhongAllByNgayBatDauVaNgayTraPhong(Date.Now,
                                                                                        Date.Now)
+
+        txtMaPhong.Text = dgvDanhSachPhong.CurrentRow.Cells(0).Value.ToString
+        txtTenPhong.Text = dgvDanhSachPhong.CurrentRow.Cells(1).Value.ToString
+
         If (String.IsNullOrEmpty(txtMaPhong.Text)) And (String.IsNullOrEmpty(txtTenPhong.Text)) Then
             btnTimPhong.Enabled = True
         End If
@@ -33,44 +37,37 @@ Public Class frmHuyPhong
 
         End If
 
-        ' xóa giá trị đã có
-        txtTenPhong.Text = ""
-        txtMaPhong.Text = ""
+        If (dgvDanhSachPhong.DataSource Is Nothing) Then
+            Using New CenteredMessageBox(Me)
+                MessageBox.Show("Không có phòng phù hợp.")
+            End Using
+            dgvDanhSachPhong.DataSource = PhongBUS.selectPhongAllByNgayBatDauVaNgayTraPhong(Date.Now,
+                                                                                     Date.Now)
+            txtMaPhong.Text = dgvDanhSachPhong.CurrentRow.Cells(0).Value.ToString
+            txtTenPhong.Text = dgvDanhSachPhong.CurrentRow.Cells(1).Value.ToString
+
+            Return
+        End If
+
+        Try
+            txtMaPhong.Text = dgvDanhSachPhong.CurrentRow.Cells(0).Value.ToString
+            txtTenPhong.Text = dgvDanhSachPhong.CurrentRow.Cells(1).Value.ToString
+        Catch ex As Exception
+        End Try
     End Sub
 
-    'Private Sub txtMaPhong_TextChanged(sender As Object, e As EventArgs) Handles txtMaPhong.TextChanged
-    '    txtTenPhong.Enabled = False
-
-    '    If (String.IsNullOrEmpty(txtMaPhong.Text) = True) Then
-    '        txtTenPhong.Enabled = True
-    '    End If
-    'End Sub
 
     Private Sub btntThoat_Click(sender As Object, e As EventArgs) Handles btntThoat.Click
         Me.Close()
     End Sub
 
-    Private Sub dgvDanhSachPhong_RowValidating(sender As Object, e As DataGridViewCellCancelEventArgs) Handles dgvDanhSachPhong.RowValidating
-        Try
-            txtMaPhong.Text = dgvDanhSachPhong.CurrentRow.Cells("MaPhong").Value.ToString
-            txtTenPhong.Text = dgvDanhSachPhong.CurrentRow.Cells("TenPhong").Value.ToString
-        Catch ex As Exception
-        End Try
-      
-    End Sub
-
-
-    'Private Sub dgvDanhSachPhong_CellValidating(sender As Object, e As DataGridViewCellValidatingEventArgs) Handles dgvDanhSachPhong.CellValidating
-    '    txtMaPhong.Text = dgvDanhSachPhong.CurrentCell.Value = "asdfd"
-    '    txtTenPhong.Text = dgvDanhSachPhong.CurrentRow.Cells("TenPhong").Value.ToString
-    'End Sub
-
     Private Sub btnHuyPhong_Click(sender As Object, e As EventArgs) Handles btnHuyPhong.Click
-
-        If (String.Compare((dgvDanhSachPhong.CurrentRow.Cells("TinhTrang").Value).Replace(" ", ""), ("DA THUE").Replace(" ", "")) = 0) Then
-            MessageBox.Show("Phòng đang được thuê, không thể xóa.")
-            Return
-        End If
+        Using New CenteredMessageBox(Me)
+            If (String.Compare((dgvDanhSachPhong.CurrentRow.Cells(4).Value).Replace(" ", ""), ("DA THUE").Replace(" ", "")) = 0) Then
+                MessageBox.Show("Phòng đang được thuê, không thể xóa.")
+                Return
+            End If
+        End Using
 
         Dim luaChon As DialogResult
 
@@ -105,5 +102,22 @@ Public Class frmHuyPhong
 
     Private Sub frmHuyPhong_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         fatherForm.CapNhat()
+    End Sub
+
+    Private Sub dgvDanhSachPhong_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvDanhSachPhong.CellClick
+        Try
+            txtMaPhong.Text = dgvDanhSachPhong.CurrentRow.Cells(0).Value.ToString
+            txtTenPhong.Text = dgvDanhSachPhong.CurrentRow.Cells(1).Value.ToString
+        Catch ex As Exception
+        End Try
+
+    End Sub
+
+    Private Sub txtMaPhong_Click(sender As Object, e As EventArgs) Handles txtMaPhong.Click
+        txtTenPhong.Text = ""
+    End Sub
+
+    Private Sub txtTenPhong_Click(sender As Object, e As EventArgs) Handles txtTenPhong.Click
+        txtMaPhong.Text = ""
     End Sub
 End Class
