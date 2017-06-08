@@ -95,6 +95,7 @@ Partial Class frmQuanLyPhieuThue
         Me.dgvQuanLyPhieuThue.Location = New System.Drawing.Point(11, 25)
         Me.dgvQuanLyPhieuThue.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.dgvQuanLyPhieuThue.Name = "dgvQuanLyPhieuThue"
+        Me.dgvQuanLyPhieuThue.ReadOnly = True
         Me.dgvQuanLyPhieuThue.RowHeadersVisible = False
         Me.dgvQuanLyPhieuThue.RowTemplate.Height = 24
         Me.dgvQuanLyPhieuThue.Size = New System.Drawing.Size(1262, 484)
