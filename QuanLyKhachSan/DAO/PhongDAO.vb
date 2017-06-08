@@ -106,6 +106,35 @@ Namespace DAO
             Return listPhong
         End Function
 
+
+        Public Shared Function selectPhongAllisDeleted() As List(Of PhongDTO)
+            Dim listPhong As New List(Of PhongDTO)
+            Dim dt As New DataTable
+
+            Try
+                dt = SqlDataAccessHelper.ExecuteQuery("selectPhongAllisDeleted", Nothing)
+
+                If (dt.Rows.Count <= 0) Then
+                    Return Nothing ' Không có phòng nào trong CSDL
+                End If
+
+                For Each row As DataRow In dt.Rows
+
+                    Dim phong As New PhongDTO
+                    phong.MaPhong = row("MaPhong").ToString
+                    phong.MaLoaiPhong = row("MaLoaiPhong").ToString
+                    phong.TenPhong = row("TenPhong").ToString
+                    phong.GhiChu = row("GhiChu").ToString
+
+                    listPhong.Add(phong)
+                Next
+
+            Catch ex As Exception
+                Throw ex
+            End Try
+            Return listPhong
+        End Function
+
         Public Shared Function selectPhongAllByNgayBatDauVaNgayTraPhong(ngayBatDau As Date,
                                                                         ngayTraPhong As Date) As DataTable
             Dim dt As New DataTable

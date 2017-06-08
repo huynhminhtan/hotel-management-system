@@ -27,5 +27,6 @@ Namespace BUS
 
         
 #End Region
+
     End Class
 End Namespace
