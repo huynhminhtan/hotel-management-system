@@ -210,7 +210,7 @@ Public Class frmLapDanhMucPhong
                 MessageBox.Show(Me, "Thêm " + ketQua.ToString + " phòng thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
             End If
         End Using
-        
+
     End Sub
 
     Sub New(frmFather As frmQuanLyPhong)

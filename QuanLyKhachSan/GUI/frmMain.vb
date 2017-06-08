@@ -1,4 +1,6 @@
-﻿Public Class frmMain
+﻿Imports GUI.ThayDoiQuyDinh
+
+Public Class frmMain
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 

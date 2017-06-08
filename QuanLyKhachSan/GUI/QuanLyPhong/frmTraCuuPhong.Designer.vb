@@ -328,14 +328,14 @@ Partial Class frmTraCuuPhong
         Me.Name = "frmTraCuuPhong"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmTraCuuPhong"
-        Me.GroupBox3.ResumeLayout(false)
-        CType(Me.dgvDanhSachPhong,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox1.ResumeLayout(false)
-        Me.GroupBox1.PerformLayout
-        Me.GroupBox2.ResumeLayout(false)
-        Me.ResumeLayout(false)
+        Me.GroupBox3.ResumeLayout(False)
+        CType(Me.dgvDanhSachPhong, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.ResumeLayout(False)
 
-End Sub
+    End Sub
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents lblTenLoaiPhong As System.Windows.Forms.Label
