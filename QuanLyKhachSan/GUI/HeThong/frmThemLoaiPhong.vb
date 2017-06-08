@@ -4,6 +4,8 @@ Imports DTO.DTO
 
 Public Class frmThemLoaiPhong
 
+    Private fatherForm As frmHeThong
+
     Private Sub btntThoat_Click(sender As Object, e As EventArgs) Handles btntThoat.Click
         Me.Close()
     End Sub
@@ -35,17 +37,24 @@ Public Class frmThemLoaiPhong
             loaiPhong.DonGiaThue = txtDonGiaThue.Text
 
             If (LoaiPhongBUS.themLoaiPhong(loaiPhong) = True) Then
-                Using New CenteredMessageBox(Me)
                     MessageBox.Show("Thêm loại phòng thành công.")
 
                     dgvDanhSachLoaiPhong.DataSource = LoaiPhongBUS.selectLoaiPhongAll()
 
                     txtDonGiaThue.Text = ""
                     txtTenLoaiPhong.Text = ""
-                End Using
             End If
-
-
         End Using
+    End Sub
+
+    Sub New(formFather As frmHeThong)
+
+        InitializeComponent()
+        fatherForm = formFather
+
+    End Sub
+
+    Private Sub frmThemLoaiPhong_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fatherForm.CapNhat()
     End Sub
 End Class

@@ -108,6 +108,7 @@ Partial Class frmQuanLyPhieuThue
         Me.ChonPhieuThue.FillWeight = 50.76142!
         Me.ChonPhieuThue.HeaderText = "Lập Hóa Đơn"
         Me.ChonPhieuThue.Name = "ChonPhieuThue"
+        Me.ChonPhieuThue.ReadOnly = True
         Me.ChonPhieuThue.Width = 60
         '
         'MaPhieuThue
@@ -116,6 +117,7 @@ Partial Class frmQuanLyPhieuThue
         Me.MaPhieuThue.FillWeight = 105.4709!
         Me.MaPhieuThue.HeaderText = "Mã Phiếu Thuê"
         Me.MaPhieuThue.Name = "MaPhieuThue"
+        Me.MaPhieuThue.ReadOnly = True
         '
         'TenPhong
         '
@@ -123,6 +125,7 @@ Partial Class frmQuanLyPhieuThue
         Me.TenPhong.FillWeight = 105.4709!
         Me.TenPhong.HeaderText = "Tên Phòng"
         Me.TenPhong.Name = "TenPhong"
+        Me.TenPhong.ReadOnly = True
         '
         'DonGiaThueThucTe
         '
@@ -130,6 +133,7 @@ Partial Class frmQuanLyPhieuThue
         Me.DonGiaThueThucTe.FillWeight = 105.4709!
         Me.DonGiaThueThucTe.HeaderText = "Đơn Giá Thuê"
         Me.DonGiaThueThucTe.Name = "DonGiaThueThucTe"
+        Me.DonGiaThueThucTe.ReadOnly = True
         '
         'ThanhTienPhong
         '
@@ -137,6 +141,7 @@ Partial Class frmQuanLyPhieuThue
         Me.ThanhTienPhong.FillWeight = 105.4709!
         Me.ThanhTienPhong.HeaderText = "Thành Tiền Phòng"
         Me.ThanhTienPhong.Name = "ThanhTienPhong"
+        Me.ThanhTienPhong.ReadOnly = True
         '
         'MaHoaDon
         '
@@ -144,6 +149,7 @@ Partial Class frmQuanLyPhieuThue
         Me.MaHoaDon.FillWeight = 105.4709!
         Me.MaHoaDon.HeaderText = "Mã Hóa Đơn"
         Me.MaHoaDon.Name = "MaHoaDon"
+        Me.MaHoaDon.ReadOnly = True
         '
         'PhuThuThucTe
         '
@@ -151,6 +157,7 @@ Partial Class frmQuanLyPhieuThue
         Me.PhuThuThucTe.FillWeight = 105.4709!
         Me.PhuThuThucTe.HeaderText = "Phụ Thu Thực Tế"
         Me.PhuThuThucTe.Name = "PhuThuThucTe"
+        Me.PhuThuThucTe.ReadOnly = True
         '
         'NgayBatDauThue
         '
@@ -158,6 +165,7 @@ Partial Class frmQuanLyPhieuThue
         Me.NgayBatDauThue.FillWeight = 105.4709!
         Me.NgayBatDauThue.HeaderText = "Ngày Bắt Đầu Thuê"
         Me.NgayBatDauThue.Name = "NgayBatDauThue"
+        Me.NgayBatDauThue.ReadOnly = True
         '
         'NgayTraPhong
         '
@@ -165,6 +173,7 @@ Partial Class frmQuanLyPhieuThue
         Me.NgayTraPhong.FillWeight = 105.4709!
         Me.NgayTraPhong.HeaderText = "Ngày Trả Phòng"
         Me.NgayTraPhong.Name = "NgayTraPhong"
+        Me.NgayTraPhong.ReadOnly = True
         '
         'GhiChu
         '
@@ -172,6 +181,7 @@ Partial Class frmQuanLyPhieuThue
         Me.GhiChu.FillWeight = 105.4709!
         Me.GhiChu.HeaderText = "Ghi Chú"
         Me.GhiChu.Name = "GhiChu"
+        Me.GhiChu.ReadOnly = True
         '
         'TableLayoutPanel2
         '
