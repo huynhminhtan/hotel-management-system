@@ -887,7 +887,7 @@ AS BEGIN
 END
 
 -- upload Phong by MaPhong
-CREATE PROCEDURE uploadPhongByMaPhong
+CREATE PROCEDURE xoaPhongByMaPhong
 	@MaPhong char(5)
 as begin
 	UPDATE PHONG
@@ -895,9 +895,36 @@ as begin
 	WHERE MaPhong = @MaPhong 
 end
 
-EXEC uploadPhongByMaPhong 'Ph001'
+Drop procedure uploadPhongByMaPhong
+EXEC xoaPhongByMaPhong 'Ph001'
 
 SELECT * FROM PHONG
+
+-- selectPhongVoiTenPhong
+CREATE PROCEDURE selectPhongVoiTenLoaiPhong
+AS BEGIN
+	SELECT MaPhong as 'Mã Phòng', TenPhong as 'Tên Phòng', TenLoaiPhong as 'Tên Loại Phòng', DonGiaThue as 'Đơn Giá Thuê', GhiChu as 'Ghi Chú' 
+	FROM (PHONG inner join LOAIPHONG on	PHONG.MaLoaiPhong = LOAIPHONG.MaLoaiPhong) 
+	WHere (PHONG.isDeleted = 0)
+END
+
+EXEC selectPhongVoiTenLoaiPhong
+
+-- capNhatPhongByMaPhong 
+CREATE PROCEDURE capNhatPhongByMaPhong
+	@MaPhong char(5),
+	@TenPhong nvarchar(50),
+	@MaLoaiPhong char(5),
+	@GhiChu nvarchar(300)
+as begin
+	UPDATE PHONG 
+	SET TenPhong = @TenPhong,
+		MaLoaiPhong = @MaLoaiPhong,
+		GhiChu = @GhiChu	
+	WHERE (MaPhong = @MaPhong)
+end
+
+EXEC capNhatPhongByMaPhong 'PH000', 'Phòng không tên', 'LP000', 'Okie'
 ---------------------
 -----------------
 

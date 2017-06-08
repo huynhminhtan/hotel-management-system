@@ -21,6 +21,10 @@ Namespace BUS
             Return PhongDAO.selectPhongALL()
         End Function
 
+        Public Shared Function selectPhongVoiTenLoaiPhong() As DataTable
+            Return PhongDAO.selectPhongVoiTenLoaiPhong()
+        End Function
+
         Public Shared Function selectPhongAllByNgayBatDauVaNgayTraPhong(ngayBatDau As Date,
                                                                         ngayTraPhong As Date) As DataTable
             Return PhongDAO.selectPhongAllByNgayBatDauVaNgayTraPhong(ngayBatDau, ngayTraPhong)
@@ -80,6 +84,10 @@ Namespace BUS
 
         Public Shared Function xoaPhongByMaPhong(maPhong As String) As Boolean
             Return PhongDAO.xoaPhongByMaPhong(maPhong)
+        End Function
+
+        Public Shared Function capNhatPhongByMaPhong(phong As PhongDTO) As Boolean
+            Return PhongDAO.capNhatPhongByMaPhong(phong)
         End Function
 
 #End Region

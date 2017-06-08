@@ -101,6 +101,12 @@
     <Compile Include="BaoCaoThang\frmLapBaoCaoDoanhThu.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="QuanLyPhong\frmCapNhatPhong.Designer.vb">
+      <DependentUpon>frmCapNhatPhong.vb</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyPhong\frmCapNhatPhong.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="QuanLyPhong\frmHuyPhong.Designer.vb">
       <DependentUpon>frmHuyPhong.vb</DependentUpon>
     </Compile>
@@ -188,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCaoThang\frmLapBaoCaoDoanhThu.resx">
       <DependentUpon>frmLapBaoCaoDoanhThu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyPhong\frmCapNhatPhong.resx">
+      <DependentUpon>frmCapNhatPhong.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyPhong\frmHuyPhong.resx">
       <DependentUpon>frmHuyPhong.vb</DependentUpon>

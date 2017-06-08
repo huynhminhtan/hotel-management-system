@@ -62,6 +62,22 @@ Namespace DAO
 
         End Function
 
+        Public Shared Function selectPhongVoiTenLoaiPhong() As DataTable
+            Dim dt As New DataTable
+
+            Try
+                dt = SqlDataAccessHelper.ExecuteQuery("selectPhongVoiTenLoaiPhong", Nothing)
+
+                If (dt.Rows.Count <= 0) Then
+                    Return Nothing ' Không có phòng nào trong CSDL
+                End If
+
+            Catch ex As Exception
+                Throw ex
+            End Try
+            Return dt
+        End Function
+
         Public Shared Function selectPhongALL() As List(Of PhongDTO)
             Dim listPhong As New List(Of PhongDTO)
             Dim dt As New DataTable
@@ -210,7 +226,7 @@ Namespace DAO
 
 #End Region
 
-#Region "Update"
+#Region "Updating"
 
         Public Shared Function xoaPhongByMaPhong(maPhong As String) As Boolean
             Try
@@ -218,7 +234,27 @@ Namespace DAO
                 sqlParams.Add(New SqlParameter("@MaPhong", maPhong))
 
                 Dim n As Integer
-                n = SqlDataAccessHelper.ExecuteNoneQuery("uploadPhongByMaPhong", sqlParams)
+                n = SqlDataAccessHelper.ExecuteNoneQuery("xoaPhongByMaPhong", sqlParams)
+
+                If (n <= 0) Then
+                    Return False
+                End If
+            Catch ex As Exception
+                Throw ex
+            End Try
+            Return True
+        End Function
+
+        Public Shared Function capNhatPhongByMaPhong(phong As PhongDTO) As Boolean
+            Try
+                Dim sqlParams As New List(Of SqlParameter)
+                sqlParams.Add(New SqlParameter("@MaPhong", phong.MaPhong))
+                sqlParams.Add(New SqlParameter("@TenPhong", phong.TenPhong))
+                sqlParams.Add(New SqlParameter("@MaLoaiPhong", phong.MaLoaiPhong))
+                sqlParams.Add(New SqlParameter("@GhiChu", phong.GhiChu))
+
+                Dim n As Integer
+                n = SqlDataAccessHelper.ExecuteNoneQuery("capNhatPhongByMaPhong", sqlParams)
 
                 If (n <= 0) Then
                     Return False
