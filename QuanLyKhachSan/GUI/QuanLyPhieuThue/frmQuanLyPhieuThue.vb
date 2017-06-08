@@ -14,7 +14,7 @@ Public Class frmQuanLyPhieuThue
 
     Private Sub btnLapPhieuThuePhong_Click(sender As Object, e As EventArgs) Handles btnLapPhieuThuePhong.Click
         Dim formLapPhieuThuePhong As New frmLapPhieuThuePhong(Me)
-        formLapPhieuThuePhong.Show()
+        formLapPhieuThuePhong.ShowDialog(Me)
     End Sub
 
     Public Sub CapNhat()
@@ -32,7 +32,7 @@ Public Class frmQuanLyPhieuThue
         Next
 
         Dim formLapHoaDon As New frmLapHoaDon(Me, danhSachPhieuThue)
-        formLapHoaDon.Show()
+        formLapHoaDon.ShowDialog(Me)
 
     End Sub
 

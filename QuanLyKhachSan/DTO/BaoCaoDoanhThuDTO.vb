@@ -35,6 +35,13 @@
                 _tongDoanhThu = value
             End Set
         End Property
+
+        Public ReadOnly Property TenBaoCao() As String
+            Get
+                Return "Báo cáo doanh thu theo loại phòng tháng " + _thangBaoCaoDoanhThu.Month.ToString + "/" + _thangBaoCaoDoanhThu.Year.ToString
+            End Get
+        End Property
+
 #End Region
 
 #Region "Default Constructor"

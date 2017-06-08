@@ -24,8 +24,11 @@ Namespace BUS
         Public Shared Function kiemTrabaoCaoMatDoByThang(thangBaoCaoMatDo As Date) As Boolean
             Return BaoCaoMatDoDAO.kiemTraBaoCaoMatDoByThang(thangBaoCaoMatDo)
         End Function
-#End Region
 
+        Public Shared Function selectBaoCaoMatDoAll() As List(Of BaoCaoMatDoDTO)
+            Return BaoCaoMatDoDAO.selectBaoCaoMatDoAll()
+        End Function
+#End Region
 
     End Class
 

@@ -29,11 +29,11 @@ Namespace DAO
 
 #Region "Retrieving"
 
-        Public Shared Function selectChiTietBaoCaoDoanhThuByMaBaoCaoDoanhThu(maBaoCaDoanhThu As String) As List(Of ChiTietBaoCaoDTDTO)
+        Public Shared Function selectChiTietBaoCaoDoanhThuByMaBaoCaoDoanhThu(maBaoCaoDoanhThu As String) As List(Of ChiTietBaoCaoDTDTO)
             Dim danhSachChiTietBaoCaoDT As New List(Of ChiTietBaoCaoDTDTO)
             Try
                 Dim sqlParams As New List(Of SqlParameter)
-                sqlParams.Add(New SqlParameter("@MaBaoCaoDoanhThu", maBaoCaDoanhThu))
+                sqlParams.Add(New SqlParameter("@MaBaoCaoDoanhThu", maBaoCaoDoanhThu))
 
                 Dim dt As New DataTable
                 dt = SqlDataAccessHelper.ExecuteQuery("selectChiTietBaoCaoDoanhThuByMaBaoCaoDoanhThu", sqlParams)

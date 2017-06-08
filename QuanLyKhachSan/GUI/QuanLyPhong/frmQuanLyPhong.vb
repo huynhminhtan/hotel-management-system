@@ -25,7 +25,7 @@ Public Class frmQuanLyPhong
 
     Private Sub btnThemPhong_Click(sender As Object, e As EventArgs) Handles btnThemPhong.Click
         Dim formLapDanhMucPhong As New frmLapDanhMucPhong(Me)
-        formLapDanhMucPhong.Show()
+        formLapDanhMucPhong.ShowDialog(Me)
     End Sub
 
     Public Sub CapNhat()
@@ -52,6 +52,6 @@ Public Class frmQuanLyPhong
 
     Private Sub btnTimPhong_Click(sender As Object, e As EventArgs) Handles btnTimPhong.Click
         Dim formTraCuuPhong As New frmTraCuuPhong(Me)
-        formTraCuuPhong.Show()
+        formTraCuuPhong.ShowDialog(Me)
     End Sub
 End Class

@@ -17,6 +17,13 @@ Namespace BUS
             Return ketQua
         End Function
 #End Region
+
+#Region "Retrieving"
+        Public Shared Function selectChiTietBaoCaoDoanhThuByMaBaoCaoDoanhThu(maBaoCaoDoanhThu As String) As List(Of ChiTietBaoCaoDTDTO)
+            Return ChiTietBaoCaoDTDAO.selectChiTietBaoCaoDoanhThuByMaBaoCaoDoanhThu(maBaoCaoDoanhThu)
+        End Function
+#End Region
+
     End Class
 
 End Namespace
