@@ -898,7 +898,7 @@ end
 Drop procedure uploadPhongByMaPhong
 EXEC xoaPhongByMaPhong 'Ph001'
 
-SELECT * FROM PHONG
+	
 
 -- selectPhongVoiTenPhong
 CREATE PROCEDURE selectPhongVoiTenLoaiPhong
@@ -925,7 +925,43 @@ as begin
 end
 
 EXEC capNhatPhongByMaPhong 'PH000', 'Phòng không tên', 'LP000', 'Okie'
----------------------
+
+-- NewLoaiKhachHang bởi mã tự động tăng
+CREATE PROCEDURE NewLoaiKhachHang
+
+	@TenLoaiKhachHang nvarchar(50),
+	@HeSoKhach float
+
+AS BEGIN
+
+-- on show: X row(s) affected 
+--SET NOCOUNT ON  
+
+     IF exists (SELECT *FROM LOAIKHACHHANG)
+     BEGIN
+		 INSERT INTO LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach)
+		 SELECT 
+				'LK' + RIGHT('000' + CAST(LoaiKhach_ID + 1 AS NVARCHAR(3)), 3),
+				@TenLoaiKhachHang,
+				@HeSoKhach
+		 FROM (
+			  SELECT TOP 1 LoaiKhach_ID = CAST(RIGHT(MaLoaiKhachHang, 3) AS INT)
+			  FROM LOAIKHACHHANG
+			  ORDER BY MaLoaiKhachHang DESC
+		 ) t
+	END
+	ELSE
+	BEGIN
+		INSERT INTO LOAIKHACHHANG(MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach)
+		VALUES ('LK000', @TenLoaiKhachHang, @HeSoKhach)
+	END
+END 
+
+EXEC NewLoaiKhachHang 'SILVER', 1.3
+
+Select * From LoaiKhachHang
+----------
+-----------
 -----------------
 
 EXEC NewLoaiPhong 'VIP', 120000

@@ -64,6 +64,28 @@ Namespace DAO
 
 #End Region
 
+#Region "Inserting"
+
+        Public Shared Function themLoaiKhachHang(loaiKhachHang As LoaiKhachHangDTO) As Boolean
+            Try
+                Dim sqlPrams As New List(Of SqlParameter)
+                sqlPrams.Add(New SqlParameter("@TenLoaiKhachHang", loaiKhachHang.TenLoaiKhachHang))
+                sqlPrams.Add(New SqlParameter("@HeSoKhach", loaiKhachHang.HeSoKhach))
+
+                Dim n As Integer
+                n = SqlDataAccessHelper.ExecuteNoneQuery("NewLoaiKhachHang", sqlPrams)
+
+                If (n <= 0) Then
+                    Return False
+                End If
+            Catch ex As Exception
+                Throw ex
+            End Try
+            Return True
+        End Function
+
+#End Region
+
     End Class
 
 End Namespace
