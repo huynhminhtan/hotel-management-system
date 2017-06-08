@@ -49,8 +49,8 @@ Public Class frmQuanLyPhieuThue
         tinhTrangPhieuThue.Columns.Add("GiaTriTinhTrang", GetType(String))
 
         tinhTrangPhieuThue.Rows.Add("Tất Cả", "TAT CA")
-        tinhTrangPhieuThue.Rows.Add("Đã Thuê", "DA THUE")
-        tinhTrangPhieuThue.Rows.Add("Còn Trống", "TRONG")
+        tinhTrangPhieuThue.Rows.Add("Đã thanh toán", "DA THUE")
+        tinhTrangPhieuThue.Rows.Add("Chưa thanh toán", "TRONG")
 
         cboTinhTrangPhieuThue.DataSource = tinhTrangPhieuThue
         cboTinhTrangPhieuThue.DisplayMember = "TenTinhTrang"
