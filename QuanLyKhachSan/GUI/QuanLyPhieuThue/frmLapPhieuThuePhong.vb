@@ -140,14 +140,34 @@ Public Class frmLapPhieuThuePhong
         Dim dtDanhSachKhachThue As DataTable = dgvDanhSachKhachThue.DataSource
         Dim listChiTietPhieuThue As New List(Of ChiTietPhieuThueDTO)
 
+        If (dtDanhSachKhachThue.Rows.Count = 0) Then
+            Using New CenteredMessageBox(Me)
+                MessageBox.Show("Vui lòng nhập thông tin khách hàng!")
+            End Using
+            Return
+        End If
+
         For idong As Integer = 0 To (dtDanhSachKhachThue.Rows.Count - 1)
+
+            If (String.IsNullOrEmpty(dgvDanhSachKhachThue.Rows(idong).Cells("TenKhachHang").Value.ToString) _
+                Or String.IsNullOrEmpty(dgvDanhSachKhachThue.Rows(idong).Cells("MaLoaiKhachHang").Value) _
+                Or String.IsNullOrEmpty(dgvDanhSachKhachThue.Rows(idong).Cells("CMND").Value.ToString) _
+                Or String.IsNullOrEmpty(dgvDanhSachKhachThue.Rows(idong).Cells("DiaChi").Value.ToString)) Then
+
+                Using New CenteredMessageBox(Me)
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin khách hàng!")
+                End Using
+                Return
+
+            End If
+
             Dim chiTietPhieuThue As New ChiTietPhieuThueDTO
 
             chiTietPhieuThue.MaPhieuThue = txtMaPhieuThue.Text.ToString
-            chiTietPhieuThue.TenKhachHang = dgvDanhSachKhachThue.Rows(idong).Cells("TenKhachHang").Value
+            chiTietPhieuThue.TenKhachHang = dgvDanhSachKhachThue.Rows(idong).Cells("TenKhachHang").Value.ToString
             chiTietPhieuThue.MaLoaiKhachHang = dgvDanhSachKhachThue.Rows(idong).Cells("MaLoaiKhachHang").Value
-            chiTietPhieuThue.CMnd = dgvDanhSachKhachThue.Rows(idong).Cells("CMND").Value
-            chiTietPhieuThue.DiaChi = dgvDanhSachKhachThue.Rows(idong).Cells("DiaChi").Value
+            chiTietPhieuThue.CMND = dgvDanhSachKhachThue.Rows(idong).Cells("CMND").Value.ToString
+            chiTietPhieuThue.DiaChi = dgvDanhSachKhachThue.Rows(idong).Cells("DiaChi").Value.ToString
             chiTietPhieuThue.HeSoThucTe = LoaiKhachHangBUS.selectHeSoKhachByMaLoaiKhach(chiTietPhieuThue.MaLoaiKhachHang)
 
             listChiTietPhieuThue.Add(chiTietPhieuThue)
@@ -235,4 +255,27 @@ Public Class frmLapPhieuThuePhong
     Private Sub btnHuy_Click(sender As Object, e As EventArgs) Handles btnHuy.Click
         Me.Close()
     End Sub
+
+    Private Function kiemTraKhachHangTrong(khachHang As DataGridViewRow) As Boolean
+        For Each cell As DataGridViewCell In khachHang.Cells
+            If (Not (cell.Value Is Nothing)) Then
+                If (Not (String.IsNullOrEmpty(cell.EditedFormattedValue.ToString))) Then
+                    Return False
+                End If
+            End If
+        Next
+        Return True
+    End Function
+
+    Private Sub dgvDanhSachKhachThue_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles dgvDanhSachKhachThue.CellValueChanged
+        If (dgvDanhSachKhachThue.RowCount > 1) Then
+            If (kiemTraKhachHangTrong(sender.CurrentRow)) Then
+                dgvDanhSachKhachThue.AllowUserToAddRows = False
+                sender.Rows.Remove(sender.CurrentRow)
+                dgvDanhSachKhachThue.AllowUserToAddRows = True
+                dgvDanhSachKhachThue.Refresh()
+            End If
+        End If
+    End Sub
+
 End Class
