@@ -1070,7 +1070,7 @@ EXEC NewHoaDon N'Khách hàng', N'địa chỉ', 8222.23
 
 EXEC capNhatMaHoaDonByMaPhieuThue 'PT000', 'HD000'
 
-EXEC selectPhieuThueByNgayTraPhongMaLoaiPhong '6-26-2017', 'LP000'
+EXEC selectPhieuThueByNgayTraPhongMaLoaiPhong '6-9-2017', 'LP000'
 
 EXEC NewBaoCaoDoanhThu '2-6-2017', 400.33
 
