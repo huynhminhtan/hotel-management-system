@@ -7,25 +7,23 @@ Namespace DAO
 
 #Region "Inserting"
 
-        Public Shared Function insertLoaiPhong(lp As LoaiPhongDTO)
-            Dim res As Boolean = False
+        Public Shared Function themLoaiPhong(lp As LoaiPhongDTO) As Boolean
             Try
                 Dim slqParams As New List(Of SqlParameter)
 
-                slqParams.Add(New SqlParameter("@LoaiPhongName", lp.TenLoaiPhong))
+                slqParams.Add(New SqlParameter("@TenLoaiPhong", lp.TenLoaiPhong))
                 slqParams.Add(New SqlParameter("@DonGiaThue", lp.DonGiaThue))
 
                 Dim n As Integer = SqlDataAccessHelper.ExecuteNoneQuery("NewLoaiPhong", slqParams)
 
-                If (n = 1) Then
-                    res = True
+                If (n <= 0) Then
+                    Return False
                 End If
 
             Catch ex As Exception
                 Throw ex
             End Try
-
-            Return res
+            Return True
         End Function
 
 #End Region

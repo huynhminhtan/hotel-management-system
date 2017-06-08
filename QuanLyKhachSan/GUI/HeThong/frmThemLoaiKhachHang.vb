@@ -11,12 +11,12 @@ Public Class frmThemLoaiKhachHang
     Private Sub btnLuu_Click(sender As Object, e As EventArgs) Handles btnLuu.Click
         Using New CenteredMessageBox(Me)
             If ((XuLyGUI.laChuoiHopLe(txtTenLoaiKhachHang.Text) = False)) Then
-                MessageBox.Show("Nhập tên loại khách hàng hợp lệ.")
+                MessageBox.Show("Vui lòng nhập tên loại khách hàng hợp lệ.")
                 Return
             End If
 
             If (XuLyGUI.laChuoiHopLe(txtHeSoKhach.Text) = False) Then
-                MessageBox.Show("Nhập tên hệ số khách hợp lệ.")
+                MessageBox.Show("Vui lòng nhập tên hệ số khách hợp lệ.")
                 Return
             End If
 

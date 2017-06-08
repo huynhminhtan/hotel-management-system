@@ -132,7 +132,7 @@ Partial Class frmThemLoaiKhachHang
         Me.GroupBox3.Size = New System.Drawing.Size(607, 266)
         Me.GroupBox3.TabIndex = 11
         Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Danh sách phòng"
+        Me.GroupBox3.Text = "Danh sách loại khách"
         '
         'dgvDanhSachLoaiKhachHang
         '

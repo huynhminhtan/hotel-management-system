@@ -132,7 +132,7 @@ Partial Class frmThemLoaiPhong
         Me.GroupBox3.Size = New System.Drawing.Size(607, 266)
         Me.GroupBox3.TabIndex = 14
         Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Danh sách phòng"
+        Me.GroupBox3.Text = "Danh sách loại phòng"
         '
         'dgvDanhSachLoaiPhong
         '
@@ -183,6 +183,7 @@ Partial Class frmThemLoaiPhong
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox3)
         Me.Name = "frmThemLoaiPhong"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Thêm Loại Phòng"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()

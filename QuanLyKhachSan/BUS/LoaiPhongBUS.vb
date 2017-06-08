@@ -34,6 +34,14 @@ Namespace BUS
 
 #End Region
 
+#Region "Inserting"
+
+        Public Shared Function themLoaiPhong(loaiPhong As LoaiPhongDTO) As Boolean
+            Return LoaiPhongDAO.themLoaiPhong(loaiPhong)
+        End Function
+
+#End Region
+
     End Class
 
 End Namespace
