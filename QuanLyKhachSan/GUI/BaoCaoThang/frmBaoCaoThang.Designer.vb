@@ -22,12 +22,12 @@ Partial Class frmBaoCaoThang
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea5 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend5 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series5 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim ChartArea6 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend6 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series6 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.btnBaoCaoMatDo = New System.Windows.Forms.Button()
         Me.chartMatDoSuDung = New System.Windows.Forms.DataVisualization.Charting.Chart()
@@ -77,21 +77,21 @@ Partial Class frmBaoCaoThang
         'chartMatDoSuDung
         '
         Me.chartMatDoSuDung.BackColor = System.Drawing.Color.Transparent
-        ChartArea5.AlignmentOrientation = CType((System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Vertical Or System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal), System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations)
-        ChartArea5.BackColor = System.Drawing.Color.Transparent
-        ChartArea5.Name = "ChartAreaMatDoSuDung"
-        Me.chartMatDoSuDung.ChartAreas.Add(ChartArea5)
+        ChartArea1.AlignmentOrientation = CType((System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Vertical Or System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal), System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations)
+        ChartArea1.BackColor = System.Drawing.Color.Transparent
+        ChartArea1.Name = "ChartAreaMatDoSuDung"
+        Me.chartMatDoSuDung.ChartAreas.Add(ChartArea1)
         Me.chartMatDoSuDung.Dock = System.Windows.Forms.DockStyle.Fill
-        Legend5.Name = "Legend1"
-        Me.chartMatDoSuDung.Legends.Add(Legend5)
+        Legend1.Name = "LegendMatDoSuDung"
+        Me.chartMatDoSuDung.Legends.Add(Legend1)
         Me.chartMatDoSuDung.Location = New System.Drawing.Point(651, 220)
         Me.chartMatDoSuDung.Name = "chartMatDoSuDung"
-        Series5.ChartArea = "ChartAreaMatDoSuDung"
-        Series5.IsVisibleInLegend = False
-        Series5.IsXValueIndexed = True
-        Series5.Legend = "Legend1"
-        Series5.Name = "SeriesColumeMatDo"
-        Me.chartMatDoSuDung.Series.Add(Series5)
+        Series1.ChartArea = "ChartAreaMatDoSuDung"
+        Series1.IsVisibleInLegend = False
+        Series1.IsXValueIndexed = True
+        Series1.Legend = "LegendMatDoSuDung"
+        Series1.Name = "SeriesColumeMatDo"
+        Me.chartMatDoSuDung.Series.Add(Series1)
         Me.chartMatDoSuDung.Size = New System.Drawing.Size(642, 502)
         Me.chartMatDoSuDung.TabIndex = 5
         Me.chartMatDoSuDung.Text = "Mật độ sử dụng phòng trong tháng"
@@ -99,21 +99,21 @@ Partial Class frmBaoCaoThang
         'chartDoanhThuLoaiPhong
         '
         Me.chartDoanhThuLoaiPhong.BackColor = System.Drawing.Color.Transparent
-        ChartArea6.AlignmentOrientation = CType((System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Vertical Or System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal), System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations)
-        ChartArea6.BackColor = System.Drawing.Color.Transparent
-        ChartArea6.Name = "ChartAreaDoanhThuLoaiPhong"
-        Me.chartDoanhThuLoaiPhong.ChartAreas.Add(ChartArea6)
+        ChartArea2.AlignmentOrientation = CType((System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Vertical Or System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal), System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations)
+        ChartArea2.BackColor = System.Drawing.Color.Transparent
+        ChartArea2.Name = "ChartAreaDoanhThuLoaiPhong"
+        Me.chartDoanhThuLoaiPhong.ChartAreas.Add(ChartArea2)
         Me.chartDoanhThuLoaiPhong.Dock = System.Windows.Forms.DockStyle.Fill
-        Legend6.Name = "Legend1"
-        Me.chartDoanhThuLoaiPhong.Legends.Add(Legend6)
+        Legend2.Name = "LegendDoanhThuLoaiPhong"
+        Me.chartDoanhThuLoaiPhong.Legends.Add(Legend2)
         Me.chartDoanhThuLoaiPhong.Location = New System.Drawing.Point(3, 220)
         Me.chartDoanhThuLoaiPhong.Name = "chartDoanhThuLoaiPhong"
-        Series6.ChartArea = "ChartAreaDoanhThuLoaiPhong"
-        Series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
-        Series6.IsValueShownAsLabel = True
-        Series6.Legend = "Legend1"
-        Series6.Name = "SeriesPieDoanhThu"
-        Me.chartDoanhThuLoaiPhong.Series.Add(Series6)
+        Series2.ChartArea = "ChartAreaDoanhThuLoaiPhong"
+        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
+        Series2.IsValueShownAsLabel = True
+        Series2.Legend = "LegendDoanhThuLoaiPhong"
+        Series2.Name = "SeriesPieDoanhThu"
+        Me.chartDoanhThuLoaiPhong.Series.Add(Series2)
         Me.chartDoanhThuLoaiPhong.Size = New System.Drawing.Size(642, 502)
         Me.chartDoanhThuLoaiPhong.TabIndex = 0
         Me.chartDoanhThuLoaiPhong.Text = "Doanh thu của từng loại phòng"

@@ -4,6 +4,8 @@ Imports DTO.DTO
 
 Public Class frmCapNhatPhong
 
+    Private fatherForm As frmQuanLyPhong
+
     Private Sub CapNhatPhong_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         ' hiển thị danh sách loại phòng
@@ -58,5 +60,15 @@ Public Class frmCapNhatPhong
         ElseIf (luaChon = DialogResult.Cancel) Then
             Return
         End If
+    End Sub
+
+    Sub New(formFather As frmQuanLyPhong)
+        InitializeComponent()
+        fatherForm = formFather
+    End Sub
+
+
+    Private Sub frmCapNhatPhong_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fatherForm.CapNhat()
     End Sub
 End Class

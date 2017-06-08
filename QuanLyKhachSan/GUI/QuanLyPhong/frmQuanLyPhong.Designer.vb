@@ -32,7 +32,7 @@ Partial Class frmQuanLyPhong
         Me.TinhTrang = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.btnTimPhong = New System.Windows.Forms.Button()
-        Me.btnCapNhat = New System.Windows.Forms.Button()
+        Me.btnCapNhatPhong = New System.Windows.Forms.Button()
         Me.btnThemPhong = New System.Windows.Forms.Button()
         Me.btnHuyPhong = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -129,7 +129,7 @@ Partial Class frmQuanLyPhong
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel2.Controls.Add(Me.btnTimPhong, 0, 1)
-        Me.TableLayoutPanel2.Controls.Add(Me.btnCapNhat, 0, 1)
+        Me.TableLayoutPanel2.Controls.Add(Me.btnCapNhatPhong, 0, 1)
         Me.TableLayoutPanel2.Controls.Add(Me.btnThemPhong, 0, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.btnHuyPhong, 1, 0)
         Me.TableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill
@@ -156,15 +156,15 @@ Partial Class frmQuanLyPhong
         '
         'btnCapNhat
         '
-        Me.btnCapNhat.BackColor = System.Drawing.Color.White
-        Me.btnCapNhat.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.btnCapNhat.Location = New System.Drawing.Point(693, 106)
-        Me.btnCapNhat.Margin = New System.Windows.Forms.Padding(50, 10, 50, 10)
-        Me.btnCapNhat.Name = "btnCapNhat"
-        Me.btnCapNhat.Size = New System.Drawing.Size(543, 76)
-        Me.btnCapNhat.TabIndex = 1
-        Me.btnCapNhat.Text = "Cập Nhật Phòng"
-        Me.btnCapNhat.UseVisualStyleBackColor = False
+        Me.btnCapNhatPhong.BackColor = System.Drawing.Color.White
+        Me.btnCapNhatPhong.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.btnCapNhatPhong.Location = New System.Drawing.Point(693, 106)
+        Me.btnCapNhatPhong.Margin = New System.Windows.Forms.Padding(50, 10, 50, 10)
+        Me.btnCapNhatPhong.Name = "btnCapNhat"
+        Me.btnCapNhatPhong.Size = New System.Drawing.Size(543, 76)
+        Me.btnCapNhatPhong.TabIndex = 1
+        Me.btnCapNhatPhong.Text = "Cập Nhật Phòng"
+        Me.btnCapNhatPhong.UseVisualStyleBackColor = False
         '
         'btnThemPhong
         '
@@ -193,27 +193,27 @@ Partial Class frmQuanLyPhong
         'frmQuanLyPhong
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(192,Byte),Integer), CType(CType(192,Byte),Integer), CType(CType(255,Byte),Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1296, 725)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frmQuanLyPhong"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "frmQuanLyPhong"
-        Me.TableLayoutPanel1.ResumeLayout(false)
-        Me.GroupBox4.ResumeLayout(false)
-        CType(Me.dgvQuanLyPhong,System.ComponentModel.ISupportInitialize).EndInit
-        Me.TableLayoutPanel2.ResumeLayout(false)
-        Me.ResumeLayout(false)
+        Me.TableLayoutPanel1.ResumeLayout(False)
+        Me.GroupBox4.ResumeLayout(False)
+        CType(Me.dgvQuanLyPhong, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TableLayoutPanel2.ResumeLayout(False)
+        Me.ResumeLayout(False)
 
-End Sub
+    End Sub
     Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
     Friend WithEvents dgvQuanLyPhong As System.Windows.Forms.DataGridView
     Friend WithEvents TableLayoutPanel2 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents btnThemPhong As System.Windows.Forms.Button
     Friend WithEvents btnTimPhong As System.Windows.Forms.Button
-    Friend WithEvents btnCapNhat As System.Windows.Forms.Button
+    Friend WithEvents btnCapNhatPhong As System.Windows.Forms.Button
     Friend WithEvents btnHuyPhong As System.Windows.Forms.Button
     Friend WithEvents MaPhong As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents TenPhong As System.Windows.Forms.DataGridViewTextBoxColumn

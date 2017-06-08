@@ -54,4 +54,14 @@ Public Class frmQuanLyPhong
         Dim formTraCuuPhong As New frmTraCuuPhong(Me)
         formTraCuuPhong.ShowDialog(Me)
     End Sub
+
+    Private Sub btnHuyPhong_Click(sender As Object, e As EventArgs) Handles btnHuyPhong.Click
+        Dim formHuyPhong As New frmHuyPhong(Me)
+        formHuyPhong.ShowDialog(Me)
+    End Sub
+
+    Private Sub btnCapNhat_Click(sender As Object, e As EventArgs) Handles btnCapNhatPhong.Click
+        Dim formCapNhatPhong As New frmCapNhatPhong(Me)
+        formCapNhatPhong.ShowDialog(Me)
+    End Sub
 End Class

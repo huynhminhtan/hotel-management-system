@@ -3,6 +3,8 @@ Imports GUI.XuLy
 
 Public Class frmHuyPhong
 
+    Private fatherForm As frmQuanLyPhong
+
     Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
 
     End Sub
@@ -76,13 +78,16 @@ Public Class frmHuyPhong
             luaChon = (MessageBox.Show(Me, "Bạn có muốn xóa phòng không?", "Lưu lại?",
                                            MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1))
         End Using
-
         If (luaChon = DialogResult.Yes) Then
 
             If (PhongBUS.xoaPhongByMaPhong(txtMaPhong.Text) = True) Then
-                MessageBox.Show("Xóa phòng thành công.")
+                Using New CenteredMessageBox(Me)
+                    MessageBox.Show("Xóa phòng thành công.")
+                End Using
             Else
-                MessageBox.Show("Lỗi xóa phòng.")
+                Using New CenteredMessageBox(Me)
+                    MessageBox.Show("Lỗi xóa phòng.")
+                End Using
             End If
 
             dgvDanhSachPhong.DataSource = PhongBUS.selectPhongAllByNgayBatDauVaNgayTraPhong(Date.Now,
@@ -90,5 +95,15 @@ Public Class frmHuyPhong
         ElseIf (luaChon = DialogResult.Cancel) Then
             Return
         End If
+
+    End Sub
+
+    Sub New(formFather As frmQuanLyPhong)
+        InitializeComponent()
+        fatherForm = formFather
+    End Sub
+
+    Private Sub frmHuyPhong_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fatherForm.CapNhat()
     End Sub
 End Class
