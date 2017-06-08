@@ -17,5 +17,13 @@ Namespace BUS
 
 #End Region
 
+#Region "Inserting"
+
+        Public Shared Function themLoaiKhachHang(loaiKhachHang As LoaiKhachHangDTO) As Boolean
+            Return LoaiKhachHangDAO.themLoaiKhachHang(loaiKhachHang)
+        End Function
+
+#End Region
+
     End Class
 End Namespace
