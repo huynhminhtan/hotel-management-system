@@ -838,20 +838,20 @@ CREATE PROCEDURE selectPhieuThueByTinhTrangHoaDon
 	@TinhTrangHoaDon nvarchar(50)
 AS BEGIN
 	IF (@TinhTrangHoaDon = 'DA THUE')
-		select MaPhieuThue, NgayBatDauThue, NgayTraPhong, DonGiaThueThucTe, ThanhTienPhong, MaHoaDon, PhuThuThucTe, TenPhong, GhiChu 
+		select MaPhieuThue, TenPhong, DonGiaThueThucTe, ThanhTienPhong, MaHoaDon, PhuThuThucTe,   NgayBatDauThue, NgayTraPhong, GhiChu 
 		from PHIEUTHUE inner join PHONG on PHIEUTHUE.MaPhong = PHONG.MaPhong
 		WHERE (MaHoaDon IS NOT NULL)
 	ELSE IF (@TinhTrangHoaDon = 'TRONG')
-		select MaPhieuThue, NgayBatDauThue, NgayTraPhong, DonGiaThueThucTe, ThanhTienPhong, MaHoaDon, PhuThuThucTe, TenPhong, GhiChu  
+		select MaPhieuThue, TenPhong, DonGiaThueThucTe, ThanhTienPhong, MaHoaDon, PhuThuThucTe,   NgayBatDauThue, NgayTraPhong, GhiChu 
 		from PHIEUTHUE inner join PHONG on PHIEUTHUE.MaPhong = PHONG.MaPhong
 		WHERE (MaHoaDon IS NULL)
 	ELSE IF (@TinhTrangHoaDon = 'TAT CA')
-		select MaPhieuThue, NgayBatDauThue, NgayTraPhong, DonGiaThueThucTe, ThanhTienPhong, MaHoaDon, PhuThuThucTe, TenPhong, GhiChu  
+		select MaPhieuThue, TenPhong, DonGiaThueThucTe, ThanhTienPhong, MaHoaDon, PhuThuThucTe,   NgayBatDauThue, NgayTraPhong, GhiChu  
 		from PHIEUTHUE inner join PHONG on PHIEUTHUE.MaPhong = PHONG.MaPhong
 	END
 
 Exec selectPhieuThueByTinhTrangHoaDon 'da THUE'
-
+drop procedure selectPhieuThueByTinhTrangHoaDon
 -- selectBaoCaoDoanhThuAll
 CREATE PROCEDURE selectBaoCaoDoanhThuAll
 AS BEGIN
