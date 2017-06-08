@@ -60,17 +60,14 @@ Namespace BUS
             Dim dsCTPT As New List(Of ChiTietPhieuThueDTO)
             dsCTPT = ChiTietPhieuThueBUS.selectDanhSachChiTietPhieuAllThueByMaPhieuThue(maPhieuThue)
 
-            '' kiểm tra có khách nước ngoài không
-            If (coKhachNuocNgoai(dsCTPT) = True) Then
-                '' tìm hệ số lớn nhất trong danh sách phiếu thuê ứng với MaPhieuThue
-                Dim topCTPTCoHeSoLonNhat As ChiTietPhieuThueDTO
-                topCTPTCoHeSoLonNhat = dsCTPT.OrderByDescending(Function(m) m.HeSoThucTe).FirstOrDefault
-                Dim heSoLonKhachsLonNhat As Double
-                heSoLonKhachsLonNhat = topCTPTCoHeSoLonNhat.HeSoThucTe
+            '' tìm hệ số lớn nhất trong danh sách phiếu thuê ứng với MaPhieuThue
+            Dim topCTPTCoHeSoLonNhat As ChiTietPhieuThueDTO
+            topCTPTCoHeSoLonNhat = dsCTPT.OrderByDescending(Function(m) m.HeSoThucTe).FirstOrDefault
+            Dim heSoLonKhachsLonNhat As Double
+            heSoLonKhachsLonNhat = topCTPTCoHeSoLonNhat.HeSoThucTe
 
-                '' tính thành tiền với hệ số lớn nhất
-                thanhTien = thanhTienTamThoi * heSoLonKhachsLonNhat
-            End If
+            '' tính thành tiền với hệ số lớn nhất
+            thanhTien = thanhTienTamThoi * heSoLonKhachsLonNhat
 
             '' nếu phòng > 2 khách thì phụ thu thêm
             Dim soKhachTrongPhong As Integer
@@ -87,18 +84,6 @@ Namespace BUS
 #End Region
 
 #Region "Retrieving"
-
-        Private Shared Function coKhachNuocNgoai(dsCTPT As List(Of ChiTietPhieuThueDTO)) As Boolean
-
-            For Each chiTietPhieuThue As ChiTietPhieuThueDTO In dsCTPT
-                ' sử dụng hằng Cons.MaLoaiKhachNuocNgoai
-                If (chiTietPhieuThue.MaLoaiKhachHang = Cons.maLoaiKhachNuocNgoai) Then
-                    Return True
-                End If
-            Next
-
-            Return False
-        End Function
 
         Public Shared Function selectHoaDonMoiNhatAll() As String
             Dim hoaDon As HoaDonDTO = HoaDonDAO.selectHoaDonMoiNhatAll()
