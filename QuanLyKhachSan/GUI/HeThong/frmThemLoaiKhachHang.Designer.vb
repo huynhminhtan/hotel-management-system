@@ -48,9 +48,11 @@ Partial Class frmThemLoaiKhachHang
         Me.GroupBox1.Controls.Add(Me.txtTenLoaiKhachHang)
         Me.GroupBox1.Controls.Add(Me.lblTenLoaiKhach)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
+        Me.GroupBox1.Location = New System.Drawing.Point(16, 15)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(607, 102)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Size = New System.Drawing.Size(809, 126)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Thêm Loại Khách"
@@ -59,18 +61,20 @@ Partial Class frmThemLoaiKhachHang
         '
         Me.txtHeSoKhach.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtHeSoKhach.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.txtHeSoKhach.Location = New System.Drawing.Point(393, 46)
+        Me.txtHeSoKhach.Location = New System.Drawing.Point(524, 57)
+        Me.txtHeSoKhach.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtHeSoKhach.Name = "txtHeSoKhach"
-        Me.txtHeSoKhach.Size = New System.Drawing.Size(140, 20)
+        Me.txtHeSoKhach.Size = New System.Drawing.Size(185, 23)
         Me.txtHeSoKhach.TabIndex = 7
         '
         'lblHeSoKhach
         '
         Me.lblHeSoKhach.AutoSize = True
         Me.lblHeSoKhach.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.lblHeSoKhach.Location = New System.Drawing.Point(316, 49)
+        Me.lblHeSoKhach.Location = New System.Drawing.Point(421, 60)
+        Me.lblHeSoKhach.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblHeSoKhach.Name = "lblHeSoKhach"
-        Me.lblHeSoKhach.Size = New System.Drawing.Size(71, 13)
+        Me.lblHeSoKhach.Size = New System.Drawing.Size(91, 17)
         Me.lblHeSoKhach.TabIndex = 6
         Me.lblHeSoKhach.Text = "Hệ số khách:"
         '
@@ -78,18 +82,20 @@ Partial Class frmThemLoaiKhachHang
         '
         Me.txtTenLoaiKhachHang.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtTenLoaiKhachHang.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.txtTenLoaiKhachHang.Location = New System.Drawing.Point(143, 46)
+        Me.txtTenLoaiKhachHang.Location = New System.Drawing.Point(191, 57)
+        Me.txtTenLoaiKhachHang.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtTenLoaiKhachHang.Name = "txtTenLoaiKhachHang"
-        Me.txtTenLoaiKhachHang.Size = New System.Drawing.Size(140, 20)
+        Me.txtTenLoaiKhachHang.Size = New System.Drawing.Size(185, 23)
         Me.txtTenLoaiKhachHang.TabIndex = 5
         '
         'lblTenLoaiKhach
         '
         Me.lblTenLoaiKhach.AutoSize = True
         Me.lblTenLoaiKhach.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.lblTenLoaiKhach.Location = New System.Drawing.Point(51, 49)
+        Me.lblTenLoaiKhach.Location = New System.Drawing.Point(68, 60)
+        Me.lblTenLoaiKhach.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTenLoaiKhach.Name = "lblTenLoaiKhach"
-        Me.lblTenLoaiKhach.Size = New System.Drawing.Size(86, 13)
+        Me.lblTenLoaiKhach.Size = New System.Drawing.Size(112, 17)
         Me.lblTenLoaiKhach.TabIndex = 0
         Me.lblTenLoaiKhach.Text = "Tên Loại Khách:"
         '
@@ -97,18 +103,21 @@ Partial Class frmThemLoaiKhachHang
         '
         Me.GroupBox2.Controls.Add(Me.btnLuu)
         Me.GroupBox2.Controls.Add(Me.btntThoat)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 120)
+        Me.GroupBox2.Location = New System.Drawing.Point(16, 148)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(607, 49)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Size = New System.Drawing.Size(809, 60)
         Me.GroupBox2.TabIndex = 10
         Me.GroupBox2.TabStop = False
         '
         'btnLuu
         '
         Me.btnLuu.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.btnLuu.Location = New System.Drawing.Point(121, 15)
+        Me.btnLuu.Location = New System.Drawing.Point(161, 18)
+        Me.btnLuu.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnLuu.Name = "btnLuu"
-        Me.btnLuu.Size = New System.Drawing.Size(90, 23)
+        Me.btnLuu.Size = New System.Drawing.Size(120, 28)
         Me.btnLuu.TabIndex = 7
         Me.btnLuu.Text = "Lưu"
         Me.btnLuu.UseVisualStyleBackColor = True
@@ -116,9 +125,10 @@ Partial Class frmThemLoaiKhachHang
         'btntThoat
         '
         Me.btntThoat.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.btntThoat.Location = New System.Drawing.Point(408, 15)
+        Me.btntThoat.Location = New System.Drawing.Point(544, 18)
+        Me.btntThoat.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btntThoat.Name = "btntThoat"
-        Me.btntThoat.Size = New System.Drawing.Size(90, 23)
+        Me.btntThoat.Size = New System.Drawing.Size(120, 28)
         Me.btntThoat.TabIndex = 6
         Me.btntThoat.Text = "Thoát"
         Me.btntThoat.UseVisualStyleBackColor = True
@@ -126,10 +136,11 @@ Partial Class frmThemLoaiKhachHang
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.dgvDanhSachLoaiKhachHang)
-        Me.GroupBox3.Location = New System.Drawing.Point(12, 175)
+        Me.GroupBox3.Location = New System.Drawing.Point(16, 215)
+        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox3.Size = New System.Drawing.Size(607, 266)
+        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.GroupBox3.Size = New System.Drawing.Size(809, 327)
         Me.GroupBox3.TabIndex = 11
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Danh sách loại khách"
@@ -145,12 +156,13 @@ Partial Class frmThemLoaiKhachHang
         Me.dgvDanhSachLoaiKhachHang.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.dgvDanhSachLoaiKhachHang.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.MaLoaiKhach, Me.TenLoaiKhachHang, Me.HeSoKhach})
         Me.dgvDanhSachLoaiKhachHang.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgvDanhSachLoaiKhachHang.Location = New System.Drawing.Point(4, 17)
+        Me.dgvDanhSachLoaiKhachHang.Location = New System.Drawing.Point(5, 20)
+        Me.dgvDanhSachLoaiKhachHang.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dgvDanhSachLoaiKhachHang.Name = "dgvDanhSachLoaiKhachHang"
         Me.dgvDanhSachLoaiKhachHang.ReadOnly = True
         Me.dgvDanhSachLoaiKhachHang.RowHeadersVisible = False
         Me.dgvDanhSachLoaiKhachHang.RowHeadersWidth = 10
-        Me.dgvDanhSachLoaiKhachHang.Size = New System.Drawing.Size(599, 245)
+        Me.dgvDanhSachLoaiKhachHang.Size = New System.Drawing.Size(799, 302)
         Me.dgvDanhSachLoaiKhachHang.TabIndex = 0
         '
         'MaLoaiKhach
@@ -176,13 +188,14 @@ Partial Class frmThemLoaiKhachHang
         '
         'frmThemLoaiKhachHang
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(628, 453)
+        Me.ClientSize = New System.Drawing.Size(837, 558)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmThemLoaiKhachHang"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Thêm Loại Khách Hàng"

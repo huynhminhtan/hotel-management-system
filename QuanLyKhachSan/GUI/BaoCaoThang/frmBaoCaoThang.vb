@@ -30,7 +30,7 @@ Public Class frmBaoCaoThang
     End Sub
 
     Private Sub btnBaoCaoMatDo_Click(sender As Object, e As EventArgs) Handles btnBaoCaoMatDo.Click
-        Dim formBaoCaoDoanhThu As New frmLapBaoCaoDoanhThu(Me)
-        formBaoCaoDoanhThu.ShowDialog(Me)
+        Dim formBaoCaoMatDo As New frmLapBaoCaoMatDo(Me)
+        formBaoCaoMatDo.ShowDialog(Me)
     End Sub
 End Class

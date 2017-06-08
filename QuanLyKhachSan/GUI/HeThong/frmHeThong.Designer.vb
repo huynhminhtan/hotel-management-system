@@ -25,7 +25,7 @@ Partial Class frmHeThong
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.btnThemLoaiPhong = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnThemLoaiKhach = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.SuspendLayout()
@@ -50,7 +50,7 @@ Partial Class frmHeThong
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel2.Controls.Add(Me.btnThemLoaiPhong, 0, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.Button1, 1, 0)
+        Me.TableLayoutPanel2.Controls.Add(Me.btnThemLoaiKhach, 1, 0)
         Me.TableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel2.Location = New System.Drawing.Point(3, 3)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
@@ -73,17 +73,17 @@ Partial Class frmHeThong
         Me.btnThemLoaiPhong.Text = "Thêm Loại Phòng"
         Me.btnThemLoaiPhong.UseVisualStyleBackColor = False
         '
-        'Button1
+        'btnThemLoaiKhach
         '
-        Me.Button1.BackColor = System.Drawing.Color.White
-        Me.Button1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Button1.Location = New System.Drawing.Point(720, 25)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(75, 25, 75, 25)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(495, 92)
-        Me.Button1.TabIndex = 10
-        Me.Button1.Text = "Thêm Loại Khách"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.btnThemLoaiKhach.BackColor = System.Drawing.Color.White
+        Me.btnThemLoaiKhach.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.btnThemLoaiKhach.Location = New System.Drawing.Point(720, 25)
+        Me.btnThemLoaiKhach.Margin = New System.Windows.Forms.Padding(75, 25, 75, 25)
+        Me.btnThemLoaiKhach.Name = "btnThemLoaiKhach"
+        Me.btnThemLoaiKhach.Size = New System.Drawing.Size(495, 92)
+        Me.btnThemLoaiKhach.TabIndex = 10
+        Me.btnThemLoaiKhach.Text = "Thêm Loại Khách"
+        Me.btnThemLoaiKhach.UseVisualStyleBackColor = False
         '
         'frmHeThong
         '
@@ -103,5 +103,5 @@ Partial Class frmHeThong
     Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents TableLayoutPanel2 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents btnThemLoaiPhong As System.Windows.Forms.Button
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents btnThemLoaiKhach As System.Windows.Forms.Button
 End Class

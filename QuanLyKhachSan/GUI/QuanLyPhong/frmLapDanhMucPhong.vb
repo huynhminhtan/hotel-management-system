@@ -221,4 +221,11 @@ Public Class frmLapDanhMucPhong
     Private Sub frmLapDanhMucPhong_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         fatherForm.CapNhat()
     End Sub
+
+    Private Sub btnTimPhong_Click(sender As Object, e As EventArgs) Handles btnTimPhong.Click
+        Me.Dispose()
+        Me.Close()
+        Dim formTraCuuPhong As New frmTraCuuPhong(fatherForm)
+        formTraCuuPhong.ShowDialog(fatherForm)
+    End Sub
 End Class

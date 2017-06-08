@@ -4,6 +4,8 @@ Imports DTO.DTO
 
 Public Class frmThemLoaiKhachHang
 
+    Private fatherForm As frmHeThong
+
     Private Sub frmThemLoaiKhachHang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dgvDanhSachLoaiKhachHang.DataSource = LoaiKhachHangBUS.selectLoaiKhachHangAll()
     End Sub
@@ -42,5 +44,14 @@ Public Class frmThemLoaiKhachHang
 
     Private Sub btntThoat_Click(sender As Object, e As EventArgs) Handles btntThoat.Click
         Me.Close()
+    End Sub
+
+    Sub New(formFather As frmHeThong)
+        InitializeComponent()
+        fatherForm = formFather
+    End Sub
+
+    Private Sub frmThemLoaiKhachHang_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fatherForm.CapNhat()
     End Sub
 End Class
