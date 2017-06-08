@@ -49,7 +49,7 @@
             End Set
         End Property
 
-        Public Property CMnd As String
+        Public Property CMND As String
             Get
                 Return _cMND
             End Get

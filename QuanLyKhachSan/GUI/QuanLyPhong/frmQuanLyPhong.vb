@@ -35,19 +35,22 @@ Public Class frmQuanLyPhong
         Dim danhSachPhong As List(Of PhongDTO)
         danhSachPhong = PhongBUS.selectPhongAll()
 
-        For Each phongTam As PhongDTO In danhSachPhong
-            Dim tenLoaiPhongTam As String = LoaiPhongBUS.selectTenLoaiPhongByMaLoaiPhong(phongTam.MaLoaiPhong)
-            Dim donGiaTam As Double = LoaiPhongBUS.selectDonGiaByMaLoaiPhong(phongTam.MaLoaiPhong)
+        If (Not (danhSachPhong Is Nothing)) Then
+            For Each phongTam As PhongDTO In danhSachPhong
+                Dim tenLoaiPhongTam As String = LoaiPhongBUS.selectTenLoaiPhongByMaLoaiPhong(phongTam.MaLoaiPhong)
+                Dim donGiaTam As Double = LoaiPhongBUS.selectDonGiaByMaLoaiPhong(phongTam.MaLoaiPhong)
 
-            Dim tinhTrangTam As String
-            If (TinhTrangBUS.phongDuocThue(phongTam.MaPhong, Date.Today, Date.Today) = True) Then
-                tinhTrangTam = "Đang thuê"
-            Else
-                tinhTrangTam = "Đang trống"
-            End If
+                Dim tinhTrangTam As String
+                If (TinhTrangBUS.phongDuocThue(phongTam.MaPhong, Date.Today, Date.Today) = True) Then
+                    tinhTrangTam = "Đang thuê"
+                Else
+                    tinhTrangTam = "Đang trống"
+                End If
 
-            bangQuanLyPhong.Rows.Add(phongTam.MaPhong, phongTam.TenPhong, tenLoaiPhongTam, donGiaTam, tinhTrangTam)
-        Next
+                bangQuanLyPhong.Rows.Add(phongTam.MaPhong, phongTam.TenPhong, tenLoaiPhongTam, donGiaTam, tinhTrangTam)
+            Next
+        End If
+
     End Sub
 
     Private Sub btnTimPhong_Click(sender As Object, e As EventArgs) Handles btnTimPhong.Click
