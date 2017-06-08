@@ -168,6 +168,7 @@ AS BEGIN
 	END
 END 
 
+------------------------------------------------------------------------------------------
 -- Select all LoaiPhong
 CREATE PROCEDURE selectLoaiPhongAll
 As begin
@@ -176,7 +177,7 @@ As begin
 	Where isDeleted = 0
 end
 
-
+------------------------------------------------------------------------------------------
 -- Select LoaiPhong by id
 CREATE PROCEDURE selectLoaiPhongByMaLoaiPhong
 	@MaLoaiPhong char(5)
@@ -187,6 +188,7 @@ As begin
 end
 
 
+------------------------------------------------------------------------------------------
 -- Select PhongMoiNhat
 CREATE PROCEDURE selectPhongMoiNhat
 AS begin
@@ -196,6 +198,7 @@ AS begin
 	Order by MaPhong DESC
 end
 
+------------------------------------------------------------------------------------------
 --- Insert Phong với mã tự động tăng
 CREATE PROCEDURE NewPhong
 
@@ -225,6 +228,7 @@ AS BEGIN
 	END
 END
 
+------------------------------------------------------------------------------------------
 -- Select PhongAll
 CREATE PROCEDURE selectPhongAll
 AS BEGIN
@@ -233,6 +237,7 @@ AS BEGIN
 	WHERE isDeleted = 0
 END	
 
+------------------------------------------------------------------------------------------
 -- Select PhieuthueMoiNhat
 CREATE PROCEDURE selectPhieuThueMoiNhat
 AS BEGIN
@@ -244,6 +249,7 @@ AS BEGIN
 	WHERE isDeleted = 0
 END
 
+------------------------------------------------------------------------------------------
 -- Select ThamSoAll
 CREATE PROCEDURE selectThamSoAll
 AS BEGIN
@@ -252,6 +258,7 @@ AS BEGIN
 	WHERE id = 1
 END
 
+------------------------------------------------------------------------------------------
 -- Select LoaiKhachHangAll
 CREATE PROCEDURE selectLoaiKhachHangAll
 AS BEGIN
@@ -260,6 +267,7 @@ AS BEGIN
 	WHERE isDeleted = 0
 END
 
+------------------------------------------------------------------------------------------
 -- Insert PhieuThue với mã tự động tăng
 CREATE PROCEDURE NewPhieuThue
 
@@ -301,6 +309,7 @@ AS BEGIN
 END 
 
 
+------------------------------------------------------------------------------------------
 -- Insert ChiTietPhieuThue với mã tự động tăng
 CREATE PROCEDURE NewChiTietPhieuThue
 
@@ -312,10 +321,6 @@ CREATE PROCEDURE NewChiTietPhieuThue
 	 @HeSoThucTe float
 
 AS BEGIN
-
--- on show: X row(s) affected 
---SET NOCOUNT ON  
-
      IF exists (SELECT *FROM CHITIETPHIEUTHUE)
      BEGIN
 		 INSERT INTO CHITIETPHIEUTHUE(MaChiTietPhieuThue, MaPhieuThue, TenKhachHang, MaLoaiKhachHang, CMND, DiaChi, HeSoThucTe)
@@ -340,6 +345,7 @@ AS BEGIN
 	END
 END 
 
+------------------------------------------------------------------------------------------
 -- select LoaiKhachHangByMaLoaiKhach
 CREATE PROCEDURE selectLoaiKhachHangByMaLoaiKhach
 	@MaLoaiKhach char(5)
@@ -349,6 +355,7 @@ AS BEGIN
 	WHERE MaLoaiKhachHang = @MaLoaiKhach
 END
 
+------------------------------------------------------------------------------------------
 -- Insert TinhTrang với mã tự động tăng
 CREATE PROCEDURE NewTinhTrang
 
@@ -357,9 +364,6 @@ CREATE PROCEDURE NewTinhTrang
 	@NgayCuaTinhTrang smalldatetime
 
 AS BEGIN
-
--- on show: X row(s) affected 
---SET NOCOUNT ON  
 
      IF exists (SELECT *FROM TINHTRANG)
      BEGIN
@@ -382,6 +386,7 @@ AS BEGIN
 	END
 END 
 
+------------------------------------------------------------------------------------------
 -- select TinhTrangPhongByThoiGian
 CREATE PROCEDURE selectTinhTrangPhongByThoiGian
 	@NgayBatDau smalldatetime,
@@ -394,6 +399,8 @@ AS BEGIN
 END
 
 drop procedure selectTinhTrangPhongByThoiGian
+
+------------------------------------------------------------------------------------------
 -- update capNhatTinhTrangPhongByMaPhong
 CREATE PROCEDURE capNhatTinhTrangPhongByMaPhong
 	@MaPhong char(5),
@@ -404,6 +411,7 @@ AS BEGIN
 	WHERE (MaPhong = @MaPhong) AND NgayCuaTinhTrang = @NgayCuaTinhTrang
 END
 
+------------------------------------------------------------------------------------------
 -- kiemTraTinhTrangPhongByMaPhong
 CREATE PROCEDURE phongDuocThue
 	@MaPhong char(5),
@@ -417,6 +425,7 @@ AS BEGIN
 		  (LoaiTinhTrang = 'DA THUE')
 END
 
+------------------------------------------------------------------------------------------
 -- selectPhongAllByNgayBatDauVaNgayKetThuc
 CREATE PROCEDURE selectPhongAllByNgayBatDauVaNgayTraPhong
 	@NgayBatDau smalldatetime,
@@ -429,6 +438,7 @@ AS BEGIN
 			(PHONG.isDeleted = 0)
 END
 
+------------------------------------------------------------------------------------------
 -- selectPhongKhongMaPhongKhongTenPhong
 CREATE PROCEDURE selectPhongKhongMaPhongKhongTenPhong
 	@MaLoaiPhong char(5),
@@ -447,9 +457,8 @@ AS BEGIN
 			(LoaiTinhTrang = @LoaiTinhTrang)
 END
 
+------------------------------------------------------------------------------------------
 -- selectPhongByMaPhongNgayBatDauNgayTraPhong
-DROP PRocedure selectPhongByMaPhongNgayBatDauNgayTraPhong
-
 CREATE PROCEDURE selectPhongByMaPhongNgayBatDauNgayTraPhong
 	@MaPhong char(5),
 	@NgayBatDau smalldatetime,
@@ -463,9 +472,8 @@ AS BEGIN
 			(PHONG.MaPhong = @MaPhong)
 END
 
+------------------------------------------------------------------------------------------
 -- selectPhongByTenPhongNgayBatDauNgayTraPhong
-DROP PROCEDURE selectPhongByTenPhongNgayBatDauNgayTraPhong
-
 CREATE PROCEDURE selectPhongByTenPhongNgayBatDauNgayTraPhong
 	@TenPhong nvarchar(50),
 	@NgayBatDau smalldatetime,
@@ -479,6 +487,7 @@ AS BEGIN
 			(PHONG.TenPhong = @TenPhong)
 END
 
+------------------------------------------------------------------------------------------
 -- selectPhieuThueHDByMaPhieuThue
 CREATE PROCEDURE selectPhieuThueHDByMaPhieuThue
 	@MaPhieuThue char(5)
@@ -490,6 +499,7 @@ AS BEGIN
 			(MaHoaDon IS NULL)
 END
 
+------------------------------------------------------------------------------------------
 -- kiemTraPhieuThueByMaPhieuThue
 CREATE PROCEDURE kiemTraPhieuThueByMaPhieuThue
 	@MaPhieuThue char(5)
@@ -502,6 +512,7 @@ AS BEGIN
 
 END
 
+------------------------------------------------------------------------------------------
 -- kiemTraPhieuThueDaLapHoaDon
 CREATE PROCEDURE kiemTraPhieuThueDaLapHoaDon
 	@MaPhieuThue char(5)
@@ -513,6 +524,7 @@ AS BEGIN
 			(MaHoaDon IS NOT NULL)
 END
 
+------------------------------------------------------------------------------------------
 -- selectChiTietPhieuThueByMaPhieuThue :: kiểm tra số khách có trong 1 phiếu thuê (1 phòng)
 CREATE PROCEDURE selectChiTietPhieuAllThueByMaPhieuThue
 	@MaPhieuThue char(5)
@@ -522,6 +534,7 @@ AS BEGIN
 	WHERE MaPhieuThue = @MaPhieuThue
 END
 
+------------------------------------------------------------------------------------------
 -- capNhatMaHoaDonByMaPhieuThue
 CREATE PROCEDURE capNhatMaHoaDonByMaPhieuThue
 	@MaPhieuThue char(5),
@@ -532,6 +545,7 @@ AS BEGIN
 	WHERE MaPhieuThue = @MaPhieuThue
 END
 
+------------------------------------------------------------------------------------------
 -- selectHoaDonMoiNhatAll
 CREATE PROCEDURE selectHoaDonMoiNhatAll
 AS BEGIN
@@ -541,6 +555,7 @@ AS BEGIN
 	ORDER BY MaHoaDon DESC
 END
 
+------------------------------------------------------------------------------------------
 -- insert HoaDon với mã tự động tăng
 CREATE PROCEDURE NewHoaDon
 
@@ -574,7 +589,7 @@ AS BEGIN
 	END
 END 
 
-
+------------------------------------------------------------------------------------------
 -- selectPhieuThueByNgayTraPhongMaLoaiPhong
 CREATE PROCEDURE selectPhieuThueByNgayTraPhongMaLoaiPhong
 	@NgayTraPhong smalldatetime,
@@ -589,6 +604,7 @@ AS BEGIN
 			(LOAIPHONG.MaLoaiPhong = @MaLoaiPhong)
 END
 
+------------------------------------------------------------------------------------------
 -- NewBaoCaoDoanhThu với mã tự động tăng
 CREATE PROCEDURE NewBaoCaoDoanhThu
 
@@ -620,6 +636,7 @@ AS BEGIN
 	END
 END 
 
+------------------------------------------------------------------------------------------
 -- selecBaoCaoDoanhThuMoiNhat
 CREATE PROCEDURE selecBaoCaoDoanhThuMoiNhat 
 AS BEGIN
@@ -628,6 +645,7 @@ AS BEGIN
 	ORDER BY MaBaoCaoDoanhThu DESC
 END
 
+------------------------------------------------------------------------------------------
 -- newChiTietBaoCaoDT với mã tự động tăng
 CREATE PROCEDURE NewChiTietBaoCaoDT
 
@@ -663,6 +681,7 @@ AS BEGIN
 	END
 END 
 
+------------------------------------------------------------------------------------------
 -- kiemTraBaoCaoDTByThangBaoCaoVaTongDoanhThu
 CREATE PROCEDURE kiemTraBaoCaoDTByThangBaoCaoVaTongDoanhThu
 	@ThangBaoCaoDoanhThu smalldatetime,
@@ -689,6 +708,7 @@ AS BEGIN
 	GROUP BY PHONG.MaPhong, TenPhong, PHONG.MaPhong, TenLoaiPhong
 END
 
+------------------------------------------------------------------------------------------
 -- themBaoCaoMatDo
 CREATE PROCEDURE NewBaoCaoMatDo
 
@@ -718,6 +738,7 @@ AS BEGIN
 	END
 END 
 
+------------------------------------------------------------------------------------------
 -- selectBaoCaoMatDoMoiNhat
 CREATE PROCEDURE selectBaoCaoMatDoMoiNhat 
 AS BEGIN
@@ -726,6 +747,7 @@ AS BEGIN
 	ORDER BY MaBaoCaoMatDo DESC
 END
 
+------------------------------------------------------------------------------------------
 -- themChiTietBaoCaoMD với mã tự động tăng
 CREATE PROCEDURE NewChiTietBaoCaoMD
 
@@ -761,6 +783,7 @@ AS BEGIN
 	END
 END 
 
+------------------------------------------------------------------------------------------
 -- selectBaoCaoMatDoByThang
 CREATE PROCEDURE selectBaoCaoMatDoByThang
 	@ThangBaoCaoMatDo smalldatetime
@@ -780,6 +803,7 @@ AS BEGIN
 		(MaHoaDon is null)
 END
 
+------------------------------------------------------------------------------------------
 -- selectPhieuThueByTinhTrangHoaDon
 CREATE PROCEDURE selectPhieuThueByTinhTrangHoaDon
 	@TinhTrangHoaDon nvarchar(50)
@@ -797,8 +821,7 @@ AS BEGIN
 		from PHIEUTHUE inner join PHONG on PHIEUTHUE.MaPhong = PHONG.MaPhong
 	END
 
-Exec selectPhieuThueByTinhTrangHoaDon 'da THUE'
-drop procedure selectPhieuThueByTinhTrangHoaDon
+------------------------------------------------------------------------------------------
 -- selectBaoCaoDoanhThuAll
 CREATE PROCEDURE selectBaoCaoDoanhThuAll
 AS BEGIN
@@ -806,6 +829,7 @@ AS BEGIN
 	FROM BAOCAODOANHTHU
 END
 
+------------------------------------------------------------------------------------------
 -- selectBaoCaoMatDoAll
 CREATE PROCEDURE selectBaoCaoMatDoAll
 AS BEGIN
@@ -813,8 +837,7 @@ AS BEGIN
 	FROM BAOCAOMATDO
 END
 
-EXEC selectBaoCaoDoanhThuAll
-
+------------------------------------------------------------------------------------------
 -- selectChiTietBaoCaoDoanhThuByMaBaoCaoDoanhThu
 CREATE PROCEDURE selectChiTietBaoCaoDoanhThuByMaBaoCaoDoanhThu
 	@MaBaoCaoDoanhThu char(5)
@@ -824,6 +847,7 @@ AS BEGIN
 	WHERE MaBaoCaoDoanhThu = @MaBaoCaoDoanhThu
 END
 
+------------------------------------------------------------------------------------------
 -- selectChiTietBaoCaoMDByMaBaoCaoMaDo
 CREATE PROCEDURE selectChiTietBaoCaoMDByMaBaoCaoMaDo
 	@MaBaoCaoMatDo char(5)
@@ -833,6 +857,7 @@ AS BEGIN
 	WHERE MaBaoCaoMatDo = @MaBaoCaoMatDo
 END
 
+------------------------------------------------------------------------------------------
 -- upload Phong by MaPhong
 CREATE PROCEDURE xoaPhongByMaPhong
 	@MaPhong char(5)
@@ -840,13 +865,9 @@ as begin
 	UPDATE PHONG
 	SET isDeleted = 1
 	WHERE MaPhong = @MaPhong 
-end
+end	
 
-Drop procedure uploadPhongByMaPhong
-EXEC xoaPhongByMaPhong 'Ph001'
-
-	
-
+------------------------------------------------------------------------------------------
 -- selectPhongVoiTenPhong
 CREATE PROCEDURE selectPhongVoiTenLoaiPhong
 AS BEGIN
@@ -857,6 +878,7 @@ END
 
 EXEC selectPhongVoiTenLoaiPhong
 
+------------------------------------------------------------------------------------------
 -- capNhatPhongByMaPhong 
 CREATE PROCEDURE capNhatPhongByMaPhong
 	@MaPhong char(5),
@@ -871,8 +893,7 @@ as begin
 	WHERE (MaPhong = @MaPhong)
 end
 
-EXEC capNhatPhongByMaPhong 'PH000', 'Phòng không tên', 'LP000', 'Okie'
-
+------------------------------------------------------------------------------------------
 -- NewLoaiKhachHang bởi mã tự động tăng
 CREATE PROCEDURE NewLoaiKhachHang
 
@@ -901,6 +922,7 @@ AS BEGIN
 	END
 END 
 
+------------------------------------------------------------------------------------------
 -- capNhatThamSo
 CREATE PROCEDURE capNhatThamSo
 	@SoKhachToiDa int,
@@ -911,7 +933,7 @@ AS BEGIN
 	SET SoKhachToiDa = @SoKhachToiDa, TiLePhuThu = @TiLePhuThu
 END
 
-
+------------------------------------------------------------------------------------------
 -- seledctPhieuThueByMaPhieuThue
 CREATE PROCEDURE seledctPhieuThueByMaPhieuThue
 	@MaPhieuThue char(5)
@@ -922,6 +944,7 @@ AS BEGIN
 	(MaPhieuThue = @MaPhieuThue)
 END
 
+------------------------------------------------------------------------------------------
 ---- selectPhongAllisDelete
 CREATE PROCEDURE selectPhongAllisDeleted
 AS BEGIN
@@ -929,9 +952,7 @@ AS BEGIN
 	FROM PHONG
 END
 
-Select * from phieuthue
-DROP PROCEDURE selectPhongAllisDeleted
-
+------------------------------------------------------------------------------------------
 ---- capNhatPhieuThueByMaPhieuThue
 CREATE PROCEDURE capNhatPhieuThueByMaPhieuThue
 	@MaPhieuThue char(5),
@@ -945,3 +966,7 @@ AS BEGIN
 	SET MaPhong = @MaPhong, NgayTraPhong = @NgayTraPhong, NgayBatDauThue = @NgayBatDauThue, DonGiaThueThucTe = @DonGiaThueThucTe
 	WHERE MaPhieuThue = @MaPhieuThue
 END
+
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
