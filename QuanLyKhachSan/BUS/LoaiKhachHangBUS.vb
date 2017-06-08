@@ -15,6 +15,10 @@ Namespace BUS
             Return LoaiKhachHangDAO.selectLoaiKhachHangByMaLoaiKhach(MaLoaiKhach).HeSoKhach
         End Function
 
+        Public Shared Function selectTenLoaiKhachHangByMaLoaiKhach(MaLoaiKhach As String) As String
+            Return LoaiKhachHangDAO.selectLoaiKhachHangByMaLoaiKhach(MaLoaiKhach).TenLoaiKhachHang
+        End Function
+
 #End Region
 
 #Region "Inserting"

@@ -391,12 +391,13 @@ CREATE PROCEDURE selectTinhTrangPhongByThoiGian
 	@NgayBatDau smalldatetime,
 	@NgayKetThuc smalldatetime
 AS BEGIN
-	SELECT TenPhong, NgayCuaTinhTrang, LoaiTinhTrang, DonGiaThue
+	SELECT TenPhong as 'Tên Phòng', NgayCuaTinhTrang as 'Ngày', LoaiTinhTrang as 'Tình Trạng', DonGiaThue as 'Đơn Giá'
 	FROM (TINHTRANG INNER JOIN PHONG ON PHONG.MaPhong = TINHTRANG.MaPhong)
 		INNER JOIN LOAIPHONG ON PHONG.MaLoaiPhong = LOAIPHONG.MaLoaiPhong
 	WHERE NgayCuaTinhTrang BETWEEN @NgayBatDau AND @NgayKetThuc
 END
 
+drop procedure selectTinhTrangPhongByThoiGian
 -- update capNhatTinhTrangPhongByMaPhong
 CREATE PROCEDURE capNhatTinhTrangPhongByMaPhong
 	@MaPhong char(5),
@@ -974,6 +975,45 @@ END
 
 EXEC capNhatThamSo 3, 1.25
 select * from THAMSO 
+
+-- seledctPhieuThueByMaPhieuThue
+CREATE PROCEDURE seledctPhieuThueByMaPhieuThue
+	@MaPhieuThue char(5)
+AS BEGIN
+	SELECT * 
+	FROM PHIEUTHUE
+	WHERE (isDeleted = 0) AND
+	(MaPhieuThue = @MaPhieuThue)
+END
+
+Exec seledctPhieuThueByMaPhieuThue 'pt001'
+
+
+---- selectPhongAllisDelete
+CREATE PROCEDURE selectPhongAllisDeleted
+AS BEGIN
+	SELECT * 
+	FROM PHONG
+END
+
+Select * from phieuthue
+DROP PROCEDURE selectPhongAllisDeleted
+
+---- capNhatPhieuThueByMaPhieuThue
+CREATE PROCEDURE capNhatPhieuThueByMaPhieuThue
+	@MaPhieuThue char(5),
+	@MaPhong char(5),
+	@NgayTraPhong smalldatetime,
+	@NgayBatDauThue smalldatetime, 
+	@DonGiaThueThucTe float
+
+AS BEGIN
+	UPDATE PHIEUTHUE
+	SET MaPhong = @MaPhong, NgayTraPhong = @NgayTraPhong, NgayBatDauThue = @NgayBatDauThue, DonGiaThueThucTe = @DonGiaThueThucTe
+	WHERE MaPhieuThue = @MaPhieuThue
+END
+
+
 ----------
 -----------
 -----------------
@@ -1024,7 +1064,7 @@ EXEC selectPhieuThueHDByMaPhieuThue 'PT002'
 
 EXEC kiemTraPhieuThueByMaPhieuThue 'PT001'
 
-EXEC selectChiTietPhieuAllThueByMaPhieuThue 'PT001'
+EXEC selectChiTietPhieuAllThueByMaPhieuThue 'PT000'
 
 EXEC NewHoaDon N'Khách hàng', N'địa chỉ', 8222.23
 

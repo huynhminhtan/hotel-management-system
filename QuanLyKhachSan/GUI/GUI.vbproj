@@ -113,6 +113,12 @@
     <Compile Include="HeThong\frmThemLoaiPhong.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="QuanLyPhieuThue\frmCapNhatPhieuThue.Designer.vb">
+      <DependentUpon>frmCapNhatPhieuThue.vb</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyPhieuThue\frmCapNhatPhieuThue.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="QuanLyPhong\frmCapNhatPhong.Designer.vb">
       <DependentUpon>frmCapNhatPhong.vb</DependentUpon>
     </Compile>
@@ -213,6 +219,9 @@
     <EmbeddedResource Include="HeThong\frmThemLoaiPhong.resx">
       <DependentUpon>frmThemLoaiPhong.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyPhieuThue\frmCapNhatPhieuThue.resx">
+      <DependentUpon>frmCapNhatPhieuThue.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QuanLyPhong\frmCapNhatPhong.resx">
       <DependentUpon>frmCapNhatPhong.vb</DependentUpon>
     </EmbeddedResource>
@@ -255,6 +264,7 @@
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+    <None Include="My Project\DataSources\BUS.BUS.LoaiKhachHangBUS.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>

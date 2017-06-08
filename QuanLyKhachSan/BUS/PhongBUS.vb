@@ -21,6 +21,10 @@ Namespace BUS
             Return PhongDAO.selectPhongALL()
         End Function
 
+        Public Shared Function selectPhongAllisDeleted() As List(Of PhongDTO)
+            Return PhongDAO.selectPhongAllisDeleted()
+        End Function
+
         Public Shared Function selectPhongVoiTenLoaiPhong() As DataTable
             Return PhongDAO.selectPhongVoiTenLoaiPhong()
         End Function

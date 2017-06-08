@@ -34,6 +34,10 @@ Namespace BUS
             Return PhieuThueDAO.selectPhieuThueByNgayTraPhongMaLoaiPhong(ngayTraPhong, maLoaiPhong)
         End Function
 
+        Public Shared Function seledctPhieuThueByMaPhieuThue(maPhieuThue As String) As PhieuThueDTO
+            Return PhieuThueDAO.seledctPhieuThueByMaPhieuThue(maPhieuThue)
+        End Function
+
         Public Shared Function selectPhieuThueByTinhTrangHoaDon(tinhTrangHoaDon As String) As DataTable
             Return PhieuThueDAO.selectPhieuThueByTinhTrangHoaDon(tinhTrangHoaDon)
         End Function
@@ -45,6 +49,14 @@ Namespace BUS
 
         Public Shared Function themPhieuThue(phieuThue As PhieuThueDTO) As Boolean
             Return PhieuThueDAO.insertPhieuThue(phieuThue)
+        End Function
+
+#End Region
+
+#Region "Updating"
+
+        Public Shared Function capNhatPhieuThueByMaPhieuThue(phieuThue As PhieuThueDTO) As Boolean
+            Return PhieuThueDAO.capNhatPhieuThueByMaPhieuThue(phieuThue)
         End Function
 
 #End Region
