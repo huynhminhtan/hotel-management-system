@@ -132,6 +132,40 @@ Namespace DAO
             End Try
             Return dsPhieuThue
         End Function
+
+        Public Shared Function selectPhieuThueByTinhTrangHoaDon(tinhTrangHoaDon As String) As DataTable
+            ' Dim danhSachPhieuThue As New List(Of PhieuThueDTO)
+            Dim dt As New DataTable
+            Try
+                Dim sqlParams As New List(Of SqlParameter)
+                sqlParams.Add(New SqlParameter("@TinhTrangHoaDon", tinhTrangHoaDon))
+
+                dt = SqlDataAccessHelper.ExecuteQuery("selectPhieuThueByTinhTrangHoaDon", sqlParams)
+
+                If (dt.Rows.Count <= 0) Then
+                    Return Nothing
+                End If
+
+                'For Each hang As DataRow In dt.Rows
+                '    Dim phieuThue As New PhieuThueDTO
+                '    phieuThue.MaPhieuThue = hang("MaPhieuThue").ToString
+                '    phieuThue.MaPhong = hang("MaPhong").ToString
+                '    phieuThue.NgayBatDauThue = hang("NgayBatDauThue").ToString
+                '    phieuThue.NgayTraPhong = hang("NgayTraPhong").ToString
+                '    phieuThue.DonGiaThueThucTe = Double.Parse(hang("DonGiaThueThucTe").ToString)
+                '    phieuThue.ThanhTienPhong = Double.Parse(hang("ThanhTienPhong").ToString)
+                '    phieuThue.MaHoaDon = hang("MaHoaDon").ToString
+                '    phieuThue.PhuThuThucTe = Double.Parse(hang("PhuThuThucTe").ToString)
+
+                '    danhSachPhieuThue.Add(phieuThue)
+                'Next
+
+            Catch ex As Exception
+                Throw ex
+            End Try
+            ' Return danhSachPhieuThue
+            Return dt
+        End Function
 #End Region
 
 #Region "Inserting"
@@ -184,6 +218,8 @@ Namespace DAO
             End Try
             Return False
         End Function
+
+       
 
     End Class
 

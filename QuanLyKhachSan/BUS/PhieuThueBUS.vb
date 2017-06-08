@@ -34,6 +34,11 @@ Namespace BUS
             Return PhieuThueDAO.selectPhieuThueByNgayTraPhongMaLoaiPhong(ngayTraPhong, maLoaiPhong)
         End Function
 
+        Public Shared Function selectPhieuThueByTinhTrangHoaDon(tinhTrangHoaDon As String) As DataTable
+            Return PhieuThueDAO.selectPhieuThueByTinhTrangHoaDon(tinhTrangHoaDon)
+        End Function
+
+
 #End Region
 
 #Region "Inserting"
@@ -47,8 +52,6 @@ Namespace BUS
         Public Shared Function daThanhToanHoaDon(maHoaDon As String, maPhieuThue As String) As Boolean
             Return PhieuThueDAO.daThanhToanHoaDon(maHoaDon, maPhieuThue)
         End Function
-
-
 
     End Class
 

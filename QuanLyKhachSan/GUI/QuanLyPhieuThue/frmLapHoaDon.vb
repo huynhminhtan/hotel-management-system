@@ -5,6 +5,7 @@ Imports DTO.DTO
 Public Class frmLapHoaDon
     Private _triGiaHoaDon As Double = 0
     Private fatherForm As frmQuanLyPhieuThue
+    Private danhSachPhieuThue As New DataTable
 
     Private Sub dgvDanhSachPhieuThue_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgvDanhSachPhieuThue.CellEndEdit
 
@@ -156,12 +157,32 @@ Public Class frmLapHoaDon
         End Using
     End Sub
 
-    Sub New(formFather As frmQuanLyPhieuThue)
+    Sub New(formFather As frmQuanLyPhieuThue, _danhSachPhieuThue As DataTable)
         InitializeComponent()
         fatherForm = formFather
+        danhSachPhieuThue = _danhSachPhieuThue
     End Sub
 
     Private Sub frmLapHoaDon_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         fatherForm.CapNhat()
+    End Sub
+
+    Private Sub frmLapHoaDon_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If (danhSachPhieuThue.Rows.Count > 0) Then
+            For Each hang As DataRow In danhSachPhieuThue.Rows
+                Dim dt As New DataTable
+                dt = HoaDonBUS.hienThiPhieuThueLapHoaDon(hang("MaPhieuThue").ToString)
+
+                Dim phieuThueTam As DataRow = dt.Rows(0)
+
+                dgvDanhSachPhieuThue.Rows.Add(phieuThueTam("MaPhieuThue").ToString,
+                                              phieuThueTam("TenPhong").ToString,
+                                              phieuThueTam("SoNgayThue").ToString,
+                                              phieuThueTam("DonGiaThue").ToString,
+                                              phieuThueTam("ThanhTien").ToString)
+            Next
+            tinhTriGiaHoaDon()
+        End If
+
     End Sub
 End Class
