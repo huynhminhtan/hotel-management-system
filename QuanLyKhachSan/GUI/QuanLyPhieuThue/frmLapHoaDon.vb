@@ -41,20 +41,6 @@ Public Class frmLapHoaDon
             Return
         End If
 
-        ' không cho phép nhập mã phiếu thuê hai lần cùng hóa đơn
-        For ihang As Integer = 0 To (dgvDanhSachPhieuThue.Rows.Count - 3)
-            Dim chuoi As String = dgvDanhSachPhieuThue.Rows(ihang).Cells("MaPhieuThue").Value.ToString
-            If (chuoi = maPhieuThue) Then
-                Using New CenteredMessageBox(Me)
-                    MessageBox.Show("Phiếu thuê đã được nhập trước đó.")
-                End Using
-                dgvDanhSachPhieuThue.CurrentCell.Value = ""
-
-                dgvDanhSachPhieuThue.AllowUserToAddRows = False
-                dgvDanhSachPhieuThue.AllowUserToDeleteRows = False
-                Return
-            End If
-        Next
 
         dgvDanhSachPhieuThue.AllowUserToAddRows = True
         dgvDanhSachPhieuThue.AllowUserToDeleteRows = True
@@ -80,7 +66,7 @@ Public Class frmLapHoaDon
         _triGiaHoaDon = 0
 
         ' tính trị giá của hóa đơn
-        For ihang As Integer = 0 To (dgvDanhSachPhieuThue.Rows.Count - 2)
+        For ihang As Integer = 0 To (dgvDanhSachPhieuThue.Rows.Count - 1)
             _triGiaHoaDon += Double.Parse(dgvDanhSachPhieuThue.Rows(ihang).Cells("ThanhTien").Value.ToString)
         Next
 
@@ -93,20 +79,18 @@ Public Class frmLapHoaDon
     End Sub
 
     Private Sub frmLapHoaDon_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        If (dgvDanhSachPhieuThue.Rows(0).Cells("MaPhieuThue").Value IsNot Nothing) Then
-            If (XuLyGUI.laChuoiHopLe(dgvDanhSachPhieuThue.Rows(0).Cells("MaPhieuThue").Value.ToString) = True) Then
-                Dim luaChon As DialogResult
+        If (dgvDanhSachPhieuThue.Rows.Count > 0) Then
+            Dim luaChon As DialogResult
 
-                Using New CenteredMessageBox(Me)
-                    luaChon = (MessageBox.Show(Me, "Bạn có muốn lập hóa đơn đã nhập không?", "Lưu lại?",
-                                                   MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1))
-                End Using
+            Using New CenteredMessageBox(Me)
+                luaChon = (MessageBox.Show(Me, "Bạn có muốn lập hóa đơn đã nhập không?", "Lưu lại?",
+                                               MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1))
+            End Using
 
-                If (luaChon = DialogResult.Yes) Then
-                    themHoaDon()
-                ElseIf (luaChon = DialogResult.Cancel) Then
-                    e.Cancel() = True
-                End If
+            If (luaChon = DialogResult.Yes) Then
+                themHoaDon()
+            ElseIf (luaChon = DialogResult.Cancel) Then
+                e.Cancel() = True
             End If
         End If
     End Sub
@@ -123,6 +107,7 @@ Public Class frmLapHoaDon
                 MessageBox.Show("Vui lòng nhập địa chỉ.")
                 Return
             End If
+
         End Using
 
         ' lưu hóa đơn xuống hệ thống
@@ -130,7 +115,7 @@ Public Class frmLapHoaDon
         Dim maHoaDon As String = ""
         maHoaDon = XuLyGUI.tangMa(HoaDonBUS.selectHoaDonMoiNhatAll(), "HD")
 
-        For ihang As Integer = 0 To (dgvDanhSachPhieuThue.Rows.Count - 2)
+        For ihang As Integer = 0 To (dgvDanhSachPhieuThue.Rows.Count - 1)
             Dim maPhieuThue As String
             maPhieuThue = dgvDanhSachPhieuThue.Rows(ihang).Cells("MaPhieuThue").Value.ToString
             PhieuThueBUS.daThanhToanHoaDon(maHoaDon, maPhieuThue)

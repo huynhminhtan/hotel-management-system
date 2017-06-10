@@ -23,14 +23,65 @@ Partial Class frmMain
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
-        Me.tabControlQuanLy = New System.Windows.Forms.TabControl()
-        Me.tabQuanLyPhong = New System.Windows.Forms.TabPage()
-        Me.tabQuanLyPhieuThue = New System.Windows.Forms.TabPage()
-        Me.tabBaoCaoThang = New System.Windows.Forms.TabPage()
-        Me.tabThayDoiQuyDinh = New System.Windows.Forms.TabPage()
         Me.tabHeThong = New System.Windows.Forms.TabPage()
+        Me.tabThayDoiQuyDinh = New System.Windows.Forms.TabPage()
+        Me.tabBaoCaoThang = New System.Windows.Forms.TabPage()
+        Me.tabQuanLyPhieuThue = New System.Windows.Forms.TabPage()
+        Me.tabQuanLyPhong = New System.Windows.Forms.TabPage()
+        Me.tabControlQuanLy = New System.Windows.Forms.TabControl()
         Me.tabControlQuanLy.SuspendLayout()
         Me.SuspendLayout()
+        '
+        'tabHeThong
+        '
+        Me.tabHeThong.Location = New System.Drawing.Point(4, 54)
+        Me.tabHeThong.Margin = New System.Windows.Forms.Padding(0)
+        Me.tabHeThong.Name = "tabHeThong"
+        Me.tabHeThong.Size = New System.Drawing.Size(1296, 695)
+        Me.tabHeThong.TabIndex = 4
+        Me.tabHeThong.Text = "Hệ Thống"
+        Me.tabHeThong.UseVisualStyleBackColor = True
+        '
+        'tabThayDoiQuyDinh
+        '
+        Me.tabThayDoiQuyDinh.Location = New System.Drawing.Point(4, 54)
+        Me.tabThayDoiQuyDinh.Margin = New System.Windows.Forms.Padding(0)
+        Me.tabThayDoiQuyDinh.Name = "tabThayDoiQuyDinh"
+        Me.tabThayDoiQuyDinh.Size = New System.Drawing.Size(1296, 695)
+        Me.tabThayDoiQuyDinh.TabIndex = 3
+        Me.tabThayDoiQuyDinh.Text = "Thay Đổi Quy Định"
+        Me.tabThayDoiQuyDinh.UseVisualStyleBackColor = True
+        '
+        'tabBaoCaoThang
+        '
+        Me.tabBaoCaoThang.Location = New System.Drawing.Point(4, 54)
+        Me.tabBaoCaoThang.Margin = New System.Windows.Forms.Padding(0)
+        Me.tabBaoCaoThang.Name = "tabBaoCaoThang"
+        Me.tabBaoCaoThang.Size = New System.Drawing.Size(1296, 695)
+        Me.tabBaoCaoThang.TabIndex = 2
+        Me.tabBaoCaoThang.Text = "Báo Cáo Tháng"
+        Me.tabBaoCaoThang.UseVisualStyleBackColor = True
+        '
+        'tabQuanLyPhieuThue
+        '
+        Me.tabQuanLyPhieuThue.BackColor = System.Drawing.Color.Transparent
+        Me.tabQuanLyPhieuThue.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.tabQuanLyPhieuThue.Location = New System.Drawing.Point(4, 54)
+        Me.tabQuanLyPhieuThue.Margin = New System.Windows.Forms.Padding(0)
+        Me.tabQuanLyPhieuThue.Name = "tabQuanLyPhieuThue"
+        Me.tabQuanLyPhieuThue.Size = New System.Drawing.Size(1296, 695)
+        Me.tabQuanLyPhieuThue.TabIndex = 1
+        Me.tabQuanLyPhieuThue.Text = "Quản Lý Phiếu Thuê"
+        '
+        'tabQuanLyPhong
+        '
+        Me.tabQuanLyPhong.Location = New System.Drawing.Point(4, 54)
+        Me.tabQuanLyPhong.Margin = New System.Windows.Forms.Padding(0)
+        Me.tabQuanLyPhong.Name = "tabQuanLyPhong"
+        Me.tabQuanLyPhong.Size = New System.Drawing.Size(1296, 695)
+        Me.tabQuanLyPhong.TabIndex = 0
+        Me.tabQuanLyPhong.Text = "Quản Lý Phòng"
+        Me.tabQuanLyPhong.UseVisualStyleBackColor = True
         '
         'tabControlQuanLy
         '
@@ -52,57 +103,6 @@ Partial Class frmMain
         Me.tabControlQuanLy.TabIndex = 0
         Me.tabControlQuanLy.TabStop = False
         '
-        'tabQuanLyPhong
-        '
-        Me.tabQuanLyPhong.Location = New System.Drawing.Point(4, 54)
-        Me.tabQuanLyPhong.Margin = New System.Windows.Forms.Padding(0)
-        Me.tabQuanLyPhong.Name = "tabQuanLyPhong"
-        Me.tabQuanLyPhong.Size = New System.Drawing.Size(1296, 695)
-        Me.tabQuanLyPhong.TabIndex = 0
-        Me.tabQuanLyPhong.Text = "Quản Lý Phòng"
-        Me.tabQuanLyPhong.UseVisualStyleBackColor = True
-        '
-        'tabQuanLyPhieuThue
-        '
-        Me.tabQuanLyPhieuThue.BackColor = System.Drawing.Color.Transparent
-        Me.tabQuanLyPhieuThue.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.tabQuanLyPhieuThue.Location = New System.Drawing.Point(4, 54)
-        Me.tabQuanLyPhieuThue.Margin = New System.Windows.Forms.Padding(0)
-        Me.tabQuanLyPhieuThue.Name = "tabQuanLyPhieuThue"
-        Me.tabQuanLyPhieuThue.Size = New System.Drawing.Size(1296, 695)
-        Me.tabQuanLyPhieuThue.TabIndex = 1
-        Me.tabQuanLyPhieuThue.Text = "Quản Lý Phiếu Thuê"
-        '
-        'tabBaoCaoThang
-        '
-        Me.tabBaoCaoThang.Location = New System.Drawing.Point(4, 54)
-        Me.tabBaoCaoThang.Margin = New System.Windows.Forms.Padding(0)
-        Me.tabBaoCaoThang.Name = "tabBaoCaoThang"
-        Me.tabBaoCaoThang.Size = New System.Drawing.Size(1296, 695)
-        Me.tabBaoCaoThang.TabIndex = 2
-        Me.tabBaoCaoThang.Text = "Báo Cáo Tháng"
-        Me.tabBaoCaoThang.UseVisualStyleBackColor = True
-        '
-        'tabThayDoiQuyDinh
-        '
-        Me.tabThayDoiQuyDinh.Location = New System.Drawing.Point(4, 54)
-        Me.tabThayDoiQuyDinh.Margin = New System.Windows.Forms.Padding(0)
-        Me.tabThayDoiQuyDinh.Name = "tabThayDoiQuyDinh"
-        Me.tabThayDoiQuyDinh.Size = New System.Drawing.Size(1296, 695)
-        Me.tabThayDoiQuyDinh.TabIndex = 3
-        Me.tabThayDoiQuyDinh.Text = "Thay Đổi Quy Định"
-        Me.tabThayDoiQuyDinh.UseVisualStyleBackColor = True
-        '
-        'tabHeThong
-        '
-        Me.tabHeThong.Location = New System.Drawing.Point(4, 54)
-        Me.tabHeThong.Margin = New System.Windows.Forms.Padding(0)
-        Me.tabHeThong.Name = "tabHeThong"
-        Me.tabHeThong.Size = New System.Drawing.Size(1296, 695)
-        Me.tabHeThong.TabIndex = 4
-        Me.tabHeThong.Text = "Hệ Thống"
-        Me.tabHeThong.UseVisualStyleBackColor = True
-        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -120,11 +120,11 @@ Partial Class frmMain
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents tabControlQuanLy As System.Windows.Forms.TabControl
-    Friend WithEvents tabQuanLyPhong As System.Windows.Forms.TabPage
-    Friend WithEvents tabQuanLyPhieuThue As System.Windows.Forms.TabPage
-    Friend WithEvents tabBaoCaoThang As System.Windows.Forms.TabPage
-    Friend WithEvents tabThayDoiQuyDinh As System.Windows.Forms.TabPage
     Friend WithEvents tabHeThong As System.Windows.Forms.TabPage
+    Friend WithEvents tabThayDoiQuyDinh As System.Windows.Forms.TabPage
+    Friend WithEvents tabBaoCaoThang As System.Windows.Forms.TabPage
+    Friend WithEvents tabQuanLyPhieuThue As System.Windows.Forms.TabPage
+    Friend WithEvents tabQuanLyPhong As System.Windows.Forms.TabPage
+    Friend WithEvents tabControlQuanLy As System.Windows.Forms.TabControl
 
 End Class

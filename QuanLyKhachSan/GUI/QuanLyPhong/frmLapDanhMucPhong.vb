@@ -1,4 +1,7 @@
-﻿Imports BUS.BUS
+﻿
+
+
+Imports BUS.BUS
 Imports DTO.DTO
 Imports GUI.XuLy
 
@@ -41,11 +44,19 @@ Public Class frmLapDanhMucPhong
 
     Private Sub btnThemPhong_Click(sender As Object, e As EventArgs) Handles btnThemPhong.Click
 
-        ' Kiểm tra nhập tên phòng hợp lệ
+        ' Kiểm tra phòng hợp lệ
         If (XuLyGUI.laChuoiHopLe(txtTenPhong.Text) = False) Then
 
             Using New CenteredMessageBox(Me)
                 MessageBox.Show("Vui lòng nhập tên phòng hợp lệ.")
+            End Using
+
+            Return
+        End If
+
+        If (cboTenLoaiPhong.SelectedItem Is Nothing) Then
+            Using New CenteredMessageBox(Me)
+                MessageBox.Show("Không có loại phòng.")
             End Using
 
             Return
@@ -156,19 +167,6 @@ Public Class frmLapDanhMucPhong
 
     End Sub
 
-    Private Sub dgvDanhMucPhong_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles dgvDanhMucPhong.DataBindingComplete
-        ' hiển thị button "Lưu" và "Cập nhật"
-        If (danhSachPhongTam.Rows.Count > 0) Then
-            btnCapNhat.Enabled = True
-            btnLuu.Enabled = True
-            btnXoaPhong.Enabled = True
-        Else
-            btnCapNhat.Enabled = False
-            btnLuu.Enabled = False
-            btnXoaPhong.Enabled = False
-        End If
-    End Sub
-
     Private Sub btnThoat_Click(sender As Object, e As EventArgs) Handles btnThoat.Click
         Me.Close()
     End Sub
@@ -227,5 +225,28 @@ Public Class frmLapDanhMucPhong
         Me.Close()
         Dim formTraCuuPhong As New frmTraCuuPhong(fatherForm)
         formTraCuuPhong.ShowDialog(fatherForm)
+    End Sub
+
+    Private Sub dgvDanhMucPhong_RowsAdded(sender As Object, e As DataGridViewRowsAddedEventArgs) Handles dgvDanhMucPhong.RowsAdded
+        btnCapNhat.Enabled = True
+        btnLuu.Enabled = True
+        btnTimPhong.Enabled = False
+        btnXoaPhong.Enabled = True
+
+    End Sub
+
+    Private Sub dgvDanhMucPhong_RowsRemoved(sender As Object, e As DataGridViewRowsRemovedEventArgs) Handles dgvDanhMucPhong.RowsRemoved
+        ' hiển thị trạng thái các button
+        If (danhSachPhongTam.Rows.Count > 1) Then
+            btnCapNhat.Enabled = True
+            btnLuu.Enabled = True
+            btnTimPhong.Enabled = False
+            btnXoaPhong.Enabled = True
+        Else
+            btnCapNhat.Enabled = False
+            btnLuu.Enabled = False
+            btnXoaPhong.Enabled = False
+            btnTimPhong.Enabled = True
+        End If
     End Sub
 End Class

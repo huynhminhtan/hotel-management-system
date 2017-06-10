@@ -213,7 +213,7 @@ Partial Class frmLapBaoCaoDoanhThu
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmLapBaoCaoDoanhThu"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "frmLapBaoCaoDoanhThu"
+        Me.Text = "Báo Cáo Tháng Theo Doanh Thu Loại Phòng"
         Me.GroupBox4.ResumeLayout(False)
         CType(Me.dgvBaoCao, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)

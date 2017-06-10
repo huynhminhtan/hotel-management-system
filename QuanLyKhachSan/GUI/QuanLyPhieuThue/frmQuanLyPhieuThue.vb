@@ -8,11 +8,19 @@ Public Class frmQuanLyPhieuThue
         ' hiển thị danh sách phiếu thuê
         hienThiComBoBoxTinhTrangPhieuThue()
 
+        dgvQuanLyPhieuThue.AutoGenerateColumns = False
+
         hienThiDanhSachPhieuThue()
     End Sub
 
 
     Private Sub btnLapPhieuThuePhong_Click(sender As Object, e As EventArgs) Handles btnLapPhieuThuePhong.Click
+        If (PhongBUS.selectPhongAll() Is Nothing) Then
+            Using New CenteredMessageBox(Me.Parent.FindForm())
+                MessageBox.Show("Không có phòng nào trong khách sạn.")
+            End Using
+            Return
+        End If
         Dim formLapPhieuThuePhong As New frmLapPhieuThuePhong(Me)
         formLapPhieuThuePhong.ShowDialog(Me)
     End Sub
@@ -30,6 +38,13 @@ Public Class frmQuanLyPhieuThue
                 danhSachPhieuThue.Rows.Add(hang.Cells("MaPhieuThue").Value.ToString)
             End If
         Next
+
+        If (danhSachPhieuThue.Rows.Count = 0) Then
+            Using New CenteredMessageBox(Me.Parent.FindForm())
+                MessageBox.Show("Chọn phiếu thuê cần thanh toán.")
+            End Using
+            Return
+        End If
 
         Dim formLapHoaDon As New frmLapHoaDon(Me, danhSachPhieuThue)
         formLapHoaDon.ShowDialog(Me)
@@ -69,6 +84,12 @@ Public Class frmQuanLyPhieuThue
     End Sub
 
     Private Sub btnCapNhatPhieuThue_Click(sender As Object, e As EventArgs) Handles btnCapNhatPhieuThue.Click
+        If (dgvQuanLyPhieuThue.DataSource Is Nothing) Then
+            Using New CenteredMessageBox(Me.Parent.FindForm())
+                MessageBox.Show("Không có phiếu thuê nào.")
+            End Using
+            Return
+        End If
         Dim formCapNhatPhieuThue As New frmCapNhatPhieuThue(Me)
         formCapNhatPhieuThue.ShowDialog(Me)
     End Sub
