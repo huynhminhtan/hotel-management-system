@@ -59,11 +59,23 @@ Public Class frmQuanLyPhong
     End Sub
 
     Private Sub btnHuyPhong_Click(sender As Object, e As EventArgs) Handles btnHuyPhong.Click
+        If (bangQuanLyPhong.Rows.Count = 0) Then
+            Using New CenteredMessageBox(Me.Parent.FindForm())
+                MessageBox.Show("Không có phòng")
+            End Using
+            Return
+        End If
         Dim formHuyPhong As New frmHuyPhong(Me)
         formHuyPhong.ShowDialog(Me)
     End Sub
 
     Private Sub btnCapNhat_Click(sender As Object, e As EventArgs) Handles btnCapNhatPhong.Click
+        If (bangQuanLyPhong.Rows.Count = 0) Then
+            Using New CenteredMessageBox(Me.Parent.FindForm())
+                MessageBox.Show("Không có phòng")
+            End Using
+            Return
+        End If
         Dim formCapNhatPhong As New frmCapNhatPhong(Me)
         formCapNhatPhong.ShowDialog(Me)
     End Sub

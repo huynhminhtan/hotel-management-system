@@ -10,10 +10,10 @@ Public Class frmLapBaoCaoMatDo
         dtpThang.MaxDate = Date.Now
 
         '' hiển thị chi tiết phiếu thuê
-        hienThiChiTietPhieuThue()
+        hienThiChiTietBaoCaoMatDo()
     End Sub
 
-    Private Sub hienThiChiTietPhieuThue()
+    Private Sub hienThiChiTietBaoCaoMatDo()
         Dim bangBaoCaoMatDo As New DataTable
 
         bangBaoCaoMatDo.Columns.Add("MaPhong", GetType(String))
@@ -23,7 +23,6 @@ Public Class frmLapBaoCaoMatDo
         bangBaoCaoMatDo.Columns.Add("TiLeSuDung", GetType(String))
 
         If ((PhongBUS.selectDanhSachPhongVoiSoNgayThuegByThang(dtpThang.Value)) Is Nothing) Then
-            MessageBox.Show("Không có phòng nào tương ứng với tháng.")
             bangBaoCaoMatDo.Clear()
             dgvBaoCao.ResetBindings()
             dgvBaoCao.DataSource = bangBaoCaoMatDo
@@ -46,7 +45,7 @@ Public Class frmLapBaoCaoMatDo
     End Sub
 
     Private Sub dtpThang_ValueChanged(sender As Object, e As EventArgs) Handles dtpThang.ValueChanged
-        hienThiChiTietPhieuThue()
+        hienThiChiTietBaoCaoMatDo()
     End Sub
 
     Private Sub btnLapBaoCao_Click(sender As Object, e As EventArgs) Handles btnLapBaoCao.Click
@@ -56,6 +55,10 @@ Public Class frmLapBaoCaoMatDo
         Using New CenteredMessageBox(Me)
             If (BaoCaoMatDoBUS.kiemTrabaoCaoMatDoByThang(baoCaoMatDo.ThangBaoCaoMatDo) = True) Then
                 MessageBox.Show("Báo cáo đã tồn tại trong hệ thống.")
+                Return
+            End If
+            If ((PhongBUS.selectDanhSachPhongVoiSoNgayThuegByThang(dtpThang.Value)) Is Nothing) Then
+                MessageBox.Show("Không có phòng nào tương ứng với tháng.")
                 Return
             End If
         End Using

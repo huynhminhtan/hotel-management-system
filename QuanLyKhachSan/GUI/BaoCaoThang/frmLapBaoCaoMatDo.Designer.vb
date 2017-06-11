@@ -188,7 +188,7 @@ Partial Class frmLapBaoCaoMatDo
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmLapBaoCaoMatDo"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "frmBaoCaoMatDo"
+        Me.Text = "Báo Cáo Tháng Theo Mật Độ Sử Dụng"
         CType(Me.dgvBaoCao, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)

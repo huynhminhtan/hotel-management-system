@@ -6,7 +6,7 @@ Namespace ThayDoiQuyDinh
 
     Public Class frmThayDoiQuyDinh
 
-        Private thamSo As ThamSoDTO
+        Private thamSo As New ThamSoDTO
 
         Private Sub txtBoxSoKhachToiDa_TextChanged(sender As Object, e As EventArgs) Handles txtBoxSoKhachToiDa.TextChanged
             For Each kiTu As Char In txtBoxSoKhachToiDa.Text
@@ -26,8 +26,18 @@ Namespace ThayDoiQuyDinh
 
         Private Sub frmThayDoiQuyDinh_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             thamSo = ThamSoBUS.selectThamSoAll()
+            If (thamSo Is Nothing) Then
+                thamSo = New ThamSoDTO()
+                thamSo.SoKhachToiDa = 0
+                thamSo.TiLePhuThu = 0
+                ThamSoBUS.themThamSo(thamSo)
+
+                txtBoxSoKhachToiDa.Text = "0"
+                txtBoxTiLePhuThu.Text = "0"
+                Return
+            End If
             txtBoxSoKhachToiDa.Text = thamSo.SoKhachToiDa
-            txtBoxTiLePhuThu.Text = (thamSo.TiLePhuThu * 100 - 100).ToString
+            txtBoxTiLePhuThu.Text = (thamSo.TiLePhuThu * 100 - 100).ToString()
         End Sub
 
         Private Sub btnCapNhat_Click(sender As Object, e As EventArgs) Handles btnCapNhat.Click
