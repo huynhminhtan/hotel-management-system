@@ -36,11 +36,13 @@ create table TINHTRANG
 create table LOAIKHACHHANG
 (
 	MaLoaiKhachHang char(5) primary key,
-	TenLoaiKhachHang varchar(50),
+	TenLoaiKhachHang nvarchar(50),
 	HeSoKhach float,
 
 	isDeleted bit default 0,
 )
+
+DROP TABLE CHITIETPHIEUTHUE
 
 create table HOADON
 (
@@ -199,6 +201,15 @@ AS begin
 end
 
 ------------------------------------------------------------------------------------------
+-- Select ChiTietPhieuThueMoiNhat
+CREATE PROCEDURE selectChiTietPhieuThueMoiNhat
+AS begin
+	Select top 1 *
+	From CHITIETPHIEUTHUE
+	Order by MaChiTietPhieuThue DESC
+end
+
+------------------------------------------------------------------------------------------
 --- Insert Phong với mã tự động tăng
 CREATE PROCEDURE NewPhong
 
@@ -247,7 +258,9 @@ AS BEGIN
 	 ThanhTienPhong, MaHoaDon, PhuThuThucTe
 	FROM PHIEUTHUE
 	WHERE isDeleted = 0
+	ORDER BY MaPhieuThue DESC
 END
+
 
 ------------------------------------------------------------------------------------------
 -- Select ThamSoAll
@@ -932,6 +945,38 @@ AS BEGIN
 	Update THAMSO
 	SET SoKhachToiDa = @SoKhachToiDa, TiLePhuThu = @TiLePhuThu
 END
+
+------------------------------------------------------------------------------------------
+-- insert themThamSo với mã tự động tăng
+CREATE PROCEDURE themThamSo
+	@SoKhachToiDa int,
+	@TiLePhuThu float
+
+AS BEGIN
+
+-- on show: X row(s) affected 
+--SET NOCOUNT ON  
+
+     IF exists (SELECT *FROM THAMSO)
+     BEGIN
+		 INSERT INTO THAMSO(id, SoKhachToiDa, TiLePhuThu)
+		 SELECT 
+				RIGHT('000' + CAST(THAMSO_ID + 1 AS NVARCHAR(3)), 3),
+				@SoKhachToiDa ,
+				@TiLePhuThu
+		 FROM (
+			  SELECT TOP 1 THAMSO_ID = CAST(RIGHT(id, 3) AS INT)
+			  FROM THAMSO
+			  ORDER BY id DESC
+		 ) t
+	END
+	ELSE
+	BEGIN
+		INSERT INTO THAMSO(id, SoKhachToiDa, TiLePhuThu)
+		VALUES ('000', @SoKhachToiDa, @TiLePhuThu)
+	END
+END 
+
 
 ------------------------------------------------------------------------------------------
 -- seledctPhieuThueByMaPhieuThue
