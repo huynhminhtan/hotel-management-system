@@ -1,8 +1,16 @@
-﻿Imports BUS.BUS
+﻿
+Imports System.IO
+Imports iTextSharp.text
+Imports iTextSharp.text.pdf
+
+Imports BUS.BUS
 Imports DTO.DTO
 Imports GUI.XuLy
 
+
 Public Class frmLapBaoCaoDoanhThu
+
+    Private locationFilePDF As String
 
     Private baoCaoDoanhThu As New BaoCaoDoanhThuDTO
     Private danhSachChiTietBaoCaoDT As New List(Of ChiTietBaoCaoDTDTO)
@@ -32,8 +40,15 @@ Public Class frmLapBaoCaoDoanhThu
     End Sub
 
     Private Sub frmLapBaoCaoDoanhThu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        SaveFileDialog1.FileName = ""
+        SaveFileDialog1.Filter = "PDF (*.pdf)|*.pdf"
+
+        locationFilePDF = "BaoCaoDoanhThuLoaiPhong.pdf"
+
         dtpThang.MaxDate = Date.Now
         xuLyBaoCaoDoanhThu()
+
     End Sub
 
     Private Sub xuLyBaoCaoDoanhThu()
@@ -117,6 +132,86 @@ Public Class frmLapBaoCaoDoanhThu
 
     Private Sub frmLapBaoCaoDoanhThu_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         fatherForm.CapNhat()
+    End Sub
+
+    Private Sub btnXuatPDF_Click(sender As Object, e As EventArgs) Handles btnXuatPDF.Click
+
+        Dim Paragraph As New Paragraph
+        Dim Pdffile As New Document(PageSize.A4, 40, 40, 40, 20)
+        Pdffile.AddTitle("Bao Cao Doanh Thu")
+        Dim Write As PdfWriter = PdfWriter.GetInstance(Pdffile, New FileStream(locationFilePDF, FileMode.Create))
+
+        Pdffile.Open()
+
+        Dim arial As BaseFont = BaseFont.CreateFont("..\..\..\Fonts\times.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED)
+
+        Dim pTitle As New Font(arial, 14, iTextSharp.text.Font.BOLD, BaseColor.BLACK)
+        Dim pTime As New Font(arial, 10, iTextSharp.text.Font.NORMAL, BaseColor.BLACK)
+        Dim pTable As New Font(arial, 12, iTextSharp.text.Font.NORMAL, BaseColor.BLACK)
+
+        'Paragraph = New Paragraph(New Chunk("BÁO CÁO DOANH THU THEO LOAI PHÒNG", pTitle))
+
+        Paragraph = New Paragraph(New Chunk("BÁO CÁO DOANH THU THEO LOẠI PHÒNG", pTitle))
+        Paragraph.Alignment = Element.ALIGN_CENTER
+        Paragraph.SpacingAfter = 5.0F
+
+        Pdffile.Add(Paragraph)
+
+        ' insert data 
+
+        Dim PdfTable As New PdfPTable(dgvBaoCao.Columns.Count)
+
+        PdfTable.TotalWidth = 500.0F
+        PdfTable.LockedWidth = True
+
+        Dim widths(0 To dgvBaoCao.Columns.Count - 1) As Single
+        For i As Integer = 0 To dgvBaoCao.Columns.Count - 1
+            widths(i) = 1.0F
+        Next
+
+        PdfTable.SetWidths(widths)
+        PdfTable.HorizontalAlignment = 0
+        PdfTable.SpacingBefore = 5.0F
+
+
+        Dim pdfcell As PdfPCell = New PdfPCell
+
+        For i As Integer = 0 To dgvBaoCao.Columns.Count - 1
+            pdfcell = New PdfPCell(New Phrase(New Chunk(dgvBaoCao.Columns(i).HeaderText, pTable)))
+
+            pdfcell.HorizontalAlignment = PdfPCell.ALIGN_LEFT
+            PdfTable.AddCell(pdfcell)
+        Next
+
+        For i As Integer = 0 To dgvBaoCao.Rows.Count - 1
+
+            For j As Integer = 0 To dgvBaoCao.Columns.Count - 1
+                pdfcell = New PdfPCell(New Phrase(dgvBaoCao(j, i).Value.ToString(), pTable))
+                PdfTable.HorizontalAlignment = PdfPCell.ALIGN_LEFT
+                PdfTable.AddCell(pdfcell)
+            Next
+        Next
+
+        Pdffile.Add(PdfTable)
+
+        Paragraph = New Paragraph(New Chunk("Tháng: " + dtpThang.Value.ToShortDateString(), pTime))
+        Paragraph.Alignment = Element.ALIGN_RIGHT
+        Paragraph.SpacingBefore = 5.0F
+
+        Pdffile.Add(Paragraph)
+
+        Pdffile.Close()
+
+        MessageBox.Show("Tạo PDF thành công!", "PDF format", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+
+    End Sub
+
+    Private Sub btnBrowse_Click(sender As Object, e As EventArgs) Handles btnBrowse.Click
+        SaveFileDialog1.FileName = ""
+        If SaveFileDialog1.ShowDialog = DialogResult.OK Then
+            locationFilePDF = SaveFileDialog1.FileName
+        End If
     End Sub
 End Class
 
