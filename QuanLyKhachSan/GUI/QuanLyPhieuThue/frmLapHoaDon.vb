@@ -178,6 +178,13 @@ Public Class frmLapHoaDon
     End Sub
 
     Private Sub frmLapHoaDon_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        ' hiển thị danh sách loại phòng
+        cboTenKhuyenMai.DisplayMember = "TenKhuyenMai" ' cột cần hiển thị ra ngoài comboboxs
+        cboTenKhuyenMai.ValueMember = "MaKhuyenMai" ' giá trị tương ứng với displayMember được chọn
+        cboTenKhuyenMai.DataSource = KhuyenMaiBUS.selectKhuyenMaiAll()
+
+
         If (danhSachPhieuThue.Rows.Count > 0) Then
 
 

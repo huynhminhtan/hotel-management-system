@@ -13,6 +13,13 @@ Public Class frmLapPhieuThuePhong
 
         ' hiển thị danh sách mã phòng
         Try
+
+            cboTenKhuyenMai.DisplayMember = "TenKhuyenMai" ' cột cần hiển thị ra ngoài comboboxs
+            cboTenKhuyenMai.ValueMember = "MaKhuyenMai" ' giá trị tương ứng với displayMember được chọn
+            cboTenKhuyenMai.DataSource = KhuyenMaiBUS.selectKhuyenMaiAll()
+
+            lblNoiDungKM.Text = ""
+
             cboMaPhong.DataSource = PhongBUS.selectPhongAll()
             cboMaPhong.DisplayMember = "MaPhong"
             ' cboMaPhong.ValueMember = "MaPhong"
@@ -278,4 +285,14 @@ Public Class frmLapPhieuThuePhong
         End If
     End Sub
 
+    Private Sub cboTenKhuyenMai_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboTenKhuyenMai.SelectedIndexChanged
+
+        If (cboTenKhuyenMai.SelectedItem.TenKhuyenMai.ToString = "Không") Then
+            lblNoiDungKM.Text = ""
+        Else
+            lblNoiDungKM.Text = "HS " + cboTenKhuyenMai.SelectedItem.HeSoKhuyenMai.ToString + " + " + cboTenKhuyenMai.SelectedItem.GhiChu.ToString
+        End If
+
+
+    End Sub
 End Class

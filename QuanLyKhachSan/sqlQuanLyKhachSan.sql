@@ -42,6 +42,16 @@ create table LOAIKHACHHANG
 	isDeleted bit default 0,
 )
 
+create table KHUYENMAI
+(
+	MaKhuyenMai char(5) primary key,
+	TenKhuyenMai nvarchar(50),
+	HeSoKhuyenMai float,
+	GhiChu nvarchar(300),
+
+	isDeleted bit default 0,
+)
+
 DROP TABLE CHITIETPHIEUTHUE
 
 create table HOADON
@@ -277,6 +287,15 @@ CREATE PROCEDURE selectLoaiKhachHangAll
 AS BEGIN
 	SELECT MaLoaiKhachHang, TenLoaiKhachHang, HeSoKhach
 	FROM LOAIKHACHHANG
+	WHERE isDeleted = 0
+END
+
+------------------------------------------------------------------------------------------
+-- Select selectKhuyenMaiAll
+CREATE PROCEDURE selectKhuyenMaiAll
+AS BEGIN
+	SELECT MaKhuyenMai, TenKhuyenMai, HeSoKhuyenMai, GhiChu
+	FROM KHUYENMAI
 	WHERE isDeleted = 0
 END
 
@@ -936,6 +955,37 @@ AS BEGIN
 END 
 
 ------------------------------------------------------------------------------------------
+-- NewKhuyenMai bởi mã tự động tăng
+CREATE PROCEDURE NewKhuyenMai
+
+	@TenKhuyenMai nvarchar(50),
+	@GhiChu nvarchar(300),
+	@HeSoKhuyenMai float
+
+AS BEGIN
+
+     IF exists (SELECT *FROM KHUYENMAI)
+     BEGIN
+		 INSERT INTO KHUYENMAI(MaKhuyenMai, TenKhuyenMai, HeSoKhuyenMai, GhiChu)
+		 SELECT 
+				'KM' + RIGHT('000' + CAST(KhuyenMai_ID + 1 AS NVARCHAR(3)), 3),
+				@TenKhuyenMai,
+				@HeSoKhuyenMai,
+				@GhiChu
+		 FROM (
+			  SELECT TOP 1 KhuyenMai_ID = CAST(RIGHT(MaKhuyenMai, 3) AS INT)
+			  FROM KHUYENMAI
+			  ORDER BY MaKhuyenMai DESC
+		 ) t
+	END
+	ELSE
+	BEGIN
+		INSERT INTO KHUYENMAI(MaKhuyenMai, TenKhuyenMai, HeSoKhuyenMai, GhiChu)
+		VALUES ('KM000', @TenKhuyenMai, @HeSoKhuyenMai, @GhiChu)
+	END
+END 
+
+------------------------------------------------------------------------------------------
 -- capNhatThamSo
 CREATE PROCEDURE capNhatThamSo
 	@SoKhachToiDa int,
@@ -1015,3 +1065,4 @@ END
 ------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------
+

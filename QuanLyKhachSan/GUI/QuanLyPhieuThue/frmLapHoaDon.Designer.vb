@@ -22,7 +22,7 @@ Partial Class frmLapHoaDon
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.dgvDanhSachPhieuThue = New System.Windows.Forms.DataGridView()
         Me.MaPhieuThue = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -46,6 +46,8 @@ Partial Class frmLapHoaDon
         Me.lblTriGiaHoaDon = New System.Windows.Forms.Label()
         Me.lblDiaChi = New System.Windows.Forms.Label()
         Me.lblTenKhachHang = New System.Windows.Forms.Label()
+        Me.cboTenKhuyenMai = New System.Windows.Forms.ComboBox()
+        Me.lblKhuyenMai = New System.Windows.Forms.Label()
         Me.GroupBox4.SuspendLayout()
         CType(Me.dgvDanhSachPhieuThue, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -70,14 +72,14 @@ Partial Class frmLapHoaDon
         Me.dgvDanhSachPhieuThue.AllowUserToResizeColumns = False
         Me.dgvDanhSachPhieuThue.AllowUserToResizeRows = False
         Me.dgvDanhSachPhieuThue.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvDanhSachPhieuThue.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvDanhSachPhieuThue.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvDanhSachPhieuThue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvDanhSachPhieuThue.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.MaPhieuThue, Me.TenPhong, Me.SoNgayThue, Me.DonGiaThue, Me.ThanhTien})
         Me.dgvDanhSachPhieuThue.Dock = System.Windows.Forms.DockStyle.Fill
@@ -155,6 +157,8 @@ Partial Class frmLapHoaDon
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.cboTenKhuyenMai)
+        Me.GroupBox1.Controls.Add(Me.lblKhuyenMai)
         Me.GroupBox1.Controls.Add(Me.lblTongTien)
         Me.GroupBox1.Controls.Add(Me.lblTienThemGio)
         Me.GroupBox1.Controls.Add(Me.txtThemGio)
@@ -246,7 +250,7 @@ Partial Class frmLapHoaDon
         '
         Me.txtTriGiaHoaDon.Cursor = System.Windows.Forms.Cursors.Default
         Me.txtTriGiaHoaDon.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.txtTriGiaHoaDon.Location = New System.Drawing.Point(392, 80)
+        Me.txtTriGiaHoaDon.Location = New System.Drawing.Point(392, 115)
         Me.txtTriGiaHoaDon.Name = "txtTriGiaHoaDon"
         Me.txtTriGiaHoaDon.ReadOnly = True
         Me.txtTriGiaHoaDon.Size = New System.Drawing.Size(140, 20)
@@ -265,7 +269,7 @@ Partial Class frmLapHoaDon
         '
         Me.lblTriGiaHoaDon.AutoSize = True
         Me.lblTriGiaHoaDon.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.lblTriGiaHoaDon.Location = New System.Drawing.Point(301, 83)
+        Me.lblTriGiaHoaDon.Location = New System.Drawing.Point(301, 118)
         Me.lblTriGiaHoaDon.Name = "lblTriGiaHoaDon"
         Me.lblTriGiaHoaDon.Size = New System.Drawing.Size(82, 13)
         Me.lblTriGiaHoaDon.TabIndex = 4
@@ -290,6 +294,26 @@ Partial Class frmLapHoaDon
         Me.lblTenKhachHang.Size = New System.Drawing.Size(89, 13)
         Me.lblTenKhachHang.TabIndex = 0
         Me.lblTenKhachHang.Text = "Tên khách hàng:"
+        '
+        'cboTenKhuyenMai
+        '
+        Me.cboTenKhuyenMai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboTenKhuyenMai.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        Me.cboTenKhuyenMai.FormattingEnabled = True
+        Me.cboTenKhuyenMai.Location = New System.Drawing.Point(392, 75)
+        Me.cboTenKhuyenMai.Name = "cboTenKhuyenMai"
+        Me.cboTenKhuyenMai.Size = New System.Drawing.Size(140, 21)
+        Me.cboTenKhuyenMai.TabIndex = 18
+        '
+        'lblKhuyenMai
+        '
+        Me.lblKhuyenMai.AutoSize = True
+        Me.lblKhuyenMai.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        Me.lblKhuyenMai.Location = New System.Drawing.Point(317, 76)
+        Me.lblKhuyenMai.Name = "lblKhuyenMai"
+        Me.lblKhuyenMai.Size = New System.Drawing.Size(59, 13)
+        Me.lblKhuyenMai.TabIndex = 17
+        Me.lblKhuyenMai.Text = "Khyến mãi:"
         '
         'frmLapHoaDon
         '
@@ -334,4 +358,6 @@ Partial Class frmLapHoaDon
     Friend WithEvents lblTienThemGio As Label
     Friend WithEvents lblTongTien As Label
     Friend WithEvents txtTriGiaHoaDon As TextBox
+    Friend WithEvents cboTenKhuyenMai As ComboBox
+    Friend WithEvents lblKhuyenMai As Label
 End Class

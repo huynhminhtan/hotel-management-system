@@ -13,4 +13,9 @@
     Public Sub CapNhat()
 
     End Sub
+
+    Private Sub btnKhuyenMai_Click(sender As Object, e As EventArgs) Handles btnKhuyenMai.Click
+        Dim formThemKhuyenMai As New frmThemKhuyenMai(Me)
+        formThemKhuyenMai.ShowDialog(Me)
+    End Sub
 End Class

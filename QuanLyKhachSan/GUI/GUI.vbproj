@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{186F5F28-5072-4545-8FEC-7D032283AE9C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>GUI.My.MyApplication</StartupObject>
+    <StartupObject>GUI.frmMain</StartupObject>
     <RootNamespace>GUI</RootNamespace>
     <AssemblyName>GUI</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -133,6 +133,12 @@
     <Compile Include="BaoCaoThang\frmLapBaoCaoDoanhThu.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="HeThong\frmThemKhuyenMai.Designer.vb">
+      <DependentUpon>frmThemKhuyenMai.vb</DependentUpon>
+    </Compile>
+    <Compile Include="HeThong\frmThemKhuyenMai.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="HeThong\frmThemLoaiKhachHang.Designer.vb">
       <DependentUpon>frmThemLoaiKhachHang.vb</DependentUpon>
     </Compile>
@@ -244,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCaoThang\frmLapBaoCaoDoanhThu.resx">
       <DependentUpon>frmLapBaoCaoDoanhThu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HeThong\frmThemKhuyenMai.resx">
+      <DependentUpon>frmThemKhuyenMai.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HeThong\frmThemLoaiKhachHang.resx">
       <DependentUpon>frmThemLoaiKhachHang.vb</DependentUpon>
