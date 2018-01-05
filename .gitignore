@@ -13,6 +13,7 @@ bld/
 *.suo
 *.user
 /QuanLyKhachSan/GUI/bin
-/do/Documents/NMCNPM_QuanLyKhachSan.zip
 /QuanLyKhachSan/GUI/My Project/Application.myapp
 /QuanLyKhachSan/ConnectionString.xml
+
+*.vs
