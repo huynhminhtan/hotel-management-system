@@ -6,6 +6,8 @@ Public Class frmLapHoaDon
     Private _triGiaHoaDon As Double = 0
     Private fatherForm As frmQuanLyPhieuThue
     Private danhSachPhieuThue As New DataTable
+    Private tienThue As Double = 0
+    Private tienfirst As Double = 0
 
     Private Sub dgvDanhSachPhieuThue_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgvDanhSachPhieuThue.CellEndEdit
 
@@ -72,6 +74,27 @@ Public Class frmLapHoaDon
 
         ' hiển thị trị giá hóa đơn
         txtTriGiaHoaDon.Text = _triGiaHoaDon.ToString
+        tienfirst = _triGiaHoaDon
+    End Sub
+
+    Private Sub tinhTongTienThanhToan()
+
+        txtTriGiaHoaDon.Text = tienfirst
+        Dim Tong As Double = 0
+
+        If (String.IsNullOrEmpty(txtPhuThu.Text)) Then
+            Tong += 0
+        Else
+            Tong += txtPhuThu.Text
+        End If
+
+        If (String.IsNullOrEmpty(txtThemGio.Text)) Then
+            Tong += 0
+        Else
+            Tong += txtThemGio.Text * (tienThue / 24)
+        End If
+
+        txtTriGiaHoaDon.Text += Tong
     End Sub
 
     Private Sub btnHuy_Click(sender As Object, e As EventArgs) Handles btnHuy.Click
@@ -135,6 +158,8 @@ Public Class frmLapHoaDon
                 txtDiaChi.Text = ""
                 txtTenKhachHang.Text = ""
                 txtTriGiaHoaDon.Text = ""
+                txtPhuThu.Text = ""
+                txtThemGio.Text = ""
 
             Else
                 MessageBox.Show("Lập hóa đơn bị lỗi.")
@@ -154,11 +179,15 @@ Public Class frmLapHoaDon
 
     Private Sub frmLapHoaDon_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If (danhSachPhieuThue.Rows.Count > 0) Then
+
+
             For Each hang As DataRow In danhSachPhieuThue.Rows
                 Dim dt As New DataTable
                 dt = HoaDonBUS.hienThiPhieuThueLapHoaDon(hang("MaPhieuThue").ToString)
 
                 Dim phieuThueTam As DataRow = dt.Rows(0)
+
+                tienThue = phieuThueTam("DonGiaThue")
 
                 dgvDanhSachPhieuThue.Rows.Add(phieuThueTam("MaPhieuThue").ToString,
                                               phieuThueTam("TenPhong").ToString,
@@ -170,4 +199,40 @@ Public Class frmLapHoaDon
         End If
 
     End Sub
+
+
+    Private Sub txtPhuThu_TextChanged(sender As Object, e As EventArgs) Handles txtPhuThu.TextChanged
+
+        If IsNumeric(txtPhuThu.Text) Then
+
+            tinhTongTienThanhToan()
+
+        Else
+            txtPhuThu.Clear()
+        End If
+
+
+    End Sub
+
+
+    Private Sub txtThemGio_TextChanged(sender As Object, e As EventArgs) Handles txtThemGio.TextChanged
+
+        If IsNumeric(txtThemGio.Text) Then
+
+            tinhTongTienThanhToan()
+
+            If (String.IsNullOrEmpty(txtThemGio.Text)) Then
+                lblTienThemGio.Text = 0
+            Else
+                lblTienThemGio.Text = txtThemGio.Text * (tienThue / 24)
+
+                lblTienThemGio.Text = "+ " + lblTienThemGio.Text.ToString + " vnđ"
+            End If
+        Else
+            txtThemGio.Clear()
+        End If
+
+
+    End Sub
+
 End Class
