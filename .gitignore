@@ -12,8 +12,7 @@ bld/
 
 *.suo
 *.user
-/QuanLyKhachSan/GUI/bin
-/QuanLyKhachSan/GUI/My Project/Application.myapp
-/QuanLyKhachSan/ConnectionString.xml
+
+
 
 *.vs
